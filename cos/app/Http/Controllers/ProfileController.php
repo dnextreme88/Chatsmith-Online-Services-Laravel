@@ -29,12 +29,12 @@ class ProfileController extends Controller
 	public function update (Request $request, $id) {
 		// process in updating user
 		$user = User::find($id);
-		$user_id = $user->id;
 		$validator = Validator::make($request->all() , 
 		[
+			'email' => 'unique:users,email,' .$user->id,
 			'current_password' => 'required',
-			'change_password' => 'required|same:change_password',
-			'change_password_confirm' => 'required|same:change_password',
+			'change_password' => 'same:change_password',
+			'change_password_confirm' => 'same:change_password',
 		]);
 
 		if ($validator->fails()) {
@@ -46,13 +46,19 @@ class ProfileController extends Controller
 			$user_id = Auth::user()->id;
 			$user = User::find($user_id);
 			$user->email = $request->email;
-			$user->password = Hash::make($request->change_password);
+				if 	(
+					($request->get('change_password') != null and $request->get('change_password_confirm') != null) and 
+					($request->has('change_password') == $request->has('change_password_confirm'))
+					) {
+					$user->password = Hash::make($request->change_password);
+				}
 			$user->save(); 
 
 			return redirect('/profile');
 		}
 		else {
-			return redirect()->back()->withErrors($validator)->withInput();
+			$errors = array('current_password' => 'The current password is incorrect.');
+			return redirect()->back()->withErrors($errors)->withInput();
 		}
 	}
 
