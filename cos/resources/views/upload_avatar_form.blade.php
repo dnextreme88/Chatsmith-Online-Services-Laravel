@@ -6,10 +6,10 @@ User Settings - Upload User Profile Image
 
 @section('content')
 <div class="container">
-    <h3 align="center">Upload User Profile Image</h3>
+    <h3 align="center">Update Profile Image</h3>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <p>Upload Validation Error</p>
+            <p>Upload Validation Errors</p>
             <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -46,7 +46,10 @@ User Settings - Upload User Profile Image
                 </div>
             </div>
             <div class="form-group row mb-0">
-                <div class="col-md-6 offset-md-4">
+                <div class="col-md-4 offset-md-2">
+                    <a class="btn btn-danger" href="/profile/">Back to Profile</a>
+                </div>
+                <div class="col-md-4 offset-md-2">
                     <input type="submit" name="upload" class="btn btn-primary" value="Upload">
                 </div>
             </div>
