@@ -14,18 +14,34 @@
 						<form action="/profile/{{ $user->id }}" method="POST">
 							@csrf
 							@method('PUT')
+							<!-- User ID (readonly) -->
+							<div class="form-group row">
+								<label for="user_id" class="col-md-4 col-form-label text-md-right">User ID</label>
+
+								<div class="col-md-6">
+									<input id="user_id" readonly class="form-control-plaintext input-lg" type="text" placeholder="{{ $user->id }}">
+								</div>
+							</div>
+							<!-- Username (readonly) -->
+							<div class="form-group row">
+								<label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+
+								<div class="col-md-6">
+									<input id="username" readonly class="form-control-plaintext input-lg" type="text" placeholder="{{ $user->username }}">
+								</div>
+							</div>
 							<!-- User email -->
 							<div class="form-group row">
 								<label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
 
 								<div class="col-md-6">
-									<input id="email" class="form-control input-lg" type="email" name="email" placeholder="Email address" value="{{ $user->email }}"><br />
+									<input id="email" class="form-control input-lg" type="email" name="email" placeholder="Email address" value="{{ $user->email }}">
 								</div>
 							</div>
 							<!-- User's current password -->
 							<div class="form-group row">
 								<input id="user_password" name="user_password" type="hidden" value="{{ $user->password}}">
-								<label for="current_password" class="col-md-4 col-form-label text-md-right">Current Password</label>
+								<label for="current_password" class="col-md-4 col-form-label text-md-right">Enter current password</label>
 
 								<div class="col-md-6">
 									<input id="current_password" class="form-control input-lg" type="password" name="current_password">
@@ -55,7 +71,7 @@
 									<input class="btn btn-primary" type="submit" name="submit" value="Edit settings">
 								</div>
 							</div>
-						</form>
+						</form><br />
 					@if($errors->any())
 						<div class="alert alert-danger" role="alert">
 							<p>The error messages are the following:</p>
