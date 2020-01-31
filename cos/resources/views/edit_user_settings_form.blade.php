@@ -50,7 +50,7 @@ Edit User Settings
 								<label for="email" class="col-md-4 col-form-label text-md-right">Upload User Image</label>
 
 								<div class="col-md-6">
-									<a href="/user/uploadfile/">Click here to upload user image</a>
+									<a href="/user/uploadfile/">Click here to update profile image</a>
 								</div>
 							</div>
 							<!-- User's current password -->
@@ -89,7 +89,7 @@ Edit User Settings
 						</form><br />
 					@if($errors->any())
 						<div class="alert alert-danger" role="alert">
-							<p>The error messages are the following:</p>
+							<p>Update Settings Errors</p>
 							<ul>
 								@foreach($errors->all() as $error)
 									<li>{{ $error }}</li>

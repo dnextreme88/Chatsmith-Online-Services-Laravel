@@ -11,6 +11,7 @@ use Validator;
 class ProfileController extends Controller
 {
 	public function index() {
+		// Show dashboard of auth user
 		$user = Auth::user();
 
 		return view('profile',
@@ -19,19 +20,19 @@ class ProfileController extends Controller
 	}
 
 	public function edit ($id) {
-		// Show edit user form
+		// Show edit user settings form
 		$user = User::find($id);
 
 		// Make sure the auth user only edits his settings and not other user's settings
 		if (Auth::user() == $user) {
-			return view('edit_user_form')->with('user', $user);
+			return view('edit_user_settings_form')->with('user', $user);
 		} else {
 			abort(403, 'Unauthorized action.');
 		}
 	}
 
 	public function update (Request $request, $id) {
-		// Process in updating user
+		// Process in updating user settings
 		$user = User::find($id);
 
 		// Validate user input
