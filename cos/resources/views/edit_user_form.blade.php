@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+Edit User Settings
+@endsection
+
 @section('content')
 	<div class="container">
 		<div class="row justify-content-center">
@@ -9,7 +13,10 @@
 
 					<div class="card-body">
 					@if (session('success'))
-						<div class="alert alert-success" role="alert">{{ session('success') }}</div>
+						<div class="alert alert-success alert-block" role="alert">
+			                <button type="button" class="close" data-dismiss="alert">x</button>
+			                {{ session('success') }}
+						</div>
 					@endif
 						<form action="/profile/{{ $user->id }}" method="POST">
 							@csrf
@@ -36,6 +43,14 @@
 
 								<div class="col-md-6">
 									<input id="email" class="form-control input-lg" type="email" name="email" placeholder="Email address" value="{{ $user->email }}">
+								</div>
+							</div>
+							<!-- Upload user profile image -->
+							<div class="form-group row">
+								<label for="email" class="col-md-4 col-form-label text-md-right">Upload User Image</label>
+
+								<div class="col-md-6">
+									<a href="/user/uploadfile/">Click here to upload user image</a>
 								</div>
 							</div>
 							<!-- User's current password -->

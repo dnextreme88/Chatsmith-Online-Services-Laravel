@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('profile', 'ProfileController');
+
+Route::get('user/uploadfile', 'UploadFileController@index');
+
+Route::post('user/uploadfile/{id}', 'UploadFileController@upload');
