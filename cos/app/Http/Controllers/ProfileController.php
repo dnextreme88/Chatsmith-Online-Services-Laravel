@@ -14,7 +14,7 @@ class ProfileController extends Controller
 		$user = Auth::user();
 
 		return view('profile',
-			["user" => $user, 
+			['user' => $user, 
 		]);
 	}
 
@@ -24,8 +24,7 @@ class ProfileController extends Controller
 
 		// Make sure the auth user only edits his settings and not other user's settings
 		if (Auth::user() == $user) {
-			return view('edit_user_form')
-				->with("user", $user);
+			return view('edit_user_form')->with('user', $user);
 		} else {
 			abort(403, 'Unauthorized action.');
 		}
@@ -62,7 +61,8 @@ class ProfileController extends Controller
 				}
 			$user->save(); 
 
-			return redirect('/profile');
+			return redirect()->back()->withSuccess('User settings are successfully updated!');
+
 		}
 		else {
 			$errors = array('current_password' => 'The current password is incorrect.');

@@ -8,6 +8,9 @@
 					<div class="card-header">Edit User Settings</div>
 
 					<div class="card-body">
+					@if (session('success'))
+						<div class="alert alert-success" role="alert">{{ session('success') }}</div>
+					@endif
 						<form action="/profile/{{ $user->id }}" method="POST">
 							@csrf
 							@method('PUT')
@@ -53,19 +56,20 @@
 								</div>
 							</div>
 						</form>
+					@if($errors->any())
+						<div class="alert alert-danger" role="alert">
+							<p>The error messages are the following:</p>
+							<ul>
+								@foreach($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	@if($errors->any())
-		<div>
-			<ul>
-				@foreach($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
 @endsection
