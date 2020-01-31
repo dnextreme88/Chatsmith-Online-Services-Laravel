@@ -16,9 +16,10 @@ class CreateTimeRecordsTable extends Migration
     {
         Schema::create('time_records', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('employee_id');
+            $table->foreign('employee_id')->references('id')->on('employees'); // Foreign key: Employees model
             $table->string('time_of_shift');
             $table->date('date_of_shift');
-            $table->integer('employee_id');
             $table->string('employee_name');
             $table->dateTime('timestamp_in', 0);
             $table->dateTime('timestamp_out', 0);

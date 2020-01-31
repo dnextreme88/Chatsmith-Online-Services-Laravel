@@ -15,7 +15,9 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('employee_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users'); // Foreign key: Users model
+            $table->integer('employee_number')->nullable();
             $table->string('first_name')->nullable();
             $table->string('maiden_name')->nullable();
             $table->string('last_name')->nullable();
