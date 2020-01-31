@@ -19,16 +19,23 @@ class ProfileController extends Controller
 	}
 
 	public function edit ($id) {
-		// show edit user form
+		// Show edit user form
 		$user = User::find($id);
 
-		return view('edit_user_form')
-			->with("user", $user);
+		// Make sure the auth user only edits his settings and not other user's settings
+		if (Auth::user() == $user) {
+			return view('edit_user_form')
+				->with("user", $user);
+		} else {
+			abort(403, 'Unauthorized action.');
+		}
 	}
 
 	public function update (Request $request, $id) {
-		// process in updating user
+		// Process in updating user
 		$user = User::find($id);
+
+		// Validate user input
 		$validator = Validator::make($request->all() , 
 		[
 			'email' => 'unique:users,email,' .$user->id,
@@ -42,6 +49,7 @@ class ProfileController extends Controller
 		}
 
 		$user_password = Auth::user()->password;
+		// Check if auth user's password is a match to input current password
 		if (Hash::check($request->current_password, $user_password)) {
 			$user_id = Auth::user()->id;
 			$user = User::find($user_id);
