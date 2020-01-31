@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Edit User Form</title>
+@extends('layouts.app')
 
-	<!-- Fonts -->
-	<link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-	<!-- Styles -->
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
+@section('content')
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
@@ -21,6 +11,7 @@
 						<form action="/profile/{{ $user->id }}" method="POST">
 							@csrf
 							@method('PUT')
+							<!-- User email -->
 							<div class="form-group row">
 								<label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
 
@@ -28,7 +19,7 @@
 									<input id="email" class="form-control input-lg" type="email" name="email" placeholder="Email address" value="{{ $user->email }}"><br />
 								</div>
 							</div>
-
+							<!-- User's current password -->
 							<div class="form-group row">
 								<input id="user_password" name="user_password" type="hidden" value="{{ $user->password}}">
 								<label for="current_password" class="col-md-4 col-form-label text-md-right">Current Password</label>
@@ -37,7 +28,7 @@
 									<input id="current_password" class="form-control input-lg" type="password" name="current_password">
 								</div>
 							</div>
-
+							<!-- Change password -->
 							<div class="form-group row">
 								<label for="change_password" class="col-md-4 col-form-label text-md-right">Change Password</label>
 
@@ -45,7 +36,7 @@
 									<input id="change_password" class="form-control input-lg" type="password" name="change_password">
 								</div>
 							</div>
-
+							<!-- Confirm change password -->
 							<div class="form-group row">
 								<label for="change_password_confirm" class="col-md-4 col-form-label text-md-right">Confirm Change Password</label>
 
@@ -77,6 +68,4 @@
 			</ul>
 		</div>
 	@endif
-
-</body>
-</html>
+@endsection
