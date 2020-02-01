@@ -59,7 +59,7 @@ Chatsmith Online Services Employees
                 <div class="card-header">Admin Panel</div>
                 <div class="card-body">
                     <ul>
-                    	<li><a href="employees/create/">Add Employee</a></li>
+                    	<li><a href="/employees/create/">Add Employee</a></li>
                     	<li>Admin Logs</li> <!-- Still thinking about it. Create logs table -->
                     </ul>
                 </div>
