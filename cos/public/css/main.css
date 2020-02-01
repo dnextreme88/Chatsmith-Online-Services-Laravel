@@ -28,3 +28,13 @@
   color: #1D68A7;
   text-decoration: underline;
 }
+
+footer {
+	background-color: #0373BE;
+	border-radius: 24px;
+	margin-top: 12px;
+}
+
+footer div {
+	padding: 12px;
+}

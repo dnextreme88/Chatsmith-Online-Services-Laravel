@@ -83,6 +83,12 @@
         <main class="py-6">
             @yield('content')
         </main>
+
+        <footer class="container">
+            <div class="row">
+                <p>Chatsmith Online Services Copyright &copy; 2020</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
