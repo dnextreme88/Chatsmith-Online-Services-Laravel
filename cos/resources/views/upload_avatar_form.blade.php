@@ -23,10 +23,24 @@ Edit User Settings - Upload User Profile Image
             {{ session('success') }}
         </div>
         <!-- Display successfully uploaded image -->
-        <img src="/images/{{ Session::get('path') }}" class="img-thumbnail mx-auto d-block avatar-thumbnail-medium" />
+        <p>New profile image:</p>
+        <img src="/images/{{ Session::get('path') }}" class="img-thumbnail img-responsive mx-auto d-block avatar-thumbnail-medium" />
     @endif
+            @if (session('success')) <!-- Get old image when new image has uploaded -->
+                <p>Old profile image:</p>
+                <img src="/{{ Session::get('old_profile_image') }}" class="img-thumbnail img-responsive avatar-thumbnail-small" />
+            @elseif ($user->profile_image == '') <!-- Display a text when user doesn't have any profile image. -->
+                <p>You currently do not have a profile image. Upload one now. Please follow the guidelines:</p>
+                <ol>
+                    <li>File to be uploaded must be an image.</li>
+                    <li>Image file size must not exceed more than 2 MB.</li>
+                    <li>Supported image extensions: <strong>.jpeg, .png, .jpg, .gif</strong></li>
+                </ol>
+            @else <!-- Get current image when the view is loaded -->
+                <p>Current profile image:</p>
+                <img src="{{ asset(auth()->user()->image) }}" class="img-thumbnail img-responsive avatar-thumbnail-small" />
+            @endif
         <form method="post" action="/user/uploadfile/{{ $user->id }}" enctype="multipart/form-data">
-            {{-- {{ csrf_field() }} --}}
             @csrf
             <!-- User ID (readonly) -->
             <div class="form-group row">
