@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Employee;
 use App\User;
 use Validator;
@@ -12,8 +13,11 @@ class EmployeeController extends Controller
 	public function index () {
 		// show all employees.
 		$employees = Employee::paginate(5);
+		$user = Auth::user();
 
-		return view('employees')->with("employees", $employees);
+		return view('employees')
+		->with("employees", $employees)
+		->with("user", $user);
 	}
 
 	public function store (Request $request) {
@@ -55,5 +59,4 @@ class EmployeeController extends Controller
 
     	return view('show_employee')->with("employee", $employee);
     }
-
 }
