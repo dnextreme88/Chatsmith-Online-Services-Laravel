@@ -8,7 +8,7 @@ Chatsmith Online Services - Employees
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<!-- Left Side -->
-		<div class="col-md-10">
+		<div class="col-md-9">
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
 				<button type="button" class="close" data-dismiss="alert">x</button>
@@ -75,18 +75,10 @@ Chatsmith Online Services - Employees
 		</div>
 		<!-- Right Side / Navigation -->
 		@if ($user->is_staff == 'True')
-			<div class="col-md-2">
-				<div class="card">
-					<div class="card-header">Admin Panel</div>
-					<div class="card-body">
-						<ul>
-							<li><a href="/employees/create/">Add Employee</a></li>
-							<li>Admin Logs</li> <!-- Still thinking about it. Create logs table -->
-						</ul>
-					</div>
-				</div>
-			</div>
-		@endif
+            <div class="col-md-3">
+                @include('layouts.admin_panel_right_nav')
+            </div>
+        @endif
 	</div>
 </div>
 @endsection
