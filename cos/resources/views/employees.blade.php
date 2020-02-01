@@ -9,6 +9,12 @@ Chatsmith Online Services Employees
 	<div class="row justify-content-center">
 		<!-- Left Side -->
 		<div class="col-md-10">
+		@if (session('success'))
+			<div class="alert alert-success alert-block" role="alert">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				{{ session('success') }}
+			</div>
+		@endif
 		@if ($employees->count() > 0)
 			<table class="table table-bordered table-responsive">
 				<thead>
@@ -23,7 +29,7 @@ Chatsmith Online Services Employees
 					<th>Date of Tenure</th>
 					<th>Is Active?</th>
 					@if ($user->is_staff == 'True')
-						<th width="25%">Actions</th>
+						<th width="30%">Actions</th>
 					@endif
 				</thead>
 				<tbody>
@@ -47,9 +53,15 @@ Chatsmith Online Services Employees
 						</td>
 						@if ($user->is_staff == 'True')
 							<td><ul class="list-inline">
-								<li class="list-inline-item"><a href="/employees/{{ $employee->id }}/"><i class="fa fa-eye"></i> View</a></li>
-								<li class="list-inline-item"><i class="fa fa-magic"></i> Edit</li>
-								<li class="list-inline-item"><i class="fa fa-trash"></i> Delete</li>
+									<li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/employees/{{ $employee->id }}/">View</a></li>
+									<li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a></li>
+									<li class="list-inline-item">
+										<form action="/employees/{{ $employee->id }}" method="POST">
+											@csrf
+											@method('DELETE')
+											<i class="fa fa-trash"></i> <input class="delete-employee-button" type="submit" name="submit" value="Delete">
+										</form>
+									</li>
 							</ul></td>
 						@endif
 					</tr>
@@ -64,17 +76,17 @@ Chatsmith Online Services Employees
 		<!-- Right Side / Navigation -->
 		@if ($user->is_staff == 'True')
 			<div class="col-md-2">
-	            <div class="card">
-	                <div class="card-header">Admin Panel</div>
-	                <div class="card-body">
-	                    <ul>
-	                    	<li><a href="/employees/create/">Add Employee</a></li>
-	                    	<li>Admin Logs</li> <!-- Still thinking about it. Create logs table -->
-	                    </ul>
-	                </div>
-	            </div>
-	        </div>
-        @endif
+				<div class="card">
+					<div class="card-header">Admin Panel</div>
+					<div class="card-body">
+						<ul>
+							<li><a href="/employees/create/">Add Employee</a></li>
+							<li>Admin Logs</li> <!-- Still thinking about it. Create logs table -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		@endif
 	</div>
 </div>
 @endsection
