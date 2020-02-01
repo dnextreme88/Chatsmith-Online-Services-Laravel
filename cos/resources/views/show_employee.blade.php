@@ -7,10 +7,16 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 @section('content')
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12 offset-md-4">
+		<div class="col-md-8 offset-md-4">
 			<h1>Viewing Employee Number {{ $employee->employee_number }}'s Data</h1>
 		</div>
 	</div>
+	<!-- Profile Image (from User) -->
+	@if ($employee->user->profile_image == '') <!-- Display a text when user doesn't have any profile image. -->
+		<p class="text-center">This employee does not have a profile image set.</p>
+	@else <!-- Get current image when the view is loaded -->
+		<img src="/{{ $employee->user->image }}" class="img-thumbnail img-responsive mx-auto d-block avatar-thumbnail-large" />
+	@endif
 	<!-- Employee ID -->
 	<div class="row">
 		<label for="employee_id" class="col-md-6 text-md-right"><strong>ID</strong></label>
