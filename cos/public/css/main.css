@@ -12,3 +12,19 @@
 	width: 240px;
 	height: 240px;
 }
+
+.delete-employee-button, .delete-employee-button:hover {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+
+.delete-employee-button {
+  color: #3A9AE4;
+}
+
+.delete-employee-button:hover {
+  color: #1D68A7;
+  text-decoration: underline;
+}
