@@ -10,16 +10,18 @@ Chatsmith Online Services Employees
 		<!-- Left Side -->
 		<div class="col-md-10">
 		@if ($employees->count() > 0)
-			<table class="table table-bordered">
+			<table class="table table-bordered table-responsive">
 				<thead>
 					<th>ID</th>
 					<th>Employee Number</th>
+					<th>Username</th> <!-- Get Username from Foreign Key User -->
+					<th>Email</th> <!-- Get Email from Foreign Key User -->
 					<th>First Name</th>
 					<th>Maiden Name</th>
 					<th>Last Name</th>
 					<th>Role</th>
 					<th>Date of Tenure</th>
-					<th>Is Active</th>
+					<th>Is Active?</th>
 					<th>Actions</th>
 				</thead>
 				<tbody>
@@ -27,6 +29,8 @@ Chatsmith Online Services Employees
 					<tr>
 						<td>{{ $employee->id }}</td>
 						<td>{{ $employee->employee_number }}</td>
+						<td>{{ $employee->user->username }}</td>
+						<td>{{ $employee->user->email }}</td>
 						<td>{{ $employee->first_name }}</td>
 						<td>{{ $employee->maiden_name }}</td>
 						<td>{{ $employee->last_name }}</td>
@@ -34,12 +38,12 @@ Chatsmith Online Services Employees
 						<td>{{ $employee->date_of_tenure }}</td>
 						<td class="text-center">
 						@if ($employee->is_active == 'True')
-							<i class="fa fa-check-circle"></i>
+							<i class="text-success fa fa-check-circle"></i>
 						@else
-							<i class="fa fa-times-circle"></i>
+							<i class="text-danger fa fa-times-circle"></i>
 						@endif
 						</td>
-						<td>View | Edit | Delete</td>
+						<td><a href="/employees/{{ $employee->id }}/"><i class="fa fa-eye"></i> View</a> | <i class="fa fa-magic"></i> Edit | <i class="fa fa-trash"></i> Delete</td>
 					</tr>
 					@endforeach
 				</tbody>
