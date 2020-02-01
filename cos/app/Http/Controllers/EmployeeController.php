@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 {
 	public function index () {
 		// show all employees.
-		$employees = Employee::paginate(2);
+		$employees = Employee::paginate(5);
 
 		return view('employees')->with("employees", $employees);
 	}
@@ -45,7 +45,15 @@ class EmployeeController extends Controller
 	public function create () {
 		// show add employees form
 		$users = User::all();
+
 		return view('add_employee_form')->with("users", $users);
 	}
+
+    public function show ($id) {
+    	// show specific employee
+    	$employee = Employee::find($id);
+
+    	return view('show_employee')->with("employee", $employee);
+    }
 
 }
