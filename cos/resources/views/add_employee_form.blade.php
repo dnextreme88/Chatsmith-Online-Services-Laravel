@@ -67,7 +67,11 @@ Chatsmith Online Services Employees - Add Employee Form
 					<label for="employee_role" class="col-md-4 col-form-label text-md-right">Role</label>
 
 					<div class="col-md-6">
-						<input id="employee_role" class="form-control input-lg" type="text" name="employee_role">
+						<select id="employee_role" class="form-control" name="employee_role">
+						@foreach ($role_choices as $role)
+							<option value="{{ $role }}">{{ $role }}</option>
+						@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="form-group row mb-0">
