@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Chatsmith Online Services Employees - Edit Employee Form
+Chatsmith Online Services - Edit Employee Form
 @endsection
 
 @section('content')

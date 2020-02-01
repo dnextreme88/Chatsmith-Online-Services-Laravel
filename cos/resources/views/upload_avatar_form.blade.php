@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-User Settings - Upload User Profile Image
+Edit User Settings - Upload User Profile Image
 @endsection
 
 @section('content')
