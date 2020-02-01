@@ -22,7 +22,9 @@ Chatsmith Online Services Employees
 					<th>Role</th>
 					<th>Date of Tenure</th>
 					<th>Is Active?</th>
-					<th>Actions</th>
+					@if ($user->is_staff == 'True')
+						<th width="25%">Actions</th>
+					@endif
 				</thead>
 				<tbody>
 					@foreach ($employees as $employee)
@@ -43,7 +45,13 @@ Chatsmith Online Services Employees
 							<i class="text-danger fa fa-times-circle"></i>
 						@endif
 						</td>
-						<td><a href="/employees/{{ $employee->id }}/"><i class="fa fa-eye"></i> View</a> | <i class="fa fa-magic"></i> Edit | <i class="fa fa-trash"></i> Delete</td>
+						@if ($user->is_staff == 'True')
+							<td><ul class="list-inline">
+								<li class="list-inline-item"><a href="/employees/{{ $employee->id }}/"><i class="fa fa-eye"></i> View</a></li>
+								<li class="list-inline-item"><i class="fa fa-magic"></i> Edit</li>
+								<li class="list-inline-item"><i class="fa fa-trash"></i> Delete</li>
+							</ul></td>
+						@endif
 					</tr>
 					@endforeach
 				</tbody>
@@ -54,17 +62,19 @@ Chatsmith Online Services Employees
 		@endif
 		</div>
 		<!-- Right Side / Navigation -->
-		<div class="col-md-2">
-            <div class="card">
-                <div class="card-header">Admin Panel</div>
-                <div class="card-body">
-                    <ul>
-                    	<li><a href="/employees/create/">Add Employee</a></li>
-                    	<li>Admin Logs</li> <!-- Still thinking about it. Create logs table -->
-                    </ul>
-                </div>
-            </div>
-        </div>
+		@if ($user->is_staff == 'True')
+			<div class="col-md-2">
+	            <div class="card">
+	                <div class="card-header">Admin Panel</div>
+	                <div class="card-body">
+	                    <ul>
+	                    	<li><a href="/employees/create/">Add Employee</a></li>
+	                    	<li>Admin Logs</li> <!-- Still thinking about it. Create logs table -->
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+        @endif
 	</div>
 </div>
 @endsection
