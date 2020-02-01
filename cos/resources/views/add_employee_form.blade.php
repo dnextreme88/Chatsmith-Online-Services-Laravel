@@ -13,7 +13,7 @@ Chatsmith Online Services Employees - Add Employee Form
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
                 <button type="button" class="close" data-dismiss="alert">x</button>
-                {{ session('success') }}
+                {{ session('success') }}. You may go back and see <a href="/employees/" class="alert-link">all the employees</a>.
 			</div>
 		@endif
 			<form action="/employees/" method="POST">
