@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/admin', 'AdminPanelController@index');
+
 Route::resource('employees', 'EmployeeController');
 
 Route::resource('profile', 'ProfileController');
