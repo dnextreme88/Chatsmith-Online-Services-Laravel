@@ -5,84 +5,64 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<div class="col-md-8 offset-md-4">
-			<h1>Viewing Employee Number {{ $employee->employee_number }}'s Data</h1>
-		</div>
-	</div>
-	<!-- Profile Image (from User) -->
-	@if ($employee->user->profile_image == '') <!-- Display a text when user doesn't have any profile image. -->
-		<p class="text-center">This employee does not have a profile image set.</p>
-	@else <!-- Get current image when the view is loaded -->
-		<img src="/{{ $employee->user->image }}" class="img-thumbnail img-responsive mx-auto d-block avatar-thumbnail-large" />
-	@endif
-	<!-- Employee ID -->
-	<div class="row">
-		<label for="employee_id" class="col-md-6 text-md-right"><strong>ID</strong></label>
-
-		<div class="col-md-6" id="employee_id">{{ $employee->id }}</div>
-	</div>
-	<!-- User (Foreign Key) -->
-	<div class="row">
-		<label for="username" class="col-md-6 text-md-right"><strong>Username</strong></label>
-
-		<div class="col-md-6" id="username">{{ $employee->user->username}}</div>
-	</div>
-	<!-- Employee number -->
-	<div class="row">
-		<label for="employee_number" class="col-md-6 text-md-right"><strong>Employee Number</strong></label>
-
-		<div class="col-md-6" id="employee_number">{{ $employee->employee_number }}</div>
-	</div>
-	<!-- First name -->
-	<div class="row">
-		<label for="first_name" class="col-md-6 text-md-right"><strong>First Name</strong></label>
-
-		<div class="col-md-6" id="first_name">{{ $employee->first_name }}</div>
-	</div>
-	<!-- Maiden name -->
-	<div class="row">
-		<label for="maiden_name" class="col-md-6 text-md-right"><strong>Maiden Name</strong></label>
-
-		<div class="col-md-6" id="maiden_name">{{ $employee->maiden_name }}</div>
-	</div>
-	<!-- Last name -->
-	<div class="row">
-		<label for="last_name" class="col-md-6 text-md-right"><strong>Last Name</strong></label>
-
-		<div class="col-md-6" id="last_name">{{ $employee->last_name }}</div>
-	</div>
-	<!-- Role -->
-	<div class="row">
-		<label for="role" class="col-md-6 text-md-right"><strong>Role</strong></label>
-
-		<div class="col-md-6" id="role">{{ $employee->role }}</div>
-	</div>
-	<!-- Date of tenure -->
-	<div class="row">
-		<label for="date_of_tenure" class="col-md-6 text-md-right"><strong>Date of Tenure</strong></label>
-
-		<div class="col-md-6" id="date_of_tenure">{{ $employee->date_of_tenure }}</div>
-	</div>
-	<!-- Is active -->
-	<div class="row">
-		<label for="is_active" class="col-md-6 text-md-right"><strong>Is Active</strong></label>
-
-		<div class="col-md-6" id="is_active">
-		@if ($employee->is_active == 'True')
-			<i class="text-success fa fa-check-circle"></i>
-		@else
-			<i class="text-danger fa fa-times-circle"></i>
-		@endif
-		</div>
-	</div>
-	<!-- Actions (Edit / Delete) -->
-	<div class="row">
-		<label for="user_id" class="col-md-6 text-md-right"><strong>Actions</strong></label>
-
-		<div class="col-md-6">
-			<i class="fa fa-magic"></i> Edit | <i class="fa fa-trash"></i> Delete
+		<div class="card w-50 text-left mx-auto">
+			<div class="card-header text-center">Viewing Employee Number {{ $employee->employee_number }}'s Data</div>
+			<!-- Profile Image (from User) -->
+			@if ($employee->user->profile_image == '') <!-- Display a text when user doesn't have any profile image. -->
+				<p class="text-center">This employee does not have a profile image set.</p>
+			@else <!-- Get current image when the view is loaded -->
+				<img src="/{{ $employee->user->image }}" class="card-img-top img-thumbnail img-responsive mx-auto d-block avatar-thumbnail-large" />
+			@endif
+			<div class="card-body">
+				<dl class="row">
+					<dt class="col-sm-6">Employee ID</dt>
+					<dd class="col-sm-6">{{ $employee->id }}</dd>
+				</dl>
+				<dl class="row">
+					<dt class="col-sm-6">User</dt>
+					<dd class="col-sm-6">{{ $employee->user->username }}</dd>
+				</dl>
+				<dl class="row">
+					<dt class="col-sm-6">Employee Number</dt>
+					<dd class="col-sm-6">{{ $employee->employee_number }}</dd>
+				</dl>
+				<dl class="row">
+					<dt class="col-sm-6">First Name</dt>
+					<dd class="col-sm-6">{{ $employee->first_name }}</dd>
+				</dl>
+				<dl class="row">
+					<dt class="col-sm-6">Maiden Name</dt>
+					<dd class="col-sm-6">{{ $employee->maiden_name }}</dd>
+				</dl>
+				<dl class="row">
+					<dt class="col-sm-6">Last Name</dt>
+					<dd class="col-sm-6">{{ $employee->last_name }}</dd>
+				</dl>
+				<dl class="row">
+					<dt class="col-sm-6">Role</dt>
+					<dd class="col-sm-6">{{ $employee->role }}</dd>
+				</dl>
+				<dl class="row">
+					<dt class="col-sm-6">Date of Tenure</dt>
+					<dd class="col-sm-6">{{ $employee->date_of_tenure }}</dd>
+				</dl>
+				<dl class="row">
+					<dt class="col-sm-6">Is active</dt>
+					<dd class="col-sm-6">
+					@if ($employee->is_active == 'True')
+						<i class="text-success fa fa-check-circle"></i>
+					@else
+						<i class="text-danger fa fa-times-circle"></i>
+					@endif
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="col-sm-6">Actions</dt>
+					<dd class="col-sm-6"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a> | <i class="fa fa-trash"></i> Delete</dd>
+				</dl>
+			</div>
 		</div>
 	</div>
 </div>
