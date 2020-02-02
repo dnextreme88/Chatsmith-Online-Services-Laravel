@@ -118,10 +118,24 @@ class EmployeeController extends Controller
 
 	public function destroy ($id) {
 		// delete employee
-
 		$employee = Employee::find($id);
 		$employee->delete();
+		// Get URL of certain controller with view method and pass parameters
+		$controller_url = action('EmployeeController@show', ['employee' => $id]);
+		// Get current URL
+		$current_url = url()->current();
 
-		return redirect()->back()->withSuccess('Employee successfully deleted!');
+		$employees = Employee::paginate(5);
+		$user = Auth::user();
+
+		// If admin is deleting an employee from /employee/{id}/, execute this clause
+		if ($controller_url == $current_url) {
+			return redirect('/employees/')->withSuccess('Employee successfully deleted!')
+				->with("employees", $employees)
+				->with("user", $user);
+		// If admin is deleting an employee from /employees/, execute this clause
+		} else {
+			return redirect()->back()->withSuccess('Employee successfully deleted!');
+		}
 	}
 }

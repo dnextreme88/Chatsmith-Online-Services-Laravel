@@ -60,7 +60,14 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 				</dl>
 				<dl class="row">
 					<dt class="col-sm-6">Actions</dt>
-					<dd class="col-sm-6"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a> | <i class="fa fa-trash"></i> Delete</dd>
+					<dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a></dd>
+					<dd class="col-sm-3">
+						<form action="/employees/{{ $employee->id }}" method="POST">
+							@csrf
+							@method('DELETE')
+							<i class="fa fa-trash"></i> <input class="delete-employee-button" type="submit" name="submit" value="Delete">
+						</form>
+					</dd>
 				</dl>
 			</div>
 		</div>
