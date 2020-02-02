@@ -13,7 +13,7 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 			@if ($employee->user->profile_image == '') <!-- Display a text when user doesn't have any profile image. -->
 				<p class="text-center">This employee does not have a profile image set.</p>
 			@else <!-- Get current image when the view is loaded -->
-				<img src="/{{ $employee->user->image }}" class="card-img-top img-thumbnail img-responsive mx-auto d-block avatar-thumbnail-large" />
+				<img src="/{{ $employee->user->image }}" class="card-img-top img-thumbnail img-responsive rounded-circle mx-auto d-block avatar-thumbnail-large" />
 			@endif
 			<div class="card-body">
 				<dl class="row">
