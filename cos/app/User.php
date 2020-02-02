@@ -37,8 +37,21 @@ class User extends Authenticatable
 		'email_verified_at' => 'datetime',
 	];
 
-	public function getImageAttribute()
-	{
+	public function getImageAttribute () {
 		return $this->profile_image;
+	}
+
+	/**
+	 * Get the employee associated with the user.
+	 */
+	public function employee () {
+		return $this->hasOne('App\Employee');
+	}
+
+	/**
+	 * Get the admin log associated with the user.
+	 */
+	public function admin_log () {
+		return $this->hasOne('App\AdminLog');
 	}
 }
