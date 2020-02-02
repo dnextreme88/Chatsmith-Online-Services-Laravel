@@ -16,12 +16,12 @@ class AdminPanelController extends Controller
 
 	public function index () {
 		$user = Auth::user();
-		$admin_logs = AdminLog::paginate(5);;
+		$admin_logs = AdminLog::paginate(5);
 
 		if ($user->is_staff == 'True') {
 			return view('admin_panel')
-			->with('user', $user)
-			->with('admin_logs', $admin_logs);
+				->with('user', $user)
+				->with('admin_logs', $admin_logs);
 		} else {
 			abort(403, 'Forbidden page.');
 		}
