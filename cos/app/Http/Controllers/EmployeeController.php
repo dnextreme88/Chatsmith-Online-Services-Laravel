@@ -11,20 +11,18 @@ use Validator;
 
 class EmployeeController extends Controller
 {
-							// 	<option value="Administrator">Administrator</option>
-							// <option value="Director">Director</option>
-							// <option value="Employee">Employee</option>
-							// <option value="Human Resources and Recruitment">Human Resources and Recruitment</option>
-							// <option value="Owner">Owner</option>
-							// <option value="Quality Analyst">Quality Analyst</option>
-							// <option value="Supervisor">Supervisor</option>
-							// <option value="Team Leader">Team Leader</option>
 	private $role_choices = [
 		'Administrator', 'Director', 'Employee', 'Human Resources and Recruitment', 'Owner', 'Quality Analyst', 'Supervisor', 'Team Leader'
 	];
 	private $is_active_choices = [
 		'True', 'False'
 	];
+
+	// The user must be logged in to access the views
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
 	public function index () {
 		// show all employees.

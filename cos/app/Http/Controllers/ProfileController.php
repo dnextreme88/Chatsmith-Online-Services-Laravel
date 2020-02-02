@@ -10,6 +10,12 @@ use Validator;
 
 class ProfileController extends Controller
 {
+	// The user must be logged in to access the views
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	public function index() {
 		// Show dashboard of auth user
 		$user = Auth::user();
