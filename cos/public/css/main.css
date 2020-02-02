@@ -1,45 +1,63 @@
-.avatar-thumbnail-extrasmall {
-	width: 48px;
-	height: 48px;
+/* Profile image (User model field) */
+	.avatar-thumbnail-extrasmall {
+		width: 48px;
+		height: 48px;
+	}
+
+	.avatar-thumbnail-small {
+		width: 120px;
+		height: 120px;
+	}
+
+	.avatar-thumbnail-medium {
+		width: 240px;
+		height: 240px;
+	}
+
+	.avatar-thumbnail-large {
+		width: 360px;
+		height: 360px;
+	}
+
+/* Delete employee button */
+	.delete-employee-button, .delete-employee-button:hover {
+		margin: 0;
+		padding: 0;
+		border: none;
+		background-color: transparent;
+	}
+
+	.delete-employee-button {
+		color: #3A9AE4;
+	}
+
+	.delete-employee-button:hover {
+		color: #1D68A7;
+		text-decoration: underline;
+	}
+
+/* Admin Panel */
+	.admin-panel-card {
+		border-top-left-radius: 24px;
+		border-bottom-right-radius: 24px;
+	}
+
+	.admin-panel-card-header {
+		border-top-left-radius: 24px;
+	}
+
+.admin-panel-card-body-nav {
+	border-bottom-right-radius: 24px;
+	background-color: #EFAC6B;
 }
 
-.avatar-thumbnail-small {
-	width: 120px;
-	height: 120px;
-}
+/* Footer */
+	footer {
+		background-color: #0373BE;
+		border-radius: 24px;
+		margin-top: 12px;
+	}
 
-.avatar-thumbnail-medium {
-	width: 240px;
-	height: 240px;
-}
-
-.avatar-thumbnail-large {
-	width: 360px;
-	height: 360px;
-}
-
-.delete-employee-button, .delete-employee-button:hover {
-	margin: 0;
-	padding: 0;
-	border: none;
-	background-color: transparent;
-}
-
-.delete-employee-button {
-	color: #3A9AE4;
-}
-
-.delete-employee-button:hover {
-	color: #1D68A7;
-	text-decoration: underline;
-}
-
-footer {
-	background-color: #0373BE;
-	border-radius: 24px;
-	margin-top: 12px;
-}
-
-footer div {
-	padding: 12px;
-}
+	footer div {
+		padding: 12px;
+	}
