@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Image;
 
 class UpdateProfileImageController extends Controller
 {
@@ -30,18 +31,24 @@ class UpdateProfileImageController extends Controller
 
 		// Get uploaded file
 		$image = $request->file('select_file');
-		// Generate a randomized uploaded file name
+		// Generate a filename based on username and unix timestamp
 		$image_filename = $user->username. '_' .time() . '.' .$image->getClientOriginalExtension();
+		// Resize image 
+		$resize_image = Image::make($image->getRealPath());
+		$resize_image->resize(180, 180, function ($constraint) {
+			$constraint->aspectRatio();
+		});
 		// Upload image to public/images/ directory
-		$image->move(public_path('images'), $image_filename);
+		$resize_image->save(public_path('/images') . '/' . $image_filename);
 		// Temporarily store old profile image when new image has successfully uploaded
 		$old_profile_image = $user->profile_image;
-		// Update profile_image field to use the image
+		// Update profile_image field of user
 		$user->profile_image = 'images\\'. $image_filename;
+		$new_profile_image = $user->profile_image;
 		$user->save();
 		// Redirect back to upload page when image has successfully uploaded
 		return back()->withSuccess('Image uploaded successfully')
-			->with('path', $image_filename)
+			->with('new_profile_image', $new_profile_image)
 			->with('old_profile_image', $old_profile_image);
 	}
 }

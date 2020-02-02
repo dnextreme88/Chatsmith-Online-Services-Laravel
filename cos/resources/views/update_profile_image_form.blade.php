@@ -18,7 +18,7 @@ Edit User Settings - Update Profile Image Form
 			<!-- Display successfully uploaded image -->
 			<div class="col-md-6 mb-1">
 				<p>New profile image:</p>
-				<img src="/images/{{ Session::get('path') }}" class="img-thumbnail img-responsive mx-auto d-block avatar-thumbnail-medium" />
+				<img src="/{{ Session::get('new_profile_image') }}" class="img-thumbnail img-responsive mx-auto d-block avatar-thumbnail-medium" />
 			</div>
 			<!-- Get old image when new image has uploaded -->
 			<div class="col-md-6 mb-1">
