@@ -23,7 +23,7 @@ class AdminPanelController extends Controller
 			->with('user', $user)
 			->with('admin_logs', $admin_logs);
 		} else {
-			abort(404, 'Forbidden page.');
+			abort(403, 'Forbidden page.');
 		}
 	}
 }
