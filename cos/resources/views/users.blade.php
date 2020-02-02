@@ -29,10 +29,10 @@ Chatsmith Online Services - Employees
 					@foreach ($users as $user)
 					<tr>
 						<td>{{ $user->id }}</td>
-						<td>{{ $user->username }}</td>
+						<td><img src="/{{ $user->profile_image }}" class="avatar-table" /> {{ $user->username }}</td>
 						<td>{{ $user->email }}</td>
 						<td>{{ $user->name }}</td>
-						<td>{{ $user->date_joined }}</td>
+						<td>{{ \Carbon\Carbon::parse($user->created_at)->format('F j, Y')}}</td>
 						<td class="text-center">
 						@if ($user->is_staff == 'True')
 							<i class="text-success fa fa-check-circle"></i>
