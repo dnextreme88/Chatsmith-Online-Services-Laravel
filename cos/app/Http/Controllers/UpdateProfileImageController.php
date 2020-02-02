@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
-class UploadFileController extends Controller
+class UpdateProfileImageController extends Controller
 {
 	// The user must be logged in to access the views
 	public function __construct()
@@ -17,8 +17,8 @@ class UploadFileController extends Controller
 	public function index () {
 		$user = Auth::user();
 
-		return view('upload_avatar_form',
-			['user' => $user, 
+		return view('update_profile_image_form', [
+			'user' => $user, 
 		]);
 	}
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Edit User Settings - Update User Profile Image
+Edit User Settings - Update Profile Image Form
 @endsection
 
 @section('content')
@@ -48,7 +48,7 @@ Edit User Settings - Update User Profile Image
 				<img src="{{ asset(auth()->user()->image) }}" class="img-thumbnail img-responsive  mx-auto d-block avatar-thumbnail-small" />
 			</div>
 		<div class="col-md-12 text-center">
-			<form method="post" action="/user/uploadfile/{{ $user->id }}" enctype="multipart/form-data">
+			<form method="post" action="/user/update_profile_image/{{ $user->id }}" enctype="multipart/form-data">
 				@csrf
 				<!-- User ID (readonly) -->
 				<div class="form-group row">

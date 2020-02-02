@@ -50,7 +50,7 @@ Edit User Settings
 								<label for="email" class="col-md-4 col-form-label text-md-right">Upload User Image</label>
 
 								<div class="col-md-6">
-									<a href="/user/uploadfile/">Click here to update profile image</a>
+									<a href="/user/update_profile_image/">Click here to update profile image</a>
 								</div>
 							</div>
 							<!-- User's current password -->

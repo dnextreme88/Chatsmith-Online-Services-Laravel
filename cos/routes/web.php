@@ -25,6 +25,6 @@ Route::resource('employees', 'EmployeeController');
 
 Route::resource('profile', 'ProfileController');
 
-Route::get('user/uploadfile', 'UploadFileController@index');
+Route::get('user/update_profile_image', 'UpdateProfileImageController@index');
 
-Route::post('user/uploadfile/{id}', 'UploadFileController@upload');
+Route::post('user/update_profile_image/{id}', 'UpdateProfileImageController@upload');
