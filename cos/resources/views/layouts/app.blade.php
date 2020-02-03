@@ -89,7 +89,15 @@
 
         <footer class="container">
             <div class="row">
-                <p>Chatsmith Online Services Copyright &copy; 2020</p>
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="list-item"><a href="/aboutus/">About Us</li>
+                        <li class="list-item"><a href="/careers/">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <p>Chatsmith Online Services Copyright &copy; 2020</p>
+                </div>
             </div>
         </footer>
     </div>

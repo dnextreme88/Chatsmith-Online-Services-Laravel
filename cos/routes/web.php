@@ -30,3 +30,9 @@ Route::resource('profile', 'ProfileController');
 Route::get('user/update_profile_image', 'UpdateProfileImageController@index');
 
 Route::post('user/update_profile_image/{id}', 'UpdateProfileImageController@upload');
+
+// Static pages
+
+Route::get('/aboutus', 'AboutUsController@index');
+
+Route::get('/careers', 'CareersController@index');
