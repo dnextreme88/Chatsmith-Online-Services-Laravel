@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AdminLog extends Model
 {
 	protected $fillable = [
-		'description'
+		'user_id', 'description'
 	];
 
     /**
