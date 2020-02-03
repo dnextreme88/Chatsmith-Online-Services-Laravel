@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Announcement;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
@@ -19,9 +20,11 @@ class ProfileController extends Controller
 	public function index() {
 		// Show dashboard of auth user
 		$user = Auth::user();
+		$latest_announcement = Announcement::latest()->first();
 
-		return view('profile',
-			['user' => $user, 
+		return view('profile', [
+			'user' => $user,
+			'latest_announcement' => $latest_announcement,
 		]);
 	}
 

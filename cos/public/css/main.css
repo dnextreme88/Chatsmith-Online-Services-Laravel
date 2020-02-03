@@ -81,3 +81,8 @@
 		border-bottom: 4px solid #1767AB;
 		text-transform: uppercase;
 	}
+
+/* Announcements */
+	.announcement-alert-description {
+		text-indent: 2cm;
+	}

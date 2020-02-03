@@ -7,6 +7,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-12"> <!-- Requires $latest_announcement variable - fetch latest announcement -->
+            @include('layouts.latest_announcement_pane')
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Timestamps</div>
