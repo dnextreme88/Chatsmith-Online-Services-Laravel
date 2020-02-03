@@ -54,4 +54,11 @@ class User extends Authenticatable
 	public function admin_log () {
 		return $this->hasOne('App\AdminLog');
 	}
+
+	/**
+	 * Get the announcement associated with the user.
+	 */
+	public function announcement () {
+		return $this->hasOne('App\Announcement');
+	}
 }
