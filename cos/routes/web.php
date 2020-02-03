@@ -23,6 +23,8 @@ Route::get('/admin', 'AdminPanelController@index');
 
 Route::get('/users', 'UserController@index');
 
+Route::resource('announcements', 'AnnouncementController');
+
 Route::resource('employees', 'EmployeeController');
 
 Route::resource('profile', 'ProfileController');
