@@ -70,7 +70,7 @@ Chatsmith Online Services - Employees
 			</table>
 			{{ $employees->links() }}
 		@else
-			<p>No employees found. <a href="employees/create/">Wanna create one now?</a></p>
+			<p>No employees found. <a href="/employees/create/">Wanna create one now?</a></p>
 		@endif
 		</div>
 		<!-- Right Side / Navigation -->
