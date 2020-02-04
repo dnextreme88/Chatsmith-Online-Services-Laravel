@@ -20,6 +20,7 @@ Chatsmith Online Services - Announcements
 				<thead>
 					<th>ID</th>
 					<th>Username</th> <!-- Get Username from Foreign Key User -->
+					<th>Title</th>
 					<th>Description</th>
 					<th>Date Created</th>
 					@if ($user->is_staff == 'True')
@@ -31,6 +32,7 @@ Chatsmith Online Services - Announcements
 					<tr>
 						<td>{{ $announcement->id }}</td>
 						<td>{{ $announcement->user->username }}</td>
+						<td>{{ $announcement->title }}</td>
 						<td>{{ $announcement->description }}</td>
 						<td>{{ \Carbon\Carbon::parse($announcement->created_at)->format('F j, Y') }}</td>
 {{-- 						@if ($user->is_staff == 'True')
