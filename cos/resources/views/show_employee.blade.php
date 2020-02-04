@@ -10,11 +10,7 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 		<div class="card w-50 text-left mx-auto">
 			<div class="card-header text-center">Viewing Employee Number {{ $employee->employee_number }}'s Data</div>
 			<!-- Profile Image (from User) -->
-			@if ($employee->user->profile_image == '') <!-- Display a text when user doesn't have any profile image. -->
-				<p class="text-center">This employee does not have a profile image set.</p>
-			@else <!-- Get current image when the view is loaded -->
-				<img src="/{{ $employee->user->image }}" class="card-img-top img-thumbnail img-responsive rounded-circle mx-auto d-block avatar-thumbnail-large" />
-			@endif
+			<img src="/{{ $employee->user->image }}" class="card-img-top img-thumbnail img-responsive rounded-circle mx-auto d-block avatar-thumbnail-large" />
 			<div class="card-body">
 				<dl class="row">
 					<dt class="col-sm-6">Employee ID</dt>
@@ -58,17 +54,19 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 					@endif
 					</dd>
 				</dl>
-				<dl class="row">
-					<dt class="col-sm-6">Actions</dt>
-					<dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a></dd>
-					<dd class="col-sm-3">
-						<form action="/employees/{{ $employee->id }}" method="POST">
-							@csrf
-							@method('DELETE')
-							<i class="fa fa-trash"></i> <input class="delete-employee-button" type="submit" name="submit" value="Delete">
-						</form>
-					</dd>
-				</dl>
+				@if ($user->is_staff == 'True')
+					<dl class="row">
+						<dt class="col-sm-6">Actions</dt>
+						<dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a></dd>
+						<dd class="col-sm-3">
+							<form action="/employees/{{ $employee->id }}" method="POST">
+								@csrf
+								@method('DELETE')
+								<i class="fa fa-trash"></i> <input class="delete-employee-button" type="submit" name="submit" value="Delete">
+							</form>
+						</dd>
+					</dl>
+				@endif
 			</div>
 		</div>
 	</div>

@@ -69,8 +69,10 @@ Chatsmith Online Services - Employees
 				</tbody>
 			</table>
 			{{ $employees->links() }}
-		@else
+		@elseif ($employees->count() == 0 && $user->is_staff == 'True')
 			<p>No employees found. <a href="/employees/create/">Wanna create one now?</a></p>
+		@elseif ($employees->count() == 0 && $user->is_staff == 'False')
+			<p>No employees found.</p>
 		@endif
 		</div>
 		<!-- Right Side / Navigation -->
