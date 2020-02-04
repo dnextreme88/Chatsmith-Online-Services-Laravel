@@ -98,7 +98,7 @@ class EmployeeController extends Controller
 				"employee" => $employee,
 				"users" => $users,
 				"role_choices" => $this->role_choices,
-				"is_active_choices", $this->is_active_choices
+				"is_active_choices" => $this->is_active_choices
 			]);
 		} else {
 			abort(403, 'Forbidden page.');
