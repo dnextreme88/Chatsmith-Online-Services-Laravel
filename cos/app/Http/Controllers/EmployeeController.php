@@ -29,9 +29,10 @@ class EmployeeController extends Controller
 		$employees = Employee::paginate(5);
 		$user = Auth::user();
 
-		return view('employees')
-		->with("employees", $employees)
-		->with("user", $user);
+		return view('employees', [
+			"employees" => $employees,
+			"user" => $user
+		]);
 	}
 
 	public function store (Request $request) {
@@ -63,29 +64,43 @@ class EmployeeController extends Controller
 	public function create () {
 		// show add employees form
 		$users = User::all();
+		$user = Auth::user();
 
-		return view('add_employee_form')
-		->with("users", $users)
-		->with("role_choices", $this->role_choices);
+		if ($user->is_staff == 'True') {
+			return view('add_employee_form', [
+				"users" => $users,
+				"role_choices" => $this->role_choices
+			]);
+		} else {
+			abort(403, 'Forbidden page.');
+		}
 	}
 
 	public function show ($id) {
 		// show specific employee
 		$employee = Employee::find($id);
 
-		return view('show_employee')->with("employee", $employee);
+		return view('show_employee', [
+			"employee" => $employee
+		]);
 	}
 
 	public function edit ($id) {
 		// show edit employee form
 		$employee = Employee::find($id);
 		$users = User::all();
+		$user = Auth::user();
 
-		return view('edit_employee_form')
-		->with("employee", $employee)
-		->with("users", $users)
-		->with("role_choices", $this->role_choices)
-		->with("is_active_choices", $this->is_active_choices);
+		if ($user->is_staff == 'True') {
+			return view('edit_employee_form', [
+				"employee" => $employee,
+				"users" => $users,
+				"role_choices" => $this->role_choices,
+				"is_active_choices", $this->is_active_choices
+			]);
+		} else {
+			abort(403, 'Forbidden page.');
+		}
 	}
 
 	public function update (Request $request, $id) {
@@ -118,24 +133,30 @@ class EmployeeController extends Controller
 
 	public function destroy ($id) {
 		// delete employee
-		$employee = Employee::find($id);
-		$employee->delete();
-		// Get URL of certain controller with view method and pass parameters
-		$controller_url = action('EmployeeController@show', ['employee' => $id]);
-		// Get current URL
-		$current_url = url()->current();
-
-		$employees = Employee::paginate(5);
 		$user = Auth::user();
 
-		// If admin is deleting an employee from /employee/{id}/, execute this clause
-		if ($controller_url == $current_url) {
-			return redirect('/employees/')->withSuccess('Employee successfully deleted!')
-				->with("employees", $employees)
-				->with("user", $user);
-		// If admin is deleting an employee from /employees/, execute this clause
+		if ($user->is_staff == 'True') {
+			$employee = Employee::find($id);
+			$employee->delete();
+			// Get URL of certain controller with view method and pass parameters
+			$controller_url = action('EmployeeController@show', ['employee' => $id]);
+			// Get current URL
+			$current_url = url()->current();
+
+			$employees = Employee::paginate(5);
+			$user = Auth::user();
+
+			// If admin is deleting an employee from /employee/{id}/, execute this clause
+			if ($controller_url == $current_url) {
+				return redirect('/employees/')->withSuccess('Employee successfully deleted!')
+					->with("employees", $employees)
+					->with("user", $user);
+			// If admin is deleting an employee from /employees/, execute this clause
+			} else {
+				return redirect()->back()->withSuccess('Employee successfully deleted!');
+			}
 		} else {
-			return redirect()->back()->withSuccess('Employee successfully deleted!');
+			abort(403, 'Forbidden page.');
 		}
 	}
 }
