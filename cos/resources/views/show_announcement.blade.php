@@ -23,19 +23,21 @@ Chatsmith Online Services - Announcement # {{ $current_announcement->id }}
 			@endif
 			</ul>
 		</div>
-		<div class="col-md-12">
-			<dl class="row">
-				<dt class="col-sm-6">Actions</dt>
-				<dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/announcements/{{ $current_announcement->id }}/edit/">Edit</a></dd>
-				<dd class="col-sm-3">
-					<form action="/announcements/{{ $current_announcement->id }}" method="POST">
-						@csrf
-						@method('DELETE')
-						<i class="fa fa-trash"></i> <input class="delete-announcement-button" type="submit" name="submit" value="Delete">
-					</form>
-				</dd>
-			</dl>
-		</div>
+		@if ($user->is_staff == 'True')
+			<div class="col-md-12">
+				<dl class="row">
+					<dt class="col-sm-6">Actions</dt>
+					<dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/announcements/{{ $current_announcement->id }}/edit/">Edit</a></dd>
+					<dd class="col-sm-3">
+						<form action="/announcements/{{ $current_announcement->id }}" method="POST">
+							@csrf
+							@method('DELETE')
+							<i class="fa fa-trash"></i> <input class="delete-announcement-button" type="submit" name="submit" value="Delete">
+						</form>
+					</dd>
+				</dl>
+			</div>
+		@endif
 	</div>
 </div>
 @endsection

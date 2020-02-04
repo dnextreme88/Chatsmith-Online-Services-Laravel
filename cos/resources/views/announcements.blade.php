@@ -53,8 +53,10 @@ Chatsmith Online Services - Announcements
 				</tbody>
 			</table>
 			{{ $announcements->links() }}
-		@else
+		@elseif ($announcements->count() == 0 && $user->is_staff == 'True')
 			<p>No announcements found. <a href="/announcements/create/">Wanna create one now?</a></p>
+		@elseif ($announcements->count() == 0 && $user->is_staff == 'False')
+			<p>No announcements found.</p>
 		@endif
 		</div>
 		<!-- Right Side / Navigation -->
