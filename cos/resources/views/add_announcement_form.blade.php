@@ -31,7 +31,7 @@ Chatsmith Online Services - Add Announcement Form
 					<label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
 					<div class="col-md-6">
-						<textarea id="description" class="form-control input-lg" name="description">
+						<textarea id="description" class="form-control input-lg" name="description" rows="12">
 						</textarea>
 					</div>
 				</div>
