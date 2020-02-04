@@ -35,10 +35,10 @@ Chatsmith Online Services - Announcements
 						<td>{{ $announcement->title }}</td>
 						<td>{{ $announcement->description }}</td>
 						<td>{{ \Carbon\Carbon::parse($announcement->created_at)->format('F j, Y') }}</td>
-{{-- 						@if ($user->is_staff == 'True')
+						@if ($user->is_staff == 'True')
 							<td><ul class="list-inline">
 									<li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/announcements/{{ $announcement->id }}/">View</a></li>
-									<li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/announcements/{{ $announcement->id }}/edit/">Edit</a></li>
+{{-- 									<li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/announcements/{{ $announcement->id }}/edit/">Edit</a></li> --}}
 									<li class="list-inline-item">
 										<form action="/announcements/{{ $announcement->id }}" method="POST">
 											@csrf
@@ -47,7 +47,7 @@ Chatsmith Online Services - Announcements
 										</form>
 									</li>
 							</ul></td>
-						@endif --}}
+						@endif
 					</tr>
 					@endforeach
 				</tbody>

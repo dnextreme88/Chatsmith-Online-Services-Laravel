@@ -24,19 +24,19 @@
 		height: 360px;
 	}
 
-/* Delete employee button */
-	.delete-employee-button, .delete-employee-button:hover {
+/* Delete buttons */
+	.delete-announcement-button, .delete-announcement-button:hover, .delete-employee-button, .delete-employee-button:hover {
 		margin: 0;
 		padding: 0;
 		border: none;
 		background-color: transparent;
 	}
 
-	.delete-employee-button {
+	.delete-announcement-button, .delete-employee-button {
 		color: #3A9AE4;
 	}
 
-	.delete-employee-button:hover {
+	.delete-announcement-button:hover, .delete-employee-button:hover {
 		color: #1D68A7;
 		text-decoration: underline;
 	}
@@ -97,6 +97,16 @@
 	}
 
 /* Announcements */
+	#announcement-pagination-list li a {
+		background-color: orange;
+		color: white;
+		transition: background-color 0.4s;
+	}
+
+	#announcement-pagination-list li a:hover {
+		background-color: #0373BE;
+	}
+
 	.announcement-pane-description {
 		text-indent: 2cm;
 	}
