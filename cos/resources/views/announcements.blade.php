@@ -38,7 +38,7 @@ Chatsmith Online Services - Announcements
 						@if ($user->is_staff == 'True')
 							<td><ul class="list-inline">
 									<li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/announcements/{{ $announcement->id }}/">View</a></li>
-{{-- 									<li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/announcements/{{ $announcement->id }}/edit/">Edit</a></li> --}}
+									<li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/announcements/{{ $announcement->id }}/edit/">Edit</a></li>
 									<li class="list-inline-item">
 										<form action="/announcements/{{ $announcement->id }}" method="POST">
 											@csrf
@@ -61,10 +61,10 @@ Chatsmith Online Services - Announcements
 		</div>
 		<!-- Right Side / Navigation -->
 		@if ($user->is_staff == 'True')
-            <div class="col-md-3">
-                @include('layouts.admin_panel_right_nav')
-            </div>
-        @endif
+			<div class="col-md-3">
+				@include('layouts.admin_panel_right_nav')
+			</div>
+		@endif
 	</div>
 </div>
 @endsection
