@@ -79,9 +79,11 @@ class EmployeeController extends Controller
 	public function show ($id) {
 		// show specific employee
 		$employee = Employee::find($id);
+		$user = Auth::user();
 
 		return view('show_employee', [
-			"employee" => $employee
+			"employee" => $employee,
+			"user" => $user,
 		]);
 	}
 
