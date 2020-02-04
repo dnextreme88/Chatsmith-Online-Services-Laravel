@@ -25,6 +25,8 @@ Route::get('/users', 'UserController@index');
 
 Route::resource('announcements', 'AnnouncementController');
 
+Route::get('announcements/user/{username}', 'AnnouncementController@show_announcement_by_username');
+
 Route::resource('employees', 'EmployeeController');
 
 Route::resource('profile', 'ProfileController');

@@ -8,8 +8,8 @@ Chatsmith Online Services - Announcement # {{ $current_announcement->id }}
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12 alert alert-info alert-block">
-			<h1>Subject: {{ $current_announcement->title }}</h1>
-			<p class="text-left">Posted by <strong>{{ $current_announcement->user->username }}</strong> on <strong>{{ \Carbon\Carbon::parse($current_announcement->created_at)->format('F j, Y g:i:s') }}</strong></p>
+			<h1>Title: {{ $current_announcement->title }}</h1>
+			<p class="text-left">Posted by <a class="alert-link" href="/announcements/user/{{ $current_announcement->user->username }}">{{ $current_announcement->user->username }}</a> on <strong>{{ \Carbon\Carbon::parse($current_announcement->created_at)->format('F j, Y g:i:s') }}</strong></p>
 			<p class="announcement-pane-description">{{ $current_announcement->description }}</p>
 		</div>
 		<!-- Previous/Next pagination links -->
