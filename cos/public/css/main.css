@@ -107,7 +107,11 @@
 		background-color: #0373BE;
 	}
 
-	.announcement-pane-description {
+	#announcement-pane-link {
+		color: #DDD;
+	}
+
+	#announcement-pane-description {
 		text-indent: 2cm;
 	}
 

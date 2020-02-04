@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Announcement;
+use App\User;
 
 class AnnouncementController extends Controller
 {
@@ -125,5 +126,16 @@ class AnnouncementController extends Controller
 		} else {
 			abort(403, 'Forbidden page.');
 		}
+	}
+
+	public function show_announcement_by_username ($username) {
+		// show announcements by user
+		$find_user_by_username = User::where('username', $username)->first();
+		$announcements_of_user = Announcement::where('user_id', '=', $find_user_by_username->id)->orderBy('user_id','desc')->paginate(5);
+
+		return view('show_announcement_by_username', [
+			"user" => $find_user_by_username,
+			"announcements" => $announcements_of_user,
+		]);
 	}
 }
