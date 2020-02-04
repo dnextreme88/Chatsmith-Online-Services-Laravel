@@ -51,10 +51,24 @@
 		border-top-left-radius: 24px;
 	}
 
-.admin-panel-card-body-nav {
-	border-bottom-right-radius: 24px;
-	background-color: #EFAC6B;
-}
+	.admin-panel-card-body-nav {
+		border-bottom-right-radius: 24px;
+		background-color: #EFAC6B;
+	}
+
+	.admin-panel-card-body-nav ul li.active {
+		background-color: #EF7600;
+		padding: 4px;
+		transition: background-color 0.4s;
+	}
+
+	.admin-panel-card-body-nav ul li.active:hover {
+		background-color: #EFAC14;
+	}
+
+	.admin-panel-card-body-nav ul li.active a:hover {
+		text-decoration: none;
+	}
 
 /* Footer */
 	footer {
