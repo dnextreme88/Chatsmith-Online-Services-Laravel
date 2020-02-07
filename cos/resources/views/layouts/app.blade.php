@@ -102,6 +102,7 @@
                 </div>
                 <div class="col-md-6">
                     <p>Chatsmith Online Services Copyright &copy; 2020</p>
+                    <a href="https://www.facebook.com/Chatsmithonline" target="_blank"><img src="{{ asset('images/social_facebook.png') }}"class="socials" id="fb" alt="Facebook logo" title="FB page" /></a>
                 </div>
             </div>
         </footer>

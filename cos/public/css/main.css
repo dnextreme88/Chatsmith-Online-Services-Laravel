@@ -81,6 +81,22 @@
 		padding: 12px;
 	}
 
+
+	.socials {
+		width: 35px;
+		height: 34px;
+		background-position: bottom;
+		content: url("../../images/social_blank_temp.png");
+	}
+
+	.socials:hover {
+		background-position: top;
+	}
+
+	#fb {
+		background-image: url("../../images/social_facebook.png");
+	}
+
 /* Tables */
 	table th {
 		background-color: #1767AB;
