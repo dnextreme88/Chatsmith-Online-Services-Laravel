@@ -20,7 +20,8 @@ Chatsmith Online Services, Inc. - Careers
 			</p>
 		</div>
 		<div class="col-md-12">
-			<h3>Recruitment Process</h3>
+			<h3>Recruitment Process</h3><br />
+			<img src="{{ asset('images/cos_careers_hiring.png') }}" class="img-responsive mx-auto d-block" /><br />
 			<ol>
 				<li class="list-item">Newspaper job posting in Midland Courier and Facebook posting. The job posting is as follows:
 					<ul>Chatsmith Online Services is looking for a Chat Support Representative with the following skill set:
