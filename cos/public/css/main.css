@@ -57,7 +57,7 @@
 	}
 
 	.admin-panel-card-body-nav ul li.active {
-		background-color: #EF7600;
+		background-color: #FF982C;
 		padding: 8px 4px; /* top and bottom = 8px; right and left = 4px; */
 		transition: background-color 0.4s;
 	}
@@ -121,13 +121,17 @@
 
 /* Links */
 	a:link, a:visited {
-		color: white;
+		color: #FC7704;
 	}
 
-/* Header page titles */
+/* Static Pages (About Us, Careers, Privacy Policy, Terms and Conditions) */
 	.header-static-page-title {
 		border-bottom: 4px solid #1767AB;
 		text-transform: uppercase;
+	}
+
+	.static-page h3 {
+		color: #FC7704;
 	}
 
 /* Announcements */
