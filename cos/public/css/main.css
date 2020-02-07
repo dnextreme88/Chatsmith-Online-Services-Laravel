@@ -90,6 +90,24 @@
 		background-color: #EB6618;
 	}
 
+/* Header */
+	#cos_header {
+		width: 100%;
+	}
+
+	#header-navbar-right {
+		background-color: #EFAC6B;
+	}
+
+	#header-navbar-right a:hover {
+		background-color: #EFAC14;
+	}
+
+/* Links */
+	a:link, a:visited {
+		color: white;
+	}
+
 /* Header page titles */
 	.header-static-page-title {
 		border-bottom: 4px solid #1767AB;
