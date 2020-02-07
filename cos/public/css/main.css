@@ -33,11 +33,11 @@
 	}
 
 	.delete-announcement-button, .delete-employee-button {
-		color: #3A9AE4;
+		color: #FC7704;
 	}
 
 	.delete-announcement-button:hover, .delete-employee-button:hover {
-		color: #1D68A7;
+		color: #FC7704;
 		text-decoration: underline;
 	}
 
@@ -103,7 +103,7 @@
 	}
 
 	table tr {
-		background-color: #EB6618;
+		background-color: #EFAC6B;
 	}
 
 /* Header */
