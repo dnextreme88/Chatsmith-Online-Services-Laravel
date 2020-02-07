@@ -98,6 +98,8 @@
                     <ul class="list-unstyled">
                         <li class="list-item"><a href="/aboutus/">About Us</li>
                         <li class="list-item"><a href="/careers/">Careers</a></li>
+                        <li class="list-item"><a href="/privacy/">Privacy Policy</a></li>
+                        <li class="list-item"><a href="/terms/">Terms and Conditions</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6">
