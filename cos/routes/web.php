@@ -40,3 +40,7 @@ Route::post('user/update_profile_image/{id}', 'UpdateProfileImageController@uplo
 Route::get('/aboutus', 'AboutUsController@index');
 
 Route::get('/careers', 'CareersController@index');
+
+Route::get('/privacy', 'PrivacyController@index');
+
+Route::get('/terms', 'TermsAndConditionsController@index');

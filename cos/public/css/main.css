@@ -33,11 +33,11 @@
 	}
 
 	.delete-announcement-button, .delete-employee-button {
-		color: #3A9AE4;
+		color: #FC7704;
 	}
 
 	.delete-announcement-button:hover, .delete-employee-button:hover {
-		color: #1D68A7;
+		color: #FC7704;
 		text-decoration: underline;
 	}
 
@@ -57,16 +57,16 @@
 	}
 
 	.admin-panel-card-body-nav ul li.active {
-		background-color: #EF7600;
-		padding: 4px;
+		background-color: #FF982C;
+		padding: 8px 4px; /* top and bottom = 8px; right and left = 4px; */
 		transition: background-color 0.4s;
 	}
 
-	.admin-panel-card-body-nav ul li.active:hover {
+	.admin-panel-card-body-nav ul li.active:hover, .admin-panel-card-body-nav ul li:hover {
 		background-color: #EFAC14;
 	}
 
-	.admin-panel-card-body-nav ul li.active a:hover {
+	.admin-panel-card-body-nav ul li.active a:hover, .admin-panel-card-body-nav ul li a:hover {
 		text-decoration: none;
 	}
 
@@ -81,19 +81,57 @@
 		padding: 12px;
 	}
 
+
+	.socials {
+		width: 35px;
+		height: 34px;
+		background-position: bottom;
+		content: url("../../images/social_blank_temp.png");
+	}
+
+	.socials:hover {
+		background-position: top;
+	}
+
+	#fb {
+		background-image: url("../../images/social_facebook.png");
+	}
+
 /* Tables */
 	table th {
 		background-color: #1767AB;
 	}
 
 	table tr {
-		background-color: #EB6618;
+		background-color: #EFAC6B;
 	}
 
-/* Header page titles */
+/* Header */
+	#cos_header {
+		width: 100%;
+	}
+
+	#header-navbar-right {
+		background-color: #EFAC6B;
+	}
+
+	#header-navbar-right a:hover {
+		background-color: #EFAC14;
+	}
+
+/* Links */
+	a:link, a:visited {
+		color: #FC7704;
+	}
+
+/* Static Pages (About Us, Careers, Privacy Policy, Terms and Conditions) */
 	.header-static-page-title {
 		border-bottom: 4px solid #1767AB;
 		text-transform: uppercase;
+	}
+
+	.static-page h3 {
+		color: #FC7704;
 	}
 
 /* Announcements */

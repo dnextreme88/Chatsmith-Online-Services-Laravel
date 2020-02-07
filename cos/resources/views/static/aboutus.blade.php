@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 @section('title')
-About Chatsmith Online Services, Inc.
+About Chatsmith Online Services
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container static-page">
 	<div class="row">
 		<div class="col-md-12">
-			<h1 class="header-static-page-title">About Chatsmith Online Services, Inc.</h1>
+			<h1 class="header-static-page-title">About Chatsmith Online Services</h1>
 		</div>
+		<img src="{{ asset('images/cos_header1.png') }}" class="img-responsive mx-auto d-block" /><br />
 		<div class="col-md-12">
 			<h3>Mission</h3>
 			<p>To analyze every clients’ diverse wants and needs, and come up with the best strategies, processes and approach, in collaboration with our real time live chat support. Our aim is to deliver consistent and high quality customer service that meets both our clients’ and their customers’ expectations resulting in customer satisfaction across the board.</p>

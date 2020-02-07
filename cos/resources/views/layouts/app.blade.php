@@ -28,10 +28,15 @@
 </head>
 <body>
     <div id="app">
+        <!-- COS Image -->
+        <header>
+            <img id="cos_header" class="img-responsive mx-auto d-block" src="{{ asset('images/cos_header2.png') }}" />
+        </header>
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Chatsmith Online Services
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -64,7 +69,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div id="header-navbar-right" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/profile">Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -93,10 +98,13 @@
                     <ul class="list-unstyled">
                         <li class="list-item"><a href="/aboutus/">About Us</li>
                         <li class="list-item"><a href="/careers/">Careers</a></li>
+                        <li class="list-item"><a href="/privacy/">Privacy Policy</a></li>
+                        <li class="list-item"><a href="/terms/">Terms and Conditions</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6">
                     <p>Chatsmith Online Services Copyright &copy; 2020</p>
+                    <a href="https://www.facebook.com/Chatsmithonline" target="_blank"><img src="{{ asset('images/social_facebook.png') }}"class="socials" id="fb" alt="Facebook logo" title="FB page" /></a>
                 </div>
             </div>
         </footer>
