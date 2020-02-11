@@ -16,4 +16,11 @@ class Employee extends Model
     public function user() {
         return $this->belongsTo('App\User');
     }
+
+    	/**
+	 * Get the admin logs associated with the user.
+	 */
+	public function time_record () {
+		return $this->hasMany('App\TimeRecord');
+	}
 }

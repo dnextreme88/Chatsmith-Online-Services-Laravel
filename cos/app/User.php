@@ -61,4 +61,11 @@ class User extends Authenticatable
 	public function announcement () {
 		return $this->hasMany('App\Announcement');
 	}
+
+	/**
+	 * Get the time records associated with the user.
+	 */
+	public function time_record () {
+		return $this->hasMany('App\TimeRecord');
+	}
 }
