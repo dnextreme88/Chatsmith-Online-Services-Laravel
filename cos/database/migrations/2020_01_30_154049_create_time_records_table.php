@@ -18,7 +18,7 @@ class CreateTimeRecordsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('user_id')->references('id')->on('user'); // Foreign key: User model
+            $table->foreign('user_id')->references('id')->on('users'); // Foreign key: User model
             $table->foreign('employee_id')->references('id')->on('employees'); // Foreign key: Employees model
             $table->string('time_of_shift');
             $table->date('date_of_shift');
