@@ -31,6 +31,10 @@ Route::resource('employees', 'EmployeeController');
 
 Route::resource('profile', 'ProfileController');
 
+Route::post('profile/create_time_record', 'ProfileController@create_time_record');
+
+Route::post('profile/time_record/{id}', 'ProfileController@update_time_record');
+
 Route::get('user/update_profile_image', 'UpdateProfileImageController@index');
 
 Route::post('user/update_profile_image/{id}', 'UpdateProfileImageController@upload');

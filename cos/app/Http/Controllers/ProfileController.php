@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Announcement;
+use App\TimeRecord;
+use App\Employee;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 use Validator;
 
 class ProfileController extends Controller
@@ -21,10 +24,12 @@ class ProfileController extends Controller
 		// Show dashboard of auth user
 		$user = Auth::user();
 		$latest_announcement = Announcement::latest()->first();
+		$employee_time_records = TimeRecord::where('user_id', $user->id)->orderBy('id','desc')->paginate(5);
 
 		return view('profile', [
 			'user' => $user,
 			'latest_announcement' => $latest_announcement,
+			'time_records' => $employee_time_records,
 		]);
 	}
 
@@ -78,6 +83,39 @@ class ProfileController extends Controller
 			$errors = array('current_password' => 'The current password is incorrect.');
 			return redirect()->back()->withErrors($errors)->withInput();
 		}
+	}
+
+	public function create_time_record (Request $request) {
+		// Process in adding time record
+		$user = Auth::user();
+		$employee = $user->employee;
+
+		// If user is not yet an employee, do not create time record
+		if (!$employee) {
+			$errors = array('not_an_employee' => 'You are not yet an employee. Please contact the administrator.');
+			return redirect()->back()->withErrors($errors);
+		} else {
+			TimeRecord::create([
+				'user_id' => $user->id,
+				'employee_id' => $user->employee->id,
+				'time_of_shift' => $request->time_of_shift,
+				'date_of_shift' => Carbon::today(),
+				'employee_name' => $user->name,
+				'timestamp_in' => Carbon::now(),
+				'timestamp_out' => Carbon::now()
+			]);
+
+			return redirect()->back()->withSuccess('You have successfully clocked in!');
+		}
+	}
+
+	public function update_time_record (Request $request, $id) {
+		// Process in updating time record
+		$time_record = TimeRecord::find($id);
+		$time_record->timestamp_out = Carbon::now();
+		$time_record->save();
+
+		return redirect()->back()->withSuccess('You have successfully clocked out!');
 	}
 
 }
