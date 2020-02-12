@@ -81,7 +81,6 @@
 		padding: 12px;
 	}
 
-
 	.socials {
 		width: 35px;
 		height: 34px;
@@ -89,12 +88,43 @@
 		content: url("../../images/social_blank_temp.png");
 	}
 
-	.socials:hover {
+	.socials:hover, .affliate-logos:hover {
 		background-position: top;
 	}
 
 	#fb {
 		background-image: url("../../images/social_facebook.png");
+	}
+
+	#twitter {
+		background-image: url("../../images/social_twitter.png");
+	}
+
+	#affliates-text {
+		border-bottom: 2px solid #FC7704;
+	}
+
+	.affliate-logos {
+		width: 125px;
+		height: 45px;
+		background-position: bottom;
+		content: url("../../images/logo_blank_temp.png");
+	}
+
+	#logo-focal-systems {
+		background-image: url("../../images/logo_focal_systems.png");
+	}
+
+	#logo-persistiq {
+		background-image: url("../../images/logo_persistiq.png");
+	}
+
+	#logo-plateiq {
+		background-image: url("../../images/logo_plateiq.png");
+	}
+
+	#logo-smart-alto {
+		background-image: url("../../images/logo_smart_alto.png");
 	}
 
 /* Tables */
