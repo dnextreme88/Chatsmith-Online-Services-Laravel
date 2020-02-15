@@ -141,11 +141,11 @@
 		width: 100%;
 	}
 
-	#header-navbar-right {
+	#header-navbar-left, #header-navbar-right {
 		background-color: #EFAC6B;
 	}
 
-	#header-navbar-right a:hover {
+	#header-navbar-left a:hover, #header-navbar-right a:hover {
 		background-color: #EFAC14;
 	}
 
