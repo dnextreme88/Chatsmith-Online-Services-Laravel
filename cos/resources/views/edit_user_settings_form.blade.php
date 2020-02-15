@@ -49,7 +49,7 @@ Edit User Settings
 							<div class="form-group row">
 								<label for="email" class="col-md-4 col-form-label text-md-right">Upload User Image</label>
 
-								<div class="col-md-6">
+								<div class="col-md-6 mt-2">
 									<a href="/user/update_profile_image/">Click here to update profile image</a>
 								</div>
 							</div>
