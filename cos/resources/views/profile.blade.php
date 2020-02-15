@@ -8,7 +8,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-2"> <!-- Requires $latest_announcement variable - fetch latest announcement -->
-			<img src="{{ $latest_announcement->user->image }}" class="img-thumbnail img-responsive avatar-thumbnail-small" />
+			<img src="../{{ $latest_announcement->user->image }}" class="img-thumbnail img-responsive avatar-thumbnail-small" />
 		</div>
 		<div class="col-md-10 speech-bubble">
 			@include('layouts.latest_announcement_pane')
