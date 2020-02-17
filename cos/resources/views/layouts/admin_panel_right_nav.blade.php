@@ -6,7 +6,7 @@
 			<li class="list-item {{ (\Request::getRequestUri() == '/announcements/') ? 'active' : '' }}"><a href="/announcements/">Announcements</a></li>
 			<li class="list-item {{ (\Request::getRequestUri() == '/employees/') ? 'active' : '' }}"><a href="/employees/">Employees</a></li>
 			<li class="list-item {{ (\Request::getRequestUri() == '/users/') ? 'active' : '' }}"><a href="/users/">Users</a></li>
-			<hr>
+			<hr id="admin-panel-hr-separator">
 			<li class="list-item {{ (\Request::getRequestUri() == '/announcements/create/') ? 'active' : '' }}"><a href="/announcements/create/">Add Announcement</a></li>
 			<li class="list-item {{ (\Request::getRequestUri() == '/employees/create/') ? 'active' : '' }}"><a href="/employees/create/">Add Employee</a></li>
 		</ul>

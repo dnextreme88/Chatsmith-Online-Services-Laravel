@@ -1,3 +1,11 @@
+/*
+https://paletton.com/#uid=33A0u0k++slSHkAXNeSSL++++BD
+Monochromatic (tick add complementary)
+BASE RGB: 004893; // dark blue
+BASE RGB: E28700; // orange
+
+/*
+
 /* Profile image (User model field) */
 	.avatar-table {
 		width: 24px;
@@ -24,7 +32,7 @@
 		height: 360px;
 	}
 
-/* Delete buttons */
+/* Delete buttons (Announcement, Employee) */
 	.delete-announcement-button, .delete-announcement-button:hover, .delete-employee-button, .delete-employee-button:hover {
 		margin: 0;
 		padding: 0;
@@ -33,11 +41,11 @@
 	}
 
 	.delete-announcement-button, .delete-employee-button {
-		color: #FC7704;
+		color: #FF9900;
 	}
 
 	.delete-announcement-button:hover, .delete-employee-button:hover {
-		color: #FC7704;
+		color: #FF9900;
 		text-decoration: underline;
 	}
 
@@ -53,26 +61,30 @@
 
 	.admin-panel-card-body-nav {
 		border-bottom-right-radius: 24px;
-		background-color: #EFAC6B;
+		background-color: #005EBF;
 	}
 
 	.admin-panel-card-body-nav ul li.active {
-		background-color: #FF982C;
+		background-color: #002A56;
 		padding: 8px 4px; /* top and bottom = 8px; right and left = 4px; */
 		transition: background-color 0.4s;
 	}
 
 	.admin-panel-card-body-nav ul li.active:hover, .admin-panel-card-body-nav ul li:hover {
-		background-color: #EFAC14;
+		background-color: #057EFB;
 	}
 
 	.admin-panel-card-body-nav ul li.active a:hover, .admin-panel-card-body-nav ul li a:hover {
 		text-decoration: none;
 	}
 
+	#admin-panel-hr-separator {
+		background-color: #002A56;
+	}
+
 /* Footer */
 	footer {
-		background-color: #0373BE;
+		background-color: #057EFB;
 		border-radius: 24px;
 		margin-top: 12px;
 	}
@@ -101,7 +113,7 @@
 	}
 
 	#affliates-text {
-		border-bottom: 2px solid #FC7704;
+		border-bottom: 2px solid #FF9900;
 	}
 
 	.affliate-logos {
@@ -129,11 +141,16 @@
 
 /* Tables */
 	table th {
-		background-color: #1767AB;
+		background-color: #005EBF;
 	}
 
 	table tr {
-		background-color: #EFAC6B;
+		background-color: #057EFB;
+	}
+
+/* Navigations */
+	.breadcrumb {
+		background-color: #005EBF;
 	}
 
 /* Header */
@@ -142,41 +159,37 @@
 	}
 
 	#header-navbar-left, #header-navbar-right {
-		background-color: #EFAC6B;
+		background-color: #005EBF;
 	}
 
 	#header-navbar-left a:hover, #header-navbar-right a:hover {
-		background-color: #EFAC14;
+		background-color: #057EFB;
 	}
 
 /* Links */
 	a:link, a:visited {
-		color: #FC7704;
+		color: #FF9900;
 	}
 
 /* Static Pages (About Us, Careers, Privacy Policy, Terms and Conditions) */
 	.header-static-page-title {
-		border-bottom: 4px solid #1767AB;
+		border-bottom: 4px solid #005EBF;
 		text-transform: uppercase;
 	}
 
 	.static-page h3 {
-		color: #FC7704;
+		color: #FF9900;
 	}
 
 /* Announcements */
 	#announcement-pagination-list li a {
-		background-color: orange;
+		background-color: #FF9900;
 		color: white;
 		transition: background-color 0.4s;
 	}
 
 	#announcement-pagination-list li a:hover {
-		background-color: #0373BE;
-	}
-
-	#announcement-pane-link {
-		color: #DDD;
+		background-color: #B56C00;
 	}
 
 	#announcement-pane-description {
@@ -185,7 +198,7 @@
 
 	.speech-bubble {
 		position: relative;
-		background: #00aabb;
+		background: #057EFB;
 		border-radius: .4em;
 	}
 
@@ -197,7 +210,7 @@
 		width: 0;
 		height: 0;
 		border: 25px solid transparent;
-		border-right-color: #00aabb;
+		border-right-color: #057EFB;
 		border-left: 0;
 		border-top: 0;
 		margin-top: -25px;
@@ -205,7 +218,6 @@
 	}
 
 /* Dashboard */
-
 	#clock-in-form, #clock-out-form {
 		background-color: #EFAC6B;
 	}
