@@ -8,6 +8,11 @@ Edit User Settings
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+					<li class="breadcrumb-item"><a href="/profile/">Profile</a></li>
+					<li class="breadcrumb-item">Settings</li>
+				</ol>
 				<div class="card">
 					<div class="card-header">Edit User Settings</div>
 

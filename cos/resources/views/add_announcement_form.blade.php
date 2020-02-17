@@ -6,6 +6,14 @@ Chatsmith Online Services - Add Announcement Form
 
 @section('content')
 <div class="container">
+	<div class="col-md-12">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+			<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+			<li class="breadcrumb-item"><a href="/announcements/">Announcements</a></li>
+			<li class="breadcrumb-item">Create Announcement</li>
+		</ol>
+	</div>
 	<div class="card">
 		<div class="card-header">Add Announcement Form</div>
 

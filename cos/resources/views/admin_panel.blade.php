@@ -7,6 +7,12 @@ Admin Panel - Home
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+                <li class="breadcrumb-item">Admin Panel Home</li>
+            </ol>
+        </div>
         <!-- Left Side -->
         <div class="col-md-9">
             <h1>Welcome to the Admin Panel, {{ $user->username }}!</h1>

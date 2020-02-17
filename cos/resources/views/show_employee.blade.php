@@ -7,6 +7,16 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 @section('content')
 <div class="container">
 	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+				@if ($user->is_staff == 'True')
+					<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+				@endif
+				<li class="breadcrumb-item"><a href="/employees/">Employees</a></li>
+				<li class="breadcrumb-item">{{ $employee->user->username }}</li>
+			</ol>
+		</div>
 		<div class="card w-50 text-left mx-auto">
 			<div class="card-header text-center">Viewing Employee Number {{ $employee->employee_number }}'s Data</div>
 			<!-- Profile Image (from User) -->

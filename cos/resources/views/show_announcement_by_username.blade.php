@@ -7,6 +7,16 @@ Show Announcements of {{ $user->username }}
 @section('content')
 <div class="container">
 	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+				@if ($user->is_staff == 'True')
+					<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+				@endif
+				<li class="breadcrumb-item"><a href="/announcements/">Announcements</a></li>
+				<li class="breadcrumb-item">Showing all announcements of {{ $user->username }}</li>
+			</ol>
+		</div>
 		<div class="col-md-12 text-center">
 			<h1 class="text-center">Showing all announcements of {{ $user->username }}</h1>
 		</div>

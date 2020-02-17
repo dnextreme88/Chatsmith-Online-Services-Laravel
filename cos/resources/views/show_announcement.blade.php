@@ -7,6 +7,16 @@ Chatsmith Online Services - Announcement # {{ $current_announcement->id }}
 @section('content')
 <div class="container-fluid">
 	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+				@if ($user->is_staff == 'True')
+					<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+				@endif
+				<li class="breadcrumb-item"><a href="/announcements/">Announcements</a></li>
+				<li class="breadcrumb-item">{{ $current_announcement->title }}</li>
+			</ol>
+		</div>
 		<div class="col-md-12 alert alert-info alert-block bg-info">
 			<h1>Title: {{ $current_announcement->title }}</h1>
 			<p class="text-left">Posted by <a href="/announcements/user/{{ $current_announcement->user->username }}">{{ $current_announcement->user->username }}</a> on <strong>{{ \Carbon\Carbon::parse($current_announcement->created_at)->format('F j, Y g:i:s A') }}</strong></p>

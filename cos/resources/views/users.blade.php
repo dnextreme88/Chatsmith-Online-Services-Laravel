@@ -7,6 +7,13 @@ Chatsmith Online Services - Employees
 @section('content')
 <div class="container-fluid">
 	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+				<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+				<li class="breadcrumb-item">Users</li>
+			</ol>
+		</div>
 		<!-- Left Side -->
 		<div class="col-md-9">
 		@if (session('success'))

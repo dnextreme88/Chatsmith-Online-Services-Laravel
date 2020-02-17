@@ -7,6 +7,12 @@
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+				<li class="breadcrumb-item">Profile</li>
+			</ol>
+		</div>
 		<div class="col-md-2"> <!-- Requires $latest_announcement variable - fetch latest announcement -->
 			<img src="../{{ $latest_announcement->user->image }}" class="img-thumbnail img-responsive avatar-thumbnail-small" />
 		</div>
