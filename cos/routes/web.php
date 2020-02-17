@@ -29,11 +29,15 @@ Route::get('announcements/user/{username}', 'AnnouncementController@show_announc
 
 Route::resource('employees', 'EmployeeController');
 
-Route::resource('profile', 'ProfileController');
+Route::get('/profile', 'ProfileController@index')->name('profile');
 
-Route::post('profile/create_time_record', 'ProfileController@create_time_record');
+Route::get('/profile/{id}/edit', 'ProfileController@edit');
 
-Route::post('profile/time_record/{id}', 'ProfileController@update_time_record');
+Route::post('/profile/{id}', 'ProfileController@update');
+
+Route::post('/profile/create_time_record', 'ProfileController@create_time_record');
+
+Route::post('/profile/time_record/{id}', 'ProfileController@update_time_record');
 
 Route::get('user/update_profile_image', 'UpdateProfileImageController@index');
 

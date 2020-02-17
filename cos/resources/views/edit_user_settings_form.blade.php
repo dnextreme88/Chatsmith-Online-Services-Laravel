@@ -20,7 +20,6 @@ Edit User Settings
 					@endif
 						<form action="/profile/{{ $user->id }}" method="POST">
 							@csrf
-							@method('PUT')
 							<!-- User ID (readonly) -->
 							<div class="form-group row">
 								<label for="user_id" class="col-md-4 col-form-label text-md-right">User ID</label>
