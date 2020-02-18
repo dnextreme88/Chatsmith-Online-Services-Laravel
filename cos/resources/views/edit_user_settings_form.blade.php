@@ -23,7 +23,7 @@ Edit User Settings
 			                {{ session('success') }}
 						</div>
 					@endif
-						<form action="/profile/{{ $user->id }}" method="POST">
+						<form action="/profile/{{ $user->id }}/edit" method="POST">
 							@csrf
 							<!-- User ID (readonly) -->
 							<div class="form-group row">

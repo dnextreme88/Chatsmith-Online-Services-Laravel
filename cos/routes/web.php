@@ -31,9 +31,9 @@ Route::resource('employees', 'EmployeeController');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
-Route::get('/profile/{id}/edit', 'ProfileController@edit');
+Route::get('/profile/{id}/edit', 'ProfileController@edit_user_settings');
 
-Route::post('/profile/{id}', 'ProfileController@update');
+Route::post('/profile/{id}/edit', 'ProfileController@update_user_settings');
 
 Route::post('/profile/create_time_record', 'ProfileController@create_time_record');
 

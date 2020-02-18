@@ -33,19 +33,21 @@ class ProfileController extends Controller
 		]);
 	}
 
-	public function edit ($id) {
+	public function edit_user_settings ($id) {
 		// Show edit user settings form
 		$user = User::find($id);
 
 		// Make sure the auth user only edits his settings and not other user's settings
 		if (Auth::user() == $user) {
-			return view('edit_user_settings_form')->with('user', $user);
+			return view('edit_user_settings_form', [
+				'user' => $user,
+			]);
 		} else {
 			abort(403, 'Unauthorized action.');
 		}
 	}
 
-	public function update (Request $request, $id) {
+	public function update_user_settings (Request $request, $id) {
 		// Process in updating user settings
 		$user = User::find($id);
 
