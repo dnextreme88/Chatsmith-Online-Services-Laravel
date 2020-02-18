@@ -43,6 +43,18 @@ Route::get('user/update_profile_image', 'UpdateProfileImageController@index');
 
 Route::post('user/update_profile_image/{id}', 'UpdateProfileImageController@upload');
 
+Route::get('/leadforms/chat_account', 'LeadformController@create_chat_account_leadform');
+
+Route::post('/leadforms/chat_account', 'LeadformController@store_chat_account_leadform');
+
+Route::get('/leadforms/focal', 'LeadformController@create_focal_leadform');
+
+Route::post('/leadforms/focal', 'LeadformController@store_focal_leadform');
+
+Route::get('/leadforms/plateiq', 'LeadformController@create_plateiq_leadform');
+
+Route::post('/leadforms/plateiq', 'LeadformController@store_plateiq_leadform');
+
 // Static pages
 
 Route::get('/aboutus', 'AboutUsController@index');

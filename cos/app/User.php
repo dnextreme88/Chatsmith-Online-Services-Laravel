@@ -68,4 +68,25 @@ class User extends Authenticatable
 	public function time_record () {
 		return $this->hasMany('App\TimeRecord');
 	}
+
+	/**
+	 * Get the chat productions associated with the user.
+	 */
+	public function production_chat () {
+		return $this->hasMany('App\ProductionChat');
+	}
+
+	/**
+	 * Get the focal productions associated with the user.
+	 */
+	public function production_focal () {
+		return $this->hasMany('App\ProductionFocal');
+	}
+
+	/**
+	 * Get the plate productions associated with the user.
+	 */
+	public function production_plate () {
+		return $this->hasMany('App\ProductionPlate');
+	}
 }

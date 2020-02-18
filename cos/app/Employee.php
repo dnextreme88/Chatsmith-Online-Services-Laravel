@@ -10,17 +10,38 @@ class Employee extends Model
 		'user_id', 'employee_number', 'first_name', 'maiden_name', 'last_name', 'role', 'is_active'
 	];
 
-    /**
-     * Get the user that has the employee.
-     */
-    public function user() {
-        return $this->belongsTo('App\User');
-    }
+	/**
+	 * Get the user that has the employee.
+	 */
+	public function user() {
+		return $this->belongsTo('App\User');
+	}
 
-    	/**
-	 * Get the admin logs associated with the user.
+	/**
+	 * Get the time records associated with the employee.
 	 */
 	public function time_record () {
 		return $this->hasMany('App\TimeRecord');
+	}
+
+	/**
+	 * Get the chat productions associated with the employee.
+	 */
+	public function production_chat () {
+		return $this->hasMany('App\ProductionChat');
+	}
+
+	/**
+	 * Get the focal productions associated with the employee.
+	 */
+	public function production_focal () {
+		return $this->hasMany('App\ProductionFocal');
+	}
+
+	/**
+	 * Get the plate productions associated with the employee.
+	 */
+	public function production_plate () {
+		return $this->hasMany('App\ProductionPlate');
 	}
 }

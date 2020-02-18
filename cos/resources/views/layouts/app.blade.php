@@ -52,10 +52,9 @@
 								</a>
 
 								<div id="header-navbar-left" class="dropdown-menu dropdown-menu-left" aria-labelledby="leadformsDropdown">
-									<a class="dropdown-item" href="#">Focal Leadform</a>
-									<a class="dropdown-item" href="#">Plate IQ Leadform</a>
-									<a class="dropdown-item" href="#">PersistIQ Leadform</a>
-									<a class="dropdown-item" href="#">Smart Alto Leadform</a>
+									<a class="dropdown-item" href="/leadforms/focal/">Focal Leadform</a>
+									<a class="dropdown-item" href="/leadforms/plateiq/">Plate IQ Leadform</a>
+									<a class="dropdown-item" href="/leadforms/chat_account/">Smart Alto / PersistIQ Leadform</a>
 								</div>
 
 						</li>
