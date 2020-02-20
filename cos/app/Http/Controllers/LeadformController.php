@@ -144,7 +144,7 @@ class LeadformController extends Controller
 			$request->no_of_invoices_sent_to_manager = 0;
 		}
 
-		$total_count = $request->no_of_edits + $request->no_of_invoices_completed + $request->no_of_invoices_sent_to_manager;
+		$total_count = $request->no_of_invoices_completed + $request->no_of_invoices_sent_to_manager;
 
 		ProductionPlate::create([
 			'user_id' => $user->id,
