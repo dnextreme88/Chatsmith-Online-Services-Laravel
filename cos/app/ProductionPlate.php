@@ -12,4 +12,11 @@ class ProductionPlate extends Model
 	protected $fillable = [
 		'user_id', 'employee_id', 'account_used', 'time_range', 'minutes_worked', 'plateiq_tool', 'no_of_edits', 'no_of_invoices_completed', 'no_of_invoices_sent_to_manager', 'total_count'
 	];
+
+	/**
+	 * Get the employee associated with the plate production.
+	 */
+	public function employee() {
+		return $this->belongsTo('App\Employee');
+	}
 }

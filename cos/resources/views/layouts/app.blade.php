@@ -58,6 +58,7 @@
 								</div>
 
 						</li>
+						<li class="nav-item"><a class="nav-link" href="/daily_productions/">Daily Productions</a></li>
 					</ul>
 
 					<!-- Right Side Of Navbar -->

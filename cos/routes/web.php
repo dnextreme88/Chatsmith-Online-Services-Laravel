@@ -17,6 +17,8 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/admin', 'AdminPanelController@index');
 
+Route::get('/daily_productions', 'DailyProductionController@index');
+
 Route::get('/users', 'UserController@index');
 
 Route::resource('announcements', 'AnnouncementController');

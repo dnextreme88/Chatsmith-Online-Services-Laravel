@@ -12,4 +12,11 @@ class ProductionChat extends Model
 	protected $fillable = [
 		'user_id', 'employee_id', 'account_used', 'time_range', 'minutes_worked', 'chat_account_tool'
 	];
+
+	/**
+	 * Get the employee associated with the chat production.
+	 */
+	public function employee() {
+		return $this->belongsTo('App\Employee');
+	}
 }
