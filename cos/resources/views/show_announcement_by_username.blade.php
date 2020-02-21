@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Show Announcements of {{ $user->username }}
+All Announcements of {{ $user_by_username->username }}
 @endsection
 
 @section('content')
@@ -10,15 +10,17 @@ Show Announcements of {{ $user->username }}
 		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				@if ($user->is_staff == 'True')
-					<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
-				@endif
+				@auth
+					@if ($user->is_staff == 'True')
+						<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+					@endif
+				@endauth
 				<li class="breadcrumb-item"><a href="/announcements/">Announcements</a></li>
-				<li class="breadcrumb-item">Showing all announcements of {{ $user->username }}</li>
+				<li class="breadcrumb-item">Showing all announcements of {{ $user_by_username->username }}</li>
 			</ol>
 		</div>
 		<div class="col-md-12 text-center">
-			<h1 class="text-center">Showing all announcements of {{ $user->username }}</h1>
+			<h1 class="text-center">Showing all announcements of {{ $user_by_username->username }}</h1>
 		</div>
 		@foreach ($announcements as $announcement)
 			<div class="col-md-12 alert alert-info alert-block">

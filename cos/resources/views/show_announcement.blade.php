@@ -10,9 +10,11 @@ Chatsmith Online Services - Announcement # {{ $current_announcement->id }}
 		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				@if ($user->is_staff == 'True')
-					<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
-				@endif
+				@auth
+					@if ($user->is_staff == 'True')
+						<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+					@endif
+				@endauth
 				<li class="breadcrumb-item"><a href="/announcements/">Announcements</a></li>
 				<li class="breadcrumb-item">{{ $current_announcement->title }}</li>
 			</ol>
@@ -33,21 +35,23 @@ Chatsmith Online Services - Announcement # {{ $current_announcement->id }}
 			@endif
 			</ul>
 		</div>
-		@if ($user->is_staff == 'True')
-			<div class="col-md-12">
-				<dl class="row">
-					<dt class="col-sm-6">Actions</dt>
-					<dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/announcements/{{ $current_announcement->id }}/edit/">Edit</a></dd>
-					<dd class="col-sm-3">
-						<form action="/announcements/{{ $current_announcement->id }}" method="POST">
-							@csrf
-							@method('DELETE')
-							<i class="fa fa-trash"></i> <input class="delete-announcement-button" type="submit" name="submit" value="Delete">
-						</form>
-					</dd>
-				</dl>
-			</div>
-		@endif
+		@auth
+			@if ($user->is_staff == 'True')
+				<div class="col-md-12">
+					<dl class="row">
+						<dt class="col-sm-6">Actions</dt>
+						<dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/announcements/{{ $current_announcement->id }}/edit/">Edit</a></dd>
+						<dd class="col-sm-3">
+							<form action="/announcements/{{ $current_announcement->id }}" method="POST">
+								@csrf
+								@method('DELETE')
+								<i class="fa fa-trash"></i> <input class="delete-announcement-button" type="submit" name="submit" value="Delete">
+							</form>
+						</dd>
+					</dl>
+				</div>
+			@endif
+		@endauth
 	</div>
 </div>
 @endsection
