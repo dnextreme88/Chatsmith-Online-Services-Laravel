@@ -18,9 +18,8 @@ class CreateEmployeesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); // Foreign key: Users model
             $table->integer('employee_number')->nullable();
-            $table->string('first_name')->nullable();
-            $table->string('maiden_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('employee_type')->nullable();
+            $table->string('designation')->nullable();
             $table->string('role')->nullable();
             $table->date('date_tenure')->nullable();
             $table->string('is_active')->nullable()->default('True');

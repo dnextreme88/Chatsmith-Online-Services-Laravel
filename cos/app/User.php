@@ -16,7 +16,7 @@ class User extends Authenticatable
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'username', 'profile_image', 'email', 'password', 'is_staff',
+		'first_name', 'maiden_name', 'last_name', 'username', 'profile_image', 'email', 'password', 'is_staff',
 	];
 
 	/**
@@ -36,6 +36,24 @@ class User extends Authenticatable
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 	];
+
+	/**
+	 * Set the user's first_name, maiden_name and last_name values to uppercase.
+	 *
+	 * @param  string  $value
+	 * @return void
+	 */
+	public function setFirstNameAttribute ($value) {
+		$this->attributes['first_name'] = strtoupper($value);
+	}
+
+	public function setMaidenNameAttribute ($value) {
+		$this->attributes['maiden_name'] = strtoupper($value);
+	}
+
+	public function setLastNameAttribute ($value) {
+		$this->attributes['last_name'] = strtoupper($value);
+	}
 
 	public function getImageAttribute () {
 		return $this->profile_image;

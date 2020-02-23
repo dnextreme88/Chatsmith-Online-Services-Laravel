@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
 		$password = 'cos12345';
 
 		User::create([
-			'name' => 'Chatsmith Online Services',
+			'first_name' => 'Chatsmith Online Services',
 			'email' => 'chatsmithonline.management@gmail.com',
 			'username' => 'cos_management',
 			'profile_image' => 'images\cos_management_1580472306.jpg',
@@ -28,7 +28,8 @@ class UsersTableSeeder extends Seeder
 		]);
 
 		User::create([
-			'name' => 'Chatsmith Online Services Recruitment',
+			'first_name' => 'Chatsmith Online Services',
+			'last_name' => 'Recruitment',
 			'email' => 'chatsmithonline.recruitment@gmail.com',
 			'username' => 'cos_recruitment',
 			'profile_image' => 'images\cos_recruitment_1580466419.jpg',
@@ -39,7 +40,9 @@ class UsersTableSeeder extends Seeder
 		]);
 
 		User::create([
-			'name' => 'Mary Grace Zabala Torio',
+			'first_name' => 'Mary Grace',
+			'maiden_name' => 'Zabala',
+			'last_name' => 'Torio',
 			'email' => 'marytorio@chatsmithonline.net',
 			'username' => 'cos_may',
 			'profile_image' => 'images\default_avatar.png',
@@ -50,12 +53,27 @@ class UsersTableSeeder extends Seeder
 		]);
 
 		User::create([
-			'name' => 'Pauline Calip Tesorio',
+			'first_name' => 'Pauline',
+			'maiden_name' => 'Calip',
+			'last_name' => 'Tesorio',
 			'email' => 'chatsmithonline.pau@gmail.com',
 			'username' => 'tesoriopauline18',
-			'profile_image' => 'images\default_avatar.png',
+			'profile_image' => 'images\tesoriopauline18_1580660315.png',
 			'password' => Hash::make($password),
 			'is_staff' => 'True',
+			'created_at' => '1580378520',
+			'updated_at' => '1580378520',
+		]);
+
+		User::create([
+			'first_name' => 'Jeanne Kevin Arnmani',
+			'maiden_name' => 'Tibayan',
+			'last_name' => 'Decena',
+			'email' => 'chatsmithonline.jeanne@gmail.com',
+			'username' => 'decenakevin09',
+			'profile_image' => 'images\decenakevin09_1580660062.png',
+			'password' => Hash::make($password),
+			'is_staff' => 'False',
 			'created_at' => '1580378520',
 			'updated_at' => '1580378520',
 		]);
