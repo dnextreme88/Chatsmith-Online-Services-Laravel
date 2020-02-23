@@ -171,6 +171,11 @@ BASE RGB: E28700; // orange
 		color: #FF9900;
 	}
 
+/* Registration */
+	.name-inputs-to-uppercase {
+		text-transform: uppercase;
+	}
+
 /* Static Pages (About Us, Careers, Privacy Policy, Terms and Conditions) */
 	.header-static-page-title {
 		border-bottom: 4px solid #005EBF;
