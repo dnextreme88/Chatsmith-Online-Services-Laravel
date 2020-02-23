@@ -54,7 +54,7 @@ class LeadformController extends Controller
 		$validator = Validator::make($request->all() , 
 		[
 			'employee_id' => 'required',
-			'minutes_worked' => 'required',
+			'minutes_worked' => ['required', 'max:60', 'min:1'],
 		]);
 
 		if ($validator->fails()) {
@@ -80,7 +80,7 @@ class LeadformController extends Controller
 		$validator = Validator::make($request->all() , 
 		[
 			'employee_id' => 'required',
-			'minutes_worked' => 'required',
+			'minutes_worked' => ['required', 'max:60', 'min:1'],
 		]);
 
 		if ($validator->fails()) {
@@ -124,7 +124,7 @@ class LeadformController extends Controller
 		$validator = Validator::make($request->all() , 
 		[
 			'employee_id' => 'required',
-			'minutes_worked' => 'required',
+			'minutes_worked' => ['required', 'max:60', 'min:1'],
 		]);
 
 		if ($validator->fails()) {

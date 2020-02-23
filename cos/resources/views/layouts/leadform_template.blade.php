@@ -40,6 +40,6 @@
 	<label for="minutes_worked" class="col-md-4 col-form-label text-md-right">Minutes Worked</label>
 
 	<div class="col-md-6">
-		<input id="minutes_worked" class="form-control input-lg" type="number" name="minutes_worked" min="1">
+		<input id="minutes_worked" class="form-control input-lg" type="number" name="minutes_worked" min="1" max="60">
 	</div>
 </div>
