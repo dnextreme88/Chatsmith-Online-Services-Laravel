@@ -79,7 +79,7 @@
 							@if (auth()->user()->image)
 								<img src="{{ asset(auth()->user()->image) }}" class="img-thumbnail rounded-circle avatar-thumbnail-extrasmall">
 							@endif
-								{{ Auth::user()->name }} <span class="caret"></span>
+								{{ Auth::user()->first_name }} <span class="caret"></span>
 							</a>
 
 							<div id="header-navbar-right" class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
