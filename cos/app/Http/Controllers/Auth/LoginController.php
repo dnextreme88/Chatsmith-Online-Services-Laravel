@@ -32,9 +32,9 @@ class LoginController extends Controller
 
 		// Redirect admins to admin panel view
 		if ($user->is_staff == 'True') {
-			return '/admin';
+			return '/admin/';
 		} else {
-			return '/profile';
+			return '/profile/';
 		}
 	}
 
