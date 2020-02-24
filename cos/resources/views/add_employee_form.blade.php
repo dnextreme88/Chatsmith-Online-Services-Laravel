@@ -33,7 +33,7 @@ Chatsmith Online Services - Add Employee Form
 					<div class="col-md-6">
 						<select id="user_id" class="form-control" name="user_id">
 						@foreach ($users as $user)
-							<option value="{{ $user->id }}">{{ $user->name }}</option>
+							<option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->maiden_name }} {{ $user->last_name }}</option>
 						@endforeach
 						</select>
 					</div>
@@ -46,28 +46,28 @@ Chatsmith Online Services - Add Employee Form
 						<input id="employee_number" class="form-control input-lg" type="text" name="employee_number">
 					</div>
 				</div>
-				<!-- First name -->
+				<!-- Employee type -->
 				<div class="form-group row">
-					<label for="first_name" class="col-md-4 col-form-label text-md-right">First Name</label>
+					<label for="employee_type" class="col-md-4 col-form-label text-md-right">Employee type</label>
 
 					<div class="col-md-6">
-						<input id="first_name" class="form-control input-lg" type="text" name="first_name">
+						<select id="employee_type" class="form-control" name="employee_type">
+						@foreach ($employee_type_choices as $employee_type)
+							<option value="{{ $employee_type }}">{{ $employee_type }}</option>
+						@endforeach
+						</select>
 					</div>
 				</div>
-				<!-- Maiden name -->
+				<!-- Designation -->
 				<div class="form-group row">
-					<label for="maiden_name" class="col-md-4 col-form-label text-md-right">Maiden Name</label>
+					<label for="designation" class="col-md-4 col-form-label text-md-right">Office Designation</label>
 
 					<div class="col-md-6">
-						<input id="maiden_name" class="form-control input-lg" type="text" name="maiden_name">
-					</div>
-				</div>
-				<!-- Last name -->
-				<div class="form-group row">
-					<label for="last_name" class="col-md-4 col-form-label text-md-right">Last Name</label>
-
-					<div class="col-md-6">
-						<input id="last_name" class="form-control input-lg" type="text" name="last_name">
+						<select id="designation" class="form-control" name="designation">
+						@foreach ($designation_choices as $designation)
+							<option value="{{ $designation }}">{{ $designation }}</option>
+						@endforeach
+						</select>
 					</div>
 				</div>
 				<!-- Role -->

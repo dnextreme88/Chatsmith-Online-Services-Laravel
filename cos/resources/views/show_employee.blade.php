@@ -35,16 +35,16 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 					<dd class="col-sm-6">{{ $employee->employee_number }}</dd>
 				</dl>
 				<dl class="row">
-					<dt class="col-sm-6">First Name</dt>
-					<dd class="col-sm-6">{{ $employee->first_name }}</dd>
+					<dt class="col-sm-6">Employee Name</dt>
+					<dd class="col-sm-6">{{ $employee->user->first_name }} {{ $employee->user->maiden_name }} {{ $employee->user->last_name }}</dd>
 				</dl>
 				<dl class="row">
-					<dt class="col-sm-6">Maiden Name</dt>
-					<dd class="col-sm-6">{{ $employee->maiden_name }}</dd>
+					<dt class="col-sm-6">Employee Type</dt>
+					<dd class="col-sm-6">{{ $employee->employee_type }}</dd>
 				</dl>
 				<dl class="row">
-					<dt class="col-sm-6">Last Name</dt>
-					<dd class="col-sm-6">{{ $employee->last_name }}</dd>
+					<dt class="col-sm-6">Office Designation</dt>
+					<dd class="col-sm-6">{{ $employee->designation }}</dd>
 				</dl>
 				<dl class="row">
 					<dt class="col-sm-6">Role</dt>

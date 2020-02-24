@@ -27,13 +27,12 @@ Chatsmith Online Services - Employees
 		@if ($employees->count() > 0)
 			<table class="table table-bordered table-responsive">
 				<thead>
-					<th>ID</th>
 					<th>Employee Number</th>
 					<th>Username</th> <!-- Get Username from Foreign Key User -->
 					<th>Email</th> <!-- Get Email from Foreign Key User -->
-					<th>First Name</th>
-					<th>Maiden Name</th>
-					<th>Last Name</th>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Designation</th>
 					<th>Role</th>
 					<th>Date of Tenure</th>
 					<th>Is Active?</th>
@@ -44,13 +43,12 @@ Chatsmith Online Services - Employees
 				<tbody>
 					@foreach ($employees as $employee)
 					<tr>
-						<td>{{ $employee->id }}</td>
 						<td>{{ $employee->employee_number }}</td>
 						<td>{{ $employee->user->username }}</td>
 						<td>{{ $employee->user->email }}</td>
-						<td>{{ $employee->first_name }}</td>
-						<td>{{ $employee->maiden_name }}</td>
-						<td>{{ $employee->last_name }}</td>
+						<td>{{ $employee->user->first_name }} {{ $employee->user->maiden_name }} {{ $employee->user->last_name }}</td>
+						<td>{{ $employee->employee_type }}</td>
+						<td>{{ $employee->designation }}</td>
 						<td>{{ $employee->role }}</td>
 						<td>{{ $employee->date_of_tenure }}</td>
 						<td class="text-center">

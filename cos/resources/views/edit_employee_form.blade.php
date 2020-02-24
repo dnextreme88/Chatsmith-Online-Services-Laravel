@@ -35,9 +35,9 @@ Chatsmith Online Services - Edit Employee Form
 						<select id="user_id" class="form-control" name="user_id">
 						@foreach ($users as $user)
 							@if ($user->id == $employee->user->id)
-								<option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+								<option value="{{ $user->id }}" selected>{{ $user->first_name }} {{ $user->maiden_name }} {{ $user->last_name }}</option>
 							@else
-								<option value="{{ $user->id }}">{{ $user->name }}</option>
+								<option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->maiden_name }} {{ $user->last_name }}</option>
 							@endif
 						@endforeach
 						</select>
@@ -51,28 +51,36 @@ Chatsmith Online Services - Edit Employee Form
 						<input id="employee_number" class="form-control input-lg" type="text" name="employee_number" value="{{ $employee->employee_number }}">
 					</div>
 				</div>
-				<!-- First name -->
+				<!-- Employee type -->
 				<div class="form-group row">
-					<label for="first_name" class="col-md-4 col-form-label text-md-right">First Name</label>
+					<label for="employee_type" class="col-md-4 col-form-label text-md-right">Employee</label>
 
 					<div class="col-md-6">
-						<input id="first_name" class="form-control input-lg" type="text" name="first_name" value="{{ $employee->first_name }}">
+						<select id="employee_type" class="form-control" name="employee_type">
+						@foreach ($employee_type_choices as $employee_type)
+							@if ($employee_type == $employee->employee_type)
+								<option value="{{ $employee_type }}" selected>{{ $employee_type }}</option>
+							@else
+								<option value="{{ $employee_type }}">{{ $employee_type }}</option>
+							@endif
+						@endforeach
+						</select>
 					</div>
 				</div>
-				<!-- Maiden name -->
+				<!-- Designation -->
 				<div class="form-group row">
-					<label for="maiden_name" class="col-md-4 col-form-label text-md-right">Maiden Name</label>
+					<label for="designation" class="col-md-4 col-form-label text-md-right">Office Designation</label>
 
 					<div class="col-md-6">
-						<input id="maiden_name" class="form-control input-lg" type="text" name="maiden_name" value="{{ $employee->maiden_name }}">
-					</div>
-				</div>
-				<!-- Last name -->
-				<div class="form-group row">
-					<label for="last_name" class="col-md-4 col-form-label text-md-right">Last Name</label>
-
-					<div class="col-md-6">
-						<input id="last_name" class="form-control input-lg" type="text" name="last_name" value="{{ $employee->last_name }}">
+						<select id="designation" class="form-control" name="designation">
+						@foreach ($designation_choices as $designation)
+							@if ($designation == $employee->designation)
+								<option value="{{ $designation }}" selected>{{ $designation }}</option>
+							@else
+								<option value="{{ $designation }}">{{ $designation }}</option>
+							@endif
+						@endforeach
+						</select>
 					</div>
 				</div>
 				<!-- Role -->

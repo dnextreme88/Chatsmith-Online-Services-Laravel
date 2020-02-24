@@ -11,6 +11,14 @@ use Validator;
 
 class EmployeeController extends Controller
 {
+	private $employee_type_choices = [
+		'OJT', 'Part-time', 'Regular'
+	];
+
+	private $designation_choices = [
+		'Baguio', 'Pangasinan'
+	];
+
 	private $role_choices = [
 		'Administrator', 'Director', 'Employee', 'Human Resources and Recruitment', 'Owner', 'Quality Analyst', 'Supervisor', 'Team Leader'
 	];
@@ -41,7 +49,8 @@ class EmployeeController extends Controller
 		[
 			'user_id' => 'required|unique:employees',
 			'employee_number' => 'required|unique:employees',
-			'first_name' => 'required',
+			'employee_type' => 'required',
+			'designation' => 'required',
 			'employee_role' => 'required',
 		]);
 
@@ -52,9 +61,8 @@ class EmployeeController extends Controller
 		Employee::create([
 			'user_id' => $request->user_id,
 			'employee_number' => $request->employee_number,
-			'first_name' => $request->first_name,
-			'maiden_name' => $request->maiden_name,
-			'last_name' => $request->last_name,
+			'employee_type' => $request->employee_type,
+			'designation' => $request->designation,
 			'role' => $request->employee_role,
 		]);
 
@@ -69,6 +77,8 @@ class EmployeeController extends Controller
 		if ($user->is_staff == 'True') {
 			return view('add_employee_form', [
 				"users" => $users,
+				"employee_type_choices" => $this->employee_type_choices,
+				"designation_choices" => $this->designation_choices,
 				"role_choices" => $this->role_choices
 			]);
 		} else {
@@ -97,6 +107,8 @@ class EmployeeController extends Controller
 			return view('edit_employee_form', [
 				"employee" => $employee,
 				"users" => $users,
+				"employee_type_choices" => $this->employee_type_choices,
+				"designation_choices" => $this->designation_choices,
 				"role_choices" => $this->role_choices,
 				"is_active_choices" => $this->is_active_choices
 			]);
@@ -113,6 +125,8 @@ class EmployeeController extends Controller
 		[
 			'user_id' => 'unique:users,id,' .$employee->id,
 			'employee_number' => 'unique:employees,employee_number,' .$employee->id,
+			'employee_type' => Rule::in(['OJT', 'Part-time', 'Regular']),
+			'designation' => Rule::in(['Baguio', 'Pangasinan']),
 			'employee_role' => Rule::in(['Administrator', 'Director', 'Employee', 'Human Resources and Recruitment', 'Owner', 'Quality Analyst', 'Supervisor', 'Team Leader']),
 			'is_active' => Rule::in(['True', 'False']),
 		]);
@@ -123,9 +137,8 @@ class EmployeeController extends Controller
 
 		$employee->user_id = $request->user_id;
 		$employee->employee_number = $request->employee_number;
-		$employee->first_name = $request->first_name;
-		$employee->maiden_name = $request->maiden_name;
-		$employee->last_name = $request->last_name;
+		$employee->employee_type = $request->employee_type;
+		$employee->designation = $request->designation;
 		$employee->role = $request->employee_role;
 		$employee->is_active = $request->is_active;
 		$employee->save();
