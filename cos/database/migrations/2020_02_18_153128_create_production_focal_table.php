@@ -17,10 +17,11 @@ class CreateProductionFocalTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('user_id')->references('id')->on('users'); // Foreign key: User model
+            $table->unsignedBigInteger('time_range_id');
+            $table->foreign('user_id')->references('id')->on('users'); // Foreign key: Users model
             $table->foreign('employee_id')->references('id')->on('employees'); // Foreign key: Employees model
+            $table->foreign('time_range_id')->references('id')->on('time_ranges'); // Foreign key: TimeRanges model
             $table->string('account_used')->nullable();
-            $table->string('time_range')->nullable();
             $table->integer('minutes_worked')->nullable();
             $table->integer('oos_count')->nullable()->default(0);
             $table->integer('not_oos_count')->nullable()->default(0);

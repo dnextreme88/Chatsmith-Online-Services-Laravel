@@ -5,7 +5,7 @@ Daily Productions for {{ $date_today->format('F d, Y') }}
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
 	<h1>Daily productions for {{ $date_today->format('F d, Y') }}</h1>
 	<dl class="row">
 		<dt class="col-md-1 mt-2">Jump to:</dt>
@@ -21,17 +21,19 @@ Daily Productions for {{ $date_today->format('F d, Y') }}
 		<table class="table table-bordered">
 			<thead>
 				<th>Agent</th>
-				<tH>Account Used</tH>
-				<th>Chat Account Tool Used</th>
+				<th>Account Used</th>
+				<th>Time Range</th>
 				<th>Minutes Worked</th>
+				<th>Chat Account Tool Used</th>
 			</thead>
 			<tbody>
 			@foreach ($daily_productions_chat_accounts as $daily_productions_chat_data)
 				<tr>
-					<td>{{ $daily_productions_chat_data->employee->first_name }}</td>
+					<td>{{ $daily_productions_chat_data->employee->user->first_name }}</td>
 					<td>{{ $daily_productions_chat_data->account_used }}</td>
-					<td>{{ $daily_productions_chat_data->chat_account_tool }}</td>
+					<td>{{ $daily_productions_chat_data->time_range->time_range }}</td>
 					<td>{{ $daily_productions_chat_data->minutes_worked }}</td>
+					<td>{{ $daily_productions_chat_data->chat_account_tool }}</td>
 				</tr>
 			@endforeach
 			</tbody>
@@ -39,7 +41,6 @@ Daily Productions for {{ $date_today->format('F d, Y') }}
 	@else
 		<p>There are no daily productions data for Live Chat / PersistIQ / Smart Alto today ({{ $date_today->format('F d, Y') }}).</p>
 	@endif
-
 	<!-- Focal productions -->
 	<h2><a id="focal_data">Focal Daily Productions</a></h2>
 	@if ($daily_productions_focal->count() > 0)
@@ -47,22 +48,24 @@ Daily Productions for {{ $date_today->format('F d, Y') }}
 			<thead>
 				<th>Agent</th>
 				<th>Account Used</th>
+				<th>Time Range</th>
+				<th>Minutes Worked</th>
 				<th>OOS</th>
 				<th>Not OOS</th>
 				<th>Discards</th>
 				<th>Total Images Processed</th>
-				<th>Minutes Worked</th>
 			</thead>
 			<tbody>
 			@foreach ($daily_productions_focal as $daily_productions_focal_data)
 				<tr>
-					<td>{{ $daily_productions_focal_data->employee->first_name }}</td>
+					<td>{{ $daily_productions_focal_data->employee->user->first_name }}</td>
+					<td>{{ $daily_productions_focal_data->time_range->time_range }}</td>
+					<td>{{ $daily_productions_focal_data->minutes_worked }}</td>
 					<td>{{ $daily_productions_focal_data->account_used }}</td>
 					<td>{{ $daily_productions_focal_data->oos_count }}</td>
 					<td>{{ $daily_productions_focal_data->not_oos_count }}</td>
 					<td>{{ $daily_productions_focal_data->discard_count }}</td>
 					<td>{{ $daily_productions_focal_data->total_count }}</td>
-					<td>{{ $daily_productions_focal_data->minutes_worked }}</td>
 				</tr>
 			@endforeach
 			</tbody>
@@ -78,24 +81,26 @@ Daily Productions for {{ $date_today->format('F d, Y') }}
 			<thead>
 				<th>Agent</th>
 				<th>Account Used</th>
+				<th>Time Range</th>
+				<th>Minutes Worked</th>
 				<th>PlateIQ Tool Used</th>
 				<th>Edits Made</th>
 				<th>Invoices Completed</th>
 				<th>Invoices Sent to Manager</th>
 				<th>Total Invoices Processed</th>
-				<th>Minutes Worked</th>
 			</thead>
 			<tbody>
 			@foreach ($daily_productions_plate as $daily_productions_plate_data)
 				<tr>
-					<td>{{ $daily_productions_plate_data->employee->first_name }}</td>
+					<td>{{ $daily_productions_plate_data->employee->user->first_name }}</td>
 					<td>{{ $daily_productions_plate_data->account_used }}</td>
+					<td>{{ $daily_productions_plate_data->time_range->time_range }}</td>
+					<td>{{ $daily_productions_plate_data->minutes_worked }}</td>
 					<td>{{ $daily_productions_plate_data->plateiq_tool }}</td>
 					<td>{{ $daily_productions_plate_data->no_of_edits }}</td>
 					<td>{{ $daily_productions_plate_data->no_of_invoices_completed }}</td>
 					<td>{{ $daily_productions_plate_data->no_of_invoices_sent_to_manager }}</td>
 					<td>{{ $daily_productions_plate_data->total_count }}</td>
-					<td>{{ $daily_productions_plate_data->minutes_worked }}</td>
 				</tr>
 			@endforeach
 			</tbody>

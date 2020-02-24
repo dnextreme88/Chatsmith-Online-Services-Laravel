@@ -9,36 +9,10 @@ use App\ProductionChat;
 use App\ProductionFocal;
 use App\ProductionPlate;
 use App\Employee;
+use App\TimeRange;
 
 class LeadformController extends Controller
 {
-	private $time_range_choices = [
-		'12:00 AM - 1:00 AM',
-		'1:00 AM - 2:00 AM',
-		'2:00 AM - 3:00 AM',
-		'3:00 AM - 4:00 AM',
-		'4:00 AM - 5:00 AM',
-		'5:00 AM - 6:00 AM',
-		'6:00 AM - 7:00 AM',
-		'7:00 AM - 8:00 AM',
-		'8:00 AM - 9:00 AM',
-		'9:00 AM - 10:00 AM',
-		'10:00 AM - 11:00 AM',
-		'11:00 AM - 12:00 PM',
-		'12:00 PM - 1:00 PM',
-		'1:00 PM - 2:00 PM',
-		'2:00 PM - 3:00 PM',
-		'3:00 PM - 4:00 PM',
-		'4:00 PM - 5:00 PM',
-		'5:00 PM - 6:00 PM',
-		'6:00 PM - 7:00 PM',
-		'7:00 PM - 8:00 PM',
-		'8:00 PM - 9:00 PM',
-		'9:00 PM - 10:00 PM',
-		'10:00 PM - 11:00 PM',
-		'11:00 PM - 12:00 AM',
-	];
-
 	private $chat_account_tool_choices = [
 		'Live Chat', 'PersistIQ', 'Smart Alto'
 	];
@@ -64,8 +38,8 @@ class LeadformController extends Controller
 		ProductionChat::create([
 			'user_id' => $user->id,
 			'employee_id' => $request->employee_id,
+			'time_range_id' => $request->time_range_id,
 			'account_used' => $request->account_used,
-			'time_range' => $request->time_range,
 			'minutes_worked' => $request->minutes_worked,
 			'chat_account_tool' => $request->chat_account_tool,
 		]);
@@ -105,8 +79,8 @@ class LeadformController extends Controller
 		ProductionFocal::create([
 			'user_id' => $user->id,
 			'employee_id' => $request->employee_id,
+			'time_range_id' => $request->time_range_id,
 			'account_used' => $request->account_used,
-			'time_range' => $request->time_range,
 			'minutes_worked' => $request->minutes_worked,
 			'oos_count' => $request->oos_count,
 			'not_oos_count' => $request->not_oos_count,
@@ -149,8 +123,8 @@ class LeadformController extends Controller
 		ProductionPlate::create([
 			'user_id' => $user->id,
 			'employee_id' => $request->employee_id,
+			'time_range_id' => $request->time_range_id,
 			'account_used' => $request->account_used,
-			'time_range' => $request->time_range,
 			'minutes_worked' => $request->minutes_worked,
 			'plateiq_tool' => $request->plateiq_tool,
 			'no_of_edits' => $request->no_of_edits,
@@ -165,11 +139,12 @@ class LeadformController extends Controller
 	public function create_chat_account_leadform () {
 		$user = Auth::user();
 		$employees = Employee::all();
+		$time_ranges = TimeRange::all();
 
 		return view('leadform_chat_account', [
 			"user" => $user,
 			"employees" => $employees,
-			"time_range_choices" => $this->time_range_choices,
+			"time_ranges" => $time_ranges,
 			"chat_account_tool_choices" => $this->chat_account_tool_choices,
 		]);
 	}
@@ -177,22 +152,24 @@ class LeadformController extends Controller
 	public function create_focal_leadform () {
 		$user = Auth::user();
 		$employees = Employee::all();
+		$time_ranges = TimeRange::all();
 
 		return view('leadform_focal', [
 			"user" => $user,
 			"employees" => $employees,
-			"time_range_choices" => $this->time_range_choices,
+			"time_ranges" => $time_ranges,
 		]);
 	}
 
 	public function create_plateiq_leadform () {
 		$user = Auth::user();
 		$employees = Employee::all();
+		$time_ranges = TimeRange::all();
 
 		return view('leadform_plateiq', [
 			"user" => $user,
 			"employees" => $employees,
-			"time_range_choices" => $this->time_range_choices,
+			"time_ranges" => $time_ranges,
 			"plateiq_tool_choices" => $this->plateiq_tool_choices,
 		]);
 	}
