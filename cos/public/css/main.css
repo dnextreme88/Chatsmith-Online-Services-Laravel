@@ -158,6 +158,22 @@ BASE RGB: E28700; // orange
 		width: 100%;
 	}
 
+	.navbar {
+		background-color: #FF9900;
+	}
+
+	#navbar-user-dropdown {
+		margin-right: -2px;
+	}
+
+	#header-navbar-left {
+		margin-top: 19px;
+	}
+
+	#header-navbar-right {
+		margin-top: 7px;
+	}
+
 	#header-navbar-left, #header-navbar-right {
 		background-color: #005EBF;
 	}

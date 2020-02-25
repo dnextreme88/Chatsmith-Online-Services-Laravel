@@ -28,12 +28,7 @@
 </head>
 <body>
 	<div id="app">
-		<!-- COS Image -->
-		<header>
-			<img id="cos_header" class="img-responsive mx-auto d-block" src="{{ asset('images/cos_header2.png') }}" />
-		</header>
-
-		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+		<nav class="navbar navbar-expand-md navbar-light shadow-md">
 			<div class="container">
 				<a class="navbar-brand" href="{{ url('/') }}">Chatsmith Online Services</a>
 
@@ -69,7 +64,7 @@
 							</li>
 						@endif
 					@else
-						<li class="nav-item dropdown">
+						<li class="nav-item dropdown" id="navbar-user-dropdown">
 							<a id="userDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 							@if (auth()->user()->image)
 								<img src="{{ asset(auth()->user()->image) }}" class="img-thumbnail rounded-circle avatar-thumbnail-extrasmall">
