@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ $user->name }}'s Profile
+{{ $user->first_name }}'s Profile
 @endsection
 
 @section('content')
@@ -159,7 +159,7 @@
 		</div>
 		<div class="col-md-4">
 			<div class="card">
-				<div class="card-header">Welcome, {{ $user->name }}!</div>
+				<div class="card-header">Welcome, {{ $user->first_name }}!</div>
 
 				<div class="card-body">
 					<ul>

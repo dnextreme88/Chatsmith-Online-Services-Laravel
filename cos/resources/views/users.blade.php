@@ -29,7 +29,7 @@ Chatsmith Online Services - Employees
 					<th width="*">Username</th>
 					<th width="*">Email</th> <!-- Get Email from Foreign Key User -->
 					<th width="*">Name</th>
-					<th width="*">Date Joined</th>
+					<th width="*">Date Registered</th>
 					<th width="5%">Is Staff?</th>
 				</thead>
 				<tbody>
@@ -38,7 +38,7 @@ Chatsmith Online Services - Employees
 						<td>{{ $user->id }}</td>
 						<td><img src="/{{ $user->profile_image }}" class="avatar-table" /> {{ $user->username }}</td>
 						<td>{{ $user->email }}</td>
-						<td>{{ $user->name }}</td>
+						<td>{{ $user->first_name }} {{ $user->maiden_name }} {{ $user->last_name }}</td>
 						<td>{{ \Carbon\Carbon::parse($user->created_at)->format('F j, Y')}}</td>
 						<td class="text-center">
 						@if ($user->is_staff == 'True')
