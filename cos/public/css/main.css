@@ -182,6 +182,21 @@ BASE RGB: E28700; // orange
 		background-color: #057EFB;
 	}
 
+	.rounded-widgets {
+		background-color: #DDD;
+		padding: 80px;
+		border: 2px solid #BBB;
+		transition: background-color 0.4s;
+	}
+
+	.rounded-widgets-spacing {
+		margin-left: 37%;
+	}
+
+	.rounded-widgets:hover {
+		background-color: #FF9900;
+	}
+
 /* Links */
 	a:link, a:visited {
 		color: #FF9900;
