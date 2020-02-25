@@ -9,8 +9,8 @@ Chatsmith Online Services - Add Announcement Form
 	<div class="col-md-12">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
-			<li class="breadcrumb-item"><a href="/announcements/">Announcements</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
 			<li class="breadcrumb-item">Create Announcement</li>
 		</ol>
 	</div>
@@ -24,7 +24,7 @@ Chatsmith Online Services - Add Announcement Form
                 {{ session('success') }}. You may go back and see <a href="/announcements/" class="alert-link">all the announcements</a>.
 			</div>
 		@endif
-			<form action="/announcements/" method="POST">
+			<form action="{{ route('announcements.store') }}" method="POST">
 				@csrf
 				<!-- Title -->
 				<div class="form-group row">

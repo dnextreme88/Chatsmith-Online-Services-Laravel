@@ -9,8 +9,8 @@ Chatsmith Online Services - Edit Employee Form
 	<div class="col-md-12">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
-			<li class="breadcrumb-item"><a href="/employees/">Employees</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('employees.index') }}">Employees</a></li>
 			<li class="breadcrumb-item">Employee: {{ $employee->id }}</li>
 		</ol>
 	</div>
@@ -21,7 +21,7 @@ Chatsmith Online Services - Edit Employee Form
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
                 <button type="button" class="close" data-dismiss="alert">x</button>
-                {{ session('success') }}. You may go back and see <a href="/employees/" class="alert-link">all the employees</a>.
+                {{ session('success') }}. You may go back and see <a href="{{ route('employees.index') }}" class="alert-link">all the employees</a>.
 			</div>
 		@endif
 			<form action="/employees/{{ $employee->id }}/" method="POST">

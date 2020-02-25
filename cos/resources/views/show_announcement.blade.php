@@ -12,10 +12,10 @@ Chatsmith Online Services - Announcement # {{ $current_announcement->id }}
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
 				@auth
 					@if ($user->is_staff == 'True')
-						<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+						<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
 					@endif
 				@endauth
-				<li class="breadcrumb-item"><a href="/announcements/">Announcements</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
 				<li class="breadcrumb-item">{{ $current_announcement->title }}</li>
 			</ol>
 		</div>

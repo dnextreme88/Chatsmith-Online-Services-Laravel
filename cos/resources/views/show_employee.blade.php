@@ -11,9 +11,9 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
 				@if ($user->is_staff == 'True')
-					<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+					<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
 				@endif
-				<li class="breadcrumb-item"><a href="/employees/">Employees</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('employees.index') }}">Employees</a></li>
 				<li class="breadcrumb-item">{{ $employee->user->username }}</li>
 			</ol>
 		</div>

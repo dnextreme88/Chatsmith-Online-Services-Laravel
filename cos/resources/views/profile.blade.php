@@ -13,12 +13,14 @@
 				<li class="breadcrumb-item">Profile</li>
 			</ol>
 		</div>
+		@if ($latest_announcement)
 		<div class="col-md-2"> <!-- Requires $latest_announcement variable - fetch latest announcement -->
 			<img src="../{{ $latest_announcement->user->image }}" class="img-thumbnail img-responsive avatar-thumbnail-small" />
 		</div>
 		<div class="col-md-10 speech-bubble">
 			@include('layouts.latest_announcement_pane')
 		</div>
+		@endif
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
@@ -65,7 +67,7 @@
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								</div>
 								<!-- CLOCK IN FUNCTION - creates a time record for the user -->
-								<form action="/profile/create_time_record/" method="POST" id="clock-in-form">
+								<form action="{{ route('create_time_record') }}" method="POST" id="clock-in-form">
 									@csrf
 									<div class="modal-body">
 										<!-- Time of Shift -->
@@ -163,7 +165,7 @@
 					<ul>
 					   <!-- Check if user is a staff, then show admin panel link -->
 						@if ($user->is_staff == 'True')
-							<li><a href="/admin/">Admin Panel</a></li>
+							<li><a href="{{ route('admin_panel_home') }}">Admin Panel</a></li>
 						@endif
 						<li><a href="/profile/{{ $user->id}}/edit">Settings</a></li>
 					</ul>

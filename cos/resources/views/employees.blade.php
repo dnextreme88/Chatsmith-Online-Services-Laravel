@@ -11,7 +11,7 @@ Chatsmith Online Services - Employees
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
 				@if ($user->is_staff == 'True')
-					<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+					<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
 				@endif
 				<li class="breadcrumb-item">Employees</li>
 			</ol>
@@ -41,7 +41,7 @@ Chatsmith Online Services - Employees
 					@endif
 				</thead>
 				<tbody>
-					@foreach ($employees as $employee)
+				@foreach ($employees as $employee)
 					<tr>
 						<td>{{ $employee->employee_number }}</td>
 						<td>{{ $employee->user->username }}</td>
@@ -77,7 +77,7 @@ Chatsmith Online Services - Employees
 			</table>
 			{{ $employees->links() }}
 		@elseif ($employees->count() == 0 && $user->is_staff == 'True')
-			<p>No employees found. <a href="/employees/create/">Wanna create one now?</a></p>
+			<p>No employees found. <a href="{{ route('employees.create') }}">Wanna create one now?</a></p>
 		@elseif ($employees->count() == 0 && $user->is_staff == 'False')
 			<p>No employees found.</p>
 		@endif

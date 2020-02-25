@@ -10,7 +10,7 @@ Edit User Settings
 			<div class="col-md-8">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-					<li class="breadcrumb-item"><a href="/profile/">Profile</a></li>
+					<li class="breadcrumb-item"><a href="{{ route('profile') }}">Profile</a></li>
 					<li class="breadcrumb-item">Settings</li>
 				</ol>
 				<div class="card">
@@ -54,7 +54,7 @@ Edit User Settings
 								<label for="email" class="col-md-4 col-form-label text-md-right">Upload User Image</label>
 
 								<div class="col-md-6 mt-2">
-									<a href="/user/update_profile_image/">Click here to update profile image</a>
+									<a href="{{ route('update_profile_image') }}">Click here to update profile image</a>
 								</div>
 							</div>
 							<!-- User's current password -->

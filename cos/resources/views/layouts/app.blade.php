@@ -35,9 +35,7 @@
 
 		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 			<div class="container">
-				<a class="navbar-brand" href="{{ url('/') }}">
-					Chatsmith Online Services
-				</a>
+				<a class="navbar-brand" href="{{ url('/') }}">Chatsmith Online Services</a>
 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
 					<span class="navbar-toggler-icon"></span>
@@ -47,18 +45,15 @@
 					<!-- Left Side Of Navbar -->
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item dropdown">
-								<a id="leadformsDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-									Leadforms
-								</a>
+							<a id="leadformsDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Leadforms</a>
 
-								<div id="header-navbar-left" class="dropdown-menu dropdown-menu-left" aria-labelledby="leadformsDropdown">
-									<a class="dropdown-item" href="/leadforms/focal/">Focal Leadform</a>
-									<a class="dropdown-item" href="/leadforms/plateiq/">Plate IQ Leadform</a>
-									<a class="dropdown-item" href="/leadforms/chat_account/">Smart Alto / PersistIQ Leadform</a>
-								</div>
-
+							<div id="header-navbar-left" class="dropdown-menu dropdown-menu-left" aria-labelledby="leadformsDropdown">
+								<a class="dropdown-item" href="{{ route('focal_leadform') }}">Focal Leadform</a>
+								<a class="dropdown-item" href="{{ route('chat_account_leadform') }}">Smart Alto / PersistIQ Leadform</a>
+								<a class="dropdown-item" href="{{ route('plate_leadform') }}">Plate IQ Leadform</a>
+							</div>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="/daily_productions/">Daily Productions</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ route('daily_productions') }}">Daily Productions</a></li>
 					</ul>
 
 					<!-- Right Side Of Navbar -->
@@ -83,7 +78,7 @@
 							</a>
 
 							<div id="header-navbar-right" class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="/profile">Profile</a>
+								<a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
 								<a class="dropdown-item" href="{{ route('logout') }}"
 								   onclick="event.preventDefault();
 												 document.getElementById('logout-form').submit();">

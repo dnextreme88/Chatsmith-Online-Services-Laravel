@@ -11,7 +11,7 @@ Chatsmith Online Services - Announcements
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
 				@if ($user->is_staff == 'True')
-					<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
+					<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
 				@endif
 				<li class="breadcrumb-item">Announcements</li>
 			</ol>
@@ -37,7 +37,7 @@ Chatsmith Online Services - Announcements
 					@endif
 				</thead>
 				<tbody>
-					@foreach ($announcements as $announcement)
+				@foreach ($announcements as $announcement)
 					<tr>
 						<td>{{ $announcement->id }}</td>
 						<td>{{ $announcement->user->username }}</td>
@@ -63,7 +63,7 @@ Chatsmith Online Services - Announcements
 			</table>
 			{{ $announcements->links() }}
 		@elseif ($announcements->count() == 0 && $user->is_staff == 'True')
-			<p>No announcements found. <a href="/announcements/create/">Wanna create one now?</a></p>
+			<p>No announcements found. <a href="{{ route('announcements.create') }}">Wanna create one now?</a></p>
 		@elseif ($announcements->count() == 0 && $user->is_staff == 'False')
 			<p>No announcements found.</p>
 		@endif

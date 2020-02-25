@@ -15,11 +15,11 @@ Auth::routes();
 
 Route::get('/', 'IndexController@index');
 
-Route::get('/admin', 'AdminPanelController@index');
+Route::get('/admin', 'AdminPanelController@index')->name('admin_panel_home');
 
-Route::get('/daily_productions', 'DailyProductionController@index');
+Route::get('/daily_productions', 'DailyProductionController@index')->name('daily_productions');
 
-Route::get('/users', 'UserController@index');
+Route::get('/users', 'UserController@index')->name('all_users');
 
 Route::resource('announcements', 'AnnouncementController');
 
@@ -33,23 +33,23 @@ Route::get('/profile/{id}/edit', 'ProfileController@edit_user_settings');
 
 Route::post('/profile/{id}/edit', 'ProfileController@update_user_settings');
 
-Route::post('/profile/create_time_record', 'ProfileController@create_time_record');
+Route::post('/profile/create_time_record', 'ProfileController@create_time_record')->name('create_time_record');
 
 Route::post('/profile/time_record/{id}', 'ProfileController@update_time_record');
 
-Route::get('user/update_profile_image', 'UpdateProfileImageController@index');
+Route::get('user/update_profile_image', 'UpdateProfileImageController@index')->name('update_profile_image');
 
 Route::post('user/update_profile_image/{id}', 'UpdateProfileImageController@upload');
 
-Route::get('/leadforms/chat_account', 'LeadformController@create_chat_account_leadform');
+Route::get('/leadforms/chat_account', 'LeadformController@create_chat_account_leadform')->name('chat_account_leadform');
 
 Route::post('/leadforms/chat_account', 'LeadformController@store_chat_account_leadform');
 
-Route::get('/leadforms/focal', 'LeadformController@create_focal_leadform');
+Route::get('/leadforms/focal', 'LeadformController@create_focal_leadform')->name('focal_leadform');
 
 Route::post('/leadforms/focal', 'LeadformController@store_focal_leadform');
 
-Route::get('/leadforms/plateiq', 'LeadformController@create_plateiq_leadform');
+Route::get('/leadforms/plateiq', 'LeadformController@create_plateiq_leadform')->name('plate_leadform');
 
 Route::post('/leadforms/plateiq', 'LeadformController@store_plateiq_leadform');
 

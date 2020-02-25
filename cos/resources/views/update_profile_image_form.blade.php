@@ -10,8 +10,8 @@ Edit User Settings - Update Profile Image Form
 		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				<li class="breadcrumb-item"><a href="/profile/">Profile</a></li>
-				<li class="breadcrumb-item"><a href="/profile/{{ $user->id }}/edit/">User Settings</a></li>
+				<li class="breadcrumb-item"><a href="{{ route('profile') }}">Profile</a></li>
+				<li class="breadcrumb-item"><a href="/profile/{{ $user->id }}/edit/">Settings</a></li>
 				<li class="breadcrumb-item">Update Profile Image</li>
 			</ol>
 		</div>
