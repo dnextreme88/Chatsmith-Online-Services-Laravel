@@ -102,7 +102,7 @@ class ProfileController extends Controller
 				'employee_id' => $user->employee->id,
 				'time_of_shift' => $request->time_of_shift,
 				'date_of_shift' => Carbon::today(),
-				'employee_name' => $user->name,
+				'employee_name' => $user->first_name . $user->maiden_name . $user->last_name,
 				'timestamp_in' => Carbon::now(),
 				'timestamp_out' => Carbon::now()
 			]);
