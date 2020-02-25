@@ -13,7 +13,7 @@ Chatsmith Online Services - Chat Account Leadform
 		</ol>
 	</div>
 	<div class="card">
-		<div class="card-header">Chat Account Leadform for Smart Alto and PersistIQ</div>
+		<div class="card-header">Chat Account Leadform for Live Chat, Smart Alto and PersistIQ</div>
 
 		<div class="card-body">
 		@if (session('success'))

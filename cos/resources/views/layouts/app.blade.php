@@ -49,7 +49,7 @@
 
 							<div id="header-navbar-left" class="dropdown-menu dropdown-menu-left" aria-labelledby="leadformsDropdown">
 								<a class="dropdown-item" href="{{ route('focal_leadform') }}">Focal Leadform</a>
-								<a class="dropdown-item" href="{{ route('chat_account_leadform') }}">Smart Alto / PersistIQ Leadform</a>
+								<a class="dropdown-item" href="{{ route('chat_account_leadform') }}">Live Chat / Smart Alto / PersistIQ Leadform</a>
 								<a class="dropdown-item" href="{{ route('plate_leadform') }}">Plate IQ Leadform</a>
 							</div>
 						</li>
