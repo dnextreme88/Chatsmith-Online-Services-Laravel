@@ -21,6 +21,12 @@ class LeadformController extends Controller
 		'Full Form', 'Needs Manager Review (NMR)', 'New Data Entry (NDE)', 'Pending Header', 'Statements', 'Verification'
 	];
 
+	// The user must be logged in to access the views
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	public function store_chat_account_leadform (Request $request) {
 		// process in adding chat account production
 		$user = Auth::user();
