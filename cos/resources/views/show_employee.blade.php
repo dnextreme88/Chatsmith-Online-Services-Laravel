@@ -52,7 +52,13 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 				</dl>
 				<dl class="row">
 					<dt class="col-sm-6">Date of Tenure</dt>
-					<dd class="col-sm-6">{{ $employee->date_of_tenure }}</dd>
+					<dd class="col-sm-6">
+					@if ($employee->date_tenure == '')
+						---
+					@else
+						{{ \Carbon\Carbon::parse($employee->date_tenure)->format('F j, Y') }}
+					@endif
+					</dd>
 				</dl>
 				<dl class="row">
 					<dt class="col-sm-6">Is active</dt>

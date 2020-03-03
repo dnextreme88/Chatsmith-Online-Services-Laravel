@@ -20,8 +20,8 @@ Chatsmith Online Services - Add Employee Form
 		<div class="card-body">
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
-                <button type="button" class="close" data-dismiss="alert">x</button>
-                {{ session('success') }}. You may go back and see <a href="{{ route('employees.index') }}" class="alert-link">all the employees</a>.
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				{{ session('success') }}. You may go back and see <a href="{{ route('employees.index') }}" class="alert-link">all the employees</a>.
 			</div>
 		@endif
 			<form action="{{ route('employees.store') }}" method="POST">
@@ -82,6 +82,15 @@ Chatsmith Online Services - Add Employee Form
 						</select>
 					</div>
 				</div>
+				<!-- Date of Tenure -->
+				<div class="form-group row">
+					<label for="date_tenure" class="col-md-4 col-form-label text-md-right">Date of Tenure</label>
+
+					<div class="col-md-6">
+						<input id="date_tenure" class="form-control input-lg" type="text" name="date_tenure">
+						<small class="form-text text-muted">Format: YEAR-MONTH-DAY eg. 2020-02-28</small>
+					</div>
+				</div>
 				<div class="form-group row mb-0">
 					<div class="col-md-6 offset-md-4">
 						<input class="btn btn-primary" type="submit" name="submit" value="Add Employee">
@@ -101,4 +110,11 @@ Chatsmith Online Services - Add Employee Form
 		</div>
 	</div>
 </div>
+
+<script>
+	$('#date_tenure').datepicker({
+		uiLibrary: 'bootstrap4',
+		format: 'yyyy-mm-dd'
+	});
+</script>
 @endsection

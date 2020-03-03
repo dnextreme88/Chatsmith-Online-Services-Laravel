@@ -15,6 +15,10 @@
 	<script src="{{ asset('js/app.js') }}"></script>
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
 
+	<!-- Bootstrap 4 Datepicker - https://gijgo.com/datepicker/example/bootstrap-4 -->
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
 	<!-- Fonts -->
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">

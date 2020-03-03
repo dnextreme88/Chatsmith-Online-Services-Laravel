@@ -21,7 +21,7 @@ Chatsmith Online Services - Edit Employee Form
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
                 <button type="button" class="close" data-dismiss="alert">x</button>
-                {{ session('success') }}. You may go back and see <a href="{{ route('employees.index') }}" class="alert-link">all the employees</a>.
+                {{ session('success') }} You may go back and see <a href="{{ route('employees.index') }}" class="alert-link">all the employees</a>.
 			</div>
 		@endif
 			<form action="/employees/{{ $employee->id }}/" method="POST">
@@ -53,7 +53,7 @@ Chatsmith Online Services - Edit Employee Form
 				</div>
 				<!-- Employee type -->
 				<div class="form-group row">
-					<label for="employee_type" class="col-md-4 col-form-label text-md-right">Employee</label>
+					<label for="employee_type" class="col-md-4 col-form-label text-md-right">Employee Type</label>
 
 					<div class="col-md-6">
 						<select id="employee_type" class="form-control" name="employee_type">
@@ -99,6 +99,15 @@ Chatsmith Online Services - Edit Employee Form
 						</select>
 					</div>
 				</div>
+				<!-- Date of Tenure -->
+				<div class="form-group row">
+					<label for="date_tenure" class="col-md-4 col-form-label text-md-right">Date of Tenure</label>
+
+					<div class="col-md-6">
+						<input id="date_tenure" class="form-control input-lg" type="text" name="date_tenure" value="{{ $employee->date_tenure }}">
+						<small class="form-text text-muted">Format: YEAR-MONTH-DAY eg. 2020-02-28</small>
+					</div>
+				</div>
 				<!-- Is active -->
 				<div class="form-group row">
 					<label for="is_active" class="col-md-4 col-form-label text-md-right">Is active</label>
@@ -134,4 +143,11 @@ Chatsmith Online Services - Edit Employee Form
 		</div>
 	</div>
 </div>
+
+<script>
+	$('#date_tenure').datepicker({
+		uiLibrary: 'bootstrap4',
+		format: 'yyyy-mm-dd'
+	});
+</script>
 @endsection

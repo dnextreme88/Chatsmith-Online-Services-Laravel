@@ -52,6 +52,7 @@ class EmployeeController extends Controller
 			'employee_type' => 'required',
 			'designation' => 'required',
 			'employee_role' => 'required',
+			'date_tenure' => 'required',
 		]);
 
 		if ($validator->fails()) {
@@ -64,6 +65,7 @@ class EmployeeController extends Controller
 			'employee_type' => $request->employee_type,
 			'designation' => $request->designation,
 			'role' => $request->employee_role,
+			'date_tenure' => $request->date_tenure,
 		]);
 
 		return redirect()->back()->withSuccess('Employee successfully added!');
@@ -123,7 +125,7 @@ class EmployeeController extends Controller
 
 		$validator = Validator::make($request->all() , 
 		[
-			'user_id' => 'unique:users,id,' .$employee->id,
+			'user_id' => 'unique:employees,id,' .$employee->id,
 			'employee_number' => 'unique:employees,employee_number,' .$employee->id,
 			'employee_type' => Rule::in(['OJT', 'Part-time', 'Regular']),
 			'designation' => Rule::in(['Baguio', 'Pangasinan']),
@@ -140,6 +142,7 @@ class EmployeeController extends Controller
 		$employee->employee_type = $request->employee_type;
 		$employee->designation = $request->designation;
 		$employee->role = $request->employee_role;
+		$employee->date_tenure = $request->date_tenure;
 		$employee->is_active = $request->is_active;
 		$employee->save();
 

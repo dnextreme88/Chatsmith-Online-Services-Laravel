@@ -50,7 +50,13 @@ Chatsmith Online Services - Employees
 						<td>{{ $employee->employee_type }}</td>
 						<td>{{ $employee->designation }}</td>
 						<td>{{ $employee->role }}</td>
-						<td>{{ $employee->date_of_tenure }}</td>
+						<td>
+						@if ($employee->date_tenure == '')
+							---
+						@else
+							{{ \Carbon\Carbon::parse($employee->date_tenure)->format('F j, Y') }}
+						@endif
+						</td>
 						<td class="text-center">
 						@if ($employee->is_active == 'True')
 							<i class="text-success fa fa-check-circle"></i>
