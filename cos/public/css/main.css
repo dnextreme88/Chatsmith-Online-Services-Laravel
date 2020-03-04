@@ -50,7 +50,36 @@ BASE RGB: E28700; // orange
 	}
 
 /* Admin Panel */
-	.admin-panel-card {
+/* padding: 8px 4px; /* top and bottom = 8px; right and left = 4px; */
+	#admin-panel-nav-links-body {
+		background-color: lightblue;
+	}
+
+	#admin-panel-nav-links-body ul li {
+		padding: 20px;
+	}
+
+	#admin-panel-nav-links-body ul li a {
+		color: #000;
+	}
+
+	#admin-panel-nav-links-body ul li.active a {
+		color: #FFF;
+	}
+
+	#admin-panel-nav-links-body ul li.active {
+		background-color: #002A56;
+		transition: background-color 0.4s;
+	}
+
+	#admin-panel-nav-links-body ul li.active:hover, #admin-panel-nav-links-body ul li:hover {
+		background-color: #057EFB;
+	}
+
+	#admin-panel-nav-links-body ul li.active a:hover, #admin-panel-nav-links-body ul li a:hover {
+		text-decoration: none;
+	}
+/*	.admin-panel-card {
 		border-top-left-radius: 24px;
 		border-bottom-right-radius: 24px;
 	}
@@ -66,7 +95,7 @@ BASE RGB: E28700; // orange
 
 	.admin-panel-card-body-nav ul li.active {
 		background-color: #002A56;
-		padding: 8px 4px; /* top and bottom = 8px; right and left = 4px; */
+		padding: 8px 4px;
 		transition: background-color 0.4s;
 	}
 
@@ -80,7 +109,7 @@ BASE RGB: E28700; // orange
 
 	#admin-panel-hr-separator {
 		background-color: #002A56;
-	}
+	}*/
 
 /* Footer */
 	footer {

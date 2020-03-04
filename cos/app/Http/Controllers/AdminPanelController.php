@@ -19,7 +19,7 @@ class AdminPanelController extends Controller
 		$admin_logs = AdminLog::paginate(5);
 
 		if ($user->is_staff == 'True') {
-			return view('admin_panel')
+			return view('admin_panel_home')
 				->with('user', $user)
 				->with('admin_logs', $admin_logs);
 		} else {
