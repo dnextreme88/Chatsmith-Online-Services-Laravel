@@ -3,7 +3,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin Panel - @yield('title')</title>
+	@auth
+		@if (auth()->user()->is_staff == 'True')
+			<title>Admin Panel - @yield('title')</title>
+		@else
+			<title>@yield('title')</title>
+		@endif
+	@endauth
+	@guest
+		<title>@yield('title')</title>
+	@endguest
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="{{ asset('images/cos_favicon.png') }}">
@@ -38,33 +47,39 @@
 </head>
 <body>
 	<section class="container-fluid h-100">
-		<div class="row h-100">
-			<!-- Admin Panel Nav Links -->
-			<div class="col-sm-3 col-xl-2" id="admin-panel-nav-links-body">
-				<a href="/" alt="Chatsmith Online Services logo" title="Chatsmith Online Services logo"><img src="{{ asset('images/chatsmithonline-logo.png') }}" class="img-fluid mx-auto d-block" /></a>
-				<ul id="admin-panel-nav-links" class="list-unstyled">
-					<li class="list-item {{ (url()->current() == route('admin_panel_home')) ? 'active' : '' }}"><a href="/admin/"><i class="fa fa-home"></i> Admin Panel Home</a></li>
-					<li class="list-item {{ (url()->current() == route('announcements.index')) ? 'active' : '' }}"><a href="/announcements/"><i class="fa fa-bullhorn"></i> Announcements</a></li>
-					<li class="list-item {{ (url()->current() == route('employees.index')) ? 'active' : '' }}"><a href="/employees/"><i class="fa fa-id-card"></i> Employees</a></li>
-					<li class="list-item {{ (url()->current() == route('all_users')) ? 'active' : '' }}"><a href="/users/"><i class="fa fa-users"></i> Users</a></li>
-					<li class="list-item">
-						<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a>
+	@auth
+		@if (auth()->user()->is_staff == 'True')
+			<div class="row h-100">
+				<!-- Admin Panel Nav Links -->
+				<div class="col-sm-4 col-xl-2" id="admin-panel-nav-links-body">
+					<a href="/" alt="Chatsmith Online Services logo" title="Chatsmith Online Services logo"><img src="{{ asset('images/chatsmithonline-logo.png') }}" class="img-fluid mx-auto d-block" /></a>
+					<ul id="admin-panel-nav-links" class="list-unstyled">
+						<li class="list-item {{ (url()->current() == route('admin_panel_home')) ? 'active' : '' }}"><a href="/admin/"><i class="fa fa-home"></i> Admin Panel Home</a></li>
+						<li class="list-item {{ (url()->current() == route('announcements.index')) ? 'active' : '' }}"><a href="/announcements/"><i class="fa fa-bullhorn"></i> Announcements</a></li>
+						<li class="list-item {{ (url()->current() == route('employees.index')) ? 'active' : '' }}"><a href="/employees/"><i class="fa fa-id-card"></i> Employees</a></li>
+						<li class="list-item {{ (url()->current() == route('all_users')) ? 'active' : '' }}"><a href="/users/"><i class="fa fa-users"></i> Users</a></li>
+						<li class="list-item">
+							<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a>
 
-						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-							@csrf
-						</form>
-					</li>
-					<hr id="admin-panel-hr-separator">
-					<li class="list-item {{ (\Request::getRequestUri() == '/announcements/create/') ? 'active' : '' }}"><a href="/announcements/create/">Add Announcement</a></li>
-					<li class="list-item {{ (\Request::getRequestUri() == '/employees/create/') ? 'active' : '' }}"><a href="/employees/create/">Add Employee</a></li>
-				</ul>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								@csrf
+							</form>
+						</li>
+						<hr id="admin-panel-hr-separator">
+						<li class="list-item {{ (\Request::getRequestUri() == '/announcements/create/') ? 'active' : '' }}"><a href="/announcements/create/">Add Announcement</a></li>
+						<li class="list-item {{ (\Request::getRequestUri() == '/employees/create/') ? 'active' : '' }}"><a href="/employees/create/">Add Employee</a></li>
+					</ul>
+				</div>
+				<!-- Content -->
+				<div class="col-sm-8 col-xl-10">@yield('content')</div>
 			</div>
-
-			<!-- Content -->
-			<div class="col-sm-9 col-xl-10">
-				@yield('content')
-			</div>
-		</div>
+		@else
+			<div class="h-100">@yield('content')</div>
+		@endif
+	@endauth
+	@guest
+		<div class="h-100">@yield('content')</div>
+	@endguest
 	</section>
 </body>
 </html>

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('title')
-Chatsmith Online Services - Employee # {{ $employee->employee_number }}
+Employee # {{ $employee->employee_number }}
 @endsection
 
 @section('content')
@@ -10,15 +10,12 @@ Chatsmith Online Services - Employee # {{ $employee->employee_number }}
 		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				@if ($user->is_staff == 'True')
-					<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
-				@endif
 				<li class="breadcrumb-item"><a href="{{ route('employees.index') }}">Employees</a></li>
 				<li class="breadcrumb-item">{{ $employee->user->username }}</li>
 			</ol>
 		</div>
 		<div class="card w-50 text-left mx-auto">
-			<div class="card-header text-center">Viewing Employee Number {{ $employee->employee_number }}'s Data</div>
+			<div class="card-header text-center">Viewing Employee Number {{ $employee->employee_number }}'s Profile</div>
 			<!-- Profile Image (from User) -->
 			<img src="/{{ $employee->user->image }}" class="card-img-top img-thumbnail img-responsive rounded-circle mx-auto d-block avatar-thumbnail-large" />
 			<div class="card-body">

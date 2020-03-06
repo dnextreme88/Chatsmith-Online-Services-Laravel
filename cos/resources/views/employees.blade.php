@@ -1,23 +1,27 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('title')
-Chatsmith Online Services - Employees
+	@auth
+		@if ($user->is_staff == 'True')
+			Manage Employees
+		@else
+			Employees
+		@endif
+	@endauth
 @endsection
 
 @section('content')
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		<div class="col-md-8">
+	@if ($user->is_staff == 'False')
+		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				@if ($user->is_staff == 'True')
-					<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
-				@endif
 				<li class="breadcrumb-item">Employees</li>
 			</ol>
 		</div>
-		<!-- Left Side -->
-		<div class="col-md-9">
+	@endif
+		<div class="col-md-12">
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
 				<button type="button" class="close" data-dismiss="alert">x</button>
@@ -58,25 +62,27 @@ Chatsmith Online Services - Employees
 						@endif
 						</td>
 						<td class="text-center">
-						@if ($employee->is_active == 'True')
-							<i class="text-success fa fa-check-circle"></i>
-						@else
-							<i class="text-danger fa fa-times-circle"></i>
-						@endif
-						</td>
-						@if ($user->is_staff == 'True')
-							<td><ul class="list-inline">
-									<li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/employees/{{ $employee->id }}/">View</a></li>
-									<li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a></li>
-									<li class="list-inline-item">
-										<form action="/employees/{{ $employee->id }}" method="POST">
-											@csrf
-											@method('DELETE')
-											<i class="fa fa-trash"></i> <input class="delete-employee-button" type="submit" name="submit" value="Delete">
-										</form>
-									</li>
-							</ul></td>
-						@endif
+                        @auth
+                            @if ($employee->is_active == 'True')
+                                <i class="text-success fa fa-check-circle"></i>
+                            @else
+                                <i class="text-danger fa fa-times-circle"></i>
+                            @endif
+                        </td>
+                            @if ($user->is_staff == 'True')
+                                <td><ul class="list-inline">
+                                        <li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/employees/{{ $employee->id }}/">View</a></li>
+                                        <li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a></li>
+                                        <li class="list-inline-item">
+                                            <form action="/employees/{{ $employee->id }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <i class="fa fa-trash"></i> <input class="delete-employee-button" type="submit" name="submit" value="Delete">
+                                            </form>
+                                        </li>
+                                </ul></td>
+                            @endif
+                        @endauth
 					</tr>
 					@endforeach
 				</tbody>
@@ -88,12 +94,6 @@ Chatsmith Online Services - Employees
 			<p>No employees found.</p>
 		@endif
 		</div>
-		<!-- Right Side / Navigation -->
-		@if ($user->is_staff == 'True')
-            <div class="col-md-3">
-                @include('layouts.admin_panel_right_nav')
-            </div>
-        @endif
 	</div>
 </div>
 @endsection

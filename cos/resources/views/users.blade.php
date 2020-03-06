@@ -1,21 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.admin_panel')
 
 @section('title')
-Chatsmith Online Services - Employees
+Manage Users
 @endsection
 
 @section('content')
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		<div class="col-md-8">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				<li class="breadcrumb-item"><a href="/admin/">Admin Panel Home</a></li>
-				<li class="breadcrumb-item">Users</li>
-			</ol>
-		</div>
-		<!-- Left Side -->
-		<div class="col-md-9">
+		<div class="col-md-12">
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
 				<button type="button" class="close" data-dismiss="alert">x</button>
@@ -41,11 +33,13 @@ Chatsmith Online Services - Employees
 						<td>{{ $user->first_name }} {{ $user->maiden_name }} {{ $user->last_name }}</td>
 						<td>{{ \Carbon\Carbon::parse($user->created_at)->format('F j, Y')}}</td>
 						<td class="text-center">
-						@if ($user->is_staff == 'True')
-							<i class="text-success fa fa-check-circle"></i>
-						@else
-							<i class="text-danger fa fa-times-circle"></i>
-						@endif
+						@auth
+							@if ($user->is_staff == 'True')
+								<i class="text-success fa fa-check-circle"></i>
+							@else
+								<i class="text-danger fa fa-times-circle"></i>
+							@endif
+						@endauth
 						</td>
 					</tr>
 					@endforeach
@@ -55,10 +49,6 @@ Chatsmith Online Services - Employees
 		@else
 			<p>No users found. <a href="users/create/">Wanna create one now?</a></p>
 		@endif
-		</div>
-		<!-- Right Side / Navigation -->
-		<div class="col-md-3">
-			@include('layouts.admin_panel_right_nav')
 		</div>
 	</div>
 </div>

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin_panel')
 
 @section('title')
-Chatsmith Online Services - Edit Announcement Form
+Edit Announcement Form
 @endsection
 
 @section('content')
@@ -9,7 +9,6 @@ Chatsmith Online Services - Edit Announcement Form
 	<div class="col-md-12">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
 			<li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
 			<li class="breadcrumb-item">Announcement: {{ $announcement->id }}</li>
 		</ol>
@@ -40,8 +39,7 @@ Chatsmith Online Services - Edit Announcement Form
 					<label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
 					<div class="col-md-6">
-						<textarea id="description" class="form-control input-lg" name="description" rows="12">{{ $announcement->description }}
-						</textarea>
+						<textarea id="description" class="form-control input-lg" name="description" rows="12">{{ $announcement->description }}</textarea>
 					</div>
 				</div>
 				<div class="form-group row mb-0">
@@ -54,9 +52,9 @@ Chatsmith Online Services - Edit Announcement Form
 			<div class="alert alert-danger" role="alert">
 				<p>Edit Announcement Errors</p>
 				<ul>
-					@foreach($errors->all() as $error)
-						<li>{{ $error }}</li>
-					@endforeach
+				@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
 				</ul>
 			</div>
 		@endif

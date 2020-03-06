@@ -36,10 +36,18 @@ class EmployeeController extends Controller
 		// show all employees.
 		$employees = Employee::paginate(5);
 		$user = Auth::user();
+		$layout = '';
+
+        if ($user->is_staff == 'True') {
+            $layout = 'layouts.admin_panel';
+        } elseif ($user->is_staff == 'False') {
+            $layout = 'layouts.app';
+        }
 
 		return view('employees', [
-			"employees" => $employees,
-			"user" => $user
+            "employees" => $employees,
+            "user" => $user,
+            "layout" => $layout,
 		]);
 	}
 
@@ -92,11 +100,20 @@ class EmployeeController extends Controller
 		// show specific employee
 		$employee = Employee::find($id);
 		$user = Auth::user();
+        $layout = '';
 
-		return view('show_employee', [
-			"employee" => $employee,
-			"user" => $user,
-		]);
+        if ($user->is_staff == 'True') {
+            $layout = 'layouts.admin_panel';
+        } elseif ($user->is_staff == 'False') {
+            $layout = 'layouts.app';
+        }
+
+        return view('show_employee', [
+            "employee" => $employee,
+            "user" => $user,
+            "layout" => $layout,
+        ]);
+
 	}
 
 	public function edit ($id) {

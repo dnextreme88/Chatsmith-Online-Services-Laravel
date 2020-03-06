@@ -13,10 +13,22 @@ class AnnouncementController extends Controller
 	public function index () {
 		$announcements = Announcement::paginate(5);
 		$user = Auth::user();
+		$layout = '';
+
+		if ($user) {
+			if ($user->is_staff == 'True') {
+				$layout = 'layouts.admin_panel';
+			} elseif ($user->is_staff == 'False') {
+				$layout = 'layouts.app';
+			}
+		} else {
+			$layout = 'layouts.app';
+		}
 
 		return view('announcements', [
-			'announcements' => $announcements,
-			'user' => $user
+            'announcements' => $announcements,
+            'user' => $user,
+            'layout' => $layout,
 		]);
 	}
 
@@ -47,8 +59,12 @@ class AnnouncementController extends Controller
 		// show add announcements form
 		$user = Auth::user();
 
-		if ($user->is_staff == 'True') {
-			return view('add_announcement_form');
+		if ($user) {
+			if ($user->is_staff == 'True') {
+				return view('add_announcement_form');
+			} else {
+				abort(403, 'Forbidden page.');
+			}
 		} else {
 			abort(403, 'Forbidden page.');
 		}
@@ -60,22 +76,43 @@ class AnnouncementController extends Controller
 		$previous_announcement = Announcement::where('id', '<', $current_announcement->id)->orderBy('id','desc')->first();
 		$next_announcement = Announcement::where('id', '>', $current_announcement->id)->orderBy('id')->first();
 		$user = Auth::user();
+        $layout = '';
 
-		return view('show_announcement', [
-			"current_announcement" => $current_announcement,
-			"next_announcement" => $next_announcement,
-			"previous_announcement" => $previous_announcement,
-			"user" => $user
-		]);
+        if ($user) {
+            if ($user->is_staff == 'True') {
+                $layout = 'layouts.admin_panel';
+            } elseif ($user->is_staff == 'False') {
+                $layout = 'layouts.app';
+            }
+        } else {
+            $layout = 'layouts.app';
+        }
+
+        return view('show_announcement', [
+            "current_announcement" => $current_announcement,
+            "next_announcement" => $next_announcement,
+            "previous_announcement" => $previous_announcement,
+            'user' => $user,
+            'layout' => $layout,
+        ]);
 	}
 
 	public function edit ($id) {
 		// show edit announcement form
 		$announcement = Announcement::find($id);
+		$user = Auth::user();
 
-		return view('edit_announcement_form', [
-			"announcement" => $announcement,
-		]);
+		if ($user) {
+			if ($user->is_staff == 'True') {
+				return view('edit_announcement_form', [
+					"announcement" => $announcement]
+				);
+			} else {
+				abort(403, 'Forbidden page.');
+			}
+		} else {
+			abort(403, 'Forbidden page.');
+		}
 	}
 
 	public function update (Request $request, $id) {
@@ -84,7 +121,7 @@ class AnnouncementController extends Controller
 
 		$validator = Validator::make($request->all() , 
 		[
-			'title' => 'unique:announcements,id,' .$announcement->id,
+			'title' => 'required|unique:announcements,id,' .$announcement->id,
 		]);
 
 		if ($validator->fails()) {
@@ -132,12 +169,24 @@ class AnnouncementController extends Controller
 		// show announcements by user
 		$user = Auth::user();
 		$find_user_by_username = User::where('username', $username)->first();
-		$announcements_of_user = Announcement::where('user_id', '=', $find_user_by_username->id)->orderBy('user_id','desc')->paginate(5);
+		$announcements_of_user = Announcement::where('user_id', '=', $find_user_by_username->id)->orderBy('user_id', 'desc')->paginate(5);
+        $layout = '';
+
+        if ($user) {
+            if ($user->is_staff == 'True') {
+                $layout = 'layouts.admin_panel';
+            } elseif ($user->is_staff == 'False') {
+                $layout = 'layouts.app';
+            }
+        } else {
+            $layout = 'layouts.app';
+        }
 
 		return view('show_announcement_by_username', [
 			"user" => $user,
 			"user_by_username" => $find_user_by_username,
 			"announcements" => $announcements_of_user,
+            "layout" => $layout,
 		]);
 	}
 }

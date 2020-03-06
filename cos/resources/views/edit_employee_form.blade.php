@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin_panel')
 
 @section('title')
-Chatsmith Online Services - Edit Employee Form
+Edit Employee Form
 @endsection
 
 @section('content')
@@ -9,7 +9,6 @@ Chatsmith Online Services - Edit Employee Form
 	<div class="col-md-12">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
 			<li class="breadcrumb-item"><a href="{{ route('employees.index') }}">Employees</a></li>
 			<li class="breadcrumb-item">Employee: {{ $employee->id }}</li>
 		</ol>
@@ -134,9 +133,9 @@ Chatsmith Online Services - Edit Employee Form
 			<div class="alert alert-danger" role="alert">
 				<p>Edit Employee Errors</p>
 				<ul>
-					@foreach($errors->all() as $error)
-						<li>{{ $error }}</li>
-					@endforeach
+				@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
 				</ul>
 			</div>
 		@endif

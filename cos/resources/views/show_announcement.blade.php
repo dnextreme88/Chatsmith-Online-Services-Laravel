@@ -1,24 +1,31 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('title')
-Chatsmith Online Services - Announcement # {{ $current_announcement->id }}
+Announcement # {{ $current_announcement->id }}
 @endsection
 
 @section('content')
 <div class="container-fluid">
 	<div class="row">
+	@guest
 		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				@auth
-					@if ($user->is_staff == 'True')
-						<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
-					@endif
-				@endauth
 				<li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
 				<li class="breadcrumb-item">{{ $current_announcement->title }}</li>
 			</ol>
 		</div>
+	@else
+		@if ($user->is_staff == 'False')
+			<div class="col-md-12">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+					<li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
+					<li class="breadcrumb-item">{{ $current_announcement->title }}</li>
+				</ol>
+			</div>
+		@endif
+	@endguest
 		<div class="col-md-12 alert alert-info alert-block bg-info">
 			<h1>Title: {{ $current_announcement->title }}</h1>
 			<p class="text-left">Posted by <a href="/announcements/user/{{ $current_announcement->user->username }}">{{ $current_announcement->user->username }}</a> on <strong>{{ \Carbon\Carbon::parse($current_announcement->created_at)->format('F j, Y g:i:s A') }}</strong></p>

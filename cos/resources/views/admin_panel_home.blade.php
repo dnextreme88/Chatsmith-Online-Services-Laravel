@@ -21,14 +21,14 @@ Home
 					<th>Timestamp</th>
 				</thead>
 				<tbody>
-					@foreach ($admin_logs as $log)
+				@foreach ($admin_logs as $log)
 					<tr>
 						<td>{{ $log->id }}</td>
 						<td>{{ $log->user->username }}</td>
 						<td>{{ $log->description }}</td>
 						<td>{{ $log->created_at }}</td>
 					</tr>
-					@endforeach
+				@endforeach
 				</tbody>
 			</table>
 		{{ $employees->links() }}

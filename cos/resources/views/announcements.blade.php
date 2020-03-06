@@ -1,23 +1,40 @@
-@extends('layouts.app')
+@extends($layout)
 
 @section('title')
-Chatsmith Online Services - Announcements
+@guest
+	Announcements
+@else
+	@auth
+		@if ($user->is_staff == 'True')
+			Manage Announcements
+		@else
+			Announcements
+		@endif
+	@endauth
+@endguest
 @endsection
 
 @section('content')
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		<div class="col-md-8">
+	@guest
+		<div class="col-md-12">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				@if ($user->is_staff == 'True')
-					<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
-				@endif
 				<li class="breadcrumb-item">Announcements</li>
 			</ol>
 		</div>
-		<!-- Left Side -->
-		<div class="col-md-9">
+	@else
+		@if ($user->is_staff == 'False')
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
+				<li class="breadcrumb-item">Announcements</li>
+			</ol>
+		</div>
+		@endif
+	@endguest
+		<div class="col-md-12">
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
 				<button type="button" class="close" data-dismiss="alert">x</button>
@@ -32,9 +49,11 @@ Chatsmith Online Services - Announcements
 					<th>Title</th>
 					<th>Description</th>
 					<th>Date Created</th>
-					@if ($user->is_staff == 'True')
-						<th width="30%">Actions</th>
-					@endif
+					@auth
+						@if ($user->is_staff == 'True')
+							<th width="20%">Actions</th>
+						@endif
+					@endauth
 				</thead>
 				<tbody>
 				@foreach ($announcements as $announcement)
@@ -44,19 +63,21 @@ Chatsmith Online Services - Announcements
 						<td>{{ $announcement->title }}</td>
 						<td>{{ $announcement->description }}</td>
 						<td>{{ \Carbon\Carbon::parse($announcement->created_at)->format('F j, Y') }}</td>
-						@if ($user->is_staff == 'True')
-							<td><ul class="list-inline">
-									<li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/announcements/{{ $announcement->id }}/">View</a></li>
-									<li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/announcements/{{ $announcement->id }}/edit/">Edit</a></li>
-									<li class="list-inline-item">
-										<form action="/announcements/{{ $announcement->id }}" method="POST">
-											@csrf
-											@method('DELETE')
-											<i class="fa fa-trash"></i> <input class="delete-announcement-button" type="submit" name="submit" value="Delete">
-										</form>
-									</li>
-							</ul></td>
-						@endif
+						@auth
+							@if ($user->is_staff == 'True')
+								<td><ul class="list-inline">
+										<li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/announcements/{{ $announcement->id }}/">View</a></li>
+										<li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/announcements/{{ $announcement->id }}/edit/">Edit</a></li>
+										<li class="list-inline-item">
+											<form action="/announcements/{{ $announcement->id }}" method="POST">
+												@csrf
+												@method('DELETE')
+												<i class="fa fa-trash"></i> <input class="delete-announcement-button" type="submit" name="submit" value="Delete">
+											</form>
+										</li>
+								</ul></td>
+							@endif
+						@endauth
 					</tr>
 					@endforeach
 				</tbody>
@@ -68,12 +89,6 @@ Chatsmith Online Services - Announcements
 			<p>No announcements found.</p>
 		@endif
 		</div>
-		<!-- Right Side / Navigation -->
-		@if ($user->is_staff == 'True')
-			<div class="col-md-3">
-				@include('layouts.admin_panel_right_nav')
-			</div>
-		@endif
 	</div>
 </div>
 @endsection
