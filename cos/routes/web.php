@@ -55,10 +55,10 @@ Route::post('/leadforms/plateiq', 'LeadformController@store_plateiq_leadform');
 
 // Static pages
 
-Route::get('/aboutus', 'AboutUsController@index');
+Route::get('/aboutus', 'StaticPagesController@about_us_index');
 
-Route::get('/careers', 'CareersController@index');
+Route::get('/careers', 'StaticPagesController@careers_index');
 
-Route::get('/privacy', 'PrivacyController@index');
+Route::get('/privacy', 'StaticPagesController@privacy_index');
 
-Route::get('/terms', 'TermsAndConditionsController@index');
+Route::get('/terms', 'StaticPagesController@terms_and_conditions_index');
