@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin_panel')
 
 @section('title')
-Chatsmith Online Services - Add Employee Form
+Add Employee Form
 @endsection
 
 @section('content')
@@ -9,7 +9,6 @@ Chatsmith Online Services - Add Employee Form
 	<div class="col-md-12">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
 			<li class="breadcrumb-item"><a href="{{ route('employees.index') }}">Employees</a></li>
 			<li class="breadcrumb-item">Create Employee</li>
 		</ol>

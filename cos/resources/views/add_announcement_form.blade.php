@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin_panel')
 
 @section('title')
-Chatsmith Online Services - Add Announcement Form
+Add Announcement Form
 @endsection
 
 @section('content')
@@ -9,7 +9,6 @@ Chatsmith Online Services - Add Announcement Form
 	<div class="col-md-12">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="{{ route('admin_panel_home') }}">Admin Panel Home</a></li>
 			<li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
 			<li class="breadcrumb-item">Create Announcement</li>
 		</ol>
