@@ -15,6 +15,12 @@ Auth::routes();
 
 Route::get('/', 'IndexController@index');
 
+Route::resource('schedules', 'ScheduleController', ['except' => ['destroy']]);
+
+Route::post('schedules/employees/{employee_id}/{schedule_id}', 'ScheduleController@destroy')->name('schedules.destroy');
+
+Route::get('schedules/employees/{id}', 'ScheduleController@show_schedule_by_employee');
+
 Route::get('/admin', 'AdminPanelController@index')->name('admin_panel_home');
 
 Route::get('/daily_productions', 'DailyProductionController@index')->name('daily_productions');

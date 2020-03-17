@@ -107,4 +107,11 @@ class User extends Authenticatable
 	public function production_plate () {
 		return $this->hasMany('App\ProductionPlate');
 	}
+
+    /**
+     * Get the schedules associated with the user.
+     */
+    public function schedule () {
+        return $this->hasMany('App\Schedule');
+    }
 }

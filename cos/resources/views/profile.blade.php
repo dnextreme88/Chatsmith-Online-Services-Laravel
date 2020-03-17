@@ -167,6 +167,9 @@
 						@if ($user->is_staff == 'True')
 							<li><a href="{{ route('admin_panel_home') }}">Admin Panel</a></li>
 						@endif
+						@if ($user->employee)
+							<li><a href="/schedules/employees/{{ $user->employee->id }}/">My Schedules</a></li>
+						@endif
 						<li><a href="/profile/{{ $user->id}}/edit">Settings</a></li>
 					</ul>
 				</div>
