@@ -33,83 +33,60 @@ BASE RGB: E28700; // orange
 	}
 
 /* Delete buttons (Announcement, Employee) */
-	.delete-announcement-button, .delete-announcement-button:hover, .delete-employee-button, .delete-employee-button:hover {
+	.delete-announcement-button, .delete-announcement-button:hover,
+	.delete-employee-button, .delete-employee-button:hover,
+	.delete-schedule-button, .delete-schedule-button:hover {
 		margin: 0;
 		padding: 0;
 		border: none;
 		background-color: transparent;
 	}
 
-	.delete-announcement-button, .delete-employee-button {
+	.delete-announcement-button, .delete-employee-button, .delete-schedule-button {
 		color: #FF9900;
 	}
 
-	.delete-announcement-button:hover, .delete-employee-button:hover {
+	.delete-announcement-button:hover, .delete-employee-button:hover, .delete-schedule-button:hover {
 		color: #FF9900;
 		text-decoration: underline;
 	}
 
 /* Admin Panel */
-/* padding: 8px 4px; /* top and bottom = 8px; right and left = 4px; */
 	#admin-panel-nav-links-body {
 		background-color: lightblue;
 	}
 
-	#admin-panel-nav-links-body ul li {
-		padding: 20px;
-	}
-
 	#admin-panel-nav-links-body ul li a {
+		display: block;
 		color: #000;
+		padding: 16px;
 	}
 
 	#admin-panel-nav-links-body ul li.active a {
+		display: block;
 		color: #FFF;
+		padding: 16px;
 	}
 
 	#admin-panel-nav-links-body ul li.active {
+		display: block;
 		background-color: #002A56;
 		transition: background-color 0.4s;
 	}
 
 	#admin-panel-nav-links-body ul li.active:hover, #admin-panel-nav-links-body ul li:hover {
+		display: block;
 		background-color: #057EFB;
 	}
 
 	#admin-panel-nav-links-body ul li.active a:hover, #admin-panel-nav-links-body ul li a:hover {
-		text-decoration: none;
-	}
-/*	.admin-panel-card {
-		border-top-left-radius: 24px;
-		border-bottom-right-radius: 24px;
-	}
-
-	.admin-panel-card-header {
-		border-top-left-radius: 24px;
-	}
-
-	.admin-panel-card-body-nav {
-		border-bottom-right-radius: 24px;
-		background-color: #005EBF;
-	}
-
-	.admin-panel-card-body-nav ul li.active {
-		background-color: #002A56;
-		padding: 8px 4px;
-		transition: background-color 0.4s;
-	}
-
-	.admin-panel-card-body-nav ul li.active:hover, .admin-panel-card-body-nav ul li:hover {
-		background-color: #057EFB;
-	}
-
-	.admin-panel-card-body-nav ul li.active a:hover, .admin-panel-card-body-nav ul li a:hover {
+		display: block;
 		text-decoration: none;
 	}
 
 	#admin-panel-hr-separator {
 		background-color: #002A56;
-	}*/
+	}
 
 /* Footer */
 	footer {
