@@ -25,30 +25,42 @@ class UpdateProfileImageController extends Controller
 
 	public function upload (Request $request, $id) {
 		$user = User::find($id);
-		$this->validate($request, [
-			'select_file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-		]);
+		$default_avatar_filename = 'default_avatar.png';
+		// Get name of submit buttons
+		$removeImageButton = $request->input('removeImage');
+		$uploadButton = $request->input('uploadImage');
 
-		// Get uploaded file
-		$image = $request->file('select_file');
-		// Generate a filename based on username and unix timestamp
-		$image_filename = $user->username. '_' .time() . '.' .$image->getClientOriginalExtension();
-		// Resize image 
-		$resize_image = Image::make($image->getRealPath());
-		$resize_image->resize(180, 180, function ($constraint) {
-			$constraint->aspectRatio();
-		});
-		// Upload image to public/images/ directory
-		$resize_image->save(public_path('/images') . '/' . $image_filename);
-		// Temporarily store old profile image when new image has successfully uploaded
-		$old_profile_image = $user->profile_image;
-		// Update profile_image field of user
-		$user->profile_image = 'images\\'. $image_filename;
-		$new_profile_image = $user->profile_image;
-		$user->save();
-		// Redirect back to upload page when image has successfully uploaded
-		return back()->withSuccess('Image uploaded successfully')
-			->with('new_profile_image', $new_profile_image)
-			->with('old_profile_image', $old_profile_image);
-	}
+		if (isset($uploadButton)) { // When Upload Imageis clicked
+		    // Validate input
+            $this->validate($request, [
+                'select_file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            ]);
+            // Get uploaded file
+            $image = $request->file('select_file');
+            // Generate a filename based on username and unix timestamp
+            $image_filename = $user->username . '_' . time() . '.' . $image->getClientOriginalExtension();
+            // Resize image
+            $resize_image = Image::make($image->getRealPath());
+            $resize_image->resize(180, 180, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            // Upload image to public/images/avatars directory
+            $resize_image->save(public_path('/images/avatars') . '/' . $image_filename);
+            // Remove old profile image to save space
+            if ($user->profile_image != 'images\\avatars\\' . $default_avatar_filename) {
+                unlink(public_path($user->profile_image));
+            }
+            // Update profile_image field of user
+            $user->profile_image = 'images\\avatars\\' . $image_filename;
+            $user->save();
+            // Redirect back to upload page when image has successfully uploaded
+            return back()->withSuccess('Image uploaded successfully');
+        } elseif (isset($removeImageButton)) { // When Remove Profile Image is clicked
+            unlink(public_path($user->profile_image));
+            $user->profile_image = 'images\\avatars\\' . $default_avatar_filename;
+            $user->save();
+            // Redirect back to upload page when image has successfully uploaded
+            return back()->withSuccess('Image removed successfully! Your profile image is now set to default.');
+        }
+    }
 }

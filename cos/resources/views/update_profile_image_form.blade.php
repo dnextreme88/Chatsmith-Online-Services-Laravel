@@ -23,16 +23,6 @@ Edit User Settings - Update Profile Image Form
 				<button type="button" class="close" data-dismiss="alert">x</button>
 				{{ session('success') }}
 			</div>
-			<!-- Display successfully uploaded image -->
-			<div class="col-md-6 mb-1">
-				<p>New profile image:</p>
-				<img src="/{{ Session::get('new_profile_image') }}" class="img-thumbnail img-responsive mx-auto d-block avatar-thumbnail-medium" />
-			</div>
-			<!-- Get old image when new image has uploaded -->
-			<div class="col-md-6 mb-1">
-				<p>Old profile image:</p>
-				<img src="/{{ Session::get('old_profile_image') }}" class="img-thumbnail img-responsive mx-auto d-block avatar-thumbnail-medium" />
-			</div>
 		@endif
 		<div class="col-md-12 alert alert-info alert-block">
 			<p>Upload a profile image using the form below. Please observe the following guidelines:</p>
@@ -77,10 +67,10 @@ Edit User Settings - Update Profile Image Form
 				</div>
 				<div class="form-group row">
 					<div class="col-md-4 offset-md-2">
-						<a class="btn btn-danger" href="/profile/">Back to Profile</a>
+						<input type="submit" name="removeImage" class="btn btn-danger" value="Remove Profile Image">
 					</div>
 					<div class="col-md-6">
-						<input type="submit" name="upload" class="btn btn-primary" value="Upload">
+						<input type="submit" name="uploadImage" class="btn btn-primary" value="Upload Image">
 					</div>
 				</div>
 			</form>
