@@ -20,32 +20,11 @@ class ScheduleController extends Controller
     public function index () {
         $user = Auth::user();
         $layout = '';
-        $from = date('2020-03-17');
-        $to = date('2020-03-23');
+        $from = Carbon::today()->format('Y-m-d');
+        $to = Carbon::today()->addDays(6)->format('Y-m-d');
 
         $employees = Employee::join('users', 'users.id', 'employees.user_id')->where('employees.is_active', 'True')->orderBy('users.last_name', 'asc')->paginate(6);
         $schedules = Schedule::whereBetween('date_of_shift', [$from, $to])->groupBy('date_of_shift', 'employee_id')->orderBy('date_of_shift', 'asc')->distinct()->get();
-
-        $day1 = Carbon::today()->format('F j, Y');
-        $day1_day = Carbon::today()->format('D');
-
-        $day2 = Carbon::today()->addDays(1)->format('F j, Y');
-        $day2_day = Carbon::today()->addDays(1)->format('D');
-
-        $day3 = Carbon::today()->addDays(2)->format('F j, Y');
-        $day3_day = Carbon::today()->addDays(2)->format('D');
-
-        $day4 = Carbon::today()->addDays(3)->format('F j, Y');
-        $day4_day = Carbon::today()->addDays(3)->format('D');
-
-        $day5 = Carbon::today()->addDays(4)->format('F j, Y');
-        $day5_day = Carbon::today()->addDays(4)->format('D');
-
-        $day6 = Carbon::today()->addDays(5)->format('F j, Y');
-        $day6_day = Carbon::today()->addDays(5)->format('D');
-
-        $day7 = Carbon::today()->addDays(6)->format('F j, Y');
-        $day7_day = Carbon::today()->addDays(6)->format('D');
 
         if ($user) {
             if ($user->is_staff == 'True') {
@@ -58,20 +37,6 @@ class ScheduleController extends Controller
         }
 
         return view('schedules', [
-            'day1' => $day1,
-            'day1_day' => $day1_day,
-            'day2' => $day2,
-            'day2_day' => $day2_day,
-            'day3' => $day3,
-            'day3_day' => $day3_day,
-            'day4' => $day4,
-            'day4_day' => $day4_day,
-            'day5' => $day5,
-            'day5_day' => $day5_day,
-            'day6' => $day6,
-            'day6_day' => $day6_day,
-            'day7' => $day7,
-            'day7_day' => $day7_day,
             'user' => $user,
             'start_date' => $from,
             'end_date' => $to,
@@ -79,31 +44,6 @@ class ScheduleController extends Controller
             'schedules' => $schedules,
             'layout' => $layout,
         ]);
-
-
-//        $user = Auth::user();
-//        $layout = '';
-//        $start_date = Carbon::today();
-//        $end_date = Carbon::today()->addDays(7);
-//
-//        if ($user) {
-//            if ($user->is_staff == 'True') {
-//                $layout = 'layouts.admin_panel';
-//            } elseif ($user->is_staff == 'False') {
-//                $layout = 'layouts.app';
-//            }
-//        } else {
-//            $layout = 'layouts.app';
-//        }
-//
-//        return view('schedules', [
-//            'schedules' => $schedules,
-//            'employees' => $employees,
-//            'user' => $user,
-//            'layout' => $layout,
-//            'start_date' => $start_date,
-//            'end_date' => $end_date,
-//        ]);
     }
 
     public function store (Request $request) {

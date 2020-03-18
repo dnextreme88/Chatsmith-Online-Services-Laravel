@@ -47,20 +47,12 @@
 				<table class="table table-bordered table-responsive">
 					<thead>
 						<th>Employee</th>
-{{--						<!-- Format of date_of_shift field: format('Y-m-d') -->--}}
-{{--							@for ($i = 0; $i < 7; $i++)--}}
-{{--								<th>--}}
-{{--									{{ \Carbon\Carbon::today()->addDays($i)->format('F j, Y') }}<br />--}}
-{{--									{{ \Carbon\Carbon::today()->addDays($i)->format('D') }}--}}
-{{--								</th>--}}
-{{--							@endfor--}}
-						<th width="12%" class="text-center">{{ $day1 }}<br />{{ $day1_day }}</th>
-						<th width="12%" class="text-center">{{ $day2 }}<br />{{ $day2_day }}</th>
-						<th width="12%" class="text-center">{{ $day3 }}<br />{{ $day3_day }}</th>
-						<th width="12%" class="text-center">{{ $day4 }}<br />{{ $day4_day }}</th>
-						<th width="12%" class="text-center">{{ $day5 }}<br />{{ $day5_day }}</th>
-						<th width="12%" class="text-center">{{ $day6 }}<br />{{ $day6_day }}</th>
-						<th width="12%" class="text-center">{{ $day7 }}<br />{{ $day7_day }}</th>
+							@for ($i = 0; $i < 7; $i++)
+								<th width="12%" class="text-center">
+									{{ \Carbon\Carbon::today()->addDays($i)->format('F j, Y') }}<br />
+									{{ \Carbon\Carbon::today()->addDays($i)->format('D') }}
+								</th>
+							@endfor
 					</thead>
 					<tbody>
 					@foreach ($employees as $employee)
@@ -68,15 +60,19 @@
 						@if (!$employee->user->last_name)
 							<td>
 								<a class="text-light" href="/employees/{{ $employee->id }}/">{{ $employee->user->first_name }} {{ $employee->user->maiden_name }}</a>
+							@auth
 							@if ($user->is_staff == 'True')
 								(<i class="fa fa-magic"></i> <a href="/schedules/employees/{{ $employee->id }}/">Edit</a>)
 							@endif
+							@endauth
 							</td>
 						@else
-							<td><a class="text-light" href="/employees/{{ $employee->id }}/">{{ $employee->user->last_name }}, {{ $employee->user->first_name }} {{ $employee->user->maiden_name }}</a>
+						<td><a class="text-light" href="/employees/{{ $employee->id }}/">{{ $employee->user->last_name }}, {{ $employee->user->first_name }} {{ $employee->user->maiden_name }}</a>
+							@auth
 							@if ($user->is_staff == 'True')
 								(<i class="fa fa-magic"></i> <a href="/schedules/employees/{{ $employee->id }}/">Edit</a>)
 							@endif
+							@endauth
 							</td>
 						@endif
 						@for ($day_adder = 0; $day_adder < 7; $day_adder++)
@@ -97,26 +93,6 @@
 			@elseif ($employees->count() == 0 && $user->is_staff == 'False')
 				<p>No employees found.</p>
 			@endif
-{{--				<table class="table table-bordered table-responsive">--}}
-{{--					<thead>--}}
-{{--						<th>Schedule ID</th>--}}
-{{--						<th>User ID</th>--}}
-{{--						<th>Employee ID</th>--}}
-{{--						<th>Time of Shift</th>--}}
-{{--						<th>Date of Shift</th>--}}
-{{--					</thead>--}}
-{{--					<tbody>--}}
-{{--					@foreach ($schedules as $schedule)--}}
-{{--						<tr>--}}
-{{--							<td>{{ $schedule->id }}</td>--}}
-{{--							<td>{{ $schedule->user->id }}</td>--}}
-{{--							<td>{{ $schedule->user->last_name }}, {{ $schedule->user->first_name }} {{ $schedule->user->maiden_name }} </td>--}}
-{{--							<td>{{ $schedule->time_of_shift }}</td>--}}
-{{--							<td>{{ $schedule->date_of_shift }}</td>--}}
-{{--						</tr>--}}
-{{--					@endforeach--}}
-{{--					</tbody>--}}
-{{--				</table>--}}
 			</div>
 		</div>
 	</div>
