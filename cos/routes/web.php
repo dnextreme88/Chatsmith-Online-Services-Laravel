@@ -21,6 +21,8 @@ Route::post('schedules/employees/{employee_id}/{schedule_id}', 'ScheduleControll
 
 Route::get('schedules/employees/{id}', 'ScheduleController@show_schedule_by_employee');
 
+Route::post('schedules/', 'ScheduleController@view_schedule_by_week')->name('view_schedule_by_week');
+
 Route::get('/admin', 'AdminPanelController@index')->name('admin_panel_home');
 
 Route::get('/daily_productions', 'DailyProductionController@index')->name('daily_productions');

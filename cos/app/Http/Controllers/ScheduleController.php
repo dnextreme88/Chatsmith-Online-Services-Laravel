@@ -177,4 +177,34 @@ class ScheduleController extends Controller
             "layout" => $layout,
         ]);
     }
+
+    public function view_schedule_by_week (Request $request) {
+        // view schedule by week
+        $user = Auth::user();
+        $layout = '';
+        $start_of_week = $request->start_of_week;
+        $end_of_week = Carbon::parse($start_of_week)->addDays(6)->format('Y-m-d');
+
+        $employees = Employee::join('users', 'users.id', 'employees.user_id')->where('employees.is_active', 'True')->orderBy('users.last_name', 'asc')->paginate(6);
+        $schedules = Schedule::whereBetween('date_of_shift', [$start_of_week, $end_of_week])->groupBy('date_of_shift', 'employee_id')->orderBy('date_of_shift', 'asc')->distinct()->get();
+
+        if ($user) {
+            if ($user->is_staff == 'True') {
+                $layout = 'layouts.admin_panel';
+            } elseif ($user->is_staff == 'False') {
+                $layout = 'layouts.app';
+            }
+        } else {
+            $layout = 'layouts.app';
+        }
+
+        return view('schedules', [
+            'user' => $user,
+            'start_date' => $start_of_week,
+            'end_date' => $end_of_week,
+            'employees' => $employees,
+            'schedules' => $schedules,
+            'layout' => $layout,
+        ]);
+    }
 }
