@@ -17,6 +17,8 @@ Route::get('/', 'IndexController@index');
 
 Route::resource('schedules', 'ScheduleController', ['except' => ['destroy']]);
 
+Route::post('schedule', 'ScheduleController@store')->name('schedules.store');
+
 Route::post('schedules/employees/{employee_id}/{schedule_id}', 'ScheduleController@destroy')->name('schedules.destroy');
 
 Route::get('schedules/employees/{id}', 'ScheduleController@show_schedule_by_employee');
