@@ -23,7 +23,7 @@ class ScheduleController extends Controller
         $from = Carbon::today()->format('Y-m-d');
         $to = Carbon::today()->addDays(6)->format('Y-m-d');
 
-        $employees = Employee::join('users', 'users.id', 'employees.user_id')->where('employees.is_active', 'True')->orderBy('users.last_name', 'asc')->paginate(6);
+        $employees = Employee::join('users', 'users.id', 'employees.user_id')->where('employees.is_active', 'True')->orderBy('users.last_name', 'asc')->get();
         $schedules = Schedule::whereBetween('date_of_shift', [$from, $to])->groupBy('date_of_shift', 'employee_id')->orderBy('date_of_shift', 'asc')->distinct()->get();
 
         if ($user) {
