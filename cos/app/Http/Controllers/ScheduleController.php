@@ -59,12 +59,20 @@ class ScheduleController extends Controller
         }
 
         $employee = User::find($request->user_id)->employee;
+        $date_of_shift = $request->date_of_shift;
+
+        foreach ($employee->schedule as $schedule) {
+            if ($schedule->date_of_shift == $date_of_shift) {
+                $errors = array('existing_date_of_shift' => 'This employee already has a schedule for ' .Carbon::parse($date_of_shift)->format('F j, Y') . '.');
+                return redirect()->back()->withErrors($errors);
+            }
+        }
 
         Schedule::create([
             'user_id' => $request->user_id,
             'employee_id' => $employee->id,
             'time_of_shift' => $request->time_of_shift,
-            'date_of_shift' => $request->date_of_shift,
+            'date_of_shift' => $date_of_shift,
         ]);
 
         return redirect()->back()->withSuccess('Schedule successfully added!');
@@ -114,7 +122,7 @@ class ScheduleController extends Controller
             [
                 'user_id' => 'unique:schedules,id,' .$schedule->id,
                 'time_of_shift' => Rule::in(['6:00 AM - 5:00 PM', '8:00 AM - 7:00 PM', '7:00 PM - 6:00 AM', '9:00 PM - 8:00 AM']),
-                'date_of_shift' => 'unique:schedules',
+                'date_of_shift' => 'unique:schedules,date_of_shift,' .$schedule->id,
             ]);
 
         if ($validator->fails()) {
