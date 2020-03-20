@@ -35,7 +35,7 @@ User Registration
                             </div>
 
                             <div class="col-md-4">
-                                <input id="maiden_name" type="text" class="form-control name-inputs-to-uppercase @error('maiden_name') is-invalid @enderror" name="maiden_name" value="{{ old('maiden_name') }}" required autocomplete="maiden_name" autofocus>
+                                <input id="maiden_name" type="text" class="form-control name-inputs-to-uppercase @error('maiden_name') is-invalid @enderror" name="maiden_name" value="{{ old('maiden_name') }}" autocomplete="maiden_name" autofocus>
 
                                 @error('maiden_name')
                                     <span class="invalid-feedback" role="alert">
