@@ -41,7 +41,7 @@
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<!-- Left Side Of Navbar -->
+					<!-- Left Side of Navbar -->
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item dropdown">
 							<a id="leadformsDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Leadforms</a>
@@ -52,7 +52,9 @@
 								<a class="dropdown-item" href="{{ route('plate_leadform') }}">Plate IQ Leadform</a>
 							</div>
 						</li>
+						<li class="nav-item"><a class="nav-link" href="{{ route('schedules.index') }}">COS Schedule</a></li>
 						<li class="nav-item"><a class="nav-link" href="{{ route('daily_productions') }}">Daily Productions</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{ route('tasks.index') }}">Daily Tasks</a></li>
 					</ul>
 
 					<!-- Right Side Of Navbar -->
