@@ -60,7 +60,7 @@ Edit Schedule Form
 				</div>
 				<!-- Date of Shift -->
 				<div class="form-group row">
-					<label for="date_of_shift" class="col-md-4 col-form-label text-md-right">Date of Tenure</label>
+					<label for="date_of_shift" class="col-md-4 col-form-label text-md-right">Date of Shift</label>
 
 					<div class="col-md-6">
 						<input id="date_of_shift" class="form-control input-lg" type="text" name="date_of_shift" value="{{ $schedule->date_of_shift }}">
