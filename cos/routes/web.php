@@ -21,7 +21,9 @@ Route::post('schedule', 'ScheduleController@store')->name('schedules.store');
 
 Route::post('schedules/employees/{employee_id}/{schedule_id}', 'ScheduleController@destroy')->name('schedules.destroy');
 
-Route::get('schedules/employees/{id}', 'ScheduleController@show_schedule_by_employee');
+Route::get('schedules/employees/{id}', 'ScheduleController@show_schedule_of_employee');
+
+Route::post('schedules/employees/{id}', 'ScheduleController@filter_schedule_of_employee');
 
 Route::post('schedules/', 'ScheduleController@view_schedule_by_week')->name('view_schedule_by_week');
 

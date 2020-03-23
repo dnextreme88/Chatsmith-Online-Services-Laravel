@@ -161,12 +161,20 @@ class ScheduleController extends Controller
         }
     }
 
-    public function show_schedule_by_employee ($id) {
+    public function show_schedule_of_employee ($id) {
         // show schedules by employee
         $user = Auth::user();
         $find_employee_by_id = Employee::where('id', $id)->first();
         $schedules_of_employee = Schedule::where('employee_id', '=', $find_employee_by_id->id)->orderBy('date_of_shift', 'asc')->paginate(5);
         $layout = '';
+        $earliest_date_of_shift = '';
+        $latest_date_of_shift = '';
+
+        // If employee has schedules
+        if ($find_employee_by_id->schedule->count() > 0) {
+            $earliest_date_of_shift = Schedule::where('employee_id', '=', $find_employee_by_id->id)->orderBy('date_of_shift', 'asc')->first()->date_of_shift;
+            $latest_date_of_shift = Schedule::where('employee_id', '=', $find_employee_by_id->id)->orderBy('date_of_shift', 'desc')->latest()->first()->date_of_shift;
+        }
 
         if ($user) {
             if ($user->is_staff == 'True') {
@@ -182,6 +190,44 @@ class ScheduleController extends Controller
             "user" => $user,
             "employee_by_id" => $find_employee_by_id,
             "schedules" => $schedules_of_employee,
+            "start_date" => $earliest_date_of_shift,
+            "end_date" => $latest_date_of_shift,
+            "layout" => $layout,
+        ]);
+    }
+
+    public function filter_schedule_of_employee (Request $request, $id) {
+        // filter schedules based on start_date and end_date
+        $user = Auth::user();
+        $find_employee_by_id = Employee::where('id', $id)->first();
+        $layout = '';
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        // If end_date is less than start_date
+        if ($end_date < $start_date) {
+            $errors = array('end_date_less_than_start_date' => 'End date should not be less than start date.');
+            return redirect()->back()->withErrors($errors);
+        }
+
+        $schedules_of_employee = Schedule::where('employee_id', '=', $find_employee_by_id->id)->whereBetween('date_of_shift', [$start_date, $end_date])->orderBy('date_of_shift', 'asc')->paginate(5);
+
+        if ($user) {
+            if ($user->is_staff == 'True') {
+                $layout = 'layouts.admin_panel';
+            } elseif ($user->is_staff == 'False') {
+                $layout = 'layouts.app';
+            }
+        } else {
+            $layout = 'layouts.app';
+        }
+
+        return view('show_schedule_by_employee', [
+            "user" => $user,
+            "employee_by_id" => $find_employee_by_id,
+            "schedules" => $schedules_of_employee,
+            "start_date" => $start_date,
+            "end_date" => $end_date,
             "layout" => $layout,
         ]);
     }
