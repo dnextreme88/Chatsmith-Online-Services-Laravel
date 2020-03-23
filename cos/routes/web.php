@@ -27,6 +27,12 @@ Route::post('schedules/employees/{id}', 'ScheduleController@filter_schedule_of_e
 
 Route::post('schedules/', 'ScheduleController@view_schedule_by_week')->name('view_schedule_by_week');
 
+Route::resource('tasks', 'TaskController');
+
+Route::post('task', 'TaskController@store')->name('tasks.store');
+
+Route::post('tasks/', 'TaskController@view_task_by_day')->name('view_task_by_day');
+
 Route::get('/admin', 'AdminPanelController@index')->name('admin_panel_home');
 
 Route::get('/daily_productions', 'DailyProductionController@index')->name('daily_productions');

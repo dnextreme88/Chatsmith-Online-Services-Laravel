@@ -52,4 +52,10 @@ class Employee extends Model
         return $this->hasMany('App\Schedule');
     }
 
+    /**
+     * Get the tasks associated with the employee.
+     */
+    public function task () {
+        return $this->hasMany('App\Task');
+    }
 }

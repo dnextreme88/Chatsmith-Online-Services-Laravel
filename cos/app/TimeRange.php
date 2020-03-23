@@ -28,4 +28,11 @@ class TimeRange extends Model
 	public function production_plate () {
 		return $this->belongsTo('App\ProductionPlate');
 	}
+
+    /**
+     * Get the task associated with the time range.
+     */
+    public function task () {
+        return $this->belongsTo('App\Task');
+    }
 }
