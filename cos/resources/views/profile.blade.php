@@ -14,8 +14,8 @@
 			</ol>
 		</div>
 		@if ($latest_announcement)
-		<div class="col-md-2"> <!-- Requires $latest_announcement variable - fetch latest announcement -->
-			<img src="../{{ $latest_announcement->user->image }}" class="img-thumbnail img-responsive avatar-thumbnail-small" />
+		<div class="col-md-2" style="margin: auto;"> <!-- Requires $latest_announcement variable - fetch latest announcement -->
+			<img src="../{{ $latest_announcement->user->image }}" class="img-thumbnail img-responsive avatar-thumbnail-small" style="display: block; margin: auto;" />
 		</div>
 		<div class="col-md-10 speech-bubble">
 			@include('layouts.latest_announcement_pane')
