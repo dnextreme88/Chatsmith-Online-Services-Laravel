@@ -27,7 +27,39 @@
 				<button type="button" class="close" data-dismiss="alert">x</button>
 				{{ session('success') }}
 			</div>
+		@elseif (isset($search_success_message))
+			<div class="alert alert-success alert-block" role="alert">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				{{ $search_success_message }}
+			</div>
+		@elseif ($errors->any())
+			<div class="alert alert-danger" role="alert">
+				<p>Search Employee Errors</p>
+				<ul>
+				@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+				</ul>
+			</div>
 		@endif
+			<!-- Search employees form -->
+			<form id="search-employees-form" class="form-inline" action="{{ route('search_employees') }}" method="GET">
+				<div class="form-group my-2">
+					<input id="search_employees_query" class="form-control" type="text" name="search_employees_query" placeholder="Search employees..." required>
+				</div>
+				<div class="form-group my-2">
+					<label for="show_number_of_results" class="m-2">Show</label>
+					<select id="show_number_of_results" class="form-control" name="show_number_of_results">
+					@foreach ($show_number_of_results_choices as $show_number_of_results)
+						<option value="{{ $show_number_of_results }}">{{ $show_number_of_results }}</option>
+					@endforeach
+					</select>
+					<label for="show_number_of_results" class="m-2">results</label>
+				</div>
+				<div class="form-group m-2">
+					<button class="btn btn-secondary" type="submit" name="submit"><i class="fa fa-search"></i></button>
+				</div>
+			</form>
 		@if ($employees->count() > 0)
 			<table class="table table-bordered table-responsive">
 				<thead>

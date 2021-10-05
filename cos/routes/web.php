@@ -45,6 +45,8 @@ Route::get('announcements/user/{username}', 'AnnouncementController@show_announc
 
 Route::resource('employees', 'EmployeeController');
 
+Route::get('employees/search/query', 'EmployeeController@search_employees')->name('search_employees');
+
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
 Route::get('/profile/{id}/edit', 'ProfileController@edit_user_settings');

@@ -11,14 +11,15 @@ use Validator;
 
 class EmployeeController extends Controller
 {
+    private $show_number_of_results_choices = [
+        5, 10, 15, 20, 25
+    ];
 	private $employee_type_choices = [
 		'OJT', 'Part-time', 'Regular'
 	];
-
 	private $designation_choices = [
 		'Baguio', 'Pangasinan'
 	];
-
 	private $role_choices = [
 		'Administrator', 'Director', 'Employee', 'Human Resources and Recruitment', 'Owner', 'Quality Analyst', 'Supervisor', 'Team Leader'
 	];
@@ -48,6 +49,7 @@ class EmployeeController extends Controller
             "employees" => $employees,
             "user" => $user,
             "layout" => $layout,
+            "show_number_of_results_choices" => $this->show_number_of_results_choices,
 		]);
 	}
 
@@ -194,4 +196,49 @@ class EmployeeController extends Controller
 			abort(403, 'Forbidden page.');
 		}
 	}
+
+	public function search_employees (Request $request) {
+        $user = Auth::user();
+        $layout = '';
+        $search_success_message = '';
+        $query = $request->search_employees_query;
+        $show_number_of_results = $request->show_number_of_results;
+
+        $validator = Validator::make($request->all() ,
+            [
+                'search_employees_query' => 'required',
+                'show_number_of_results' => ['integer', Rule::in([5, 10, 15, 20, 25])],
+            ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $employees = Employee::join('users', 'users.id', 'employees.user_id')->where('users.username', 'like', '%' .$query. '%')->paginate($show_number_of_results);
+
+        // For page?= parameter in URLs
+        $employees->withPath('query?search_employees_query=' .$query. '&show_number_of_results=' .$show_number_of_results. '&submit=');
+
+        if ($user->is_staff == 'True') {
+            $layout = 'layouts.admin_panel';
+        } elseif ($user->is_staff == 'False') {
+            $layout = 'layouts.app';
+        }
+
+        if ($employees->total() == 1) {
+            $search_success_message = 'Your search returned ' . $employees->total() . ' result.';
+        } elseif ($employees->total() > 1) {
+            $search_success_message = 'Your search returned ' . $employees->total() . ' results.';
+        } elseif ($employees->total() == 0) {
+            $search_success_message = 'No results were found with the query "' .$query. '".';
+        }
+
+        return view('employees', [
+            "employees" => $employees,
+            "user" => $user,
+            "layout" => $layout,
+            "search_success_message" => $search_success_message,
+            "show_number_of_results_choices" => $this->show_number_of_results_choices,
+        ]);
+    }
 }

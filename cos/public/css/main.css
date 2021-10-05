@@ -88,6 +88,11 @@ BASE RGB: E28700; // orange
 		background-color: #002A56;
 	}
 
+/* Search boxes */
+	#search-employees-form input[type=text] {
+		width: 360px !important;
+	}
+
 /* Footer */
 	footer {
 		background-color: #057EFB;
