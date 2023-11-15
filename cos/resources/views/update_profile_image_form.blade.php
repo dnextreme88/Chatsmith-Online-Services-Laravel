@@ -20,7 +20,7 @@ Edit User Settings - Update Profile Image Form
 		</div>
 		@if (session('success'))
 			<div class="col-md-12 alert alert-success alert-block">
-				<button type="button" class="close" data-dismiss="alert">x</button>
+				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
 				{{ session('success') }}
 			</div>
 		@endif

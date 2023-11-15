@@ -24,12 +24,12 @@
 		<div class="col-md-12">
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
-				<button type="button" class="close" data-dismiss="alert">x</button>
+				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
 				{{ session('success') }}
 			</div>
 		@elseif (isset($search_success_message))
 			<div class="alert alert-success alert-block" role="alert">
-				<button type="button" class="close" data-dismiss="alert">x</button>
+				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
 				{{ $search_success_message }}
 			</div>
 		@elseif ($errors->any())
@@ -94,27 +94,27 @@
 						@endif
 						</td>
 						<td class="text-center">
-                        @auth
-                            @if ($employee->is_active == 'True')
-                                <i class="text-success fa fa-check-circle"></i>
-                            @else
-                                <i class="text-danger fa fa-times-circle"></i>
-                            @endif
-                        </td>
-                            @if ($user->is_staff == 'True')
-                                <td><ul class="list-inline">
-                                        <li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/employees/{{ $employee->id }}/">View</a></li>
-                                        <li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a></li>
-                                        <li class="list-inline-item">
-                                            <form action="/employees/{{ $employee->id }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <i class="fa fa-trash"></i> <input class="delete-employee-button" type="submit" name="submit" value="Delete">
-                                            </form>
-                                        </li>
-                                </ul></td>
-                            @endif
-                        @endauth
+						@auth
+							@if ($employee->is_active == 'True')
+								<i class="text-success fa fa-check-circle"></i>
+							@else
+								<i class="text-danger fa fa-times-circle"></i>
+							@endif
+						</td>
+							@if ($user->is_staff == 'True')
+								<td><ul class="list-inline">
+										<li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/employees/{{ $employee->id }}/">View</a></li>
+										<li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a></li>
+										<li class="list-inline-item">
+											<form action="/employees/{{ $employee->id }}" method="POST">
+												@csrf
+												@method('DELETE')
+												<i class="fa fa-trash"></i> <input class="delete-employee-button" type="submit" name="submit" value="Delete">
+											</form>
+										</li>
+								</ul></td>
+							@endif
+						@endauth
 					</tr>
 					@endforeach
 				</tbody>

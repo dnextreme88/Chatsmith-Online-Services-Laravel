@@ -19,8 +19,8 @@ Edit Announcement Form
 		<div class="card-body">
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
-                <button type="button" class="close" data-dismiss="alert">x</button>
-                {{ session('success') }}. You may go back and see <a href="{{ route('announcements.index') }}" class="alert-link">all the announcements</a>.
+				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+				{{ session('success') }}. You may go back and see <a href="{{ route('announcements.index') }}" class="alert-link">all the announcements</a>.
 			</div>
 		@endif
 			<form action="/announcements/{{ $announcement->id }}/" method="POST">

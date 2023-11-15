@@ -45,7 +45,7 @@
 					<!-- Show success message when user has successfully timed in -->
 					@if (session('success'))
 						<div class="alert alert-success alert-block" role="alert">
-							<button type="button" class="close" data-dismiss="alert">x</button>
+							<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
 							{{ session('success') }}
 						</div>
 					<!-- Show error if user has timed in and is not yet an employee -->
@@ -57,14 +57,14 @@
 						</div>
 					@endif
 					<!-- CLOCK IN modal button -->
-					<button type="button" class="btn btn-success btn-lg mb-2" data-toggle="modal" data-target="#clockInModal">CLOCK IN</button>
+					<button type="button" class="btn btn-success btn-lg mb-2" data-bs-toggle="modal" data-bs-target="#clock-in-modal">CLOCK IN</button>
 					<!-- Modal -->
-					<div class="modal fade" id="clockInModal" tabindex="-1" role="dialog" aria-labelledby="clockInModalLabel" aria-hidden="true">
+					<div class="modal fade" id="clock-in-modal" tabindex="-1" role="dialog" aria-labelledby="clock-in-modal" aria-hidden="true">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="clockInModalLabel">Select time of shift</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<h5 class="modal-title" id="clock-in-modal">Select time of shift</h5>
+									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								</div>
 								<!-- CLOCK IN FUNCTION - creates a time record for the user -->
 								<form action="{{ route('create_time_record') }}" method="POST" id="clock-in-form">
@@ -106,14 +106,14 @@
 								<td>{{ \Carbon\Carbon::parse($time_record->timestamp_in)->format('F j, Y - h:i:s A') }}</td>
 								<!-- Show CLOCK OUT button once user has timed in -->
 								@if ($time_record->timestamp_in == $time_record->timestamp_out)
-								<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#clockOutModal">CLOCK OUT</button>
+								<td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#clock-out-modal">CLOCK OUT</button>
 									<!-- CLOCK OUT Modal -->
-									<div class="modal fade" id="clockOutModal" tabindex="-1" role="dialog" aria-labelledby="clockOutModal" aria-hidden="true">
+									<div class="modal fade" id="clock-out-modal" tabindex="-1" role="dialog" aria-labelledby="clock-out-modal" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title" id="clockOutModal">Confirm your clock out</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												<h5 class="modal-title" id="clock-out-modal">Confirm your clock out</h5>
+												<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 											</div>
 											<!-- CLOCK OUT FUNCTION - updates timestamp_out field of the user -->
 											<form action="/profile/time_record/{{ $time_record->id }}" method="POST" id="clock-out-form">

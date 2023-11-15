@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
-use App\Task;
-use App\TimeRange;
-use App\User;
+use App\Models\Employee;
+use App\Models\Task;
+use App\Models\TimeRange;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Validator;
 
 class TaskController extends Controller
 {
@@ -47,7 +46,7 @@ class TaskController extends Controller
     }
 
     public function store (Request $request) {
-        // process in adding task
+        // Process in adding task
         $employee = User::find($request->user_id)->employee;
         $task_date = $request->task_date;
         $time_range = $request->time_range;
@@ -55,7 +54,8 @@ class TaskController extends Controller
 
         foreach ($employee->task as $task) {
             if ($task->time_range_id == $time_range && $task->task_date == $task_date) {
-                $errors = array('existing_task_for_time_range' => 'This employee already has a task at ' . $find_time_range->time_range . ' for ' . Carbon::parse($task_date)->format('F j, Y') . '.');
+                $errors = ['existing_task_for_time_range' => 'This employee already has a task at ' .$find_time_range->time_range. ' for ' .Carbon::parse($task_date)->format('F j, Y') . '.'];
+
                 return redirect()->back()->withErrors($errors);
             }
         }
@@ -72,7 +72,7 @@ class TaskController extends Controller
     }
 
     public function create () {
-        // show add tasks form
+        // Show add tasks form
         $user = Auth::user();
         $users = User::all();
         $time_ranges = TimeRange::all();
