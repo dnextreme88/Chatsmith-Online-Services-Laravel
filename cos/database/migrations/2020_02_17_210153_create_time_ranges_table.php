@@ -4,17 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTimeRangesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('time_ranges', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('time_range')->nullable();
             $table->timestamps();
         });
@@ -22,11 +20,9 @@ class CreateTimeRangesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('time_ranges');
     }
-}
+};

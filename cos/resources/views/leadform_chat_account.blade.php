@@ -18,8 +18,8 @@ Chatsmith Online Services - Chat Account Leadform
 		<div class="card-body">
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
-                <button type="button" class="close" data-dismiss="alert">x</button>
-                {{ session('success') }}
+				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+				{{ session('success') }}
 			</div>
 		@endif
 		@if($errors->any())

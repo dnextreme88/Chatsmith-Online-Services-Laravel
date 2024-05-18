@@ -4,34 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\User;
+use App\Models\User;
 use Image;
 
 class UpdateProfileImageController extends Controller
 {
-	// The user must be logged in to access the views
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+    // The user must be logged in to access the views
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
-	public function index () {
-		$user = Auth::user();
+    public function index () {
+        $user = Auth::user();
 
-		return view('update_profile_image_form', [
-			'user' => $user, 
-		]);
-	}
+        return view('update_profile_image_form', [
+            'user' => $user,
+        ]);
+    }
 
-	public function upload (Request $request, $id) {
-		$user = User::find($id);
-		$default_avatar_filename = 'default_avatar.png';
-		// Get name of submit buttons
-		$removeImageButton = $request->input('removeImage');
-		$uploadButton = $request->input('uploadImage');
+    public function upload (Request $request, $id) {
+        $user = User::find($id);
+        $default_avatar_filename = 'default_avatar.png';
+        // Get name of submit buttons
+        $removeImageButton = $request->input('removeImage');
+        $uploadButton = $request->input('uploadImage');
 
-		if (isset($uploadButton)) { // When Upload Imageis clicked
-		    // Validate input
+        if (isset($uploadButton)) { // When Upload Image is clicked
+            // Validate input
             $this->validate($request, [
                 'select_file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);

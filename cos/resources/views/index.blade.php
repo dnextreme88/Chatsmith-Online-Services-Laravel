@@ -168,7 +168,7 @@ Chatsmith Online Services
 
 		<figure class="figure col-md-4">
 			<div class="rounded-circle rounded-widgets">
-				<div class="rounded-widgets-spacing"><h1 class="display-4"><i class="fa fa-envelope-o"></i></h1></div>
+				<div class="rounded-widgets-spacing"><h1 class="display-4"><i class="fa fa-envelope"></i></h1></div>
 			</div>
 			<h3 class="text-uppercase text-center">Lead Generation</h3>
 			<figcaption class="figure-caption">We believe that the quality of our chats should never fall off nor should remain constant forever. In fact, it is our mission to provide you with consistent high quality chats. To achieve this, we regularly put our agents into training to further boost their efficiency and competency – not only just on the way they handle their job but also on a personal perspective.</figcaption>

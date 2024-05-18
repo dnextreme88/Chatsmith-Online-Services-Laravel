@@ -10,7 +10,7 @@ Manage Users
 		<div class="col-md-12">
 		@if (session('success'))
 			<div class="alert alert-success alert-block" role="alert">
-				<button type="button" class="close" data-dismiss="alert">x</button>
+				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
 				{{ session('success') }}
 			</div>
 		@endif
