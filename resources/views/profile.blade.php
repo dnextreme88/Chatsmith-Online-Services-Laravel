@@ -13,7 +13,8 @@
 				<li class="breadcrumb-item">Profile</li>
 			</ol>
 		</div>
-		@if ($latest_announcement)
+
+		@if ($latest_announcement && $is_active_employee)
 		<div class="col-md-2" style="margin: auto;"> <!-- Requires $latest_announcement variable - fetch latest announcement -->
 			<img src="../{{ $latest_announcement->user->image }}" class="img-thumbnail img-responsive avatar-thumbnail-small" style="display: block; margin: auto;" />
 		</div>
@@ -21,24 +22,30 @@
 			@include('layouts.latest_announcement_pane')
 		</div>
 		@endif
+
 		<div class="col-md-8">
 			<div class="card">
 				<div class="card-header">
 					<span class="text-left float-left">Timestamps</span>
+
+				@if ($is_active_employee)
 					<div id="time" class="text-right float-right"></div>
 
 					<!-- Show current time script (based on local time on computer) -->
 					<script type="text/javascript">
 						function showCurrentTime() {
-							var date = new Date(),
+							var date = new Date();
 							current_date = new Date(
-								date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
+								date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()
+							);
 
 							document.getElementById('time').innerHTML = current_date.toLocaleString('en-US', {
-								hour12: true, month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'});
+								hour12: true, month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'
+							});
 						}
 						setInterval(showCurrentTime, 1000);
 					</script>
+				@endif
 				</div>
 
 				<div class="card-body">
@@ -56,41 +63,47 @@
 						@endforeach
 						</div>
 					@endif
-					<!-- CLOCK IN modal button -->
-					<button type="button" class="btn btn-success btn-lg mb-2" data-bs-toggle="modal" data-bs-target="#clock-in-modal">CLOCK IN</button>
-					<!-- Modal -->
-					<div class="modal fade" id="clock-in-modal" tabindex="-1" role="dialog" aria-labelledby="clock-in-modal" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="clock-in-modal">Select time of shift</h5>
-									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								</div>
-								<!-- CLOCK IN FUNCTION - creates a time record for the user -->
-								<form action="{{ route('create_time_record') }}" method="POST" id="clock-in-form">
-									@csrf
-									<div class="modal-body">
-										<!-- Time of Shift -->
-										<div class="form-group row">
-											<label for="time_of_shift" class="col-md-4 col-form-label text-md-right">Time of Shift</label>
-											<div class="col-md-6">
-												<select id="time_of_shift" class="form-control" name="time_of_shift">
-													<option value="6AM-5PM">6 AM - 5 PM</option>
-													<option value="8AM-7PM">8 AM - 7 PM</option>
-													<option value="7PM-6AM">7 PM - 6 AM</option>
-													<option value="9PM-8AM">9 PM - 8 AM</option>
-												</select>
-												<small class="text-muted">You must time in before your shift starts.</small>
+
+					@if ($is_active_employee)
+						<!-- CLOCK IN modal button -->
+						<button type="button" class="btn btn-success btn-lg mb-2" data-bs-toggle="modal" data-bs-target="#clock-in-modal">CLOCK IN</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="clock-in-modal" tabindex="-1" role="dialog" aria-labelledby="clock-in-modal" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="clock-in-modal">Select time of shift</h5>
+										<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									</div>
+									<!-- CLOCK IN FUNCTION - creates a time record for the user -->
+									<form action="{{ route('create_time_record') }}" method="POST" id="clock-in-form">
+										@csrf
+										<div class="modal-body">
+											<!-- Time of Shift -->
+											<div class="form-group row">
+												<label for="time_of_shift" class="col-md-4 col-form-label text-md-right">Time of Shift</label>
+												<div class="col-md-6">
+													<select id="time_of_shift" class="form-control" name="time_of_shift">
+														<option value="6AM-5PM">6 AM - 5 PM</option>
+														<option value="8AM-7PM">8 AM - 7 PM</option>
+														<option value="7PM-6AM">7 PM - 6 AM</option>
+														<option value="9PM-8AM">9 PM - 8 AM</option>
+													</select>
+													<small class="text-muted">You must time in before your shift starts.</small>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="modal-footer float-right">
-										<input class="btn btn-success" type="submit" name="submit" value="TIME IN!">
-									</div>
-								</form>
+										<div class="modal-footer float-right">
+											<input class="btn btn-success" type="submit" name="submit" value="TIME IN!">
+										</div>
+									</form>
+								</div>
 							</div>
 						</div>
-					</div>
+					@else
+						<div class="alert alert-danger">You are not yet an employee or has left the company. Please contact the administrator.</div>
+					@endif
 					<!-- List of timestamps of the user -->
 					@if ($time_records->count() > 0)
 					<table class="table table-bordered">
@@ -124,12 +137,14 @@
 													<!-- Show current time script (based on local time on computer) -->
 													<script type="text/javascript">
 														function showCurrentTime2() {
-															var date = new Date(),
+															var date = new Date();
 															current_date = new Date(
-																date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
+																date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()
+															);
 
 															document.getElementById('time2').innerHTML = current_date.toLocaleString('en-US', {
-																hour12: true, month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'});
+																hour12: true, month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'
+															});
 														}
 														setInterval(showCurrentTime2, 1000);
 													</script>
@@ -167,7 +182,7 @@
 						@if ($user->is_staff == 'True')
 							<li><a href="{{ route('admin_panel_home') }}">Admin Panel</a></li>
 						@endif
-						@if ($user->employee)
+						@if ($user->employee && $user->employee->is_active == 'True')
 							<li><a href="/schedules/employees/{{ $user->employee->id }}/">My Schedules</a></li>
 						@endif
 						<li><a href="/profile/{{ $user->id}}/edit">Settings</a></li>

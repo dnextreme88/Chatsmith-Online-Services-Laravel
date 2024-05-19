@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Employee;
 use App\Models\User;
 use App\Models\Announcement;
 use App\Models\TimeRecord;
@@ -21,13 +22,26 @@ class ProfileController extends Controller
     public function index() {
         // Show dashboard of auth user
         $user = Auth::user();
+
         $latest_announcement = Announcement::latest()->first();
         $employee_time_records = TimeRecord::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(5);
+
+        if (!$user->employee) {
+            $is_active_employee = false;
+        } else {
+            $employee = Employee::where([
+                'id' => $user->employee->id,
+                'is_active' => 'True',
+            ])->exists();
+
+            $is_active_employee = $employee ? true : false;
+        }
 
         return view('profile', [
             'user' => $user,
             'latest_announcement' => $latest_announcement,
             'time_records' => $employee_time_records,
+            'is_active_employee' => $is_active_employee,
         ]);
     }
 
