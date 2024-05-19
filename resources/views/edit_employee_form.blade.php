@@ -109,18 +109,11 @@ Edit Employee Form
 				</div>
 				<!-- Is active -->
 				<div class="form-group row">
-					<label for="is_active" class="col-md-4 col-form-label text-md-right">Is active</label>
+					<label for="is_active" class="col-md-4 col-form-label text-md-right">Is active?</label>
 
 					<div class="col-md-6">
-						<select id="is_active" class="form-control" name="is_active">
-							@foreach ($is_active_choices as $is_active)
-								@if ($is_active_choices == $employee->is_active)
-									<option value="{{ $is_active }}" selected>{{ $is_active }}</option>
-								@else
-									<option value="{{ $is_active }}">{{ $is_active }}</option>
-								@endif
-							@endforeach
-						</select>
+						<input type="checkbox" class="form-check" id="is_active" name="is_active" {{ $employee->is_active == 'True' ? 'checked' : '' }} />
+						<small class="form-text text-muted">Untick the checkbox if the employee left the company.</small>
 					</div>
 				</div>
 				<div class="form-group row mb-0">

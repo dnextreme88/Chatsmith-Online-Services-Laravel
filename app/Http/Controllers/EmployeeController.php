@@ -23,9 +23,6 @@ class EmployeeController extends Controller
     private $role_choices = [
         'Administrator', 'Director', 'Employee', 'Human Resources and Recruitment', 'Owner', 'Quality Analyst', 'Supervisor', 'Team Leader'
     ];
-    private $is_active_choices = [
-        'True', 'False'
-    ];
 
     // The user must be logged in to access the views
     public function __construct() {
@@ -132,7 +129,6 @@ class EmployeeController extends Controller
                 'employee_type_choices' => $this->employee_type_choices,
                 'designation_choices' => $this->designation_choices,
                 'role_choices' => $this->role_choices,
-                'is_active_choices' => $this->is_active_choices
             ]);
         } else {
             abort(403, 'Forbidden page.');
@@ -149,7 +145,6 @@ class EmployeeController extends Controller
             'employee_type' => Rule::in(['OJT', 'Part-time', 'Regular']),
             'designation' => Rule::in(['Baguio', 'Pangasinan']),
             'employee_role' => Rule::in(['Administrator', 'Director', 'Employee', 'Human Resources and Recruitment', 'Owner', 'Quality Analyst', 'Supervisor', 'Team Leader']),
-            'is_active' => Rule::in(['True', 'False']),
         ]);
 
         if ($validator->fails()) {
@@ -162,7 +157,7 @@ class EmployeeController extends Controller
         $employee->designation = $request->designation;
         $employee->role = $request->employee_role;
         $employee->date_tenure = $request->date_tenure;
-        $employee->is_active = $request->is_active;
+        $employee->is_active = $request->is_active == 'on' ? 'True' : 'False';
         $employee->save();
 
         return redirect()->back()->withSuccess('Employee successfully edited!');
