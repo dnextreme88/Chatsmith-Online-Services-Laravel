@@ -59,9 +59,9 @@ Daily Productions for {{ $date_today->format('F d, Y') }}
 			@foreach ($daily_productions_focal as $daily_productions_focal_data)
 				<tr>
 					<td>{{ $daily_productions_focal_data->employee->user->first_name }}</td>
+					<td>{{ $daily_productions_focal_data->account_used }}</td>
 					<td>{{ $daily_productions_focal_data->time_range->time_range }}</td>
 					<td>{{ $daily_productions_focal_data->minutes_worked }}</td>
-					<td>{{ $daily_productions_focal_data->account_used }}</td>
 					<td>{{ $daily_productions_focal_data->oos_count }}</td>
 					<td>{{ $daily_productions_focal_data->not_oos_count }}</td>
 					<td>{{ $daily_productions_focal_data->discard_count }}</td>
