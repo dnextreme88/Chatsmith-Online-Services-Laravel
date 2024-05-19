@@ -60,7 +60,7 @@ class EmployeeController extends Controller
             'employee_type' => 'required',
             'designation' => 'required',
             'employee_role' => 'required',
-            'date_tenure' => 'required',
+            'date_tenure' => 'required|date_format:Y-m-d',
         ]);
 
         if ($validator->fails()) {
@@ -81,12 +81,15 @@ class EmployeeController extends Controller
 
     public function create () {
         // Show add employees form
-        $users = User::all();
         $user = Auth::user();
+        $employees = Employee::all();
+
+        // Get all users that are not yet registered as employees
+        $pending_users = User::doesntHave('employee')->get()->toArray();
 
         if ($user->is_staff == 'True') {
             return view('add_employee_form', [
-                'users' => $users,
+                'pending_users' => $pending_users,
                 'employee_type_choices' => $this->employee_type_choices,
                 'designation_choices' => $this->designation_choices,
                 'role_choices' => $this->role_choices

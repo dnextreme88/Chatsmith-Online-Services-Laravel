@@ -31,8 +31,8 @@ Add Employee Form
 
 					<div class="col-md-6">
 						<select id="user_id" class="form-control" name="user_id">
-						@foreach ($users as $user)
-							<option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->maiden_name }} {{ $user->last_name }}</option>
+						@foreach ($pending_users as $user)
+							<option value="{{ $user['id'] }}">{{ $user['first_name'] }} {{ $user['maiden_name'] }} {{ $user['last_name'] }}</option>
 						@endforeach
 						</select>
 					</div>
