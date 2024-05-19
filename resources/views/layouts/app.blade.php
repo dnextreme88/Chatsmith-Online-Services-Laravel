@@ -32,8 +32,8 @@
     <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/Components/Footer/index.css') }}" rel="stylesheet">
     @stack('styles')
 
     <!-- Scripts -->
@@ -45,10 +45,6 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-md">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">Chatsmith Online Services</a>
-
-                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button> --}}
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".header-links" aria-controls="header-links" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -114,32 +110,33 @@
             @yield('content')
         </main>
 
-        <footer class="container">
+        <footer class="container-fluid">
             <div class="row">
-                <div class="col-md-4">
-                    <ul class="list-unstyled">
+                <div class="col-md-4 left">
+                    <ul class="list-unstyled static-links">
                         <li class="list-item"><a href="/aboutus/">About Us</li>
                         <li class="list-item"><a href="/careers/">Careers</a></li>
                         <li class="list-item"><a href="/privacy/">Privacy Policy</a></li>
                         <li class="list-item"><a href="/terms/">Terms and Conditions</a></li>
                     </ul>
                 </div>
-                <div class="col-md-8">
-                    <div class="col-md-12">
+                <div class="col-md-8 right">
+                    <div class="col-md-12 text-white">
                         <p>Chatsmith Online Services Copyright &copy; 2020</p>
                     </div>
-                    <!-- Social links -->
-                    <div class="col-md-12">
-                        <a href="https://www.facebook.com/Chatsmithonline" target="_blank"><img src="{{ asset('images/social_facebook.png') }}"class="socials" id="fb" alt="Facebook logo" title="FB page" /></a>
-                        <a href="https://twitter.com/chatsmithonline" target="_blank"><img src="{{ asset('images/social_twitter.png') }}"class="socials" id="twitter" alt="Twitter logo" title="Twitter page" /></a>
+
+                    <div class="col-md-12 social-links">
+                        <a href="https://www.facebook.com/Chatsmithonline" target="_blank"><i class="fa-brands fa-3x fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/company/chatsmith-online/about/" target="_blank"><i class="fa-brands fa-3x fa-linkedin"></i></a>
+                        <a href="https://twitter.com/chatsmithonline" target="_blank"><i class="fa-brands fa-3x fa-twitter"></i></a>
                     </div>
-                    <!-- Affliates -->
-                    <div class="col-md-12">
-                        <p id="affliates-text">Affliates</p>
-                        <a href="https://focal.systems/" target="_blank"><img src="{{ asset('images/logo_focal_systems.png') }}"class="affliate-logos" id="logo-focal-systems" alt="Focal Systems logo" title="Focal Systems page" /></a>
-                        <a href="https://www.persistiq.com/" target="_blank"><img src="{{ asset('images/logo_persistiq.png') }}"class="affliate-logos" id="logo-persistiq" alt="PersistIQ logo" title="PersistIQ page" /></a>
-                        <a href="https://www.plateiq.com/" target="_blank"><img src="{{ asset('images/logo_plateiq.png') }}"class="affliate-logos" id="logo-plateiq" alt="Plate IQ logo" title="Plate IQ page" /></a>
-                        <a href="https://www.smartalto.com/" target="_blank"><img src="{{ asset('images/logo_smart_alto.png') }}"class="affliate-logos" id="logo-smart-alto" alt="Smart Alto logo" title="Smart Alto page" /></a>
+
+                    <div class="col-md-12 affiliates">
+                        <p class="text-white affiliates-text">Affliates</p>
+                        <a href="https://focal.systems/" target="_blank"><img src="{{ asset('images/logo_focal_systems.png') }}" class="affliate-logos" id="logo-focal-systems" alt="Focal Systems logo" title="Focal Systems page" /></a>
+                        <a href="https://www.persistiq.com/" target="_blank"><img src="{{ asset('images/logo_persistiq.png') }}" class="affliate-logos" id="logo-persistiq" alt="PersistIQ logo" title="PersistIQ page" /></a>
+                        <a href="https://www.plateiq.com/" target="_blank"><img src="{{ asset('images/logo_plateiq.png') }}" class="affliate-logos" id="logo-plateiq" alt="Plate IQ logo" title="Plate IQ page" /></a>
+                        <a href="https://www.smartalto.com/" target="_blank"><img src="{{ asset('images/logo_smart_alto.png') }}" class="affliate-logos" id="logo-smart-alto" alt="Smart Alto logo" title="Smart Alto page" /></a>
                     </div>
                 </div>
             </div>
