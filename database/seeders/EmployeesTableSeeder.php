@@ -66,5 +66,16 @@ class EmployeesTableSeeder extends Seeder
             'created_at' => '1580378520',
             'updated_at' => '1580378520',
         ]);
+
+        Employee::create([
+            'user_id' => 6,
+            'employee_number' => 6171920,
+            'employee_type' => 'Regular',
+            'designation' => 'Baguio',
+            'role' => 'Employee',
+            'is_active' => 'True',
+            'created_at' => '1580378520',
+            'updated_at' => '1580378520',
+        ]);
     }
 }

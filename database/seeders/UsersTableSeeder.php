@@ -76,5 +76,18 @@ class UsersTableSeeder extends Seeder
             'created_at' => '1580378520',
             'updated_at' => '1580378520',
         ]);
+
+        User::create([
+            'first_name' => 'Mark Anthony',
+            'maiden_name' => 'Lucero',
+            'last_name' => 'Sanchez',
+            'email' => 'chatsmithonline.madisson@gmail.com',
+            'username' => 'sanchezmarkanthony10',
+            'profile_image' => 'images\avatars\sanchezmarkanthony10_1580660336.jpg',
+            'password' => Hash::make($password),
+            'is_staff' => 'False',
+            'created_at' => '1580378520',
+            'updated_at' => '1580378520',
+        ]);
     }
 }
