@@ -101,11 +101,13 @@ class ProfileController extends Controller
     public function create_time_record (Request $request) {
         // Process in adding time record
         $user = Auth::user();
-        $employee = $user->employee;
 
-        // If user is not yet an employee, do not create time record
-        if (!$employee) {
-            $errors = ['not_an_employee' => 'You are not yet an employee. Please contact the administrator.'];
+        $employee_has_current_timein = TimeRecord::where('user_id', $user->id)
+            ->whereColumn('timestamp_in', 'timestamp_out')
+            ->exists();
+
+        if ($employee_has_current_timein) {
+            $errors = ['employee_has_current_timein' => 'You are already clocked in. Please clock out your previous time in.'];
 
             return redirect()->back()->withErrors($errors);
         } else {
