@@ -140,26 +140,28 @@ class LeadformController extends Controller
 
     public function create_chat_account_leadform () {
         $user = Auth::user();
-        $employees = Employee::all();
         $time_ranges = TimeRange::all();
+
+        $is_active_employee = $this->check_if_active_employee($user->employee);
 
         return view('leadform_chat_account', [
             'user' => $user,
-            'employees' => $employees,
             'time_ranges' => $time_ranges,
+            'is_active_employee' => $is_active_employee,
             'chat_account_tool_choices' => $this->chat_account_tool_choices,
         ]);
     }
 
     public function create_focal_leadform () {
         $user = Auth::user();
-        $employees = Employee::all();
         $time_ranges = TimeRange::all();
+
+        $is_active_employee = $this->check_if_active_employee($user->employee);
 
         return view('leadform_focal', [
             'user' => $user,
-            'employees' => $employees,
             'time_ranges' => $time_ranges,
+            'is_active_employee' => $is_active_employee,
         ]);
     }
 
@@ -168,11 +170,26 @@ class LeadformController extends Controller
         $employees = Employee::all();
         $time_ranges = TimeRange::all();
 
+        $is_active_employee = $this->check_if_active_employee($user->employee);
+
         return view('leadform_plateiq', [
             'user' => $user,
-            'employees' => $employees,
             'time_ranges' => $time_ranges,
+            'is_active_employee' => $is_active_employee,
             'plateiq_tool_choices' => $this->plateiq_tool_choices,
         ]);
+    }
+
+    public function check_if_active_employee ($user_employee) {
+        if (!$user_employee) {
+            $is_active_employee = false;
+        } else {
+            $is_active_employee = Employee::where([
+                'id' => $user_employee->id,
+                'is_active' => 'True',
+            ])->exists();
+        }
+
+        return $is_active_employee;
     }
 }

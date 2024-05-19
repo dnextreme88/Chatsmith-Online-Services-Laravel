@@ -32,6 +32,8 @@ Chatsmith Online Services - PlateIQ Leadform
 				</ul>
 			</div>
 		@endif
+
+		@if ($is_active_employee)
 			<form action="/leadforms/plateiq/" method="POST">
 				@csrf
 				@include('layouts.leadform_template')
@@ -80,6 +82,9 @@ Chatsmith Online Services - PlateIQ Leadform
 					</div>
 				</div>
 			</form>
+		@else
+			<div class="alert alert-danger">You cannot submit your leadform as you're not an active employee!</div>
+		@endif
 		</div>
 	</div>
 </div>
