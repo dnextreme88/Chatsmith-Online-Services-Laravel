@@ -193,42 +193,6 @@ BASE RGB: E28700; // orange
 		background-color: #057EFB;
 	}
 
-/* Homepage */
-	@media (min-width: 500px) { 
-		.rounded-widgets {
-			background-color: #DDD;
-			padding: 80px;
-			border: 2px solid #BBB;
-			transition: background-color 0.4s;
-		}
-
-		.rounded-widgets-spacing {
-			margin-left: 40%;
-		}
-
-		.rounded-widgets:hover {
-			background-color: #FF9900;
-		}
-	}
-
-	@media (min-width: 768px) { 
-		.rounded-widgets-spacing {
-			margin-left: 2%;
-		}
-	}
-
-	@media (min-width: 992px) { 
-		.rounded-widgets-spacing {
-			margin-left: 30%;
-		}
-	}
-
-	@media (min-width: 1200px) { 
-		.rounded-widgets-spacing {
-			margin-left: 38%;
-		}
-	}
-
 /* Links */
 	a:link, a:visited {
 		color: #FF9900;

@@ -1,0 +1,46 @@
+.our-services {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2em;
+
+    .services {
+        .round-container {
+            display: grid;
+            justify-content: center;
+            padding-block: 6em;
+            border: 2px solid #BBB;
+            border-radius: 50%;
+            transition: background-color 0.4s;
+
+            .icon {
+                font-size: 3rem;
+            }
+
+            &:hover {
+                background-color: #FF9900;
+            }
+        }
+
+        .services-title {
+            margin-top: 1em;
+            min-height: 10vh;
+        }
+    }
+}
+
+@media (width <= 575px) {
+    .our-services {
+        grid-template-columns: 1fr;
+
+        .services {
+            .services-title {
+                min-height: auto;
+            }
+        }
+    }
+}
+
+@media (576px <= width <= 992px) {
+    .our-services {
+        grid-template-columns: 1fr 1fr;
+    }
+}
