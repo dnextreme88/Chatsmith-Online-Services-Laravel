@@ -1,0 +1,196 @@
+/*
+https://paletton.com/#uid=33A0u0k++slSHkAXNeSSL++++BD
+Monochromatic (tick add complementary)
+BASE RGB: 004893; // dark blue
+BASE RGB: E28700; // orange
+*/
+
+:root {
+	--link-color-orange: #FF9900;
+}
+
+/* Profile image (User model field) */
+	.avatar-table {
+		width: 24px;
+		height: 24px;
+	}
+
+	.avatar-thumbnail-extrasmall {
+		width: 48px;
+		height: 48px;
+	}
+
+	.avatar-thumbnail-small {
+		width: 120px;
+		height: 120px;
+	}
+
+	.avatar-thumbnail-medium {
+		width: 240px;
+		height: 240px;
+	}
+
+	.avatar-thumbnail-large {
+		width: 360px;
+		height: 360px;
+	}
+
+/* Delete buttons (Announcement, Employee) */
+	.delete-announcement-button, .delete-announcement-button:hover,
+	.delete-employee-button, .delete-employee-button:hover,
+	.delete-schedule-button, .delete-schedule-button:hover {
+		margin: 0;
+		padding: 0;
+		border: none;
+		background-color: transparent;
+	}
+
+	.delete-announcement-button, .delete-employee-button, .delete-schedule-button {
+		color: #FF9900;
+	}
+
+	.delete-announcement-button:hover, .delete-employee-button:hover, .delete-schedule-button:hover {
+		color: #FF9900;
+		text-decoration: underline;
+	}
+
+/* Admin Panel */
+	#admin-panel-nav-links-body {
+		background-color: lightblue;
+	}
+
+	#admin-panel-nav-links-body ul li a {
+		display: block;
+		color: #000;
+		padding: 16px;
+	}
+
+	#admin-panel-nav-links-body ul li.active a {
+		display: block;
+		color: #FFF;
+		padding: 16px;
+	}
+
+	#admin-panel-nav-links-body ul li.active {
+		display: block;
+		background-color: #002A56;
+		transition: background-color 0.4s;
+	}
+
+	#admin-panel-nav-links-body ul li.active:hover, #admin-panel-nav-links-body ul li:hover {
+		display: block;
+		background-color: #057EFB;
+	}
+
+	#admin-panel-nav-links-body ul li.active a:hover, #admin-panel-nav-links-body ul li a:hover {
+		display: block;
+		text-decoration: none;
+	}
+
+	#admin-panel-hr-separator {
+		background-color: #002A56;
+	}
+
+/* Search boxes */
+	#search-employees-form input[type=text] {
+		width: 360px !important;
+	}
+
+/* Tables */
+	table th {
+		background-color: #005EBF;
+	}
+
+	table tr {
+		background-color: #057EFB;
+	}
+
+/* Navigations */
+	.breadcrumb {
+		background-color: #005EBF;
+	}
+
+/* Header */
+	#cos_header {
+		width: 100%;
+	}
+
+	.navbar {
+		background-color: #FF9900;
+	}
+
+	#navbar-user-dropdown {
+		margin-right: -2px;
+	}
+
+	#header-navbar-left {
+		margin-top: 19px;
+	}
+
+	#header-navbar-right {
+		margin-top: 7px;
+	}
+
+	#header-navbar-left, #header-navbar-right {
+		background-color: #005EBF;
+	}
+
+	#header-navbar-left a:hover, #header-navbar-right a:hover {
+		background-color: #057EFB;
+	}
+
+/* Registration */
+	.name-inputs-to-uppercase {
+		text-transform: uppercase;
+	}
+
+/* Static Pages (About Us, Careers, Privacy Policy, Terms and Conditions) */
+	.header-static-page-title {
+		border-bottom: 4px solid #005EBF;
+		text-transform: uppercase;
+	}
+
+	.static-page h3 {
+		color: #FF9900;
+	}
+
+/* Announcements */
+	#announcement-pagination-list li a {
+		background-color: #FF9900;
+		color: white;
+		transition: background-color 0.4s;
+	}
+
+	#announcement-pagination-list li a:hover {
+		background-color: #B56C00;
+	}
+
+	#announcement-pane-description {
+		text-indent: 2cm;
+	}
+
+	.speech-bubble {
+		position: relative;
+		background: #057EFB;
+		border-radius: .4em;
+	}
+
+	.speech-bubble:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 50%;
+		width: 0;
+		height: 0;
+		border: 25px solid transparent;
+		border-right-color: #057EFB;
+		border-left: 0;
+		border-top: 0;
+		margin-top: -25px;
+		margin-left: -25px;
+	}
+
+/* Dashboard */
+	#clock-in-form, #clock-out-form {
+		background-color: #EFAC6B;
+	}

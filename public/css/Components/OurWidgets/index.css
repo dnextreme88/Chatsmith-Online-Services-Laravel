@@ -1,0 +1,24 @@
+.our-widgets {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    row-gap: 2em;
+
+    .widgets {
+        grid-template-columns: 1fr 3fr;
+        column-gap: 2em;
+
+        .icon {
+            grid-row: 1 / span 2;
+        }
+
+        .widgets-title {
+            text-transform: uppercase;
+        }
+    }
+}
+
+@media (width <= 768px) {
+    .our-widgets {
+        grid-template-columns: 1fr;
+    }
+}
