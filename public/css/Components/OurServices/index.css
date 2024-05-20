@@ -3,20 +3,23 @@
     column-gap: 2em;
 
     .services {
+        grid-template-rows: fit-content(50%) minmax(auto, 100px) minmax(auto, auto);
+        justify-items: center;
+
         .round-container {
-            display: grid;
-            justify-content: center;
-            padding-block: 6em;
+            padding-block: 4em;
             border: 2px solid #BBB;
             border-radius: 50%;
             transition: background-color 0.4s;
+            width: 75%;
 
             .icon {
-                font-size: 3rem;
+                color: var(--link-color-orange);
+                font-size: 2.5rem;
             }
 
             &:hover {
-                background-color: #FF9900;
+                background-color: lightblue;
             }
         }
 
@@ -32,6 +35,10 @@
         grid-template-columns: 1fr;
 
         .services {
+            .round-container {
+                width: 50%;
+            }
+
             .services-title {
                 min-height: auto;
             }
