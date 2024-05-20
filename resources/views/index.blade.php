@@ -7,6 +7,7 @@ Chatsmith Online Services
 @push('styles')
     <link href="{{ asset('css/Components/HrWithText/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Components/OurWidgets/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/Components/Testimonials/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Components/OurServices/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Components/SpecificTasksAgentsDo/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Utils/intersection_observer.css') }}" rel="stylesheet">
@@ -213,6 +214,81 @@ Chatsmith Online Services
                 <p class="text-justify">Create effective marketing schemes through automation of sales processes - including multi-tasking and chatting simultaneously with more than one site.</p>
             </div>
         </div>
+    </div>
+</section>
+
+
+<section class="container testimonials-section">
+    <!-- TODO: TO BE REFACTORED AS A COMPONENT FOR LIVEWIRE -->
+    <div class="py-4 hr-with-text">
+        <hr class="hr-bg" />
+
+        <span class="text-center text-uppercase hr-text">WHAT CLIENTS SAY</span>
+    </div>
+
+    <div class="carousel slide testimonials" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target=".testimonials" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target=".testimonials" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target=".testimonials" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target=".testimonials" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target=".testimonials" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target=".testimonials" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('images/carousel_five_stars.webp') }}" class="my-4 d-block w-25 mx-auto" alt="Testimonial 1" />
+                <div class="d-none d-md-block carousel-caption">
+                    <h5>She has this uncanny way of engaging the customers that starts with acquainting them with the products and ends with creating a need. She has developed a certain style of conversation that leads you to a dance, a sweet sensational tango of words and one is unknowingly sashayed to closing with a magnificent pose and a sale generated.</h5>
+                    <p>Beverly Pig-ang B.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('images/carousel_five_stars.webp') }}" class="my-4 d-block w-25 mx-auto" alt="Testimonial 2" />
+                <div class="d-none d-md-block carousel-caption">
+                    <h5>Mary is one of the endearing speakers that are reflected on the way she convey messages to her customers. She treats them with such levels of charm that you will inadvertently succumb to her guise. She is sincere and has aimed to deliver with perfection. She has developed a way of responding to inquiry that leaves one contented and satisfied; a very well-trained customer service provider.</h5>
+                    <p>Letecia Impian G.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('images/carousel_five_stars.webp') }}" class="my-4 d-block w-25 mx-auto" alt="Testimonial 3" />
+                <div class="d-none d-md-block carousel-caption">
+                    <h5>Mary has this meticulous way of providing a straight-forward answer. Short, concise and up to the point. She does not complicate things and she handles customer in a way one unties a rope, removing complexities and laying down a straight path easy to follow like ABC. It will be like riding a train with her fast and precise, only stopping at end points.</h5>
+                    <p>Archie Tinapngan L.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('images/carousel_five_stars.webp') }}" class="my-4 d-block w-25 mx-auto" alt="Testimonial 4" />
+                <div class="d-none d-md-block carousel-caption">
+                    <h5>A conversationalist that can get anyone to speak their mind, she is not afraid to ask questions and personally give you a dose of her wits. A total stranger you've met but whom you can easily put your heart's out.</h5>
+                    <p>Love Lyn Carbonell L.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('images/carousel_five_stars.webp') }}" class="my-4 d-block w-25 mx-auto" alt="Testimonial 5" />
+                <div class="d-none d-md-block carousel-caption">
+                    <h5>She is an epitome of a carefree soul, very opinionated and has a way of infecting customers with her amicable character. Her skill lies in her notable way of finding answers to tough questions. A proverbial researcher and site navigator, providing customers with concise and accurate answers that are up to procedures and standards.</h5>
+                    <p>Paolo Brylle Orallo L.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('images/carousel_five_stars.webp') }}" class="my-4 d-block w-25 mx-auto" alt="Testimonial 6" />
+                <div class="d-none d-md-block carousel-caption">
+                    <h5>Mary understands the complexities of things and she shares this knowledge to anyone who crosses her path. You would be humbled with the way she ardently translates such sophisticated technicalities into simple vocabulary, which are made to be comprehended by any ordinary lad. Once you finish a chat with this woman, you will have ended with an additional insight of things that you would never have expected to learn in the first place.</h5>
+                    <p>Jeoffrei Kitong S.</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target=".testimonials" data-bs-slide="prev">
+            <span class="fa fa-angle-left carousel-nav" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target=".testimonials" data-bs-slide="next">
+            <span class="fa fa-angle-right carousel-nav" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </section>
 
