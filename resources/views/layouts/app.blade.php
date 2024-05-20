@@ -33,6 +33,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/Components/NavigationTop/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Components/Footer/index.css') }}" rel="stylesheet">
     @stack('styles')
 
@@ -42,21 +44,22 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-md">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">Chatsmith Online Services</a>
+        <!-- TODO: TO BE REFACTORED AS A COMPONENT FOR LIVEWIRE -->
+        <nav class="navbar navbar-expand-md navbar-light shadow-md top-nav">
+            <div class="container-fluid">
+                <a class="navbar-brand homepage-url" href="{{ url('/') }}">Chatsmith Online Services</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".header-links" aria-controls="header-links" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse header-links">
+                <div class="justify-content-between collapse navbar-collapse header-links">
                     <!-- Left Side of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a id="leadformsDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Leadforms</a>
+                        <li class="nav-item dropdown navbar-dropdown-main">
+                            <a id="leadforms-links-dropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Leadforms</a>
 
-                            <div id="header-navbar-left" class="dropdown-menu dropdown-menu-left" aria-labelledby="leadformsDropdown">
+                            <div class="dropdown-menu navbar-dropdown-main-links" aria-labelledby="leadforms-links-dropdown">
                                 <a class="dropdown-item" href="{{ route('focal_leadform') }}">Focal Leadform</a>
                                 <a class="dropdown-item" href="{{ route('chat_account_leadform') }}">Live Chat / Smart Alto / PersistIQ Leadform</a>
                                 <a class="dropdown-item" href="{{ route('plate_leadform') }}">Plate IQ Leadform</a>
@@ -80,15 +83,15 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown" id="navbar-user-dropdown">
-                            <a id="userDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="nav-item dropdown navbar-dropdown-user">
+                            <a id="user-links-dropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @if (auth()->user()->image)
                                 <img src="{{ asset(auth()->user()->image) }}" class="img-thumbnail rounded-circle avatar-thumbnail-extrasmall">
                             @endif
                                 {{ Auth::user()->first_name }} <span class="caret"></span>
                             </a>
 
-                            <div id="header-navbar-right" class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu navbar-dropdown-user-links" aria-labelledby="user-links-dropdown">
                                 <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

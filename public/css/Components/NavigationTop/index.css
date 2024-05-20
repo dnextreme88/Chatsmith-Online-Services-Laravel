@@ -1,0 +1,44 @@
+.top-nav {
+    .homepage-url {
+        font-family: 'Avenir', sans-serif;
+        color: var(--link-color-orange);
+    }
+
+    .header-links {
+        .navbar-dropdown-main {
+            .navbar-dropdown-main-links {
+                margin-top: 19px;
+            }
+        }
+
+        .navbar-dropdown-user {
+            .navbar-dropdown-user-links {
+                margin-top: 7px;
+                right: 0;
+                left: 25%;
+            }
+        }
+
+        .dropdown {
+            .dropdown-toggle {
+                &.show {
+                    color: var(--link-color-orange);
+                }
+            }
+
+            .dropdown-menu {
+                .dropdown-item {
+                    &:hover {
+                        background-color: lightblue;
+                    }
+                }
+            }
+        }
+
+        .nav-item {
+            .nav-link:not(.navbar-dropdown-user .dropdown-toggle), .dropdown-menu .dropdown-item {
+                font-family: 'Avenir', sans-serif;
+            }
+        }
+    }
+}
