@@ -1,0 +1,61 @@
+.specific-tasks-agents-do {
+    grid-template-columns: 1fr 240px 1fr;
+    column-gap: 2em;
+    row-gap: 2em;
+
+    .sides {
+        grid-template-columns: auto;
+        row-gap: 0.5em;
+    }
+
+    .specific-tasks {
+        grid-template-columns: minmax(auto, 100px) 2fr;
+        column-gap: 4em;
+
+        .round-container {
+            border: 2px solid #BBB;
+            border-radius: 50%;
+            transition: background-color 0.4s;
+
+            .icon {
+                color: var(--link-color-orange);
+                font-size: 2.5rem;
+            }
+
+            &:hover {
+                background-color: lightblue;
+            }
+        }
+
+        .specific-tasks-title {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media (width <= 992px) {
+    .hr-text {
+        max-width: max-content;
+    }
+
+    .specific-tasks-agents-do {
+        grid-template-columns: 1fr;
+
+        .left-side {
+            order: 2;
+        }
+
+        .middle-side {
+            order: 1;
+
+            .bg-specific-tasks-agents-do {
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
+
+        .right-side {
+            order: 3;
+        }
+    }
+}

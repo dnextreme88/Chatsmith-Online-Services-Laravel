@@ -8,6 +8,7 @@ Chatsmith Online Services
     <link href="{{ asset('css/Components/HrWithText/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Components/OurWidgets/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Components/OurServices/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/Components/SpecificTasksAgentsDo/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Utils/intersection_observer.css') }}" rel="stylesheet">
 @endpush
 
@@ -214,4 +215,98 @@ Chatsmith Online Services
         </div>
     </div>
 </section>
+
+<section class="container specific-tasks-agents-do-section">
+    <div class="row">
+        <!-- TODO: TO BE REFACTORED AS A COMPONENT FOR LIVEWIRE -->
+        <div class="py-4 hr-with-text">
+            <hr class="hr-bg" />
+
+            <span class="text-center text-uppercase hr-text">WHAT ARE THE SPECIFIC TASKS CHATSMITH ONLINE AGENTS DO?</span>
+        </div>
+
+        <div class="d-grid specific-tasks-agents-do">
+            <div class="d-grid sides left-side">
+                <div class="d-grid hidden-fade-on-show specific-tasks">
+                    <div class="d-grid align-items-center justify-content-center round-container">
+                        <div class="icon">
+                            <i class="fa fa-comment"></i>
+                        </div>
+                    </div>
+
+                    <span class="fw-bold text-uppercase widgets-title">Greet and initiate proactive chat invites</span>
+                    <span>&nbsp;</span>
+                    <p>to every site visitor 24/7 and give answers as well as solutions to their questions or concerns.</p>
+                </div>
+
+                <div class="d-grid hidden-fade-on-show specific-tasks">
+                    <div class="d-grid align-items-center justify-content-center round-container">
+                        <div class="icon">
+                            <i class="fa fa-hand-point-down"></i>
+                        </div>
+                    </div>
+
+                    <span class="fw-bold text-uppercase widgets-title">Bring down the costs of your client acquisition</span>
+                    <span>&nbsp;</span>
+                    <p>schemes through efficiency and automation of sales processes - including multi-tasking and chatting simultaneously with more than one site.</p>
+                </div>
+
+                <div class="d-grid hidden-fade-on-show specific-tasks">
+                    <div class="d-grid align-items-center justify-content-center round-container">
+                        <div class="icon">
+                            <i class="fa fa-list-alt"></i>
+                        </div>
+                    </div>
+
+                    <span class="fw-bold text-uppercase widgets-title">Generate more leads</span>
+                    <span>&nbsp;</span>
+                    <p>and help convert your site visitors into paying.</p>
+                </div>
+            </div>
+
+            <div class="d-grid sides align-items-center middle-side">
+                <img src="{{ asset('images/bg_specific_tasks_agents_do.gif') }}" class="img-responsive hidden-fade-on-show bg-specific-tasks-agents-do" width="100%" alt="Specific Tasks Agents Do image" title="Specific Tasks Agents Do image" />
+            </div>
+
+            <div class="d-grid sides right-side">
+                <div class="d-grid hidden-fade-on-show specific-tasks">
+                    <div class="d-grid align-items-center justify-content-center round-container">
+                        <div class="icon">
+                            <i class="fa fa-chart-column"></i>
+                        </div>
+                    </div>
+
+                    <span class="fw-bold text-uppercase widgets-title">Increase your sales or client</span>
+                    <span>&nbsp;</span>
+                    <p>acquisitions by understanding what your site visitors have in mind - and aligning it with your products or services.</p>
+                </div>
+
+                <div class="d-grid hidden-fade-on-show specific-tasks">
+                    <div class="d-grid align-items-center justify-content-center round-container">
+                        <div class="icon">
+                            <i class="fa fa-comments"></i>
+                        </div>
+                    </div>
+
+                    <span class="fw-bold text-uppercase widgets-title">Help your site visitors stay longer</span>
+                    <span>&nbsp;</span>
+                    <p>on your web pages and assist them to browse over your website - and let them know more about your products or services</p>
+                </div>
+
+                <div class="d-grid hidden-fade-on-show specific-tasks">
+                    <div class="d-grid align-items-center justify-content-center round-container">
+                        <div class="icon">
+                            <i class="fa fa-database"></i>
+                        </div>
+                    </div>
+
+                    <span class="fw-bold text-uppercase widgets-title">Earn your site visitors' trust and confidence</span>
+                    <span>&nbsp;</span>
+                    <p>by providing excellent customer service. This includes filling out of form/s, generating leads (pre-sales and sales), appointment setting and above all provide your website with a human touch.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection
