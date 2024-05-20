@@ -28,6 +28,10 @@ BASE RGB: E28700; // orange
 	--link-color-orange: #FF9900;
 }
 
+.text-justify {
+	text-align: justify;
+}
+
 /* Profile image (User model field) */
 	.avatar-table {
 		width: 24px;
