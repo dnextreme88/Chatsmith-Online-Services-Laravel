@@ -8,6 +8,7 @@ Chatsmith Online Services
     <link href="{{ asset('css/Components/HrWithText/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Components/OurWidgets/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Components/OurServices/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/Utils/intersection_observer.css') }}" rel="stylesheet">
 @endpush
 
 @push('scripts')

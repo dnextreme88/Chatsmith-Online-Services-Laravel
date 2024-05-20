@@ -30,20 +30,6 @@
     }
 }
 
-/* Fade in/out on scroll when in view */
-.hidden-fade-on-show {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(-50%);
-    transition: all 2s;
-}
-
-.shown {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
-}
-
 @media (width <= 575px) {
     .our-services {
         grid-template-columns: 1fr;
