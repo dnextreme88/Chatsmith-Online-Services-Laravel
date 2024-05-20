@@ -5,6 +5,25 @@ BASE RGB: 004893; // dark blue
 BASE RGB: E28700; // orange
 */
 
+/* IMPORT FONT FACES */
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@200;400;700&display=swap');
+
+@font-face {
+	font-family: 'Avenir Black';
+	src: 
+		url('../fonts/Avenir-Black.ttf') format('truetype'),
+		url('https://fonts.googleapis.com/css?family=Poppins:wght@200;400;700&display=swap') format('woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: 
+		url('../fonts/Avenir-Regular.ttf') format('truetype'),
+		url('https://fonts.googleapis.com/css?family=Poppins:wght@200;400;700&display=swap') format('woff2');
+	font-display: swap;
+}
+
 :root {
 	--link-color-orange: #FF9900;
 }
