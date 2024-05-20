@@ -10,6 +10,10 @@ Chatsmith Online Services
     <link href="{{ asset('css/Components/OurServices/index.css') }}" rel="stylesheet">
 @endpush
 
+@push('scripts')
+    <script src="{{ asset('js/index.js') }}"></script>
+@endpush
+
 @section('content')
 <div>
     <!-- COS Image -->
@@ -131,7 +135,7 @@ Chatsmith Online Services
     </div>
 </section>
 
-<section class="container">
+<section class="container our-services-section">
     <div class="row">
         <!-- TODO: TO BE REFACTORED AS A COMPONENT FOR LIVEWIRE -->
         <div class="py-4 hr-with-text">
@@ -141,7 +145,7 @@ Chatsmith Online Services
         </div>
 
         <div class="d-grid our-services">
-            <div class="d-grid services">
+            <div class="d-grid hidden-fade-on-show services">
                 <div class="d-grid justify-content-center round-container">
                     <div class="icon">
                         <i class="fa fa-user"></i>
@@ -152,7 +156,7 @@ Chatsmith Online Services
                 <p class="text-justify">Through our proactive chat invites, every site visitor is greeted and gently asked how we can help them. Above all, our agents will exert extra effort to provide excellent customer support in order to convert your site visitor into a paying client. Our agents are trained to identify and work accordingly with different "buying or shopping personalities" of your website visitors. In simple terms, they can efficiently chat with your site visitors and let them experience convenience. And the natural result? More sales or paying clients - and a constant flow of revenues down the road.</p>
             </div>
 
-            <div class="d-grid services">
+            <div class="d-grid hidden-fade-on-show services">
                 <div class="d-grid justify-content-center round-container">
                     <div class="icon">
                         <i class="fa fa-signal"></i>
@@ -163,7 +167,7 @@ Chatsmith Online Services
                 <p class="text-justify">Chatsmith Online help you achieve your marketing targets through tailor-fit solutions of your goals. Our approach is to come up with a regular and "specifically made for you" program and customer support. We train our agents to be well adept to the model and mood of your website including the demographics of your website visitors. On top of this, we will work hand in hand with you to increase the number of your customers and convert them into a lifelong client. Through these efforts, it would be a lot easier to achieve your marketing goals.</p>
             </div>
 
-            <div class="d-grid services">
+            <div class="d-grid hidden-fade-on-show services">
                 <div class="d-grid justify-content-center round-container">
                     <div class="icon">
                         <i class="fa fa-comment"></i>
@@ -174,7 +178,7 @@ Chatsmith Online Services
                 <p class="text-justify">Help your site visitors stay longer on your web pages and assist them to browse over your website - and let them know more about your products or services. Earn your site visitors' trust and confidence by providing excellent customer service. This includes filling out of form/s, generating leads (pre-sales and sales), appointment setting and above all provide your website with a human touch.</p>
             </div>
 
-            <div class="d-grid services">
+            <div class="d-grid hidden-fade-on-show services">
                 <div class="d-grid justify-content-center round-container">
                     <div class="icon">
                         <i class="fa fa-envelope"></i>
@@ -185,7 +189,7 @@ Chatsmith Online Services
                 <p class="text-justify">We believe that the quality of our chats should never fall off nor should remain constant forever. In fact, it is our mission to provide you with consistent high quality chats. To achieve this, we regularly put our agents into training to further boost their efficiency and competency - not only just on the way they handle their job but also on a personal perspective.</p>
             </div>
 
-            <div class="d-grid services">
+            <div class="d-grid hidden-fade-on-show services">
                 <div class="d-grid justify-content-center round-container">
                     <div class="icon">
                         <i class="fa fa-briefcase"></i>
@@ -196,7 +200,7 @@ Chatsmith Online Services
                 <p class="text-justify">Generating sales by understanding what your site visitors have mind - and aligning it with your products or services. Help convert your site visitors into paying customers.</p>
             </div>
 
-            <div class="d-grid services">
+            <div class="d-grid hidden-fade-on-show services">
                 <div class="d-grid justify-content-center round-container">
                     <div class="icon">
                         <i class="fa fa-dollar"></i>
