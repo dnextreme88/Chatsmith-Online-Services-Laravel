@@ -6,7 +6,7 @@
 
     .carousel-inner {
         .carousel-item {
-            height: 320px;
+            height: 360px;
 
             .carousel-caption {
                 color: #002A56;
@@ -16,5 +16,15 @@
 
     .carousel-nav {
         color: #002A56;
+    }
+}
+
+@media (width <= 768px) {
+    .carousel-inner {
+        .carousel-item {
+            .carousel-caption {
+                height: 100%;
+            }
+        }
     }
 }
