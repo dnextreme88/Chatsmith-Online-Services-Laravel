@@ -8,6 +8,10 @@
         .carousel-item {
             height: 360px;
 
+            .carousel-rating {
+                user-select: none;
+            }
+
             .carousel-caption {
                 color: #002A56;
             }
