@@ -10,6 +10,11 @@ use App\Models\User;
 
 class AnnouncementController extends Controller
 {
+    // The user must be logged in to access the views
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index () {
         $announcements = Announcement::paginate(5);
         $user = Auth::user();
