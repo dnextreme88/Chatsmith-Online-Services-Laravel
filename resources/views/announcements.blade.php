@@ -72,7 +72,7 @@
 											<form action="/announcements/{{ $announcement->id }}" method="POST">
 												@csrf
 												@method('DELETE')
-												<i class="fa fa-trash"></i> <input class="delete-announcement-button" type="submit" name="submit" value="Delete">
+												<i class="fa fa-trash"></i> <input class="text-danger delete-announcement-button" type="submit" name="submit" value="Delete" />
 											</form>
 										</li>
 								</ul></td>
