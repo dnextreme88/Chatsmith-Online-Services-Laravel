@@ -5,8 +5,31 @@ BASE RGB: 004893; // dark blue
 BASE RGB: E28700; // orange
 */
 
+/* IMPORT FONT FACES */
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@200;400;700&display=swap');
+
+@font-face {
+	font-family: 'Avenir Black';
+	src: 
+		url('../fonts/Avenir-Black.ttf') format('truetype'),
+		url('https://fonts.googleapis.com/css?family=Poppins:wght@200;400;700&display=swap') format('woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Avenir';
+	src: 
+		url('../fonts/Avenir-Regular.ttf') format('truetype'),
+		url('https://fonts.googleapis.com/css?family=Poppins:wght@200;400;700&display=swap') format('woff2');
+	font-display: swap;
+}
+
 :root {
 	--link-color-orange: #FF9900;
+}
+
+.text-justify {
+	text-align: justify;
 }
 
 /* Profile image (User model field) */
@@ -113,30 +136,6 @@ BASE RGB: E28700; // orange
 /* Header */
 	#cos_header {
 		width: 100%;
-	}
-
-	.navbar {
-		background-color: #FF9900;
-	}
-
-	#navbar-user-dropdown {
-		margin-right: -2px;
-	}
-
-	#header-navbar-left {
-		margin-top: 19px;
-	}
-
-	#header-navbar-right {
-		margin-top: 7px;
-	}
-
-	#header-navbar-left, #header-navbar-right {
-		background-color: #005EBF;
-	}
-
-	#header-navbar-left a:hover, #header-navbar-right a:hover {
-		background-color: #057EFB;
 	}
 
 /* Registration */
