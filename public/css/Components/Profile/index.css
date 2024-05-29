@@ -1,0 +1,15 @@
+#clock-in-form, #clock-out-form {
+    background-color: #EFAC6B;
+}
+
+.profile-links {
+    .links {
+        color: var(--link-color-orange);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--link-color-orange);
+            text-decoration: underline;
+        }
+    }
+}
