@@ -18,9 +18,9 @@ Add Employee Form
 
 		<div class="card-body">
 		@if (session('success'))
-			<div class="alert alert-success alert-block" role="alert">
-				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
-				{{ session('success') }}. You may go back and see <a href="{{ route('employees.index') }}" class="alert-link">all the employees</a>.
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				{{ session('success') }} You may go back and see <a href="{{ route('employees.index') }}" class="alert-link">all the employees</a>.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
 			<form action="{{ route('employees.store') }}" method="POST">

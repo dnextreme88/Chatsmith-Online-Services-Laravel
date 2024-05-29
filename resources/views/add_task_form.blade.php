@@ -18,9 +18,9 @@ Add Task Form
 
 		<div class="card-body">
 		@if (session('success'))
-			<div class="alert alert-success alert-block" role="alert">
-				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
 				{{ session('success') }} You may go back and see <a href="{{ route('tasks.index') }}" class="alert-link">all the tasks</a>.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
 			<form action="{{ route('tasks.store') }}" method="POST">

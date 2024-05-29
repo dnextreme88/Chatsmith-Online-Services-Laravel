@@ -22,26 +22,26 @@
 		</div>
 	@endif
 		<div class="col-md-12">
-		@if (session('success'))
-			<div class="alert alert-success alert-block" role="alert">
-				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
-				{{ session('success') }}
-			</div>
-		@elseif (isset($search_success_message))
-			<div class="alert alert-success alert-block" role="alert">
-				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
-				{{ $search_success_message }}
-			</div>
-		@elseif ($errors->any())
-			<div class="alert alert-danger" role="alert">
-				<p>Search Employee Errors</p>
-				<ul>
-				@foreach($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-				</ul>
-			</div>
-		@endif
+			@if ($errors->any())
+				<div class="alert alert-danger" role="alert">
+					<p>Search Employee Errors</p>
+					<ul>
+						@foreach($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@else
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					@if (session('success'))
+						{{ session('success') }}
+					@elseif (isset($search_success_message))
+						{{ $search_success_message }}
+					@endif
+
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			@endif
 			<!-- Search employees form -->
 			<form id="search-employees-form" class="form-inline" action="{{ route('search_employees') }}" method="GET">
 				<div class="form-group my-2">

@@ -55,9 +55,9 @@
 				<div class="card-body">
 					<!-- Show success message when user has successfully timed in -->
 					@if (session('success'))
-						<div class="alert alert-success alert-block" role="alert">
-							<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
 							{{ session('success') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 						</div>
 					<!-- Show error if user has timed in and is not yet an employee -->
 					@elseif ($errors->any())
