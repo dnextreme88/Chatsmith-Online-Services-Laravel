@@ -154,39 +154,18 @@ BASE RGB: E28700; // orange
 	}
 
 /* Announcements */
-	#announcement-pagination-list li a {
-		background-color: #FF9900;
-		color: white;
-		transition: background-color 0.4s;
-	}
+	#announcement-pagination-list {
+		& li {
+			& a {
+				background-color: #FF9900;
+				color: white;
+				transition: background-color 0.4s;
 
-	#announcement-pagination-list li a:hover {
-		background-color: #B56C00;
-	}
-
-	#announcement-pane-description {
-		text-indent: 2cm;
-	}
-
-	.speech-bubble {
-		position: relative;
-		background: #057EFB;
-		border-radius: .4em;
-	}
-
-	.speech-bubble:after {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 50%;
-		width: 0;
-		height: 0;
-		border: 25px solid transparent;
-		border-right-color: #057EFB;
-		border-left: 0;
-		border-top: 0;
-		margin-top: -25px;
-		margin-left: -25px;
+				&:hover {
+					background-color: #B56C00;
+				}
+			}
+		}
 	}
 
 /* Dashboard */

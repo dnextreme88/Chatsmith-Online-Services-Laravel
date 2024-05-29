@@ -4,6 +4,14 @@
 {{ $user->first_name }}'s Profile
 @endsection
 
+@push('styles')
+	<link href="{{ asset('css/Components/LatestAnnouncement/index.css') }}" rel="stylesheet">
+@endpush
+
+@push('scripts')
+	<script src="{{ asset('js/Announcements/latest_announcement.js') }}"></script>
+@endpush
+
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
@@ -15,12 +23,7 @@
 		</div>
 
 		@if ($latest_announcement && $is_active_employee)
-		<div class="col-md-2" style="margin: auto;"> <!-- Requires $latest_announcement variable - fetch latest announcement -->
-			<img src="../{{ $latest_announcement->user->image }}" class="img-thumbnail img-responsive avatar-thumbnail-small" style="display: block; margin: auto;" />
-		</div>
-		<div class="col-md-10 speech-bubble">
-			@include('layouts.latest_announcement_pane')
-		</div>
+			@include('layouts.latest_announcement_pane', ['latest_announcement' => $latest_announcement])
 		@endif
 
 		<div class="col-md-8">
