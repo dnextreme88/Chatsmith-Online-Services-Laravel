@@ -6,11 +6,11 @@
 
 @push('styles')
 	<link href="{{ asset('css/Components/Profile/index.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/Components/LatestAnnouncement/index.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/Components/Announcements/index.css') }}" rel="stylesheet">
 @endpush
 
 @push('scripts')
-	<script src="{{ asset('js/Announcements/latest_announcement.js') }}"></script>
+	<script src="{{ asset('js/Announcements/index.js') }}"></script>
 @endpush
 
 @section('content')
@@ -24,7 +24,7 @@
 		</div>
 
 		@if ($latest_announcement && $is_active_employee)
-			@include('layouts.latest_announcement_pane', ['latest_announcement' => $latest_announcement])
+			@include('Components.Announcements.includes.latest_announcement', ['latest_announcement' => $latest_announcement])
 		@endif
 
 		<div class="col-md-8 py-4">

@@ -10,6 +10,14 @@
     @endguest
 @endsection
 
+@push('styles')
+	<link href="{{ asset('css/Components/Announcements/index.css') }}" rel="stylesheet">
+@endpush
+
+@push('scripts')
+	<script src="{{ asset('js/Announcements/index.js') }}"></script>
+@endpush
+
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -39,6 +47,11 @@
             </div>
         @endif
         @if ($announcements->count() > 0)
+            @include('Components.Announcements.includes.list', [
+                'announcements' => $announcements,
+                'user' => $user
+            ])
+            {{-- TODO: CAN BE RE-USED IF WE ARE GONNA IMPLEMENT A FEATURE TO DISPLAY THE ANNOUNCEMENTS AS A TABLE OR NOT
             <table class="table table-bordered table-responsive">
                 <thead>
                     <th>ID</th>
@@ -79,6 +92,7 @@
                     @endforeach
                 </tbody>
             </table>
+            --}}
             {{ $announcements->links() }}
         @elseif ($announcements->count() == 0 && $user->is_staff == 'True')
             <p>No announcements found. <a href="{{ route('announcements.create') }}">Wanna create one now?</a></p>
