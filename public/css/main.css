@@ -26,10 +26,16 @@ BASE RGB: E28700; // orange
 
 :root {
 	--link-color-orange: #FF9900;
+	--table-background-color-dark: #002A56;
 }
 
 .text-justify {
 	text-align: justify;
+}
+
+/* Datepicker */
+.input-group-append {
+	display: flex;
 }
 
 /* Profile image (User model field) */
@@ -69,50 +75,61 @@ BASE RGB: E28700; // orange
 	}
 
 	.delete-announcement-button, .delete-employee-button, .delete-schedule-button {
-		color: #FF9900;
-	}
-
-	.delete-announcement-button:hover, .delete-employee-button:hover, .delete-schedule-button:hover {
-		color: #FF9900;
-		text-decoration: underline;
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
 /* Admin Panel */
-	#admin-panel-nav-links-body {
-		background-color: lightblue;
-	}
+#admin-panel-nav-links-body {
+	background-color: lightblue;
 
-	#admin-panel-nav-links-body ul li a {
-		display: block;
-		color: #000;
-		padding: 16px;
-	}
+	& ul {
+		& li {
+			&:hover {
+				display: block;
+				background-color: #057EFB;
+			}
 
-	#admin-panel-nav-links-body ul li.active a {
-		display: block;
-		color: #FFF;
-		padding: 16px;
-	}
+			& a {
+				display: block;
+				color: #000;
+				padding: 16px;
 
-	#admin-panel-nav-links-body ul li.active {
-		display: block;
-		background-color: #002A56;
-		transition: background-color 0.4s;
-	}
+				&:hover {
+					display: block;
+					text-decoration: none;
+				}
+			}
+		}
 
-	#admin-panel-nav-links-body ul li.active:hover, #admin-panel-nav-links-body ul li:hover {
-		display: block;
-		background-color: #057EFB;
-	}
+		& li.active {
+			display: block;
+			background-color: #002A56;
+			transition: background-color 0.4s;
 
-	#admin-panel-nav-links-body ul li.active a:hover, #admin-panel-nav-links-body ul li a:hover {
-		display: block;
-		text-decoration: none;
-	}
+			&:hover {
+				display: block;
+				background-color: #057EFB;
+			}
 
-	#admin-panel-hr-separator {
-		background-color: #002A56;
+			& a {
+				display: block;
+				color: #FFF;
+				padding: 16px;
+
+				&:hover {
+					display: block;
+					text-decoration: none;
+				}
+			}
+		}
 	}
+}
+
+#admin-panel-hr-separator {
+	background-color: #002A56;
+}
 
 /* Search boxes */
 	#search-employees-form input[type=text] {
@@ -120,13 +137,27 @@ BASE RGB: E28700; // orange
 	}
 
 /* Tables */
-	table th {
-		background-color: #005EBF;
+table {
+	background-color: var(--table-background-color-dark) !important;
+
+	th {
+		background-color: var(--table-background-color-dark) !important;
+		color: white !important;
 	}
 
-	table tr {
-		background-color: #057EFB;
+	th:first-child {
+		border-top-left-radius: 10px;
 	}
+
+	th:last-child {
+		border-top-right-radius: 10px;
+	}
+
+	td {
+		background-color: var(--table-background-color-dark) !important;
+		color: white !important;
+	}
+}
 
 /* Navigations */
 	.breadcrumb {
@@ -150,46 +181,20 @@ BASE RGB: E28700; // orange
 	}
 
 	.static-page h3 {
-		color: #FF9900;
+		color: var(--link-color-orange);
 	}
 
 /* Announcements */
-	#announcement-pagination-list li a {
-		background-color: #FF9900;
-		color: white;
-		transition: background-color 0.4s;
-	}
+	#announcement-pagination-list {
+		& li {
+			& a {
+				background-color: var(--link-color-orange);
+				color: white;
+				transition: background-color 0.4s;
 
-	#announcement-pagination-list li a:hover {
-		background-color: #B56C00;
-	}
-
-	#announcement-pane-description {
-		text-indent: 2cm;
-	}
-
-	.speech-bubble {
-		position: relative;
-		background: #057EFB;
-		border-radius: .4em;
-	}
-
-	.speech-bubble:after {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 50%;
-		width: 0;
-		height: 0;
-		border: 25px solid transparent;
-		border-right-color: #057EFB;
-		border-left: 0;
-		border-top: 0;
-		margin-top: -25px;
-		margin-left: -25px;
-	}
-
-/* Dashboard */
-	#clock-in-form, #clock-out-form {
-		background-color: #EFAC6B;
+				&:hover {
+					background-color: #B56C00;
+				}
+			}
+		}
 	}

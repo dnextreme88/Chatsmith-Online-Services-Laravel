@@ -18,9 +18,9 @@ Edit Schedule Form
 
 		<div class="card-body">
 		@if (session('success'))
-			<div class="alert alert-success alert-block" role="alert">
-				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
 				{{ session('success') }} You may go back and see <a href="{{ route('schedules.index') }}" class="alert-link">all the schedules</a>.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
 			<form action="/schedules/{{ $schedule->id }}/" method="POST">

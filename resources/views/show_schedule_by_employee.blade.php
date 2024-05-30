@@ -103,7 +103,7 @@
 								<li class="list-inline-item">
 									<form action="/schedules/employees/{{ $employee_by_id->id }}/{{ $schedule->id }}" method="POST">
 										@csrf
-										<i class="fa fa-trash"></i> <input class="delete-schedule-button" type="submit" name="submit" value="Delete">
+										<i class="fa fa-trash"></i> <input class="text-danger delete-schedule-button" type="submit" name="submit" value="Delete" />
 									</form>
 								</li>
 							</ul></td>

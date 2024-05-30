@@ -75,7 +75,7 @@ Employee # {{ $employee->employee_number }}
 							<form action="/employees/{{ $employee->id }}" method="POST">
 								@csrf
 								@method('DELETE')
-								<i class="fa fa-trash"></i> <input class="delete-employee-button" type="submit" name="submit" value="Delete">
+								<i class="fa fa-trash"></i> <input class="text-danger delete-employee-button" type="submit" name="submit" value="Delete" />
 							</form>
 						</dd>
 					</dl>

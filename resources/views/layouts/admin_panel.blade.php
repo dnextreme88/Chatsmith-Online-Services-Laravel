@@ -40,10 +40,13 @@
     <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Custom -->
+    <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    @stack('styles')
 
+    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @stack('scripts')
 
     <style>
         html, body {

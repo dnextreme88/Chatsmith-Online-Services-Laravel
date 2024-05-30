@@ -10,6 +10,11 @@ use App\Models\User;
 
 class AnnouncementController extends Controller
 {
+    // The user must be logged in to access the views
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index () {
         $announcements = Announcement::paginate(5);
         $user = Auth::user();
@@ -25,7 +30,7 @@ class AnnouncementController extends Controller
             $layout = 'layouts.app';
         }
 
-        return view('announcements', [
+        return view('Components.Announcements.get_all', [
             'announcements' => $announcements,
             'user' => $user,
             'layout' => $layout,
@@ -60,7 +65,7 @@ class AnnouncementController extends Controller
 
         if ($user) {
             if ($user->is_staff == 'True') {
-                return view('add_announcement_form');
+                return view('Components.Announcements.add_announcement_form');
             } else {
                 abort(403, 'Forbidden page.');
             }
@@ -87,7 +92,7 @@ class AnnouncementController extends Controller
             $layout = 'layouts.app';
         }
 
-        return view('show_announcement', [
+        return view('Components.Announcements.detail', [
             'current_announcement' => $current_announcement,
             'next_announcement' => $next_announcement,
             'previous_announcement' => $previous_announcement,
@@ -103,7 +108,7 @@ class AnnouncementController extends Controller
 
         if ($user) {
             if ($user->is_staff == 'True') {
-                return view('edit_announcement_form', [
+                return view('Components.Announcements.edit_announcement_form', [
                     'announcement' => $announcement
                 ]);
             } else {
@@ -180,7 +185,7 @@ class AnnouncementController extends Controller
             $layout = 'layouts.app';
         }
 
-        return view('show_announcement_by_username', [
+        return view('Components.Announcements.get_all_by_username', [
             'user' => $user,
             'user_by_username' => $find_user_by_username,
             'announcements' => $announcements_of_user,

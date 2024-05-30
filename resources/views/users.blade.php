@@ -9,9 +9,9 @@ Manage Users
 	<div class="row justify-content-center">
 		<div class="col-md-12">
 		@if (session('success'))
-			<div class="alert alert-success alert-block" role="alert">
-				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
 				{{ session('success') }}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
 		@if ($users->count() > 0)

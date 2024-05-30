@@ -92,6 +92,7 @@
                             </a>
 
                             <div class="dropdown-menu navbar-dropdown-user-links" aria-labelledby="user-links-dropdown">
+                                <a class="dropdown-item" href="{{ route('announcements.index') }}">Announcements</a>
                                 <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

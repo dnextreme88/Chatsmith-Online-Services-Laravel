@@ -4,6 +4,15 @@
 {{ $user->first_name }}'s Profile
 @endsection
 
+@push('styles')
+	<link href="{{ asset('css/Components/Profile/index.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/Components/Announcements/index.css') }}" rel="stylesheet">
+@endpush
+
+@push('scripts')
+	<script src="{{ asset('js/Announcements/index.js') }}"></script>
+@endpush
+
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
@@ -15,21 +24,16 @@
 		</div>
 
 		@if ($latest_announcement && $is_active_employee)
-		<div class="col-md-2" style="margin: auto;"> <!-- Requires $latest_announcement variable - fetch latest announcement -->
-			<img src="../{{ $latest_announcement->user->image }}" class="img-thumbnail img-responsive avatar-thumbnail-small" style="display: block; margin: auto;" />
-		</div>
-		<div class="col-md-10 speech-bubble">
-			@include('layouts.latest_announcement_pane')
-		</div>
+			@include('Components.Announcements.includes.latest_announcement', ['latest_announcement' => $latest_announcement])
 		@endif
 
-		<div class="col-md-8">
+		<div class="col-md-8 py-4">
 			<div class="card">
 				<div class="card-header">
-					<span class="text-left float-left">Timestamps</span>
+					<span class="text-left float-start">Timestamps</span>
 
 				@if ($is_active_employee)
-					<div id="time" class="text-right float-right"></div>
+					<div id="time" class="text-right float-end"></div>
 
 					<!-- Show current time script (based on local time on computer) -->
 					<script type="text/javascript">
@@ -51,9 +55,9 @@
 				<div class="card-body">
 					<!-- Show success message when user has successfully timed in -->
 					@if (session('success'))
-						<div class="alert alert-success alert-block" role="alert">
-							<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
 							{{ session('success') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 						</div>
 					<!-- Show error if user has timed in and is not yet an employee -->
 					@elseif ($errors->any())
@@ -172,20 +176,21 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 py-4">
 			<div class="card">
 				<div class="card-header">Welcome, {{ $user->first_name }}!</div>
 
-				<div class="card-body">
+				<div class="card-body profile-links">
 					<ul>
 					   <!-- Check if user is a staff, then show admin panel link -->
 						@if ($user->is_staff == 'True')
-							<li><a href="{{ route('admin_panel_home') }}">Admin Panel</a></li>
+							<li><a class="links" href="{{ route('admin_panel_home') }}">Admin Panel</a></li>
 						@endif
+
 						@if ($user->employee && $user->employee->is_active == 'True')
-							<li><a href="/schedules/employees/{{ $user->employee->id }}/">My Schedules</a></li>
+							<li><a class="links" href="/schedules/employees/{{ $user->employee->id }}/">My Schedules</a></li>
 						@endif
-						<li><a href="/profile/{{ $user->id}}/edit">Settings</a></li>
+						<li><a class="links" href="/profile/{{ $user->id}}/edit">Settings</a></li>
 					</ul>
 				</div>
 			</div>

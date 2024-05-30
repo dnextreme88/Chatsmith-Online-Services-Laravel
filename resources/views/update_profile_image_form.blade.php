@@ -19,9 +19,9 @@ Edit User Settings - Update Profile Image Form
 			<h3>Update Profile Image</h3>
 		</div>
 		@if (session('success'))
-			<div class="col-md-12 alert alert-success alert-block">
-				<button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+			<div class="col-md-12 alert alert-success alert-dismissible fade show" role="alert">
 				{{ session('success') }}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
 		<div class="col-md-12 alert alert-info alert-block">
