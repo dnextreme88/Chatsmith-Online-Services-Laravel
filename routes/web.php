@@ -25,8 +25,6 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Auth::routes();
-
 Route::get('/', [IndexController::class, 'index']);
 
 Route::resource('schedules', ScheduleController::class, ['except' => ['destroy']]);
