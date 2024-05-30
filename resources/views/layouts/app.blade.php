@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
 
+    @vite('resources/css/app.css')
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/cos_favicon.png') }}">
 
@@ -73,6 +75,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
+                    {{-- TODO: DISABLED FOR NOW AS LOGIN AND REGISTER ROUTES NEED TO EXIST
                     @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -105,6 +108,7 @@
                             </div>
                         </li>
                     @endguest
+                    --}}
                     </ul>
                 </div>
             </div>
