@@ -161,17 +161,12 @@ table {
 
 /* Navigations */
 	.breadcrumb {
-		background-color: #005EBF;
+		background-color: #FB923C;
 	}
 
 /* Header */
 	#cos_header {
 		width: 100%;
-	}
-
-/* Registration */
-	.name-inputs-to-uppercase {
-		text-transform: uppercase;
 	}
 
 /* Static Pages (About Us, Careers, Privacy Policy, Terms and Conditions) */
