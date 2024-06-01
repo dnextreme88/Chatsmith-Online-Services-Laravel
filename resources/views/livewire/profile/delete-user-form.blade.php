@@ -21,7 +21,8 @@ new class extends Component
 
         $this->redirect('/', navigate: true);
     }
-}; ?>
+}
+?>
 
 <section class="space-y-6">
     <header>
