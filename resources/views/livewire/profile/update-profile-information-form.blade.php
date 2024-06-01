@@ -22,7 +22,7 @@ new class extends Component
         $this->first_name = Auth::user()->first_name ? Auth::user()->first_name : '';
         $this->maiden_name = Auth::user()->maiden_name ? Auth::user()->maiden_name : '';
         $this->last_name = Auth::user()->last_name ? Auth::user()->last_name : '';
-        $this->email = Auth::user()->email;
+        $this->email = Auth::user()->email ? Auth::user()->email : '';
     }
 
     /**
@@ -101,7 +101,7 @@ new class extends Component
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="username" />
+            <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full" required placeholder="user@domain.com" autocomplete="email" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
             @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! auth()->user()->hasVerifiedEmail())
