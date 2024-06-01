@@ -9,26 +9,30 @@ use Livewire\Volt\Component;
 
 new class extends Component
 {
+    public int $user_id = 0;
     public string $first_name = '';
     public string $maiden_name = '';
     public string $last_name = '';
     public string $email = '';
+    public string $username = '';
 
     /**
      * Mount the component.
      */
     public function mount(): void
     {
+        $this->user_id = Auth::user()->id ? Auth::user()->id : 0;
         $this->first_name = Auth::user()->first_name ? Auth::user()->first_name : '';
         $this->maiden_name = Auth::user()->maiden_name ? Auth::user()->maiden_name : '';
         $this->last_name = Auth::user()->last_name ? Auth::user()->last_name : '';
         $this->email = Auth::user()->email ? Auth::user()->email : '';
+        $this->username = Auth::user()->username ? Auth::user()->username : '';
     }
 
     /**
      * Update the profile information for the currently authenticated user.
      */
-    public function updateProfileInformation(): void
+    public function update_profile_info(): void
     {
         $user = Auth::user();
 
@@ -67,9 +71,10 @@ new class extends Component
 
         Session::flash('status', 'verification-link-sent');
     }
-}; ?>
+}
+?>
 
-<section>
+<section class="mb-4">
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Profile Information') }}
@@ -80,7 +85,17 @@ new class extends Component
         </p>
     </header>
 
-    <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
+    <form wire:submit="update_profile_info" class="mt-6 space-y-6">
+        <div class="mt-4">
+            <x-input-label for="user_id" :value="__('User ID')" />
+            <x-text-input wire:model="user_id" id="user_id" class="block mt-1 w-full bg-gray-300 " type="text" name="user_id" readonly />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="username" :value="__('Username')" />
+            <x-text-input wire:model="username" id="username" class="block mt-1 w-full bg-gray-300 " type="text" name="username" placeholder="{{ $user_id }}" autocomplete="username" readonly />
+        </div>
+
         <div class="mt-4">
             <x-input-label for="first_name" :value="__('First Name')" />
             <x-text-input wire:model="first_name" id="first_name" class="block mt-1 w-full" type="text" name="first_name" required autofocus autocomplete="first_name" />
@@ -99,7 +114,7 @@ new class extends Component
             <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 
-        <div>
+        <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full" required placeholder="user@domain.com" autocomplete="email" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
@@ -123,10 +138,14 @@ new class extends Component
             @endif
         </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <div>
+            <a class="no-underline text-orange-500" href="{{ route('dashboard.update_profile_image') }}" wire:navigate>Click here to update profile image</a>
+        </div>
 
-            <x-action-message class="me-3" on="profile-updated">{{ __('Saved.') }}</x-action-message>
+        <div class="flex items-center gap-4">
+            <x-primary-button class="bg-green-600 hover:bg-green-400">{{ __('Save') }}</x-primary-button>
+
+            <x-action-message class="text-green-500 me-3" on="profile-updated">{{ __('Profile updated.') }}</x-action-message>
         </div>
     </form>
 </section>
