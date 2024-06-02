@@ -11,7 +11,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\UpdateProfileImageController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -24,8 +23,6 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Auth::routes();
 
 Route::get('/', [IndexController::class, 'index']);
 
@@ -55,25 +52,11 @@ Route::get('/users', [UserController::class, 'index'])->name('all_users');
 
 Route::resource('announcements', AnnouncementController::class);
 
-Route::get('announcements/user/{username}', [AnnouncementController::class, 'show_announcement_by_username']);
+Route::get('announcements/user/{username}', [AnnouncementController::class, 'show_announcement_by_username'])->name('announcements.show_by_username');
 
 Route::resource('employees', EmployeeController::class);
 
 Route::get('employees/search/query', [EmployeeController::class, 'search_employees'])->name('search_employees');
-
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-
-Route::get('/profile/{id}/edit', [ProfileController::class, 'edit_user_settings']);
-
-Route::post('/profile/{id}/edit', [ProfileController::class, 'update_user_settings']);
-
-Route::post('/profile/create_time_record', [ProfileController::class, 'create_time_record'])->name('create_time_record');
-
-Route::post('/profile/time_record/{id}', [ProfileController::class, 'update_time_record']);
-
-Route::get('user/update_profile_image', [UpdateProfileImageController::class, 'index'])->name('update_profile_image');
-
-Route::post('user/update_profile_image/{id}', [UpdateProfileImageController::class, 'upload']);
 
 Route::get('/leadforms/chat_account', [LeadformController::class, 'create_chat_account_leadform'])->name('chat_account_leadform');
 
@@ -87,11 +70,22 @@ Route::get('/leadforms/plateiq', [LeadformController::class, 'create_plateiq_lea
 
 Route::post('/leadforms/plateiq', [LeadformController::class, 'store_plateiq_leadform']);
 
+// Dashboard x Profile routes
+Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboard.'], function() {
+    Route::get('/', [ProfileController::class, 'index'])->name('index');
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::get('/profile/image', [ProfileController::class, 'show_update_profile_image_form'])->name('update_profile_image');
+    Route::post('/create_time_record', [ProfileController::class, 'create_time_record'])->name('create_time_record');
+    Route::post('/time_record/{id}', [ProfileController::class, 'update_time_record'])->name('update_time_record');
+});
+
 // Static pages
-Route::get('/aboutus', [StaticPagesController::class, 'about_us_index']);
+Route::get('/aboutus', [StaticPagesController::class, 'about_us_index'])->name('about_us');
 
-Route::get('/careers', [StaticPagesController::class, 'careers_index']);
+Route::get('/careers', [StaticPagesController::class, 'careers_index'])->name('careers');
 
-Route::get('/privacy', [StaticPagesController::class, 'privacy_index']);
+Route::get('/privacy', [StaticPagesController::class, 'privacy_index'])->name('privacy');
 
-Route::get('/terms', [StaticPagesController::class, 'terms_and_conditions_index']);
+Route::get('/terms', [StaticPagesController::class, 'terms_and_conditions_index'])->name('toc');
+
+require __DIR__.'/auth.php';

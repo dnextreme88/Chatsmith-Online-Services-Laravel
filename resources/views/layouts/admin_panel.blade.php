@@ -14,6 +14,8 @@
         <title>@yield('title')</title>
     @endguest
 
+    @vite('resources/css/app.css')
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/cos_favicon.png') }}">
 
