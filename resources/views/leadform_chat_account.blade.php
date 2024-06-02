@@ -6,14 +6,10 @@ Chatsmith Online Services - Chat Account Leadform
 
 @section('content')
 <div class="container">
-	<div class="col-md-12">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-			<li class="breadcrumb-item">Chat Account Leadform</li>
-		</ol>
-	</div>
+	<x-custom.breadcrumbs :nav_links="[]">Chat Account Leadform</x-custom.breadcrumbs>
+
 	<div class="card">
-		<div class="card-header">Chat Account Leadform for Live Chat, Smart Alto and PersistIQ</div>
+		<x-custom.card-header-title>{{ __('Chat Account Leadform for Live Chat, Smart Alto, and PersistIQ') }}</x-card-header-title>
 
 		<div class="card-body">
 		@if (session('success'))

@@ -17,23 +17,8 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		@guest
-			<div class="col-md-12">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-					<li class="breadcrumb-item">Tasks</li>
-				</ol>
-			</div>
-		@else
-			@if ($user->is_staff == 'False')
-				<div class="col-md-12">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-						<li class="breadcrumb-item">Tasks</li>
-					</ol>
-				</div>
-			@endif
-		@endguest
+		<x-custom.breadcrumbs :nav_links="[]">Tasks</x-custom.breadcrumbs>
+
 		<div class="col-md-12">
 			<h2 class="text-center">COS Tasks 2020</h2>
 			<form action="{{ route('view_task_by_day') }}" method="POST">

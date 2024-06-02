@@ -6,14 +6,10 @@ Chatsmith Online Services - PlateIQ Leadform
 
 @section('content')
 <div class="container">
-	<div class="col-md-12">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-			<li class="breadcrumb-item">PlateIQ Leadform</li>
-		</ol>
-	</div>
+	<x-custom.breadcrumbs :nav_links="[]">PlateIQ Leadform</x-custom.breadcrumbs>
+
 	<div class="card">
-		<div class="card-header">PlateIQ Leadform</div>
+		<x-custom.card-header-title>{{ __('PlateIQ Leadform') }}</x-card-header-title>
 
 		<div class="card-body">
 		@if (session('success'))

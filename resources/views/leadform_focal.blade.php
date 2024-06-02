@@ -6,14 +6,10 @@ Chatsmith Online Services - Focal Leadform
 
 @section('content')
 <div class="container">
-	<div class="col-md-12">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-			<li class="breadcrumb-item">Focal Leadform</li>
-		</ol>
-	</div>
+	<x-custom.breadcrumbs :nav_links="[]">Focal Leadform</x-custom.breadcrumbs>
+
 	<div class="card">
-		<div class="card-header">Focal Leadform</div>
+		<x-custom.card-header-title>{{ __('Focal Leadform') }}</x-card-header-title>
 
 		<div class="card-body">
 		@if (session('success'))

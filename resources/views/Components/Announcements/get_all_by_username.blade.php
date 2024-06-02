@@ -7,25 +7,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        @guest
-            <div class="col-md-12">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
-                    <li class="breadcrumb-item">Showing all announcements of {{ $user_by_username->username }}</li>
-                </ol>
-            </div>
-        @else
-            @if ($user->is_staff == 'False')
-                <div class="col-md-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
-                        <li class="breadcrumb-item">Showing all announcements of {{ $user_by_username->username }}</li>
-                    </ol>
-                </div>
-            @endif
-        @endguest
+        <x-custom.breadcrumbs :nav_links="['Announcements' => route('announcements.index')]">{{ $user_by_username->username }}</x-custom.breadcrumbs>
 
         <div class="col-md-12 text-center">
             <h1 class="text-center">Showing all announcements of {{ $user_by_username->username }}</h1>

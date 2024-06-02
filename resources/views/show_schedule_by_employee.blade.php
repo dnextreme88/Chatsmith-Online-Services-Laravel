@@ -26,27 +26,14 @@
 <div class="container">
 	<div class="row">
 	@guest
-		<div class="col-md-12">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				<li class="breadcrumb-item"><a href="{{ route('schedules.index') }}">Schedules</a></li>
-				<li class="breadcrumb-item">Showing all schedules of {{ $employee_by_id->user->first_name }} {{ $employee_by_id->user->last_name }}</li>
-			</ol>
-		</div>
+		<x-custom.breadcrumbs :nav_links="['Schedules' => route('schedules.index')]">{{ $employee_by_id->user->username }}</x-custom.breadcrumbs>
 	@else
-		@if ($user->is_staff == 'False')
-			<div class="col-md-12">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-					<li class="breadcrumb-item"><a href="{{ route('schedules.index') }}">Schedules</a></li>
-					@if ($user == $employee_by_id->user)
-						<li class="breadcrumb-item">My Schedules</li>
-					@else
-						<li class="breadcrumb-item">Showing all schedules of {{ $employee_by_id->user->first_name }} {{ $employee_by_id->user->last_name }}</li>
-					@endif
-				</ol>
-			</div>
+		@if ($user == $employee_by_id->user)
+			<x-custom.breadcrumbs :nav_links="['Schedules' => route('schedules.index')]">My Schedules</x-custom.breadcrumbs>
+		@else
+			<x-custom.breadcrumbs :nav_links="['Schedules' => route('schedules.index')]">{{ $employee_by_id->user->username }}</x-custom.breadcrumbs>
 		@endif
+
 		<div class="col-md-12 text-center">
 		@if ($user == $employee_by_id->user)
 			<h1 class="text-center">My Schedules</h1>

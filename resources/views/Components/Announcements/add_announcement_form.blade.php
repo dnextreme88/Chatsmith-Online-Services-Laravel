@@ -6,15 +6,10 @@
 
 @section('content')
 <div class="container">
-    <div class="col-md-12">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
-            <li class="breadcrumb-item">Create Announcement</li>
-        </ol>
-    </div>
+    <x-custom.breadcrumbs :nav_links="['Announcements' => route('announcements.index')]">Create Announcement</x-custom.breadcrumbs>
+
     <div class="card">
-        <div class="card-header">Add Announcement Form</div>
+        <x-custom.card-header-title>{{ __('Add Announcement Form') }}</x-card-header-title>
 
         <div class="card-body">
             @if (session('success'))

@@ -7,25 +7,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        @guest
-            <div class="col-md-12">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
-                    <li class="breadcrumb-item">{{ $current_announcement->title }}</li>
-                </ol>
-            </div>
-        @else
-            @if ($user->is_staff == 'False')
-                <div class="col-md-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('announcements.index') }}">Announcements</a></li>
-                        <li class="breadcrumb-item">{{ $current_announcement->title }}</li>
-                    </ol>
-                </div>
-            @endif
-        @endguest
+        <x-custom.breadcrumbs :nav_links="['Announcements' => route('announcements.index')]">{{ $current_announcement->title }}</x-custom.breadcrumbs>
 
         <div class="col-md-12 alert alert-info alert-block bg-info">
             <h1>Title: {{ $current_announcement->title }}</h1>
