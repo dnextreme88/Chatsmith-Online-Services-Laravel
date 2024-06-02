@@ -10,6 +10,8 @@ use App\Models\TimeRecord;
 
 class Dashboard extends Component
 {
+    public $this_is_test;
+
     #[On('clock-in-success')]
     public function render()
     {
@@ -34,5 +36,11 @@ class Dashboard extends Component
             'time_records' => $employee_time_records,
             'is_active_employee' => $is_active_employee,
         ]);
+    }
+
+    #[On('clock-out-success')]
+    public function update_timestamps_table()
+    {
+        //
     }
 }
