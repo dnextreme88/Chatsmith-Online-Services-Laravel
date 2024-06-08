@@ -8,21 +8,6 @@
 
                 @if ($is_active_employee)
                     <div id="time" class="text-right float-end"></div>
-
-                    {{-- Show current time script (based on local time on computer) --}}
-                    <script type="text/javascript">
-                        function showCurrentTime() {
-                            var date = new Date();
-                            current_date = new Date(
-                                date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()
-                            );
-
-                            document.getElementById('time').innerHTML = current_date.toLocaleString('en-US', {
-                                hour12: true, month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'
-                            });
-                        }
-                        setInterval(showCurrentTime, 1000);
-                    </script>
                 @endif
             </div>
 
@@ -92,3 +77,6 @@
         </div>
     </div>
 </div>
+
+{{-- Don't wrap @push('scripts') to this as it won't work, for some reason --}}
+<script src="{{ asset('js/Dashboard/index.js') }}"></script>
