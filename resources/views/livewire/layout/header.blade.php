@@ -31,9 +31,9 @@ new class extends Component
                     <a id="leadforms-links-dropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Leadforms</a>
 
                     <div class="dropdown-menu navbar-dropdown-main-links" aria-labelledby="leadforms-links-dropdown">
-                        <a class="dropdown-item" href="{{ route('focal_leadform') }}" wire:navigate>Focal Leadform</a>
-                        <a class="dropdown-item" href="{{ route('chat_account_leadform') }}" wire:navigate>Live Chat / Smart Alto / PersistIQ Leadform</a>
-                        <a class="dropdown-item" href="{{ route('plate_leadform') }}" wire:navigate>Plate IQ Leadform</a>
+                        <a class="dropdown-item" href="{{ route('productions.leadforms.focal') }}" wire:navigate>Focal Leadform</a>
+                        <a class="dropdown-item" href="{{ route('productions.leadforms.chat_account') }}" wire:navigate>Live Chat / Smart Alto / PersistIQ Leadform</a>
+                        <a class="dropdown-item" href="{{ route('productions.leadforms.plate') }}" wire:navigate>Plate IQ Leadform</a>
                     </div>
                 </li>
                 <li class="mr-2 nav-item"><a class="nav-link" href="{{ route('schedules.index') }}" wire:navigate>COS Schedule</a></li>
