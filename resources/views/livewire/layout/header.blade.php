@@ -37,7 +37,7 @@ new class extends Component
                     </div>
                 </li>
                 <li class="mr-2 nav-item"><a class="nav-link" href="{{ route('schedules.index') }}" wire:navigate>COS Schedule</a></li>
-                <li class="mr-2 nav-item"><a class="nav-link" href="{{ route('daily_productions') }}" wire:navigate>Daily Productions</a></li>
+                <li class="mr-2 nav-item"><a class="nav-link" href="{{ route('productions.daily') }}" wire:navigate>Daily Productions</a></li>
                 <li class="mr-2 nav-item"><a class="nav-link" href="{{ route('tasks.index') }}" wire:navigate>Daily Tasks</a></li>
             </ul>
         </div>
