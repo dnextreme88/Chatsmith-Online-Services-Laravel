@@ -24,7 +24,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::resource('schedules', ScheduleController::class, ['except' => ['destroy']]);
 
@@ -46,8 +46,6 @@ Route::post('tasks/', [TaskController::class, 'view_task_by_day'])->name('view_t
 
 Route::get('/admin', [AdminPanelController::class, 'index'])->name('admin_panel_home');
 
-Route::get('/daily_productions', [DailyProductionController::class, 'index'])->name('daily_productions');
-
 Route::get('/users', [UserController::class, 'index'])->name('all_users');
 
 Route::resource('announcements', AnnouncementController::class);
@@ -58,17 +56,13 @@ Route::resource('employees', EmployeeController::class);
 
 Route::get('employees/search/query', [EmployeeController::class, 'search_employees'])->name('search_employees');
 
-Route::get('/leadforms/chat_account', [LeadformController::class, 'create_chat_account_leadform'])->name('chat_account_leadform');
-
-Route::post('/leadforms/chat_account', [LeadformController::class, 'store_chat_account_leadform']);
-
-Route::get('/leadforms/focal', [LeadformController::class, 'create_focal_leadform'])->name('focal_leadform');
-
-Route::post('/leadforms/focal', [LeadformController::class, 'store_focal_leadform']);
-
-Route::get('/leadforms/plateiq', [LeadformController::class, 'create_plateiq_leadform'])->name('plate_leadform');
-
-Route::post('/leadforms/plateiq', [LeadformController::class, 'store_plateiq_leadform']);
+// Production routes
+Route::group(['prefix' => 'productions', 'as' => 'productions.'], function() {
+    Route::get('/daily', [LeadformController::class, 'daily_productions'])->name('daily');
+    Route::get('/leadforms/chat_account', [LeadformController::class, 'chat_account_leadform'])->name('leadforms.chat_account')->middleware('auth');
+    Route::get('/leadforms/focal', [LeadformController::class, 'focal_leadform'])->name('leadforms.focal')->middleware('auth');
+    Route::get('/leadforms/plateiq', [LeadformController::class, 'plateiq_leadform'])->name('leadforms.plate')->middleware('auth');
+});
 
 // Dashboard x Profile routes
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard', 'as' => 'dashboard.'], function() {

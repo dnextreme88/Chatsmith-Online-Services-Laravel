@@ -10,8 +10,6 @@ use App\Models\TimeRecord;
 
 class Dashboard extends Component
 {
-    public $this_is_test;
-
     #[On('clock-in-success')]
     public function render()
     {

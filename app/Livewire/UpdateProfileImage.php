@@ -16,7 +16,7 @@ class UpdateProfileImage extends Component
     {
         $user = Auth::user();
 
-        return view('livewire.profile.update-profile-image', [
+        return view('livewire.profile.update-profile-image-form', [
             'user' => $user,
             'is_using_default_image' => $user->profile_image == 'images\\avatars\\default_avatar.png' ? true : false
         ]);

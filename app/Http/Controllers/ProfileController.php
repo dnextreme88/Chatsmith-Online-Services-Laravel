@@ -15,14 +15,14 @@ class ProfileController extends Controller
         return view('pages.dashboard');
     }
 
-    public function profile () {
+    public function profile() {
         return view('pages.profile', [
             'user' => Auth::user()
         ]);
     }
 
-    public function show_update_profile_image_form () {
-        return view('update_profile_image_form', [
+    public function show_update_profile_image_form() {
+        return view('pages.update-profile-image', [
             'user' => Auth::user()
         ]);
     }

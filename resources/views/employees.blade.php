@@ -13,14 +13,8 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row justify-content-center">
-	@if ($user->is_staff == 'False')
-		<div class="col-md-12">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><i class="fa fa-home"></i> <a href="/">Home</a></li>
-				<li class="breadcrumb-item">Employees</li>
-			</ol>
-		</div>
-	@endif
+		<x-custom.breadcrumbs :nav_links="[]">Employees</x-custom.breadcrumbs>
+
 		<div class="col-md-12">
 			@if ($errors->any())
 				<div class="alert alert-danger" role="alert">
