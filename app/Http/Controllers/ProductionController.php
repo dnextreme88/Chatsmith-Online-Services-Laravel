@@ -7,7 +7,7 @@ use App\Models\ProductionChat;
 use App\Models\ProductionFocal;
 use App\Models\ProductionPlate;
 
-class LeadformController extends Controller
+class ProductionController extends Controller
 {
     public function daily_productions() {
         // Show daily productions for Chat Accounts, Focal and Plate

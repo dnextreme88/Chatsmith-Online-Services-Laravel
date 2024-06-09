@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\DailyProductionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\LeadformController;
+use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StaticPagesController;
@@ -60,10 +59,10 @@ Route::get('employees/search/query', [EmployeeController::class, 'search_employe
 
 // Production routes
 Route::group(['prefix' => 'productions', 'as' => 'productions.'], function() {
-    Route::get('/daily', [LeadformController::class, 'daily_productions'])->name('daily');
-    Route::get('/leadforms/chat_account', [LeadformController::class, 'chat_account_leadform'])->name('leadforms.chat_account')->middleware('auth');
-    Route::get('/leadforms/focal', [LeadformController::class, 'focal_leadform'])->name('leadforms.focal')->middleware('auth');
-    Route::get('/leadforms/plateiq', [LeadformController::class, 'plateiq_leadform'])->name('leadforms.plate')->middleware('auth');
+    Route::get('/daily', [ProductionController::class, 'daily_productions'])->name('daily');
+    Route::get('/leadforms/chat_account', [ProductionController::class, 'chat_account_leadform'])->name('leadforms.chat_account')->middleware('auth');
+    Route::get('/leadforms/focal', [ProductionController::class, 'focal_leadform'])->name('leadforms.focal')->middleware('auth');
+    Route::get('/leadforms/plateiq', [ProductionController::class, 'plateiq_leadform'])->name('leadforms.plate')->middleware('auth');
 });
 
 // Dashboard x Profile routes
