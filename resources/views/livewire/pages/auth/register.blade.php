@@ -39,6 +39,7 @@ new #[Layout('layouts.guest')] class extends Component
             'first_name' => $validated['first_name'],
             'maiden_name' => $validated['maiden_name'],
             'last_name' => $validated['last_name'],
+            'full_name' => $validated['first_name']. ' ' .$validated['maiden_name']. ' ' .$validated['last_name'],
             'username' => $validated['username'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
@@ -49,7 +50,8 @@ new #[Layout('layouts.guest')] class extends Component
 
         $this->redirect(RouteServiceProvider::HOME, navigate: true);
     }
-}; ?>
+}
+?>
 
 <div>
     <form wire:submit="register">
