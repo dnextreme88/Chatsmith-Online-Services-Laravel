@@ -183,7 +183,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        
+        'Markdown' => Illuminate\Mail\Markdown::class
     ])->toArray(),
 
 ];
