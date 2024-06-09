@@ -44,7 +44,9 @@ Route::post('task', [TaskController::class, 'store'])->name('tasks.store');
 
 Route::post('tasks/', [TaskController::class, 'view_task_by_day'])->name('view_task_by_day');
 
+/*
 Route::get('/admin', [AdminPanelController::class, 'index'])->name('admin_panel_home');
+*/
 
 Route::get('/users', [UserController::class, 'index'])->name('all_users');
 

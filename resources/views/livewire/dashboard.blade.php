@@ -57,9 +57,11 @@
             <div class="profile-links">
                 <ul class="list-disc">
                     {{-- Check if user is a staff, then show admin panel link --}}
+                    {{--
                     @if ($user->is_staff == 'True')
                         <li><a class="links" href="{{ route('admin_panel_home') }}">Admin Panel</a></li>
                     @endif
+                    --}}
 
                     @if ($user->employee && $user->employee->is_active == 'True')
                         <li><a class="links" href="/schedules/employees/{{ $user->employee->id }}/" wire:navigate>My Schedules</a></li>

@@ -65,12 +65,15 @@
                 <div class="col-sm-4 col-xl-2" id="admin-panel-nav-links-body">
                     <a href="/" alt="Chatsmith Online Services logo" title="Chatsmith Online Services logo"><img src="{{ asset('images/chatsmithonline-logo.png') }}" class="img-fluid mx-auto d-block" /></a>
                     <ul id="admin-panel-nav-links" class="list-unstyled">
+                        {{-- 
                         <li class="list-item {{ (url()->current() == route('admin_panel_home')) ? 'active' : '' }}"><a href="/admin/"><i class="fa fa-home"></i> Admin Panel Home</a></li>
+                        --}}
                         <li class="list-item {{ (url()->current() == route('announcements.index')) ? 'active' : '' }}"><a href="/announcements/"><i class="fa fa-bullhorn"></i> Announcements</a></li>
                         <li class="list-item {{ (url()->current() == route('employees.index')) ? 'active' : '' }}"><a href="/employees/"><i class="fa fa-id-card"></i> Employees</a></li>
                         <li class="list-item {{ (url()->current() == route('schedules.index')) ? 'active' : '' }}"><a href="/schedules/"><i class="fa fa-calendar"></i> Schedules</a></li>
                         <li class="list-item {{ (url()->current() == route('tasks.index')) ? 'active' : '' }}"><a href="/tasks/"><i class="fa fa-clipboard"></i> Tasks</a></li>
                         <li class="list-item {{ (url()->current() == route('all_users')) ? 'active' : '' }}"><a href="/users/"><i class="fa fa-users"></i> Users</a></li>
+                        {{--
                         <li class="list-item">
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a>
 
@@ -78,6 +81,7 @@
                                 @csrf
                             </form>
                         </li>
+                        --}}
                         <hr id="admin-panel-hr-separator">
                         <li class="list-item {{ (\Request::getRequestUri() == '/announcements/create/') ? 'active' : '' }}"><a href="/announcements/create/">Add Announcement</a></li>
                         <li class="list-item {{ (\Request::getRequestUri() == '/employees/create/') ? 'active' : '' }}"><a href="/employees/create/">Add Employee</a></li>
