@@ -13,7 +13,7 @@
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item"><i class="fa fa-eye"></i> <a href="/announcements/{{ $announcement->id }}/">View</a></li>
-                                <li class="list-inline-item"><i class="fa fa-magic"></i> <a href="/announcements/{{ $announcement->id }}/edit/">Edit</a></li>
+                                <li class="list-inline-item"><i class="fa fa-magic"></i> <a wire:navigate href="/admin/announcements/{{ $announcement->id }}/edit/">Edit</a></li>
                                 <li class="list-inline-item">
                                     <form action="/announcements/{{ $announcement->id }}" method="POST">
                                         @csrf

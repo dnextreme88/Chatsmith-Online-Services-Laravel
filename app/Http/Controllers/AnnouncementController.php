@@ -37,43 +37,6 @@ class AnnouncementController extends Controller
         ]);
     }
 
-    public function store (Request $request) {
-        // Process in adding announcement
-        $user = Auth::user();
-
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:announcements',
-            'description' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('announcements/create')->withErrors($validator)->withInput();
-        }
-
-        Announcement::create([
-            'user_id' => $user->id,
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
-
-        return redirect()->back()->withSuccess('Announcement successfully added!');
-    }
-
-    public function create () {
-        // Show add announcements form
-        $user = Auth::user();
-
-        if ($user) {
-            if ($user->is_staff == 'True') {
-                return view('Components.Announcements.add_announcement_form');
-            } else {
-                abort(403, 'Forbidden page.');
-            }
-        } else {
-            abort(403, 'Forbidden page.');
-        }
-    }
-
     public function show ($id) {
         // Show specific announcement
         $current_announcement = Announcement::find($id);
@@ -99,44 +62,6 @@ class AnnouncementController extends Controller
             'user' => $user,
             'layout' => $layout,
         ]);
-    }
-
-    public function edit ($id) {
-        // Show edit announcement form
-        $announcement = Announcement::find($id);
-        $user = Auth::user();
-
-        if ($user) {
-            if ($user->is_staff == 'True') {
-                return view('Components.Announcements.edit_announcement_form', [
-                    'announcement' => $announcement
-                ]);
-            } else {
-                abort(403, 'Forbidden page.');
-            }
-        } else {
-            abort(403, 'Forbidden page.');
-        }
-    }
-
-    public function update (Request $request, $id) {
-        // Process in updating announcement
-        $announcement = Announcement::find($id);
-
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:announcements,id,' .$announcement->id,
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $announcement->user_id = $announcement->user_id;
-        $announcement->title = $request->title;
-        $announcement->description = $request->description;
-        $announcement->save();
-
-        return redirect()->back()->withSuccess('Announcement successfully edited!');
     }
 
     public function destroy ($id) {

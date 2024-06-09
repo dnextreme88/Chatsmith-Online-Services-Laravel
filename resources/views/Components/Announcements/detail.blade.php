@@ -11,17 +11,17 @@
 
         <div class="col-md-12 alert alert-info alert-block bg-info">
             <h1>Title: {{ $current_announcement->title }}</h1>
-            <p class="text-left">Posted by <a href="/announcements/user/{{ $current_announcement->user->username }}">{{ $current_announcement->user->username }}</a> on <strong>{{ \Carbon\Carbon::parse($current_announcement->created_at)->format('F j, Y g:i:s A') }}</strong></p>
-            <p class="announcement-pane-description">{{ $current_announcement->description }}</p>
+            <p class="text-left">Posted by <a wire:navigate href="/announcements/user/{{ $current_announcement->user->username }}">{{ $current_announcement->user->username }}</a> on <strong>{{ \Carbon\Carbon::parse($current_announcement->created_at)->format('F j, Y g:i:s A') }}</strong></p>
+            <p class="announcement-pane-description">{!! Markdown::parse($current_announcement->description) !!}</p>
         </div>
         <!-- Previous/Next pagination links -->
         <div class="col-md-12">
             <ul class="pagination justify-content-center" id="announcement-pagination-list">
             @if ($previous_announcement)
-                <li class="page-item"><a class="page-link" href="/announcements/{{ $previous_announcement->id }}">&lt; &lt; Previous announcement</a></li>
+                <li class="page-item"><a wire:navigate class="page-link" href="/announcements/{{ $previous_announcement->id }}">&lt; &lt; Previous announcement</a></li>
             @endif
             @if ($next_announcement)
-                <li class="page-item"><a class="page-link" href="/announcements/{{ $next_announcement->id }}">Next announcement &gt; &gt;</a></li>
+                <li class="page-item"><a wire:navigate class="page-link" href="/announcements/{{ $next_announcement->id }}">Next announcement &gt; &gt;</a></li>
             @endif
             </ul>
         </div>
@@ -30,7 +30,7 @@
                 <div class="col-md-12">
                     <dl class="row">
                         <dt class="col-sm-6">Actions</dt>
-                        <dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/announcements/{{ $current_announcement->id }}/edit/">Edit</a></dd>
+                        <dd class="col-sm-3"><i class="fa fa-magic"></i> <a wire:navigate href="/admin/announcements/{{ $current_announcement->id }}/edit/">Edit</a></dd>
                         <dd class="col-sm-3">
                             <form action="/announcements/{{ $current_announcement->id }}" method="POST">
                                 @csrf
