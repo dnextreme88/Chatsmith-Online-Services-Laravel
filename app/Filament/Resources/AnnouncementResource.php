@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AnnouncementResource\Pages;
 use App\Filament\Resources\AnnouncementResource\RelationManagers;
 use App\Models\Announcement;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\MarkdownEditor;
@@ -32,10 +33,9 @@ class AnnouncementResource extends Resource
             ->schema([
                 Section::make('Announcement Details')
                     ->schema([
-                        Select::make('user_id')
-                            ->relationship('user', 'full_name')
+                        Placeholder::make('user_id')
                             ->label('Author')
-                            ->required(),
+                            ->content(User::findOrFail(auth()->id())->full_name),
                         TextInput::make('title')
                             ->required()
                             ->unique(ignoreRecord: true),
