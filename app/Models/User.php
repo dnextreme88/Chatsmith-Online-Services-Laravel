@@ -19,7 +19,7 @@ class User extends Authenticatable implements HasName
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name', 'maiden_name', 'last_name', 'username', 'profile_image', 'email', 'password', 'is_staff',
+        'first_name', 'maiden_name', 'last_name', 'username', 'profile_image', 'email', 'password', 'is_staff'
     ];
 
     /**
@@ -44,7 +44,11 @@ class User extends Authenticatable implements HasName
     // Overrides function that gets logged in admin's name in Filament
     public function getFilamentName(): string
     {
-        return $this->full_name;
+        return $this->getFullNameAttribute();
+    }
+
+    public function getFullNameAttribute(): string {
+        return $this->first_name. ' ' .$this->maiden_name. ' ' .$this->last_name;
     }
 
     /**
