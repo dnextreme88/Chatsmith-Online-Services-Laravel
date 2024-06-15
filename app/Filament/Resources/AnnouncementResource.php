@@ -15,6 +15,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -84,7 +85,12 @@ class AnnouncementResource extends Resource
                     ->label('Author')
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                EditAction::make()
+                    ->visible(function ($record): bool {
+                        $visible = $record->user_id == auth()->id();
+
+                        return $visible;
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
