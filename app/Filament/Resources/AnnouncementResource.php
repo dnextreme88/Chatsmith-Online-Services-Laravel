@@ -67,8 +67,8 @@ class AnnouncementResource extends Resource
             ->columns([
                 TextColumn::make('user.full_name')
                     ->label('Author')
-                    ->sortable()
-                    ->searchable(),
+                    ->searchable(['first_name', 'maiden_name', 'last_name'])
+                    ->sortable(['first_name']),
                 TextColumn::make('title')
                     ->sortable()
                     ->searchable(),
@@ -77,12 +77,28 @@ class AnnouncementResource extends Resource
                 TextColumn::make('created_at')
                     ->label('Announced on')
                     ->sortable()
-                    ->dateTime('m/d/Y H:m:s')
+                    ->dateTime('m/d/Y H:m:s'),
+                TextColumn::make('updated_at')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->dateTime('m/d/Y H:m:s'),
             ])
             ->filters([
                 SelectFilter::make('user')
-                    ->relationship('user', 'full_name')
-                    ->label('Author')
+                    ->options(User::selectRaw('id, CONCAT(COALESCE(`first_name`, ""), " ", COALESCE(`last_name`, "")) AS author_name')
+                        ->whereRaw('is_staff = "True"')
+                        ->get()
+                        ->pluck('author_name', 'id') // Using ->pluck('full_name', 'id') fails as it is an accessor function in App\Models\User
+                    )
+                    ->query(function (Builder $query, array $data) {
+                        // REF: https://v2.filamentphp.com/tricks/use-selectfilter-on-distant-relationships
+                        if (!empty($data['value'])) {
+                            return $query->whereHas('user',
+                                fn (Builder $query) => $query->where('id', '=', (int) $data['value'])
+                            );
+                        }
+                    })
+                    ->label('Author'),
             ])
             ->actions([
                 EditAction::make()
