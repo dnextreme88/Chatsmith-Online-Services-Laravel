@@ -16,4 +16,8 @@ class EditAnnouncement extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function getSavedNotificationTitle(): ?string {
+        return 'Announcement updated';
+    }
 }

@@ -15,4 +15,8 @@ class CreateAnnouncement extends CreateRecord
     
         return $data;
     }
+
+    protected function getCreatedNotificationTitle(): ?string {
+        return 'Announcement created';
+    }
 }
