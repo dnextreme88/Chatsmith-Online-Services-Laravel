@@ -6,8 +6,6 @@
 
     $previous_announcement = ($announcement_id !== \App\Models\Announcement::oldest('id')->first()->id) ? \App\Models\Announcement::findOrFail($announcement_id - 1) : null;
     $next_announcement = ($announcement_id !== \App\Models\Announcement::latest('id')->first()->id) ? \App\Models\Announcement::findOrFail($announcement_id + 1) : null;
-
-    $my_url = \App\Filament\Resources\AnnouncementResource::getUrl();
 @endphp
 
 @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -41,7 +39,6 @@
                     <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"></path>
                 </svg>
 
-
                 <span href="#" class="fi-breadcrumbs-item-label text-sm font-medium text-gray-500 transition duration-75 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
                     Detail
                 </span>
@@ -58,7 +55,7 @@
         </div>
     </div>
 
-    <ul class="flex w-full justify-center gap-4" id="announcement-pagination-list">
+    <ul class="flex w-full justify-center gap-4">
         @if ($previous_announcement)
             <li><a wire:navigate class="px-4 py-2 bg-red-600 dark:bg-red-400 text-white" href="{{ \App\Filament\Resources\AnnouncementResource::getUrl('view', ['record' => $previous_announcement->id]) }}">&lt; &lt; Previous announcement</a></li>
         @endif
