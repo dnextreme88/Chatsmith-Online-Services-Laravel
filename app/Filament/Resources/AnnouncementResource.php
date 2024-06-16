@@ -78,11 +78,11 @@ class AnnouncementResource extends Resource
                 TextColumn::make('created_at')
                     ->label('Announced on')
                     ->sortable()
-                    ->dateTime('m/d/Y H:m:s'),
+                    ->dateTime('m/d/Y H:i:s'),
                 TextColumn::make('updated_at')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true)
-                    ->dateTime('m/d/Y H:m:s'),
+                    ->dateTime('m/d/Y H:i:s'),
             ])
             ->filters([
                 SelectFilter::make('user')
