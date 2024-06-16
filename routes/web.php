@@ -56,6 +56,7 @@ Route::get('employees/search/query', [EmployeeController::class, 'search_employe
 // Announcement routes
 Route::group(['prefix' => 'announcements', 'as' => 'announcements.'], function() {
     Route::get('/', [AnnouncementController::class, 'index'])->name('index');
+    Route::get('/{id}', [AnnouncementController::class, 'show'])->name('detail');
     Route::get('/users/{username}', [AnnouncementController::class, 'show_announcement_by_username'])->name('show_by_username');
 });
 

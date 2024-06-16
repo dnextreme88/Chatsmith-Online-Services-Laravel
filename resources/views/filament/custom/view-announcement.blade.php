@@ -25,7 +25,7 @@
     <nav class="fi-breadcrumbs mb-2 hidden sm:block">
         <ol class="fi-breadcrumbs-list flex flex-wrap items-center gap-x-2">
             <li class="fi-breadcrumbs-item flex gap-x-2">
-                <a href="{{ \App\Filament\Resources\AnnouncementResource::getUrl() }}" class="fi-breadcrumbs-item-label text-sm font-medium text-gray-500 transition duration-75 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                <a wire:navigate href="{{ \App\Filament\Resources\AnnouncementResource::getUrl() }}" class="fi-breadcrumbs-item-label text-sm font-medium text-gray-500 transition duration-75 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
                     Announcements
                 </a>
             </li>

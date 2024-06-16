@@ -1,4 +1,4 @@
-@extends($layout)
+@extends('layouts.app')
 
 @section('title')
     All Announcements of {{ $user_by_username->username }}
@@ -13,25 +13,23 @@
 @endpush
 
 @section('content')
-<div class="container">
-    <div class="row">
+    <div class="w-9/12 mx-auto py-4 px-2">
         <x-custom.breadcrumbs :nav_links="['Announcements' => route('announcements.index')]">{{ $user_by_username->username }}</x-custom.breadcrumbs>
 
-        <div class="col-md-12 text-center">
-            <h1 class="text-center">Showing all announcements of {{ $user_by_username->username }}</h1>
-        </div>
+        <h1 class="text-center">Showing all announcements of {{ $user_by_username->username }}</h1>
 
         @foreach ($announcements as $announcement)
-            <div class="col-md-12 alert alert-info alert-block">
-                <h1><a wire:navigate class="links" href="/announcements/{{ $announcement->id }}/">{{ $announcement->title }}</a></h1>
-                <p>Posted on <strong>{{ \Carbon\Carbon::parse($announcement->created_at)->format('F j, Y g:i:s A') }}</strong></p>
+            <div class="p-4">
+                <h1><a wire:navigate href="{{ route('announcements.detail', ['id' => $announcement->id]) }}" class="links">{{ $announcement->title }}</a></h1>
+                <p class="text-gray-400">Posted on <small>{{ \Carbon\Carbon::parse($announcement->created_at)->format('F j, Y g:i:s A') }}</small></p>
+                <hr>
 
                 <p class="announcement-pane-description">
                     @include('Components.Announcements.includes.description', ['announcement_description' => $announcement->description])
                 </p>
             </div>
         @endforeach
+
         {{ $announcements->links() }}
     </div>
-</div>
 @endsection

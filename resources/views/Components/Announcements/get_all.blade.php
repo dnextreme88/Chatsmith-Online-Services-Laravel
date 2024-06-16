@@ -1,13 +1,7 @@
-@extends($layout)
+@extends('layouts.app')
 
 @section('title')
-    @guest
-        Announcements
-    @else
-        @auth
-            {{ $user->is_staff == 'True' ? 'Manage Announcements' : 'Announcements' }}
-        @endauth
-    @endguest
+    Announcements
 @endsection
 
 @push('styles')
@@ -19,22 +13,15 @@
 @endpush
 
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
+    <div class="w-9/12 mx-auto py-4 px-2">
         <x-custom.breadcrumbs :nav_links="[]">Announcements</x-custom.breadcrumbs>
 
-        <div class="col-md-12">
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        @if ($announcements->count() > 0)
-            @include('Components.Announcements.includes.list', [
-                'announcements' => $announcements,
-                'user' => $user
-            ])
+        <div class="p-4">
+            @if ($announcements->count() > 0)
+                @include('Components.Announcements.includes.list', [
+                    'announcements' => $announcements,
+                    'user' => $user
+                ])
             {{-- TODO: CAN BE RE-USED IF WE ARE GONNA IMPLEMENT A FEATURE TO DISPLAY THE ANNOUNCEMENTS AS A TABLE OR NOT
             <table class="table table-bordered table-responsive">
                 <thead>
@@ -77,13 +64,14 @@
                 </tbody>
             </table>
             --}}
-            {{ $announcements->links() }}
-        @elseif ($announcements->count() == 0 && $user->is_staff == 'True')
-            <p>No announcements found. <a href="{{ route('announcements.create') }}">Wanna create one now?</a></p>
-        @elseif ($announcements->count() == 0 && $user->is_staff == 'False')
-            <p>No announcements found.</p>
-        @endif
+                {{ $announcements->links() }}
+            @else
+                <p>No announcements found.
+                    @if ($announcements->count() == 0 && $user->is_staff == 'True')
+                        <a href="{{ \App\Filament\Resources\AnnouncementResource::getUrl('create') }}">Wanna create one now?</a></p>
+                    @endif
+                </p>
+            @endif
         </div>
     </div>
-</div>
 @endsection
