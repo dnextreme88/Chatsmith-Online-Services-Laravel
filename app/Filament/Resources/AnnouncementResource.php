@@ -14,6 +14,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -101,13 +102,20 @@ class AnnouncementResource extends Resource
                     ->label('Author'),
             ])
             ->actions([
+                ViewAction::make(),
                 EditAction::make()
                     ->visible(function ($record): bool {
                         $visible = $record->user_id == auth()->id();
 
                         return $visible;
                     }),
-                ViewAction::make()
+                DeleteAction::make()
+                    ->successNotificationTitle('Announcement deleted')
+                    ->visible(function ($record): bool {
+                        $visible = $record->user_id == auth()->id();
+
+                        return $visible;
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
