@@ -178,18 +178,3 @@ table {
 	.static-page h3 {
 		color: var(--link-color-orange);
 	}
-
-/* Announcements */
-	#announcement-pagination-list {
-		& li {
-			& a {
-				background-color: var(--link-color-orange);
-				color: white;
-				transition: background-color 0.4s;
-
-				&:hover {
-					background-color: #B56C00;
-				}
-			}
-		}
-	}

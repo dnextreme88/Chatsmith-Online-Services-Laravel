@@ -10,12 +10,12 @@ use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -107,6 +107,7 @@ class AnnouncementResource extends Resource
 
                         return $visible;
                     }),
+                ViewAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -127,6 +128,7 @@ class AnnouncementResource extends Resource
         return [
             'index' => Pages\ListAnnouncement::route('/'),
             'create' => Pages\CreateAnnouncement::route('/create'),
+            'view' => Pages\ViewAnnouncement::route('/{record}'),
             'edit' => Pages\EditAnnouncement::route('/{record}/edit'),
         ];
     }
