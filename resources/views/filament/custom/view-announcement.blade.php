@@ -4,8 +4,8 @@
     $record = \App\Models\Announcement::findOrFail($announcement_id);
     $user = \App\Models\User::findOrFail($record->user_id);
 
-    $previous_announcement = ($announcement_id !== \App\Models\Announcement::oldest('id')->first()->id) ? \App\Models\Announcement::findOrFail($announcement_id - 1) : null;
-    $next_announcement = ($announcement_id !== \App\Models\Announcement::latest('id')->first()->id) ? \App\Models\Announcement::findOrFail($announcement_id + 1) : null;
+    $previous_announcement_id = ($announcement_id !== \App\Models\Announcement::oldest('id')->first()->id) ? \App\Models\Announcement::where('id', '<', $announcement_id)->max('id') : null;
+    $next_announcement_id = ($announcement_id !== \App\Models\Announcement::latest('id')->first()->id) ? \App\Models\Announcement::where('id', '>', $announcement_id)->min('id') : null;
 @endphp
 
 @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -56,11 +56,11 @@
     </div>
 
     <ul class="flex w-full justify-center gap-4">
-        @if ($previous_announcement)
-            <li><a wire:navigate class="px-4 py-2 bg-red-600 dark:bg-red-400 text-white" href="{{ \App\Filament\Resources\AnnouncementResource::getUrl('view', ['record' => $previous_announcement->id]) }}">&lt; &lt; Previous announcement</a></li>
+        @if ($previous_announcement_id)
+            <li><a wire:navigate class="px-4 py-2 bg-red-600 dark:bg-red-400 text-white" href="{{ \App\Filament\Resources\AnnouncementResource::getUrl('view', ['record' => $previous_announcement_id]) }}">&lt; &lt; Previous announcement</a></li>
         @endif
-        @if ($next_announcement)
-            <li><a wire:navigate class="px-4 py-2 bg-green-600 dark:bg-green-400 text-white" href="{{ \App\Filament\Resources\AnnouncementResource::getUrl('view', ['record' => $next_announcement->id]) }}">Next announcement &gt; &gt;</a></li>
+        @if ($next_announcement_id)
+            <li><a wire:navigate class="px-4 py-2 bg-green-600 dark:bg-green-400 text-white" href="{{ \App\Filament\Resources\AnnouncementResource::getUrl('view', ['record' => $next_announcement_id]) }}">Next announcement &gt; &gt;</a></li>
         @endif
     </ul>
 </div>
