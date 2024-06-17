@@ -1,82 +1,69 @@
-@extends($layout)
+@extends('layouts.app')
 
 @section('title')
-Employee # {{ $employee->employee_number }}
+    Employee # {{ $employee->employee_number }}
 @endsection
 
 @section('content')
-<div class="container">
-	<div class="row">
-		<x-custom.breadcrumbs :nav_links="['Employees' => route('employees.index')]">{{ $employee->user->username }}</x-custom.breadcrumbs>
+    <div class="w-9/12 mx-auto py-4 px-2">
+        <x-custom.card-header-title class="text-center">Viewing Employee Number {{ $employee->employee_number }}'s Profile</x-card-header-title>
 
-		<div class="card w-50 text-left mx-auto">
-			<div class="card-header text-center">Viewing Employee Number {{ $employee->employee_number }}'s Profile</div>
-			<!-- Profile Image (from User) -->
-			<img src="/{{ $employee->user->image }}" class="card-img-top img-thumbnail img-responsive rounded-circle mx-auto d-block avatar-thumbnail-large" />
-			<div class="card-body">
-				<dl class="row">
-					<dt class="col-sm-6">Employee ID</dt>
-					<dd class="col-sm-6">{{ $employee->id }}</dd>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-6">User</dt>
-					<dd class="col-sm-6">{{ $employee->user->username }}</dd>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-6">Employee Number</dt>
-					<dd class="col-sm-6">{{ $employee->employee_number }}</dd>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-6">Employee Name</dt>
-					<dd class="col-sm-6">{{ $employee->user->first_name }} {{ $employee->user->maiden_name }} {{ $employee->user->last_name }}</dd>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-6">Employee Type</dt>
-					<dd class="col-sm-6">{{ $employee->employee_type }}</dd>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-6">Office Designation</dt>
-					<dd class="col-sm-6">{{ $employee->designation }}</dd>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-6">Role</dt>
-					<dd class="col-sm-6">{{ $employee->role }}</dd>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-6">Date of Tenure</dt>
-					<dd class="col-sm-6">
-					@if ($employee->date_tenure == '')
-						---
-					@else
-						{{ \Carbon\Carbon::parse($employee->date_tenure)->format('F j, Y') }}
-					@endif
-					</dd>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-6">Is active</dt>
-					<dd class="col-sm-6">
-					@if ($employee->is_active == 'True')
-						<i class="text-success fa fa-check-circle"></i>
-					@else
-						<i class="text-danger fa fa-times-circle"></i>
-					@endif
-					</dd>
-				</dl>
-				@if ($user->is_staff == 'True')
-					<dl class="row">
-						<dt class="col-sm-6">Actions</dt>
-						<dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/employees/{{ $employee->id }}/edit/">Edit</a></dd>
-						<dd class="col-sm-3">
-							<form action="/employees/{{ $employee->id }}" method="POST">
-								@csrf
-								@method('DELETE')
-								<i class="fa fa-trash"></i> <input class="text-danger delete-employee-button" type="submit" name="submit" value="Delete" />
-							</form>
-						</dd>
-					</dl>
-				@endif
-			</div>
-		</div>
-	</div>
-</div>
+        <!-- Profile Image (from User) -->
+        <img src="/{{ $employee->user->image }}" class="rounded-full mx-auto avatar-thumbnail-large" alt="Profile image of user" title="Profile image of user" />
+
+        <div class="w-8/12 mx-auto border border-orange-500 dark:border-orange-300 mt-4 py-2 px-4 grid grid-rows-9 gap-3">
+            <div class="grid grid-cols-3">
+                <span>Employee ID</span>
+                <span class="col-span-2">{{ $employee->id }}</dd>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <span>User</span>
+                <span class="col-span-2">{{ $employee->user->username }}</dd>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <span>Employee Number</span>
+                <span class="col-span-2">{{ $employee->employee_number }}</dd>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <span>Employee Name</span>
+                <span class="col-span-2">{{ $employee->user->first_name }} {{ $employee->user->maiden_name }} {{ $employee->user->last_name }}</dd>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <span>Employee Type</span>
+                <span class="col-span-2">{{ $employee->employee_type }}</dd>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <span>Office Designation</span>
+                <span class="col-span-2">{{ $employee->designation }}</dd>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <span>Role</span>
+                <span class="col-span-2">{{ $employee->role }}</dd>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <span>Date of Tenure</span>
+                <span class="col-span-2">
+                    {{ $employee->date_tenure == '' ? '---' : \Carbon\Carbon::parse($employee->date_tenure)->format('F j, Y') }}
+                </span>
+            </div>
+
+            <div class="grid grid-cols-3">
+                <span>Is Active Employee?</span>
+                <span class="col-span-2">
+                    @if ($employee->is_active == 'True')
+                        <i class="text-green-600 dark:text-green-400 fa fa-check-circle"></i>
+                    @else
+                        <i class="text-red-600 dark:text-red-400 fa fa-times-circle"></i>
+                    @endif
+                </span>
+            </div>
+        </div>
+    </div>
 @endsection

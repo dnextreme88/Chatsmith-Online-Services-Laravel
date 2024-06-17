@@ -49,15 +49,16 @@ Route::get('/admin', [AdminPanelController::class, 'index'])->name('admin_panel_
 
 Route::get('/users', [UserController::class, 'index'])->name('all_users');
 
-Route::resource('employees', EmployeeController::class);
-
-Route::get('employees/search/query', [EmployeeController::class, 'search_employees'])->name('search_employees');
-
 // Announcement routes
 Route::group(['prefix' => 'announcements', 'as' => 'announcements.'], function() {
     Route::get('/', [AnnouncementController::class, 'index'])->name('index');
     Route::get('/{id}', [AnnouncementController::class, 'show'])->name('detail');
     Route::get('/users/{username}', [AnnouncementController::class, 'show_announcement_by_username'])->name('show_by_username');
+});
+
+// Employee routes
+Route::group(['prefix' => 'employees', 'as' => 'employees.'], function() {
+    Route::get('/{id}', [EmployeeController::class, 'show'])->name('detail');
 });
 
 // Production routes
