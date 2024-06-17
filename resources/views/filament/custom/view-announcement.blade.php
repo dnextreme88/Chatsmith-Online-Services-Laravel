@@ -18,7 +18,6 @@
 
 @push('scripts')
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/Announcements/index.js') }}"></script>
 @endpush
 
 <div class="flex flex-col gap-y-4 py-8">

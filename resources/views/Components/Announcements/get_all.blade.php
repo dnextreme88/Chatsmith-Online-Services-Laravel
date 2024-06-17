@@ -8,10 +8,6 @@
 	<link href="{{ asset('css/Components/Announcements/index.css') }}" rel="stylesheet">
 @endpush
 
-@push('scripts')
-	<script src="{{ asset('js/Announcements/index.js') }}"></script>
-@endpush
-
 @section('content')
     <div class="w-9/12 mx-auto py-4 px-2">
         <x-custom.breadcrumbs :nav_links="[]">Announcements</x-custom.breadcrumbs>
@@ -74,4 +70,7 @@
             @endif
         </div>
     </div>
+
+    {{-- Don't wrap @push('scripts') to this as it won't work, for some reason --}}
+    <script src="{{ asset('js/Announcements/index.js') }}"></script>
 @endsection

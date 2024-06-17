@@ -32,4 +32,7 @@
 
         {{ $announcements->links() }}
     </div>
+
+    {{-- Don't wrap @push('scripts') to this as it won't work, for some reason --}}
+    <script src="{{ asset('js/Announcements/index.js') }}"></script>
 @endsection
