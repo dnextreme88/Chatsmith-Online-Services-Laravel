@@ -27,10 +27,6 @@ Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::resource('schedules', ScheduleController::class, ['except' => ['destroy']]);
 
-Route::post('schedule', [ScheduleController::class, 'store'])->name('schedules.store');
-
-Route::post('schedules/employees/{employee_id}/{schedule_id}', [ScheduleController::class, 'destroy'])->name('schedules.destroy');
-
 Route::get('schedules/employees/{id}', [ScheduleController::class, 'show_schedule_of_employee']);
 
 Route::post('schedules/employees/{id}', [ScheduleController::class, 'filter_schedule_of_employee']);
