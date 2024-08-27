@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define custom CSS here that will be extended by Tailwind */
+/* Examples below */
+@layer utilities {
+    .max-h-25-vh {
+        max-height: 25vh;
+    }
+    .max-h-50-vh {
+        max-height: 50vh;
+    }
+    .max-h-75-vh {
+        max-height: 75vh;
+    }
+}
