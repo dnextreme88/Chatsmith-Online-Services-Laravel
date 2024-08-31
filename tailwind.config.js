@@ -5,7 +5,7 @@ import forms from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 export default {
     presets: [preset],
-    darkMode: 'selector',
+    darkMode: 'class',
     content: [
         './app/Filament/**/*.php',
         './storage/framework/views/*.php',
@@ -17,9 +17,10 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                serif: ['Lori', ...defaultTheme.fontFamily.serif],
             },
         },
     },
     plugins: [forms],
-};
+}

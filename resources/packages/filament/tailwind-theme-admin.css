@@ -14,4 +14,14 @@
     .max-h-75-vh {
         max-height: 75vh;
     }
+
+    .w-25-vw {
+        width: 25vw;
+    }
+    .w-50-vw {
+        width: 50vw;
+    }
+    .w-75-vw {
+        width: 75vw;
+    }
 }
