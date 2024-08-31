@@ -14,28 +14,31 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         $password = 'cos12345';
+        $timestamp_value = '1580378520'; // Jan 30, 2020 06:02 PM
 
         User::create([
             'first_name' => 'Chatsmith Online Services',
+            'last_name' => 'Management',
             'email' => 'chatsmithonline.management@gmail.com',
             'username' => 'cos_management',
             'profile_image' => 'images\avatars\cos_management_1580472306.png',
             'password' => Hash::make($password),
             'is_staff' => 'True',
-            'created_at' => '1580378520',
-            'updated_at' => '1580378520',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
         ]);
 
         User::create([
-            'first_name' => 'Chatsmith Online Services',
-            'last_name' => 'Recruitment',
+            'first_name' => 'Angelica',
+            'maiden_name' => 'Parco',
+            'last_name' => 'Villanueva',
             'email' => 'chatsmithonline.recruitment@gmail.com',
             'username' => 'cos_recruitment',
             'profile_image' => 'images\avatars\cos_recruitment_1580466419.png',
             'password' => Hash::make($password),
             'is_staff' => 'True',
-            'created_at' => '1580378520',
-            'updated_at' => '1580378520',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
         ]);
 
         User::create([
@@ -47,8 +50,8 @@ class UsersTableSeeder extends Seeder
             'profile_image' => 'images\avatars\default_avatar.png',
             'password' => Hash::make($password),
             'is_staff' => 'True',
-            'created_at' => '1580378520',
-            'updated_at' => '1580378520',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
         ]);
 
         User::create([
@@ -60,8 +63,47 @@ class UsersTableSeeder extends Seeder
             'profile_image' => 'images\avatars\tesoriopauline18_1580660315.jpg',
             'password' => Hash::make($password),
             'is_staff' => 'True',
-            'created_at' => '1580378520',
-            'updated_at' => '1580378520',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
+        ]);
+
+        User::create([
+            'first_name' => 'Nicole Alyza Umeres',
+            'maiden_name' => 'Paragas',
+            'last_name' => 'Amansec',
+            'email' => 'chatsmithonline.nicx@gmail.com',
+            'username' => 'amansecnicole17',
+            'profile_image' => 'images\avatars\default_avatar.png',
+            'password' => Hash::make($password),
+            'is_staff' => 'True',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
+        ]);
+
+        User::create([
+            'first_name' => 'Beverly',
+            'maiden_name' => 'Pig-ang',
+            'last_name' => 'Balanta',
+            'email' => 'chatsmithonline.beverly@gmail.com',
+            'username' => 'balantabeverly16',
+            'profile_image' => 'images\avatars\default_avatar.png',
+            'password' => Hash::make($password),
+            'is_staff' => 'True',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
+        ]);
+
+        User::create([
+            'first_name' => 'Archie',
+            'maiden_name' => 'Tinapngan',
+            'last_name' => 'Lapnawan',
+            'email' => 'chatsmithonline.archie@gmail.com',
+            'username' => 'lapnawanarchie14',
+            'profile_image' => 'images\avatars\default_avatar.png',
+            'password' => Hash::make($password),
+            'is_staff' => 'True',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
         ]);
 
         User::create([
@@ -73,8 +115,8 @@ class UsersTableSeeder extends Seeder
             'profile_image' => 'images\avatars\decenakevin09_1580660062.jpg',
             'password' => Hash::make($password),
             'is_staff' => 'False',
-            'created_at' => '1580378520',
-            'updated_at' => '1580378520',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
         ]);
 
         User::create([
@@ -86,8 +128,21 @@ class UsersTableSeeder extends Seeder
             'profile_image' => 'images\avatars\sanchezmarkanthony10_1580660336.jpg',
             'password' => Hash::make($password),
             'is_staff' => 'False',
-            'created_at' => '1580378520',
-            'updated_at' => '1580378520',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
+        ]);
+
+        User::create([
+            'first_name' => 'Mila Rose',
+            'maiden_name' => 'Gellecanao',
+            'last_name' => 'Lachica',
+            'email' => 'chatsmithonline.miles@gmail.com',
+            'username' => 'lachicamila19',
+            'profile_image' => 'images\avatars\default_avatar.png',
+            'password' => Hash::make($password),
+            'is_staff' => 'False',
+            'created_at' => $timestamp_value,
+            'updated_at' => $timestamp_value,
         ]);
     }
 }

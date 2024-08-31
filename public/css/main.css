@@ -66,7 +66,6 @@ BASE RGB: E28700; // orange
 
 /* Delete buttons (Announcement, Employee) */
 	.delete-announcement-button, .delete-announcement-button:hover,
-	.delete-employee-button, .delete-employee-button:hover,
 	.delete-schedule-button, .delete-schedule-button:hover {
 		margin: 0;
 		padding: 0;
@@ -74,7 +73,7 @@ BASE RGB: E28700; // orange
 		background-color: transparent;
 	}
 
-	.delete-announcement-button, .delete-employee-button, .delete-schedule-button {
+	.delete-announcement-button, .delete-schedule-button {
 		&:hover {
 			text-decoration: underline;
 		}
@@ -131,11 +130,6 @@ BASE RGB: E28700; // orange
 	background-color: #002A56;
 }
 
-/* Search boxes */
-	#search-employees-form input[type=text] {
-		width: 360px !important;
-	}
-
 /* Tables */
 table {
 	background-color: var(--table-background-color-dark) !important;
@@ -177,19 +171,4 @@ table {
 
 	.static-page h3 {
 		color: var(--link-color-orange);
-	}
-
-/* Announcements */
-	#announcement-pagination-list {
-		& li {
-			& a {
-				background-color: var(--link-color-orange);
-				color: white;
-				transition: background-color 0.4s;
-
-				&:hover {
-					background-color: #B56C00;
-				}
-			}
-		}
 	}

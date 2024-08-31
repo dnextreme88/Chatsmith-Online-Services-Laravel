@@ -2,10 +2,6 @@
     <link href="{{ asset('css/Components/Announcements/index.css') }}" rel="stylesheet">
 @endpush
 
-@push('scripts')
-    <script src="{{ asset('js/Announcements/index.js') }}"></script>
-@endpush
-
 <div class="flex w-full py-2">
     <div class="w-1/4 px-2 m-auto">
         <img src="{{ $latest_announcement->user->image }}" class="d-block m-auto img-thumbnail img-responsive avatar-thumbnail-small" alt="User image" />
@@ -21,3 +17,6 @@
         <p class="text-right"><a wire:navigate href="{{ route('announcements.index') }}" class="links">View all announcements...</a></p>
     </div>
 </div>
+
+{{-- Don't wrap @push('scripts') to this as it won't work, for some reason --}}
+<script src="{{ asset('js/Announcements/index.js') }}"></script>

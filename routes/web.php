@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\DailyProductionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\LeadformController;
+use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StaticPagesController;
@@ -28,10 +27,6 @@ Route::get('/', [IndexController::class, 'index'])->name('home');
 
 Route::resource('schedules', ScheduleController::class, ['except' => ['destroy']]);
 
-Route::post('schedule', [ScheduleController::class, 'store'])->name('schedules.store');
-
-Route::post('schedules/employees/{employee_id}/{schedule_id}', [ScheduleController::class, 'destroy'])->name('schedules.destroy');
-
 Route::get('schedules/employees/{id}', [ScheduleController::class, 'show_schedule_of_employee']);
 
 Route::post('schedules/employees/{id}', [ScheduleController::class, 'filter_schedule_of_employee']);
@@ -44,24 +39,30 @@ Route::post('task', [TaskController::class, 'store'])->name('tasks.store');
 
 Route::post('tasks/', [TaskController::class, 'view_task_by_day'])->name('view_task_by_day');
 
+/*
 Route::get('/admin', [AdminPanelController::class, 'index'])->name('admin_panel_home');
+*/
 
 Route::get('/users', [UserController::class, 'index'])->name('all_users');
 
-Route::resource('announcements', AnnouncementController::class);
+// Announcement routes
+Route::group(['prefix' => 'announcements', 'as' => 'announcements.'], function() {
+    Route::get('/', [AnnouncementController::class, 'index'])->name('index');
+    Route::get('/{id}', [AnnouncementController::class, 'show'])->name('detail');
+    Route::get('/users/{username}', [AnnouncementController::class, 'show_announcement_by_username'])->name('show_by_username');
+});
 
-Route::get('announcements/user/{username}', [AnnouncementController::class, 'show_announcement_by_username'])->name('announcements.show_by_username');
-
-Route::resource('employees', EmployeeController::class);
-
-Route::get('employees/search/query', [EmployeeController::class, 'search_employees'])->name('search_employees');
+// Employee routes
+Route::group(['prefix' => 'employees', 'as' => 'employees.'], function() {
+    Route::get('/{id}', [EmployeeController::class, 'show'])->name('detail');
+});
 
 // Production routes
 Route::group(['prefix' => 'productions', 'as' => 'productions.'], function() {
-    Route::get('/daily', [LeadformController::class, 'daily_productions'])->name('daily');
-    Route::get('/leadforms/chat_account', [LeadformController::class, 'chat_account_leadform'])->name('leadforms.chat_account')->middleware('auth');
-    Route::get('/leadforms/focal', [LeadformController::class, 'focal_leadform'])->name('leadforms.focal')->middleware('auth');
-    Route::get('/leadforms/plateiq', [LeadformController::class, 'plateiq_leadform'])->name('leadforms.plate')->middleware('auth');
+    Route::get('/daily', [ProductionController::class, 'daily_productions'])->name('daily');
+    Route::get('/leadforms/chat_account', [ProductionController::class, 'chat_account_leadform'])->name('leadforms.chat_account')->middleware('auth');
+    Route::get('/leadforms/focal', [ProductionController::class, 'focal_leadform'])->name('leadforms.focal')->middleware('auth');
+    Route::get('/leadforms/plateiq', [ProductionController::class, 'plateiq_leadform'])->name('leadforms.plate')->middleware('auth');
 });
 
 // Dashboard x Profile routes

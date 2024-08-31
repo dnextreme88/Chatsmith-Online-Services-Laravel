@@ -1,47 +1,33 @@
-@extends($layout)
+@extends('layouts.app')
 
 @section('title')
     Announcement # {{ $current_announcement->id }}
 @endsection
 
+@push('styles')
+    <link href="{{ asset('css/Components/Announcements/index.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
-<div class="container-fluid">
-    <div class="row">
+    <div class="w-9/12 mx-auto py-4 px-2">
         <x-custom.breadcrumbs :nav_links="['Announcements' => route('announcements.index')]">{{ $current_announcement->title }}</x-custom.breadcrumbs>
 
-        <div class="col-md-12 alert alert-info alert-block bg-info">
-            <h1>Title: {{ $current_announcement->title }}</h1>
-            <p class="text-left">Posted by <a href="/announcements/user/{{ $current_announcement->user->username }}">{{ $current_announcement->user->username }}</a> on <strong>{{ \Carbon\Carbon::parse($current_announcement->created_at)->format('F j, Y g:i:s A') }}</strong></p>
-            <p class="announcement-pane-description">{{ $current_announcement->description }}</p>
+        <div class="p-4">
+            <h1>{{ $current_announcement->title }}</h1>
+            <p class="text-gray-400">Posted by <a wire:navigate href="{{ route('announcements.show_by_username', ['username' => $current_announcement->user->username]) }}" class="links">{{ $current_announcement->user->username }}</a> on <small>{{ \Carbon\Carbon::parse($current_announcement->created_at)->format('F j, Y g:i:s A') }}</small></p>
+            <hr>
+
+            <div class="text-justify announcement-description">{!! Markdown::parse($current_announcement->description) !!}</div>
         </div>
-        <!-- Previous/Next pagination links -->
-        <div class="col-md-12">
-            <ul class="pagination justify-content-center" id="announcement-pagination-list">
+
+        <ul class="flex justify-center gap-2">
             @if ($previous_announcement)
-                <li class="page-item"><a class="page-link" href="/announcements/{{ $previous_announcement->id }}">&lt; &lt; Previous announcement</a></li>
+                <li><a wire:navigate class="border border-gray-600 p-2 text-orange-600 hover:text-orange-400 no-underline" href="{{ route('announcements.detail', ['id' => $previous_announcement->id]) }}">&lt; &lt; Previous announcement</a></li>
             @endif
+
             @if ($next_announcement)
-                <li class="page-item"><a class="page-link" href="/announcements/{{ $next_announcement->id }}">Next announcement &gt; &gt;</a></li>
+                <li><a wire:navigate class="border border-gray-600 p-2 text-orange-600 hover:text-orange-400 no-underline" href="{{ route('announcements.detail', ['id' => $next_announcement->id]) }}">Next announcement &gt; &gt;</a></li>
             @endif
-            </ul>
-        </div>
-        @auth
-            @if ($user->is_staff == 'True')
-                <div class="col-md-12">
-                    <dl class="row">
-                        <dt class="col-sm-6">Actions</dt>
-                        <dd class="col-sm-3"><i class="fa fa-magic"></i> <a href="/announcements/{{ $current_announcement->id }}/edit/">Edit</a></dd>
-                        <dd class="col-sm-3">
-                            <form action="/announcements/{{ $current_announcement->id }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <i class="fa fa-trash"></i> <input class="text-danger delete-announcement-button" type="submit" name="submit" value="Delete" />
-                            </form>
-                        </dd>
-                    </dl>
-                </div>
-            @endif
-        @endauth
+        </ul>
     </div>
-</div>
 @endsection

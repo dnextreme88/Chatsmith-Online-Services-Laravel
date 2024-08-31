@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Filament\Models\Contracts\HasName;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasName
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name', 'maiden_name', 'last_name', 'username', 'profile_image', 'email', 'password', 'is_staff',
+        'first_name', 'maiden_name', 'last_name', 'username', 'profile_image', 'email', 'password', 'is_staff'
     ];
 
     /**
@@ -39,6 +40,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Overrides function that gets logged in admin's name in Filament
+    public function getFilamentName(): string
+    {
+        return $this->getFullNameAttribute();
+    }
+
+    public function getFullNameAttribute(): string {
+        return $this->first_name. ' ' .$this->maiden_name. ' ' .$this->last_name;
+    }
 
     /**
      * Set the user's first_name, maiden_name and last_name values to uppercase.
