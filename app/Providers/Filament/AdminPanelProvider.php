@@ -54,7 +54,6 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            // ;
             ->viteTheme('resources/packages/filament/tailwind-theme-admin.css');
     }
 }
