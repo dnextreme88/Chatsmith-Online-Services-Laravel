@@ -12,6 +12,8 @@
         "filament/filament": "^3.2",
         "filament/forms": "^3.2",
         "laravel/framework": "^11.21",
+        "laravel/jetstream": "^5.1",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5"
     },
