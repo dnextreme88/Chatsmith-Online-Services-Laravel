@@ -10,6 +10,10 @@
 /* Define custom CSS here that will be extended by Tailwind */
 /* Examples below */
 @layer utilities {
+    .content-blank {
+        content: '';
+    }
+
     .max-h-25-vh {
         max-height: 25vh;
     }
@@ -28,5 +32,61 @@
     }
     .w-75-vw {
         width: 75vw;
+    }
+
+    .border-12 {
+        border-width: 12px;
+    }
+
+    .border-24 {
+        border-width: 24px;
+    }
+
+    /* MORE SPECIFIC CLASS NAMES COMPARED TO RULES ABOVE */
+    .speech-bubble {
+        @apply rounded-2xl;
+        @apply relative;
+
+        &:after {
+            @apply content-blank;
+            @apply absolute;
+            @apply left-1;
+            @apply top-3/4;
+            @apply w-0;
+            @apply h-0;
+            @apply border;
+            @apply border-r-gray-200;
+            @apply border-24;
+            @apply border-solid;
+            @apply border-y-transparent;
+            @apply border-l-transparent;
+            @apply border-l-0;
+            @apply border-t-0;
+            @apply -mt-6;
+            @apply -ml-6;
+        }
+    }
+
+    @media (width <= 768px) {
+        .speech-bubble {
+            &:after {
+                @apply -mt-0;
+                @apply -ml-0;
+                @apply border-transparent;
+            }
+        }
+    }
+
+    .truncate-text-with-dots {
+        @apply whitespace-nowrap;
+        @apply text-ellipsis;
+        @apply overflow-hidden;
+
+        @supports (-webkit-line-clamp: 3) {
+            white-space: initial;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
     }
 }

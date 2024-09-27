@@ -1,8 +1,10 @@
 <?php
 
+use App\Livewire\DetailAnnouncement;
+use App\Livewire\ListAnnouncements;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('welcome');
 });
 
@@ -10,8 +12,13 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-])->group(function () {
+])->group(function() {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::group(['prefix' => 'announcements', 'as' => 'announcements.'], function() {
+        Route::get('/', ListAnnouncements::class)->name('index');
+        Route::get('/{id}', DetailAnnouncement::class)->name('detail');
+    });
 });
