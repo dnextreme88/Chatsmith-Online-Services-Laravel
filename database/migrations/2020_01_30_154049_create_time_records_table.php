@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreign('employee_id')->references('id')->on('employees'); // Foreign key: Employees model
             $table->string('time_of_shift');
             $table->date('date_of_shift');
-            $table->string('employee_name');
             $table->dateTime('timestamp_in', 0);
             $table->dateTime('timestamp_out', 0)->nullable();
             $table->timestamps();

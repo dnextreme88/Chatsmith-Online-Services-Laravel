@@ -10,7 +10,7 @@ class TimeRecord extends Model
     use HasFactory;
 
     protected $fillable = [
-		'user_id', 'employee_id', 'time_of_shift', 'date_of_shift', 'employee_name', 'timestamp_in', 'timestamp_out',
+		'user_id', 'employee_id', 'time_of_shift', 'date_of_shift', 'timestamp_in', 'timestamp_out',
 	];
 
 	/**

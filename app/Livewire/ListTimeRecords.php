@@ -44,7 +44,6 @@ class ListTimeRecords extends Component
             'employee_id' => $user->employee->id,
             'time_of_shift' => $this->time_of_shift,
             'date_of_shift' => Carbon::today(),
-            'employee_name' => $user->first_name. ' ' .$user->maiden_name. ' ' .$user->last_name,
             'timestamp_in' => Carbon::now(),
             'timestamp_out' => Carbon::now()
         ]);
