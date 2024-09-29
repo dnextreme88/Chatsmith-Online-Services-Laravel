@@ -13,7 +13,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $default_profile_image = 'images\avatars\default_avatar.png';
         $default_password = Hash::make('cos12345');
         $timestamp_value = '1580378520'; // Jan 30, 2020 06:02 PM
 
@@ -22,7 +21,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Management',
             'email' => 'chatsmithonline.management@gmail.com',
             'username' => 'cos_management',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 1,
             'created_at' => $timestamp_value,
@@ -35,7 +33,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Villanueva',
             'email' => 'chatsmithonline.recruitment@gmail.com',
             'username' => 'cos_recruitment',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 1,
             'created_at' => $timestamp_value,
@@ -48,7 +45,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Torio',
             'email' => 'marytorio@chatsmithonline.net',
             'username' => 'cos_may',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 1,
             'created_at' => $timestamp_value,
@@ -61,7 +57,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Tesorio',
             'email' => 'chatsmithonline.pau@gmail.com',
             'username' => 'tesoriopauline18',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 1,
             'created_at' => $timestamp_value,
@@ -74,7 +69,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Amansec',
             'email' => 'chatsmithonline.nicx@gmail.com',
             'username' => 'amansecnicole17',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 1,
             'created_at' => $timestamp_value,
@@ -87,7 +81,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Balanta',
             'email' => 'chatsmithonline.beverly@gmail.com',
             'username' => 'balantabeverly16',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 1,
             'created_at' => $timestamp_value,
@@ -100,7 +93,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Lapnawan',
             'email' => 'chatsmithonline.archie@gmail.com',
             'username' => 'lapnawanarchie14',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 1,
             'created_at' => $timestamp_value,
@@ -113,7 +105,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Decena',
             'email' => 'chatsmithonline.jeanne@gmail.com',
             'username' => 'decenakevin09',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 0,
             'created_at' => $timestamp_value,
@@ -126,7 +117,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Sanchez',
             'email' => 'chatsmithonline.madisson@gmail.com',
             'username' => 'sanchezmarkanthony10',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 0,
             'created_at' => $timestamp_value,
@@ -139,7 +129,6 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Lachica',
             'email' => 'chatsmithonline.miles@gmail.com',
             'username' => 'lachicamila19',
-            'profile_image' => $default_profile_image,
             'password' => $default_password,
             'is_staff' => 0,
             'created_at' => $timestamp_value,

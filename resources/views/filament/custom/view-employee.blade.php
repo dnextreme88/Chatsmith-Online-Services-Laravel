@@ -42,7 +42,7 @@
     </nav>
 
     <div class="card w-9/12 text-left mx-auto">
-        <img src="/{{ $user->image }}" class="rounded-full mx-auto w-60 h-60" alt="Profile image of user" title="Profile image of user" />
+        <img src="{{ $user->profile_photo_url }}" class="rounded-full mx-auto w-60 h-60" alt="Profile image of user" title="Profile image of user" />
 
         <div class="mx-auto border mt-4 py-2 px-4 grid grid-rows-9 gap-3 border-orange-500 dark:border-orange-300">
             <div class="grid grid-cols-3">

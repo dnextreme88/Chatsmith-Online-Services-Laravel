@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->boolean('is_staff')->default(false);
-            $table->string('profile_image')->nullable();
             $table->string('profile_photo_path', 2048)->nullable(); // Laravel Jetstream, use $user->profile_photo_url to access attribute as defined in User model
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

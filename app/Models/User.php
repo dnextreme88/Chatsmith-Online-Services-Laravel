@@ -28,7 +28,7 @@ class User extends Authenticatable implements HasName
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name', 'maiden_name', 'last_name', 'username', 'profile_image', 'profile_photo_path', 'email', 'password', 'is_staff'
+        'first_name', 'maiden_name', 'last_name', 'username', 'profile_photo_path', 'email', 'password', 'is_staff'
     ];
 
     /**
@@ -93,15 +93,11 @@ class User extends Authenticatable implements HasName
         $this->attributes['last_name'] = strtoupper($value);
     }
 
-    public function getImageAttribute() {
-        return $this->profile_image;
-    }
-
     // Laravel Jetstream functions overridden
     public function getProfilePhotoUrlAttribute()
     {
         if ($this->attributes['profile_photo_path']) {
-            return asset('storage/images/' .Auth::user()->profile_photo_path);
+            return asset('storage/images/' .$this->profile_photo_path);
         }
 
         // Default profile photo URL

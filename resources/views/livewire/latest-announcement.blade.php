@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center gap-2 mb-4 md:flex-row">
     <div class="w-1/4 px-2 m-auto">
-        <img class="h-20 w-20 mx-auto" src="{{ $latest_announcement->user->image }}" alt="Author image" title="Author image" />
+        <img class="rounded-full h-20 w-20 mx-auto" src="{{ $latest_announcement->user->profile_photo_url }}" alt="Author image" title="Author image" />
     </div>
 
     <div class="w-full px-6 py-3 bg-gray-300 dark:bg-gray-800 dark:after:border-r-gray-800 md:speech-bubble">
