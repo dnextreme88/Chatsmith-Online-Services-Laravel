@@ -13,7 +13,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function() {
-    Route::get('/dashboard', function () {
+    Route::get('/dashboard', function() {
         return view('dashboard');
     })->name('dashboard');
 
@@ -21,4 +21,8 @@ Route::middleware([
         Route::get('/', ListAnnouncements::class)->name('index');
         Route::get('/{id}', DetailAnnouncement::class)->name('detail');
     });
+
+    Route::get('/leadforms', function() {
+        return view('leadforms');
+    })->name('leadforms');
 });
