@@ -3,7 +3,7 @@
     'loader_color_spin' => 'fill-orange-100',
     'target' => null,
     'text' => 'Loading...',
-    'text_color' => 'text-slate-400 dark:text-slate-500',
+    'text_color' => 'text-gray-900 dark:text-gray-300',
     'showText' => true,
     'size' => '10',
 ])

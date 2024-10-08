@@ -24,6 +24,16 @@
         max-height: 75vh;
     }
 
+    .h-25-vh {
+        height: 25vh;
+    }
+    .h-50-vh {
+        height: 50vh;
+    }
+    .h-75-vh {
+        height: 75vh;
+    }
+
     .w-25-vw {
         width: 25vw;
     }
@@ -55,7 +65,7 @@
             @apply w-0;
             @apply h-0;
             @apply border;
-            @apply border-r-gray-200;
+            @apply border-r-gray-300;
             @apply border-24;
             @apply border-solid;
             @apply border-y-transparent;
