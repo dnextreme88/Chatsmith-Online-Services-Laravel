@@ -9,14 +9,18 @@
                 <livewire:LatestAnnouncement />
             </div>
 
-            <div class="col-span-4 p-4 bg-gray-300 lg:col-span-3 dark:bg-gray-800 rounded-xl">
+            <div class="col-span-4 p-4 bg-gray-300 dark:bg-gray-800 rounded-xl">
                 <livewire:ListTimeRecords />
             </div>
 
             {{-- TODO: ADD COMPONENT FOR THESE --}}
-            <div class="col-span-4 p-4 text-gray-600 bg-gray-300 lg:col-span-1 dark:bg-gray-800 rounded-xl dark:text-gray-300 lg:ml-4">Schedule of Employee component here</div>
-            <div class="col-span-4 p-4 text-gray-600 bg-gray-300 lg:col-span-2 dark:bg-gray-800 rounded-xl dark:text-gray-300">My Daily Productions component here</div>
-            <div class="col-span-4 p-4 text-gray-600 bg-gray-300 lg:col-span-2 dark:bg-gray-800 rounded-xl dark:text-gray-300 lg:ml-4">My Tasks component here</div>
+            <div class="col-span-4 p-4 bg-gray-300 dark:bg-gray-800 rounded-xl">
+                <livewire:ListProductions />
+            </div>
+
+            <div class="col-span-4 p-4 text-gray-600 bg-gray-300 lg:col-span-2 dark:bg-gray-800 rounded-xl dark:text-gray-300">My Tasks component here</div>
+
+            <div class="col-span-4 p-4 text-gray-600 bg-gray-300 lg:col-span-2 dark:bg-gray-800 rounded-xl dark:text-gray-300 lg:ml-4">Schedule of Employee component here</div>
 
             {{-- TODO: WILL BE COMMENTED OUT FOR REFERENCE ONLY --}}
             {{--
