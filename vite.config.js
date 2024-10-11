@@ -7,6 +7,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/js/fullcalendar/fullcalendar.js',
                 'resources/packages/filament/tailwind-theme-admin.css'
             ],
             refresh: true,
