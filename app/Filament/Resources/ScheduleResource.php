@@ -6,19 +6,16 @@ use App\Filament\Resources\ScheduleResource\Pages;
 use App\Filament\Resources\ScheduleResource\RelationManagers;
 use App\Models\Schedule;
 use App\Models\User;
-use Carbon\Carbon;
-use Closure;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Validation\Rules\Unique;
 
 class ScheduleResource extends Resource
 {
@@ -41,12 +38,7 @@ class ScheduleResource extends Resource
                         ->orderBy('users.last_name')
                     )
                     ->getOptionLabelFromRecordUsing(fn (User $record) => $record->last_name. ', ' .$record->first_name. ' ' .$record->middle_name)
-                    ->required()
-                    ->visible(fn (string $operation): bool => $operation === 'create'),
-                Placeholder::make('user_id_text')
-                    ->label('Employee')
-                    ->content(fn (Schedule $schedule): string => $schedule->user->full_name)
-                    ->visible(fn (string $operation): bool => $operation === 'edit'),
+                    ->required(),
                 Select::make('time_of_shift')
                     ->options([
                         '6:00 AM - 5:00 PM' => '6:00 AM - 5:00 PM',
@@ -59,22 +51,12 @@ class ScheduleResource extends Resource
                     ->label('Date of shift')
                     ->format('Y-m-d')
                     ->required()
-                    ->rules([ // Custom validation
-                        fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
-                            $employee_date_of_shift = Schedule::where('user_id', $get('user_id'))
-                                ->where('date_of_shift', $value)
-                                ->first();
-
-                            if ($employee_date_of_shift) {
-                                $fail('This employee already has a schedule for ' .Carbon::parse($get('date_of_shift'))->format('F j, Y'). '.');
-                            }
-                        },
-                    ])
-                    ->visible(fn (string $operation): bool => $operation === 'create'),
-                Placeholder::make('date_of_shift_text')
-                    ->label('Date of shift')
-                    ->content(fn (Schedule $schedule): string => Carbon::parse($schedule->date_of_shift)->format('F j, Y'))
-                    ->visible(fn (string $operation): bool => $operation === 'edit')
+                    ->afterOrEqual('today')
+                    ->unique(ignoreRecord: true, modifyRuleUsing: fn (Unique $rule, callable $get) =>
+                        $rule->where('user_id', $get('user_id'))
+                            ->where('date_of_shift', $get('date_of_shift'))
+                    )
+                    ->validationMessages(['unique' => 'This employee already has a shift at the specified date'])
             ])
             ->columns(1);
     }
