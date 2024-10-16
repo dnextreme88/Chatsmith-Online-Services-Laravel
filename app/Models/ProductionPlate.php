@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Employee;
+use App\Models\TimeRange;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProductionPlate extends Model
 {
@@ -16,17 +20,19 @@ class ProductionPlate extends Model
         'user_id', 'employee_id', 'time_range_id', 'account_used', 'minutes_worked', 'plateiq_tool', 'no_of_edits', 'no_of_invoices_completed', 'no_of_invoices_sent_to_manager', 'total_count'
     ];
 
-    /**
-     * Get the employee associated with the plate production.
-     */
-    public function employee() {
-        return $this->belongsTo('App\Models\Employee');
+    // Relationships
+    public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
     }
 
-    /**
-     * Get the time ranges associated with the plate production.
-     */
-    public function time_range() {
-        return $this->belongsTo('App\Models\TimeRange');
+    public function time_range(): BelongsTo
+    {
+        return $this->belongsTo(TimeRange::class, 'time_range_id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\ProductionChat;
+use App\Models\ProductionFocal;
+use App\Models\ProductionPlate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TimeRange extends Model
 {
@@ -11,31 +15,19 @@ class TimeRange extends Model
 
     protected $fillable = ['time_range'];
 
-    /**
-     * Get the chat production associated with the time range.
-     */
-    public function production_chat() {
-        return $this->belongsTo('App\Models\ProductionChat');
+    // Relationships
+    public function production_chats(): HasMany
+    {
+        return $this->hasMany(ProductionChat::class);
     }
 
-    /**
-     * Get the focal production associated with the time range.
-     */
-    public function production_focal() {
-        return $this->belongsTo('App\Models\ProductionFocal');
+    public function production_focals(): HasMany
+    {
+        return $this->hasMany(ProductionFocal::class);
     }
 
-    /**
-     * Get the plate production associated with the time range.
-     */
-    public function production_plate() {
-        return $this->belongsTo('App\Models\ProductionPlate');
-    }
-
-    /**
-     * Get the task associated with the time range.
-     */
-    public function task() {
-        return $this->belongsTo('App\Models\Task');
+    public function production_plates(): HasMany
+    {
+        return $this->hasMany(ProductionPlate::class);
     }
 }

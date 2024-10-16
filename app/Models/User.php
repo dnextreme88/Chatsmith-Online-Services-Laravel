@@ -3,12 +3,21 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Announcement;
+use App\Models\Employee;
+use App\Models\ProductionChat;
+use App\Models\ProductionFocal;
+use App\Models\ProductionPlate;
+use App\Models\Schedule;
+use App\Models\Task;
+use App\Models\TimeRecord;
 use Filament\Models\Contracts\HasName;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
-use illuminate\Support\Facades\Auth;
 use illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -122,52 +131,44 @@ class User extends Authenticatable implements HasName
         }
     }
 
-    /**
-     * Get the employee associated with the user.
-     */
-    public function employee() {
-        return $this->hasOne('App\Models\Employee');
+    // Relationships
+    public function employee(): HasOne
+    {
+        return $this->hasOne(Employee::class);
     }
 
-    /**
-     * Get the announcements associated with the user.
-     */
-    public function announcement() {
-        return $this->hasMany('App\Models\Announcement');
+    public function announcements(): HasMany
+    {
+        return $this->hasMany(Announcement::class);
     }
 
-    /**
-     * Get the time records associated with the user.
-     */
-    public function time_record() {
-        return $this->hasMany('App\Models\TimeRecord');
+    public function production_chats(): HasMany
+    {
+        return $this->hasMany(ProductionChat::class);
     }
 
-    /**
-     * Get the chat productions associated with the user.
-     */
-    public function production_chat() {
-        return $this->hasMany('App\Models\ProductionChat');
+    public function production_focals(): HasMany
+    {
+        return $this->hasMany(ProductionFocal::class);
     }
 
-    /**
-     * Get the focal productions associated with the user.
-     */
-    public function production_focal() {
-        return $this->hasMany('App\Models\ProductionFocal');
+    public function production_plates(): HasMany
+    {
+        return $this->hasMany(ProductionPlate::class);
     }
 
-    /**
-     * Get the plate productions associated with the user.
-     */
-    public function production_plate() {
-        return $this->hasMany('App\Models\ProductionPlate');
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
     }
 
-    /**
-     * Get the schedules associated with the user.
-     */
-    public function schedule() {
-        return $this->hasMany('App\Models\Schedule');
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function time_records(): HasMany
+    {
+        return $this->hasMany(TimeRecord::class);
     }
 }

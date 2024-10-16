@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Schedule extends Model
 {
@@ -13,17 +16,14 @@ class Schedule extends Model
         'user_id', 'employee_id', 'time_of_shift', 'date_of_shift'
     ];
 
-    /**
-     * Get the employee associated with the schedule.
-     */
-    public function employee() {
-        return $this->belongsTo('App\Models\Employee');
+    // Relationships
+    public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
     }
 
-    /**
-     * Get the user associated with the schedule.
-     */
-    public function user() {
-        return $this->belongsTo('App\Models\User');
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -2,8 +2,17 @@
 
 namespace App\Models;
 
+use App\Models\ProductionChat;
+use App\Models\ProductionFocal;
+use App\Models\ProductionPlate;
+use App\Models\Schedule;
+use App\Models\Task;
+use App\Models\TimeRecord;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Employee extends Model
 {
@@ -13,52 +22,39 @@ class Employee extends Model
         'user_id', 'employee_number', 'employee_type', 'designation', 'role', 'date_tenure', 'is_active'
     ];
 
-    /**
-     * Get the user that has the employee.
-     */
-    public function user() {
-        return $this->belongsTo('App\Models\User');
+    // Relationships
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    /**
-     * Get the time records associated with the employee.
-     */
-    public function time_record() {
-        return $this->hasMany('App\Models\TimeRecord');
+    public function production_chats(): HasMany
+    {
+        return $this->hasMany(ProductionChat::class);
     }
 
-    /**
-     * Get the chat productions associated with the employee.
-     */
-    public function production_chat() {
-        return $this->hasMany('App\Models\ProductionChat');
+    public function production_focals(): HasMany
+    {
+        return $this->hasMany(ProductionFocal::class);
     }
 
-    /**
-     * Get the focal productions associated with the employee.
-     */
-    public function production_focal() {
-        return $this->hasMany('App\Models\ProductionFocal');
+    public function production_plates(): HasMany
+    {
+        return $this->hasMany(ProductionPlate::class);
     }
 
-    /**
-     * Get the plate productions associated with the employee.
-     */
-    public function production_plate() {
-        return $this->hasMany('App\Models\ProductionPlate');
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
     }
 
-    /**
-     * Get the schedules associated with the employee.
-     */
-    public function schedule() {
-        return $this->hasMany('App\Models\Schedule');
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(Task::class);
     }
 
-    /**
-     * Get the tasks associated with the employee.
-     */
-    public function task() {
-        return $this->hasMany('App\Models\Task');
+    public function time_records(): HasMany
+    {
+        return $this->hasMany(TimeRecord::class);
     }
 }
