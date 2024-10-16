@@ -26,4 +26,9 @@ class EditSchedule extends EditRecord
             DeleteAction::make(),
         ];
     }
+
+    protected function getSavedNotificationTitle(): ?string
+    {
+        return 'Schedule updated';
+    }
 }

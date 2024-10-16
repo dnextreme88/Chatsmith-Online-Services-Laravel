@@ -18,4 +18,9 @@ class CreateSchedule extends CreateRecord
 
         return $data;
     }
+
+    protected function getCreatedNotificationTitle(): ?string
+    {
+        return 'Schedule created';
+    }
 }
