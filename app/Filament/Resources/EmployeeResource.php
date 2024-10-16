@@ -3,6 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\EmployeeResource\Pages;
+use App\Filament\Resources\EmployeeResource\Pages\EditEmployee;
+use App\Filament\Resources\EmployeeResource\Pages\ViewEmployee;
 use App\Filament\Resources\EmployeeResource\RelationManagers;
 use App\Models\Employee;
 use App\Models\User;
@@ -13,6 +15,16 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Grid;
+use Filament\Infolists\Components\Group;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\Split;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
+use Filament\Pages\SubNavigationPosition;
+use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\DeleteAction;
@@ -32,6 +44,8 @@ class EmployeeResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $activeNavigationIcon = 'heroicon-s-user-group';
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     public static function form(Form $form): Form
     {
@@ -170,6 +184,83 @@ class EmployeeResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Section::make('Employee Details')
+                    ->schema([
+                        Split::make([
+                            Grid::make(2)
+                                ->schema([
+                                    Group::make([
+                                        TextEntry::make('id')
+                                            ->label('Employee ID'),
+                                        TextEntry::make('employee_number')
+                                            ->label('Employee Number'),
+                                        TextEntry::make('role'),
+                                        IconEntry::make('user.is_staff')
+                                            ->label('Is a Staff Member?')
+                                            ->color(fn (int $state): string => match ($state) {
+                                                0 => 'danger',
+                                                1 => 'success'
+                                            })
+                                            ->icon(fn (int $state): string => match ($state) {
+                                                0 => 'heroicon-o-x-circle',
+                                                1 => 'heroicon-o-check-circle'
+                                            })
+                                    ]),
+                                    Group::make([
+                                        TextEntry::make('employee_type')
+                                            ->label('Employee Type'),
+                                        TextEntry::make('designation')
+                                            ->label('Office Designation'),
+                                        TextEntry::make('date_tenure')
+                                            ->label('Date of Tenure')
+                                            ->badge()
+                                            ->date()
+                                            ->color('success'),
+                                        IconEntry::make('is_active')
+                                            ->label('Is an Active Member?')
+                                            ->color(fn (int $state): string => match ($state) {
+                                                0 => 'danger',
+                                                1 => 'success'
+                                            })
+                                            ->icon(fn (int $state): string => match ($state) {
+                                                0 => 'heroicon-o-x-circle',
+                                                1 => 'heroicon-o-check-circle'
+                                            })
+                                    ]),
+                                ]),
+                            ImageEntry::make('user.profile_photo_url')
+                                ->circular()
+                                ->hiddenLabel()
+                                ->grow(false)
+                        ])
+                    ]),
+                Section::make('User Details')
+                    ->schema([
+                        Grid::make(2)
+                            ->schema([
+                                TextEntry::make('user.full_name')
+                                    ->label('Full Name'),
+                                TextEntry::make('user.email')
+                                    ->label('Email'),
+                                TextEntry::make('user.username')
+                                    ->label('Username')
+                            ])
+                    ])
+            ]);
+    }
+
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            ViewEmployee::class,
+            EditEmployee::class
+        ]);
     }
 
     public static function getRelations(): array
