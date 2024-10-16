@@ -17,7 +17,8 @@ class EditEmployee extends EditRecord
         ];
     }
 
-    protected function getSavedNotificationTitle(): ?string {
+    protected function getSavedNotificationTitle(): ?string
+    {
         return 'Employee updated';
     }
 }

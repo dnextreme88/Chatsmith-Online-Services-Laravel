@@ -17,7 +17,8 @@ class EditAnnouncement extends EditRecord
         ];
     }
 
-    protected function getSavedNotificationTitle(): ?string {
+    protected function getSavedNotificationTitle(): ?string
+    {
         return 'Announcement updated';
     }
 }
