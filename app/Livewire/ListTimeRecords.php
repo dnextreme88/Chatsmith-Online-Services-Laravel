@@ -3,14 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\TimeRecord;
+use Carbon\Carbon;
 use Closure;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ListTimeRecords extends Component
 {
-    public $timerecord_id_for_clocking_out;
     public $clock_in_modal = false;
     public $clock_out_modal = false;
 
@@ -77,6 +76,6 @@ class ListTimeRecords extends Component
             ->orderBy('id', 'desc')
             ->paginate(5);
 
-        return view('livewire.list-time-records-employee', compact('time_records'));
+        return view('livewire.list-time-records', compact('time_records'));
     }
 }
