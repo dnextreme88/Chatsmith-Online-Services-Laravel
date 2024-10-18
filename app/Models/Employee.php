@@ -19,7 +19,17 @@ class Employee extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'employee_number', 'employee_type', 'designation', 'role', 'date_tenure', 'is_active'
+        'user_id',
+        'employee_number',
+        'employee_type',
+        'designation',
+        'role',
+        'date_hired',
+        'date_resigned',
+        'is_active',
+        'pag_ibig_number',
+        'philhealth_number',
+        'sss_number'
     ];
 
     // Relationships

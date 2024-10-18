@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -16,22 +17,28 @@ class UserFactory extends Factory
      */
     protected static ?string $password;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        $first_name = fake()->firstName();
+        $last_name = fake()->lastName();
+
+        $has_user = User::where('first_name', $first_name)->first();
+        if ($has_user) {
+            $first_name = fake()->firstName();
+        }
+
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'first_name' => $first_name,
+            'maiden_name' => fake()->firstName(),
+            'last_name' => $last_name,
+            'email' => 'chatsmithonline.' .strtolower($first_name). '@example.com',
+            'username' => str_replace('\'', '', strtolower($last_name. $first_name). $this->faker->numberBetween(1, 99)),
+            'is_staff' => fake()->randomElement([0, 1]),
+            'profile_photo_path' => null,
+            'password' => static::$password ??= Hash::make('cos12345'),
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
-            'profile_photo_path' => null,
         ];
     }
 
