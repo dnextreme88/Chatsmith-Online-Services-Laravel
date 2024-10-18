@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EmployeeResource\Pages;
 use App\Filament\Resources\EmployeeResource\Pages\EditEmployee;
+use App\Filament\Resources\EmployeeResource\Pages\EmployeeTasks;
 use App\Filament\Resources\EmployeeResource\Pages\ViewEmployee;
 use App\Filament\Resources\EmployeeResource\RelationManagers;
 use App\Models\Employee;
@@ -258,8 +259,9 @@ class EmployeeResource extends Resource
     public static function getRecordSubNavigation(Page $page): array
     {
         return $page->generateNavigationItems([
+            EditEmployee::class,
             ViewEmployee::class,
-            EditEmployee::class
+            EmployeeTasks::class
         ]);
     }
 
@@ -275,8 +277,9 @@ class EmployeeResource extends Resource
         return [
             'index' => Pages\ListEmployees::route('/'),
             'create' => Pages\CreateEmployee::route('/create'),
-            'view' => Pages\ViewEmployee::route('/{record}'),
-            'edit' => Pages\EditEmployee::route('/{record}/edit'),
+            'edit' => EditEmployee::route('/{record}/edit'),
+            'view' => ViewEmployee::route('/{record}'),
+            'tasks' => EmployeeTasks::route('/{record}/tasks'),
         ];
     }
 }

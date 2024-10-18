@@ -18,11 +18,12 @@
             </div>
 
             <div class="col-span-4 p-4 bg-gray-300 dark:bg-gray-800 rounded-xl">
-                <livewire:ListProductions />
+                <livewire:ListTasks />
             </div>
 
-            {{-- TODO: ADD COMPONENT FOR THESE --}}
-            <div class="col-span-4 p-4 text-gray-600 bg-gray-300 lg:col-span-2 dark:bg-gray-800 rounded-xl dark:text-gray-300">My Tasks component here</div>
+            <div class="col-span-4 p-4 bg-gray-300 dark:bg-gray-800 rounded-xl">
+                <livewire:ListProductions />
+            </div>
 
             {{-- TODO: WILL BE COMMENTED OUT FOR REFERENCE ONLY --}}
             {{--
