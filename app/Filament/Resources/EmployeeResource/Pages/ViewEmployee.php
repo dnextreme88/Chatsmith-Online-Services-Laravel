@@ -9,6 +9,10 @@ class ViewEmployee extends ViewRecord
 {
     protected static string $resource = EmployeeResource::class;
 
+    protected static ?string $navigationIcon = 'heroicon-o-eye';
+
+    protected static ?string $activeNavigationIcon = 'heroicon-s-eye';
+
     public function getTitle(): string
     {
         $record = $this->getRecord();
