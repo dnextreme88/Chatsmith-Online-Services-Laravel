@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Employee;
 use App\Models\TimeRange;
+use App\Models\Traits\ProductionTrait;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ProductionFocal extends Model
 {
     use HasFactory;
+    use ProductionTrait;
 
     // Overrides Laravel's naming convention of tables and specifies a custom one.
     protected $table = 'production_focal';

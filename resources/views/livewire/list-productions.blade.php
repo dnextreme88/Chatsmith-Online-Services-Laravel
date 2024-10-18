@@ -46,7 +46,7 @@
                     @foreach ($production_chat_accounts as $key => $production_chat_account)
                         <tr wire:key="{{ $key }}">
                             <td class="py-2 text-center">{{ \Carbon\Carbon::parse($production_chat_account->created_at)->format('m/d/y') }}</td>
-                            <td class="py-2 text-center">{{ $production_chat_account->time_range }}</td>
+                            <td class="py-2 text-center">{{ $production_chat_account->time_range->time_range }}</td>
                             <td class="py-2 text-center">{{ \Illuminate\Support\Str::limit($production_chat_account->account_used, 32) }}</td>
                             <td class="py-2 text-center">{{ $production_chat_account->minutes_worked }}</td>
                             <td class="py-2 text-center">{{ $production_chat_account->chat_account_tool }}</td>
@@ -81,7 +81,7 @@
                     @foreach ($production_focals as $key => $production_focal)
                         <tr wire:key="{{ $key }}">
                             <td class="py-2 text-center">{{ \Carbon\Carbon::parse($production_focal->created_at)->format('m/d/y') }}</td>
-                            <td class="py-2 text-center">{{ $production_focal->time_range }}</td>
+                            <td class="py-2 text-center">{{ $production_focal->time_range->time_range }}</td>
                             <td class="py-2 text-center">{{ \Illuminate\Support\Str::limit($production_focal->account_used, 32) }}</td>
                             <td class="py-2 text-center">{{ $production_focal->minutes_worked }}</td>
                             <td class="py-2 text-center">{{ $production_focal->oos_count }}</td>
@@ -120,7 +120,7 @@
                     @foreach ($production_plates as $key => $production_plate)
                         <tr wire:key="{{ $key }}">
                             <td class="py-2 text-center">{{ \Carbon\Carbon::parse($production_plate->created_at)->format('m/d/y') }}</td>
-                            <td class="py-2 text-center">{{ $production_plate->time_range }}</td>
+                            <td class="py-2 text-center">{{ $production_plate->time_range->time_range }}</td>
                             <td class="py-2 text-center">{{ \Illuminate\Support\Str::limit($production_plate->account_used, 32) }}</td>
                             <td class="py-2 text-center">{{ $production_plate->minutes_worked }}</td>
                             <td class="py-2 text-center">{{ $production_plate->plateiq_tool }}</td>
