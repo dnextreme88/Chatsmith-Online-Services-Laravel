@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('employees', function (Blueprint $table) {
             $table->renameColumn('date_tenure', 'date_hired');
-            $table->string('date_resigned')
+            $table->date('date_resigned')
                 ->nullable()
                 ->after('date_hired');
             $table->string('pag_ibig_number', 32)
