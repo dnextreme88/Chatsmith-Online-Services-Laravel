@@ -29,10 +29,12 @@ class UserFactory extends Factory
 
         return [
             'first_name' => $first_name,
-            'maiden_name' => fake()->firstName(),
+            'maiden_name' => fake()->lastName(),
             'last_name' => $last_name,
             'email' => 'chatsmithonline.' .strtolower($first_name). '@example.com',
             'username' => str_replace('\'', '', strtolower($last_name. $first_name). $this->faker->numberBetween(1, 99)),
+            'phone_number' => fake()->numerify('+639#########'),
+            'address' => fake()->address(),
             'is_staff' => fake()->randomElement([0, 1]),
             'profile_photo_path' => null,
             'password' => static::$password ??= Hash::make('cos12345'),

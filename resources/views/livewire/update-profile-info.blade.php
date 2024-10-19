@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        {{ __('Update your account\'s profile information.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -55,7 +55,7 @@
         </div>
 
         <div class="col-span-6 mt-4">
-            <x-label for="first_name" :value="__('First Name')" />
+            <x-label for="first_name" :value="__('First Name')" :is_required="true" />
             <x-input wire:model="first_name" id="first_name" class="block mt-1 w-full uppercase" type="text" name="first_name" required autofocus autocomplete="first_name" />
             <x-input-error for="first_name" class="mt-2" />
         </div>
@@ -67,9 +67,21 @@
         </div>
 
         <div class="col-span-6 mt-4">
-            <x-label for="last_name" :value="__('Last Name')" />
+            <x-label for="last_name" :value="__('Last Name')" :is_required="true" />
             <x-input wire:model="last_name" id="last_name" class="block mt-1 w-full uppercase" type="text" name="last_name" required autofocus autocomplete="last_name" />
             <x-input-error for="last_name" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 mt-4">
+            <x-label for="phone_number" :value="__('Phone Number')" :is_required="true" />
+            <x-input wire:model="phone_number" id="phone_number" class="block w-full mt-1 uppercase" type="text" name="phone_number" required autofocus autocomplete="phone_number" />
+            <x-input-error for="phone_number" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 mt-4">
+            <x-label for="address" :value="__('Address')" :is_required="true" />
+            <x-input wire:model="address" id="address" class="block w-full mt-1 uppercase" type="text" name="address" required autofocus autocomplete="address" />
+            <x-input-error for="address" class="mt-2" />
         </div>
     </x-slot>
 

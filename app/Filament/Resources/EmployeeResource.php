@@ -246,21 +246,24 @@ class EmployeeResource extends Resource
                     ]),
                 Section::make('Contribution Details')
                     ->schema([
-                        Grid::make(3)
-                            ->schema([
-                                TextEntry::make('pag_ibig_number')
-                                    ->label('Pag-IBIG Number'),
-                                TextEntry::make('philhealth_number')
-                                    ->label('PhilHealth Number'),
-                                TextEntry::make('sss_number')
-                                    ->label('SSS Number')
-                            ])
-                        ]),
+                        TextEntry::make('pag_ibig_number')
+                            ->label('Pag-IBIG Number'),
+                        TextEntry::make('philhealth_number')
+                            ->label('PhilHealth Number'),
+                        TextEntry::make('sss_number')
+                            ->label('SSS Number')
+                    ])
+                    ->columns(3),
                 Section::make('User Details')
                     ->schema([
                         TextEntry::make('user.full_name')
-                            ->label('Full Name')
+                            ->label('Full Name'),
+                        TextEntry::make('user.phone_number')
+                            ->label('Phone Number'),
+                        TextEntry::make('user.address')
+                            ->label('Address')
                     ])
+                    ->columns(3)
             ]);
     }
 

@@ -37,7 +37,16 @@ class User extends Authenticatable implements HasName
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name', 'maiden_name', 'last_name', 'username', 'profile_photo_path', 'email', 'password', 'is_staff'
+        'first_name',
+        'maiden_name',
+        'last_name',
+        'email',
+        'username',
+        'phone_number',
+        'address',
+        'is_staff',
+        'profile_photo_path',
+        'password'
     ];
 
     /**

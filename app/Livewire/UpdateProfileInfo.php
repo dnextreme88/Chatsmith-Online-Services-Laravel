@@ -17,6 +17,8 @@ class UpdateProfileInfo extends Component
     public $first_name;
     public $maiden_name;
     public $last_name;
+    public $phone_number;
+    public $address;
 
     public function delete_profile_photo()
     {
@@ -32,7 +34,9 @@ class UpdateProfileInfo extends Component
             'uploaded_photo' => ['nullable', 'mimes:gif,jpg,jpeg,png', 'max:2048'],
             'first_name' => ['required', 'string', 'min:2'],
             'maiden_name' => ['string', 'min:2'],
-            'last_name' => ['required', 'string', 'min:2']
+            'last_name' => ['required', 'string', 'min:2'],
+            'phone_number' => ['required', 'starts_with:+639', 'size:13'],
+            'address' => ['required', 'string']
         ]);
 
         $this->user->updateProfilePhoto($this->uploaded_photo);
@@ -40,7 +44,9 @@ class UpdateProfileInfo extends Component
         $this->user->update([
             'first_name' => $this->first_name,
             'maiden_name' => $this->maiden_name,
-            'last_name' => $this->last_name
+            'last_name' => $this->last_name,
+            'phone_number' => $this->phone_number,
+            'address' => $this->address
         ]);
 
         $this->user->save();
@@ -55,6 +61,8 @@ class UpdateProfileInfo extends Component
         $this->first_name = $this->user->first_name;
         $this->maiden_name = $this->user->maiden_name;
         $this->last_name = $this->user->last_name;
+        $this->phone_number = $this->user->phone_number;
+        $this->address = $this->user->address;
     }
 
     #[On('profile-updated')]
