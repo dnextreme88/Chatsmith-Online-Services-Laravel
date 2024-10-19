@@ -28,6 +28,7 @@
         @vite('resources/css/app.css')
 
         @stack('styles')
+        @stack('scripts')
     </head>
 
     <body class="font-sans antialiased">
@@ -47,13 +48,11 @@
             <main>{{ $slot }}</main>
         </div>
 
-        @stack('modals')
-
         <!-- Scripts -->
         @filamentScripts
         @livewireScripts
         @vite('resources/js/app.js')
 
-        @stack('scripts')
+        @stack('modals')
     </body>
 </html>
