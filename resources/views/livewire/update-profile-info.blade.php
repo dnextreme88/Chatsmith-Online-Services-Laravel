@@ -55,11 +55,6 @@
         </div>
 
         <div class="col-span-6 mt-4">
-            <x-label for="username" :value="__('Username')" />
-            <p class="w-full text-lg dark:text-gray-400">{{ $username }}</p>
-        </div>
-
-        <div class="col-span-6 mt-4">
             <x-label for="first_name" :value="__('First Name')" />
             <x-input wire:model="first_name" id="first_name" class="block mt-1 w-full uppercase" type="text" name="first_name" required autofocus autocomplete="first_name" />
             <x-input-error for="first_name" class="mt-2" />
@@ -75,33 +70,6 @@
             <x-label for="last_name" :value="__('Last Name')" />
             <x-input wire:model="last_name" id="last_name" class="block mt-1 w-full uppercase" type="text" name="last_name" required autofocus autocomplete="last_name" />
             <x-input-error for="last_name" class="mt-2" />
-        </div>
-
-        <!-- Email -->
-        <div class="col-span-6 mt-4">
-            <x-label for="email" value="{{ __('Email') }}" />
-            <x-input wire:model="email" id="email" class="mt-1 block w-full lowercase" type="email" required autocomplete="email" />
-            <x-input-error for="email" class="mt-2" />
-
-            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
-                <p class="text-sm mt-2 dark:text-white">
-                    {{ __('Your email address is unverified.') }}
-
-                    <button
-                        wire:click.prevent="sendEmailVerification"
-                        class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                        type="button"
-                    >
-                        {{ __('Click here to re-send the verification email.') }}
-                    </button>
-                </p>
-
-                @if ($this->verificationLinkSent)
-                    <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
-                        {{ __('A new verification link has been sent to your email address.') }}
-                    </p>
-                @endif
-            @endif
         </div>
     </x-slot>
 

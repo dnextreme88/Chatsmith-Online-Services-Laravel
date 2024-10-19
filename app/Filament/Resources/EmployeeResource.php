@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\EmployeeRoles;
+use App\Enums\EmployeeTypes;
+use App\Enums\OfficeDesignations;
 use App\Filament\Resources\EmployeeResource\Pages;
 use App\Filament\Resources\EmployeeResource\Pages\EditEmployee;
 use App\Filament\Resources\EmployeeResource\Pages\EmployeeTasks;
@@ -13,9 +16,11 @@ use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Section AS FormSection;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Infolists\Components\Grid;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\IconEntry;
@@ -52,53 +57,54 @@ class EmployeeResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('user_id')
-                    ->label('User')
-                    ->required()
-                    ->options(User::selectRaw('id, CONCAT(COALESCE(`first_name`, ""), " ", COALESCE(`maiden_name`, ""), " ", COALESCE(`last_name`, "")) AS user_full_name')
-                        ->doesntHave('employee')
-                        ->get()
-                        ->pluck('user_full_name', 'id') // Using ->pluck('full_name', 'id') fails as it is an accessor function in App\Models\User
-                    )
-                    ->helperText('Only users that have registered but are not yet considered employees will show up here')
-                    ->hidden(fn (string $operation): bool => $operation === 'edit'),
-                Placeholder::make('user_id')
-                    ->label('User')
-                    ->content(fn (Employee $employee): string => $employee->user->full_name)
-                    ->hidden(fn (string $operation): bool => $operation === 'create'),
-                TextInput::make('employee_number')
-                    ->required()
-                    ->unique(table: Employee::class, ignoreRecord: true),
-                Select::make('employee_type')
-                    ->label('Employee Type')
-                    ->required()
-                    ->options([
-                        'OJT' => 'OJT',
-                        'Part-time' => 'Part-time',
-                        'Regular' => 'Regular'
-                    ]),
-                Select::make('designation')
-                    ->label('Office Designation')
-                    ->required()
-                    ->options([
-                        'Baguio' => 'Baguio',
-                        'Pangasinan' => 'Pangasinan'
-                    ]),
-                Select::make('role')
-                    ->required()
-                    ->options([
-                        'Administrator' => 'Administrator',
-                        'Director' => 'Director',
-                        'Employee' => 'Employee',
-                        'Human Resources and Recruitment' => 'Human Resources and Recruitment',
-                        'Owner' => 'Owner',
-                        'Quality Analyst' => 'Quality Analyst',
-                        'Supervisor' => 'Supervisor',
-                        'Team Leader' => 'Team Leader'
-                    ]),
-                DatePicker::make('date_tenure'),
-                Checkbox::make('is_active')
-                    ->hidden(fn (string $operation): bool => $operation === 'create')
+                FormSection::make('Employee Details')
+                    ->schema([
+                        Select::make('user_id')
+                            ->label('User')
+                            ->required()
+                            ->options(User::selectRaw('id, CONCAT(COALESCE(`first_name`, ""), " ", COALESCE(`maiden_name`, ""), " ", COALESCE(`last_name`, "")) AS user_full_name')
+                                ->doesntHave('employee')
+                                ->get()
+                                ->pluck('user_full_name', 'id') // Using ->pluck('full_name', 'id') fails as it is an accessor function in App\Models\User
+                            )
+                            ->helperText('Only users that have registered but are not yet considered employees will show up here')
+                            ->hidden(fn (string $operation): bool => $operation === 'edit'),
+                        Placeholder::make('user_id')
+                            ->label('User')
+                            ->content(fn (Employee $employee): string => $employee->user->full_name)
+                            ->hidden(fn (string $operation): bool => $operation === 'create'),
+                        TextInput::make('employee_number')
+                            ->required()
+                            ->unique(table: Employee::class, ignoreRecord: true),
+                        Select::make('employee_type')
+                            ->required()
+                            ->options(EmployeeTypes::class),
+                        Select::make('designation')
+                            ->label('Office designation')
+                            ->required()
+                            ->options(OfficeDesignations::class),
+                        Select::make('role')
+                            ->required()
+                            ->options(EmployeeRoles::class),
+                        DatePicker::make('date_hired'),
+                        Checkbox::make('is_active')
+                            ->live()
+                            ->hidden(fn (string $operation): bool => $operation === 'create'),
+                        DatePicker::make('date_resigned')
+                            ->visible(fn (Get $get): bool => !$get('is_active'))
+                            ->afterOrEqual('date_hired')
+                    ])
+                    ->columns(2),
+                FormSection::make('Contribution Details')
+                    ->schema([
+                        TextInput::make('pag_ibig_number')
+                            ->label('Pag-IBIG Number'),
+                        TextInput::make('philhealth_number')
+                            ->label('PhilHealth Number'),
+                        TextInput::make('sss_number')
+                            ->label('SSS Number')
+                    ])
+                    ->columns(3)
             ]);
     }
 
@@ -121,18 +127,22 @@ class EmployeeResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('user.full_name')
-                    ->label('Full Name')
+                    ->label('Full name')
                     ->searchable(['first_name', 'maiden_name', 'last_name'])
                     ->sortable(['first_name']),
                 TextColumn::make('employee_type'),
-                TextColumn::make('designation'),
+                TextColumn::make('designation')
+                    ->label('Office designation')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('role'),
-                TextColumn::make('date_tenure')
-                    ->label('Date of Tenure')
+                TextColumn::make('date_hired')
+                    ->dateTime('m/d/Y')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('date_resigned')
                     ->dateTime('m/d/Y')
                     ->toggleable(isToggledHiddenByDefault: true),
                 IconColumn::make('is_active')
-                    ->label('Is Active?')
+                    ->label('Is an active employee?')
                     ->icon(fn (int $state): string => match ($state) {
                         0 => 'heroicon-o-x-circle',
                         1 => 'heroicon-o-check-circle',
@@ -141,37 +151,27 @@ class EmployeeResource extends Resource
                         0 => 'danger',
                         1 => 'success',
                         default => 'gray'
-                    })
+                    }),
+                TextColumn::make('pag_ibig_number')
+                    ->label('Pag-IBIG Number'),
+                TextColumn::make('philhealth_number')
+                    ->label('PhilHealth Number'),
+                TextColumn::make('sss_number')
+                    ->label('SSS Number')
             ])
             ->filters([
                 SelectFilter::make('employee_type')
-                    ->label('Employee Type')
-                    ->options([
-                        'OJT' => 'OJT',
-                        'Part-time' => 'Part-time',
-                        'Regular' => 'Regular'
-                    ]),
+                    ->options(EmployeeTypes::class),
                 SelectFilter::make('designation')
-                    ->options([
-                        'Baguio' => 'Baguio',
-                        'Pangasinan' => 'Pangasinan'
-                    ]),
+                    ->label('Office designation')
+                    ->options(OfficeDesignations::class),
                 SelectFilter::make('role')
-                    ->options([
-                        'Administrator' => 'Administrator',
-                        'Director' => 'Director',
-                        'Employee' => 'Employee',
-                        'Human Resources and Recruitment' => 'Human Resources and Recruitment',
-                        'Owner' => 'Owner',
-                        'Quality Analyst' => 'Quality Analyst',
-                        'Supervisor' => 'Supervisor',
-                        'Team Leader' => 'Team Leader'
-                    ]),
+                    ->options(EmployeeRoles::class),
                 SelectFilter::make('is_active')
                     ->label('Is an active employee?')
                     ->options([
                         0 => 'Inactive',
-                        1 => 'Active',
+                        1 => 'Active'
                     ])
             ])
             ->actions([
@@ -197,13 +197,19 @@ class EmployeeResource extends Resource
                             Grid::make(2)
                                 ->schema([
                                     Group::make([
-                                        TextEntry::make('id')
-                                            ->label('Employee ID'),
-                                        TextEntry::make('employee_number')
-                                            ->label('Employee Number'),
+                                        TextEntry::make('employee_number'),
+                                        TextEntry::make('user.username')
+                                            ->label('Username'),
+                                        TextEntry::make('user.email')
+                                            ->label('Email'),
                                         TextEntry::make('role'),
+                                        TextEntry::make('employee_type')
+                                    ]),
+                                    Group::make([
+                                        TextEntry::make('designation')
+                                            ->label('Office designation'),
                                         IconEntry::make('user.is_staff')
-                                            ->label('Is a Staff Member?')
+                                            ->label('Is a staff member?')
                                             ->color(fn (int $state): string => match ($state) {
                                                 0 => 'danger',
                                                 1 => 'success'
@@ -211,29 +217,26 @@ class EmployeeResource extends Resource
                                             ->icon(fn (int $state): string => match ($state) {
                                                 0 => 'heroicon-o-x-circle',
                                                 1 => 'heroicon-o-check-circle'
+                                            }),
+                                        IconEntry::make('is_active')
+                                            ->label('Is an active employee?')
+                                            ->color(fn (int $state): string => match ($state) {
+                                                0 => 'danger',
+                                                1 => 'success'
                                             })
-                                    ]),
-                                    Group::make([
-                                        TextEntry::make('employee_type')
-                                            ->label('Employee Type'),
-                                        TextEntry::make('designation')
-                                            ->label('Office Designation'),
-                                        TextEntry::make('date_tenure')
-                                            ->label('Date of Tenure')
+                                            ->icon(fn (int $state): string => match ($state) {
+                                                0 => 'heroicon-o-x-circle',
+                                                1 => 'heroicon-o-check-circle'
+                                            }),
+                                        TextEntry::make('date_hired')
                                             ->badge()
                                             ->date()
                                             ->color('success'),
-                                        IconEntry::make('is_active')
-                                            ->label('Is an Active Member?')
-                                            ->color(fn (int $state): string => match ($state) {
-                                                0 => 'danger',
-                                                1 => 'success'
-                                            })
-                                            ->icon(fn (int $state): string => match ($state) {
-                                                0 => 'heroicon-o-x-circle',
-                                                1 => 'heroicon-o-check-circle'
-                                            })
-                                    ]),
+                                        TextEntry::make('date_resigned')
+                                            ->badge()
+                                            ->date()
+                                            ->color('danger')
+                                    ])
                                 ]),
                             ImageEntry::make('user.profile_photo_url')
                                 ->circular()
@@ -241,17 +244,22 @@ class EmployeeResource extends Resource
                                 ->grow(false)
                         ])
                     ]),
+                Section::make('Contribution Details')
+                    ->schema([
+                        Grid::make(3)
+                            ->schema([
+                                TextEntry::make('pag_ibig_number')
+                                    ->label('Pag-IBIG Number'),
+                                TextEntry::make('philhealth_number')
+                                    ->label('PhilHealth Number'),
+                                TextEntry::make('sss_number')
+                                    ->label('SSS Number')
+                            ])
+                        ]),
                 Section::make('User Details')
                     ->schema([
-                        Grid::make(2)
-                            ->schema([
-                                TextEntry::make('user.full_name')
-                                    ->label('Full Name'),
-                                TextEntry::make('user.email')
-                                    ->label('Email'),
-                                TextEntry::make('user.username')
-                                    ->label('Username')
-                            ])
+                        TextEntry::make('user.full_name')
+                            ->label('Full Name')
                     ])
             ]);
     }
