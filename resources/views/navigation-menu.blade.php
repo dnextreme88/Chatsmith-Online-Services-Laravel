@@ -48,30 +48,13 @@
 
                         <x-slot name="content">
                             {{-- Dark mode toggle --}}
-                            <div class="block px-4 pt-2 text-xs text-gray-400">Dark Mode</div>
+                            <x-custom.dark-mode-toggle>
+                                <x-slot name="title">
+                                    <div class="block px-4 pt-2 text-xs text-gray-400">Dark Mode</div>
+                                </x-slot>
 
-                            <div x-data="window.darkModeSwitcher()" x-init="init" @keydown.window.tab="switchOn = false" class="flex px-2 py-2 space-x-2 place-content-start">
-                                <input x-bind:checked="switchOn" class="hidden" type="checkbox" name="switch" />
-
-                                <button
-                                    x-ref="switchButton"
-                                    x-on:click="switchOn = !switchOn; switchTheme()"
-                                    x-bind:class="{'bg-blue-400': switchOn, 'bg-slate-400': !switchOn}"
-                                    class="relative inline-flex h-5 py-0.5 ml-2 focus:outline-none rounded-full w-9"
-                                    type="button"
-                                >
-                                    <span x-bind:class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'" class="h-4 w-4 duration-200 ease-in-out bg-white rounded-full shadow-md"></span>
-                                </button>
-
-                                <label
-                                    x-on:click="$refs.switchButton.click(); $refs.switchButton.focus()"
-                                    x-bind:class="{ 'text-slate-300': switchOn, 'text-slate-700': !switchOn }"
-                                    x-bind:id="$id('switch')"
-                                    class="text-sm select-none"
-                                >
-                                    On
-                                </label>
-                            </div>
+                                <x-slot name="right_side">On</x-slot>
+                            </x-custom.dark-mode-toggle>
 
                             <div class="border-t border-slate-200 dark:border-slate-600"></div>
 
@@ -149,30 +132,13 @@
             <div class="mt-3 space-y-1">
                 {{-- Dark mode toggle --}}
                 <div class="pt-4 pb-1 border-t border-blue-200 dark:border-slate-600">
-                    <div class="space-y-1 text-sm ps-4 text-slate-400">Dark Mode</div>
+                    <x-custom.dark-mode-toggle>
+                        <x-slot name="title">
+                            <div class="space-y-1 text-sm ps-4 text-slate-400">Dark Mode</div>
+                        </x-slot>
 
-                    <div x-data="window.darkModeSwitcher()" x-init="init" x-on:keydown.window.tab="switchOn = false" class="flex px-2 py-2 space-x-2 place-content-start">
-                        <input x-bind:checked="switchOn" class="hidden" type="checkbox" name="switch" />
-
-                        <button
-                            x-ref="switchButton"
-                            x-on:click="switchOn = !switchOn; switchTheme()"
-                            x-bind:class="{'bg-blue-400': switchOn, 'bg-slate-400': !switchOn}"
-                            class="relative inline-flex h-6 py-0.5 ml-2 focus:outline-none rounded-full w-10"
-                            type="button"
-                        >
-                            <span x-bind:class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'" class="h-5 w-5 duration-200 ease-in-out bg-white rounded-full shadow-md"></span>
-                        </button>
-
-                        <label
-                            x-on:click="$refs.switchButton.click(); $refs.switchButton.focus()"
-                            x-bind:id="$id('switch')"
-                            x-bind:class="{ 'text-slate-400': switchOn, 'text-white': !switchOn }"
-                            class="select-none"
-                        >
-                            On
-                        </label>
-                    </div>
+                        <x-slot name="right_side">On</x-slot>
+                    </x-custom.dark-mode-toggle>
                 </div>
 
                 <!-- Account Management -->

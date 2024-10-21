@@ -31,7 +31,7 @@
         @stack('scripts')
     </head>
 
-    <body x-data="themeSwitcher()" x-bind:class="{'dark': switchOn}" class="antialiased">
+    <body x-data="window.darkModeSwitcher()" x-init="init" x-bind:class="{ 'dark': switchOn }" class="antialiased">
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
