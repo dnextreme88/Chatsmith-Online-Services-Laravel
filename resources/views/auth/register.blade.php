@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <x-application-mark link="{{ route('home') }}" class="h-18" />
         </x-slot>
 
         <x-validation-errors class="mb-4" />

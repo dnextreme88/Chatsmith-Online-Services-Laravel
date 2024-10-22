@@ -5,9 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a wire:navigate href="{{ route('dashboard') }}">
-                        <x-application-mark class="block w-auto h-9" />
-                    </a>
+                    <x-application-mark link="{{ route('home') }}" class="h-10" />
                 </div>
 
                 <!-- Navigation Links -->
@@ -79,7 +77,7 @@
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
 
-                                <x-dropdown-link x-on:click.prevent="$root.submit();" wire:navigate href="{{ route('logout') }}">
+                                <x-dropdown-link x-on:click.prevent="$root.submit();" href="{{ route('logout') }}">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
@@ -156,7 +154,7 @@
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
 
-                    <x-responsive-nav-link x-on:click.prevent="$root.submit();" wire:navigate href="{{ route('logout') }}">
+                    <x-responsive-nav-link x-on:click.prevent="$root.submit();" href="{{ route('logout') }}">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
