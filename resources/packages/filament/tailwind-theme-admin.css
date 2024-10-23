@@ -99,4 +99,36 @@
             -webkit-box-orient: vertical;
         }
     }
+
+    @font-face {
+        font-family: 'Avenir';
+        src:
+            url('../../public/fonts/Avenir-Regular.ttf') format('truetype'),
+            url('../../public/fonts/Poppins-Black.ttf') format('truetype');
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Avenir Black';
+        src:
+            url('../../public/fonts/Avenir-Black.ttf') format('truetype'),
+            url('../../public/fonts/Poppins-Black.ttf') format('truetype');
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Poppins';
+        src:
+            url('../../public/fonts/Poppins-Regular.ttf') format('truetype'),
+            url('../../public/fonts/Avenir-Black.ttf') format('truetype');
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Poppins Black';
+        src:
+            url('../../public/fonts/Poppins-Black.ttf') format('truetype'),
+            url('../../public/fonts/Avenir-Black.ttf') format('truetype');
+        font-display: swap;
+    }
 }

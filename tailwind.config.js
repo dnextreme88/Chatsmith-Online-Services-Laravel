@@ -21,6 +21,10 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 serif: ['Lori', ...defaultTheme.fontFamily.serif],
+                avenir: ['Avenir', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
+                'avenir-black': ['Avenir Black', 'sans-serif'],
+                'poppins-black': ['Poppins Black', 'sans-serif'],
             },
         },
     },
