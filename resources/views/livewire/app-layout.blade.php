@@ -35,7 +35,9 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @livewire('navigation-menu')
+            @auth
+                @livewire('navigation-menu')
+            @endauth
 
             {{-- Page Heading --}}
             @if (isset($header))
@@ -46,7 +48,7 @@
 
             {{-- Page Content --}}
             <main>
-                <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">{{ $slot }}</div>
+                <div class="{{ !request()->routeIs('home') ? 'mx-auto max-w-7xl sm:px-6 lg:px-8' : '' }}">{{ $slot }}</div>
             </main>
         </div>
 

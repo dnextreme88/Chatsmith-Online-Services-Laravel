@@ -4,7 +4,7 @@
     <div>{{ $title }}</div>
 @endif
 
-<div x-on:keydown.window.tab="switchOn = false" class="flex px-4 py-2 place-content-start">
+<div x-on:keydown.window.tab="switchOn = false" {{ $attributes->merge(['class' => 'flex px-4 py-2 place-content-start']) }}>
     @if (isset($left_side))
         <div>{{ $left_side }}</div>
     @endif
