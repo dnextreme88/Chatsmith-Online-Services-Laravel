@@ -181,8 +181,6 @@
         }
     }
 
-    /* TODO: TO UNCOMMENT ONCE THE PAGE FOR CONTACT US IS DONE AND THERE IS A TABLE ASSOCIATED WITH IT */
-    /*
     .bg-gradient-yellow {
         background-image: linear-gradient(120deg, #ffbc00, #ffbc00, #ffbc00, #ffbc00, #ff9cb6, #c3a7f9, #ffbc00, #74cae8, #a7dd8c, #ffbc00, #ffbc00, #ffbc00, #ffbc00, #ffbc00);
     }
@@ -205,5 +203,4 @@
             background-position: 100% 0;
         }
     }
-    */
 }

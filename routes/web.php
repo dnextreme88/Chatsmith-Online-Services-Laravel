@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\CreateContactUs;
 use App\Livewire\DetailAnnouncement;
 use App\Livewire\Homepage;
 use App\Livewire\ListAnnouncements;
@@ -12,6 +13,8 @@ Route::get('/', function() {
 */
 
 Route::get('/', Homepage::class)->name('home');
+
+Route::get('/contact_us', CreateContactUs::class)->name('contact_us');
 
 Route::middleware([
     'auth:sanctum',

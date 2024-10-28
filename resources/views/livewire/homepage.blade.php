@@ -1,84 +1,5 @@
 <div>
     @guest
-        <header x-data="{ onTopOfPage: true, scrollYPosition: 0, open: false }" class="bg-gray-200 dark:bg-gray-800">
-            <nav x-on:scroll.window="scrollYPosition = window.pageYOffset; onTopOfPage = scrollYPosition < 60 ? true : false;"
-                x-bind:class="{'relative': onTopOfPage, 'fixed scale-105 w-full': !onTopOfPage}"
-                class="transition-transform bg-gray-200 border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700 duration-[450ms] z-[1]"
-            >
-                {{-- View for desktop screens --}}
-                <div x-bind:class="{'px-4 py-6 sm:px-6 lg:px-8': onTopOfPage, 'px-16 py-8': !onTopOfPage}">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center shrink-0">
-                            <x-application-mark link="{{ route('home') }}" class="h-18" />
-                        </div>
-
-                        <div class="hidden sm:flex sm:items-center sm:gap-2">
-                            <x-custom.dark-mode-toggle>
-                                <x-slot name="left_side">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 fill-yellow-300 dark:fill-transparent dark:text-yellow-400">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-                                        <title>Toggle light mode</title>
-                                    </svg>
-                                </x-slot>
-
-                                <x-slot name="right_side">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 fill-white">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-                                        <title>Toggle dark mode</title>
-                                    </svg>
-                                </x-slot>
-                            </x-custom.dark-mode-toggle>
-
-                            <a class="text-gray-900 transition duration-150 dark:text-gray-100 hover:text-orange-800 dark:hover:text-orange-200 hover:scale-105" href="{{ route('login') }}">Employee Login</a>
-
-                            {{-- TODO: TO CREATE CONTACT US BUTTON --}}
-                            {{--
-                            <a
-                                href="#"
-                                class="border-none hover:shadow-button-none focus:border-white focus:shadow-button-none focus:text-white leading-none whitespace-nowrap tracking-wider rounded-full py-2 xl:py-2.5 md:text-center px-3 lg:px-4 xl:px-5 uppercase text-white border bg-[length:1000%_1000%] transition-all duration-500 active:bg-gradient-to-l active:border-transparent active:from-yellow active:to-yellow active:shadow-button-none active:text-black word-spacing-tight text-sm lg:text-base xl:text-lg bg-gradient-yellow animate-shimmering-gradient"
-                            >
-                                Contact Us
-                            </a>
-                            --}}
-                        </div>
-
-                        <!-- Hamburger to open Responsive Navigation Menu -->
-                        <div class="flex items-center me-2 sm:hidden">
-                            <button x-on:click="open = !open" x-bind:class="{'focus:rotate-90': open}" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400">
-                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                    <path x-bind:class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                                    <path x-bind:class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Responsive Navigation Menu -->
-                <div x-bind:class="{'block': open, 'hidden sm:hidden': !open, 'pl-10': scrollYPosition > 60}" class="hidden sm:hidden">
-                    <x-custom.dark-mode-toggle class="sm:hidden">
-                        <x-slot name="left_side">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 fill-yellow-300 dark:fill-transparent dark:text-yellow-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-                                <title>Toggle light mode</title>
-                            </svg>
-                        </x-slot>
-
-                        <x-slot name="right_side">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 fill-white">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-                                <title>Toggle dark mode</title>
-                            </svg>
-                        </x-slot>
-                    </x-custom.dark-mode-toggle>
-
-                    <div class="pt-2 pb-3 space-y-1 sm:hidden">
-                        <x-responsive-nav-link wire:navigate href="{{ route('login') }}">Employee Login</x-responsive-nav-link>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
         <section class="flex flex-col justify-center px-16 py-32 text-center sm:text-left h-75-vh hero-homepage">
             <h2 class="mb-12 text-5xl tracking-widest text-gray-100 md:text-6xl font-avenir">Chatsmith Online Services</h2>
 
@@ -440,8 +361,8 @@
 
             <div class="flex flex-col items-center order-1 gap-3 text-gray-900 md:order-last md:flex-row dark:text-gray-100">
                 {{-- TODO: TO CREATE PAGES FOR THESE --}}
+                <x-custom.button-contact-us />
                 {{--
-                <a class="text-gray-900 transition duration-150 dark:text-gray-100 hover:text-orange-800 dark:hover:text-orange-200 hover:scale-105" href="{{ route('contact_us') }}">Contact Us</a>
                 <a class="text-gray-900 transition duration-150 dark:text-gray-100 hover:text-orange-800 dark:hover:text-orange-200 hover:scale-105" href="{{ route('careers') }}">Careers</a>
                 <a class="text-gray-900 transition duration-150 dark:text-gray-100 hover:text-orange-800 dark:hover:text-orange-200 hover:scale-105" href="{{ route('privacy') }}">Privacy Policy</a>
                 <a class="text-gray-900 transition duration-150 dark:text-gray-100 hover:text-orange-800 dark:hover:text-orange-200 hover:scale-105" href="{{ route('terms') }}">Terms and Conditions</a>
