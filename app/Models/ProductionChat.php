@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ChatAccountTools;
 use App\Models\Employee;
 use App\Models\TimeRange;
 use App\Models\Traits\ProductionTrait;
@@ -17,6 +18,8 @@ class ProductionChat extends Model
 
     // Overrides Laravel's naming convention of tables and specifies a custom one.
     protected $table = 'production_chat';
+
+    protected $casts = ['chat_account_tool' => ChatAccountTools::class];
 
     protected $fillable = [
         'user_id', 'employee_id', 'time_range_id', 'account_used', 'minutes_worked', 'chat_account_tool'

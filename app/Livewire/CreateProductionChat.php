@@ -2,9 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Enums\ChatAccountTools;
 use App\Models\ProductionChat;
 use App\Models\TimeRange;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -25,7 +27,7 @@ class CreateProductionChat extends Component
             'time_range_id' => ['required'],
             'account_used' => ['required', 'email'],
             'minutes_worked' => ['required', 'min:1', 'max:60'],
-            'chat_account_tool' => ['required']
+            'chat_account_tool' => ['required', Rule::enum(ChatAccountTools::class)]
         ]);
 
         ProductionChat::create([

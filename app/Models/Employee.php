@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\EmployeeRoles;
+use App\Enums\EmployeeTypes;
+use App\Enums\OfficeDesignations;
 use App\Models\ProductionChat;
 use App\Models\ProductionFocal;
 use App\Models\ProductionPlate;
@@ -17,6 +20,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Employee extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'employee_type' => EmployeeTypes::class,
+        'designation' => OfficeDesignations::class,
+        'role' => EmployeeRoles::class
+    ];
 
     protected $fillable = [
         'user_id',

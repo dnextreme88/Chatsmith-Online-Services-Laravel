@@ -2,9 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Enums\PlateIQTools;
 use App\Models\ProductionPlate;
 use App\Models\TimeRange;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -28,7 +30,7 @@ class CreateProductionPlate extends Component
             'time_range_id' => ['required'],
             'account_used' => ['required', 'email'],
             'minutes_worked' => ['required', 'min:1', 'max:60'],
-            'plateiq_tool' => ['required'],
+            'plateiq_tool' => ['required', Rule::enum(PlateIQTools::class)],
             'no_of_edits' => ['sometimes', 'nullable', 'numeric'],
             'no_of_invoices_completed' => ['sometimes', 'nullable', 'numeric'],
             'no_of_invoices_sent_to_manager' => ['sometimes', 'nullable', 'numeric']

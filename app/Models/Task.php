@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TaskNames;
 use App\Models\Employee;
 use App\Models\TimeRange;
 use App\Models\User;
@@ -12,6 +13,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Task extends Model
 {
     use HasFactory;
+
+    protected $casts = ['task_name' => TaskNames::class];
 
     protected $fillable = [
         'user_id', 'employee_id', 'time_range_id', 'task_name', 'task_date'

@@ -14,6 +14,11 @@ enum TaskNames: string implements HasLabel
     case SMART_ALTO = 'Smart Alto';
     case TRAINING = 'Training';
 
+    public static function values(): array
+    {
+        return array_column(self::cases(), 'value');
+    }
+
     public function getLabel(): ?string
     {
         return match ($this) {
