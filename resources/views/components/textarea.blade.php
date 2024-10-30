@@ -1,7 +1,6 @@
 @props([
-    'placeholder_message' => 'Message',
-    'include_chars_left' => false,
-    'livewire_event_to_listen' => null
+    'livewire_event_to_listen',
+    'placeholder_message' => 'Message'
 ])
 
 <div
@@ -12,17 +11,7 @@
             this.characterCount = $refs.textareaElement.value.length;
         },
     }"
-    x-init="
-        console.log('maxlength')
-        $watch('characterCount', (value) => {
-            console.log(value);
-        });
-
-        {{-- $wire.on('{{ $livewire_event_to_listen }}', function() { --}}
-        $wire.on('contact-us-created', function() {
-            characterCount = 0;
-        });
-    "
+    x-init="$wire.on('{{ $livewire_event_to_listen }}', () => characterCount = 0);"
 >
     <textarea x-ref="textareaElement" x-on:keyup="changeCharacterCount" {!! $attributes->merge(['class' => 'block w-full rounded-md shadow-sm min-h-[100px] border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 read-only:bg-gray-200 dark:read-only:bg-gray-600 read-only:text-gray-400 dark:read-only:text-gray-500 placeholder:italic']) !!} placeholder="{{ $placeholder_message }}">
         {{ $slot }}

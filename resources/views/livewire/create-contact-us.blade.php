@@ -23,7 +23,7 @@
 
             <div class="col-span-6 mt-4">
                 <x-label :is_required="true" :value="'Message'" />
-                <x-textarea :placeholder_message="'Please enter your message here'" wire:model="message" class="resize-none" id="message" maxlength="255" rows="7"></x-textarea>
+                <x-textarea :livewire_event_to_listen="'contact-us-created'" :placeholder_message="'Please enter your message here'" wire:model="message" class="resize-none" id="message" maxlength="255" rows="7"></x-textarea>
                 <x-input-error for="message" class="mt-2" />
             </div>
         </x-slot>
