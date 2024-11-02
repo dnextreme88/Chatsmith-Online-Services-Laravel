@@ -67,6 +67,14 @@
 
                             <div class="border-t border-slate-200 dark:border-slate-600"></div>
 
+                            @if (auth()->user()->is_staff)
+                                <x-dropdown-link href="{{ route('filament.admin.pages.dashboard') }}">
+                                    {{ __('Admin Panel') }}
+                                </x-dropdown-link>
+                            @endif
+
+                            <div class="border-t border-slate-200 dark:border-slate-600"></div>
+
                             <!-- Account Management -->
                             <div class="block px-4 pt-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
@@ -161,6 +169,12 @@
                         <x-slot name="right_side">On</x-slot>
                     </x-custom.dark-mode-toggle>
                 </div>
+
+                @if (auth()->user()->is_staff)
+                    <x-responsive-nav-link wire:navigate href="{{ route('filament.admin.pages.dashboard') }}" :active="request()->routeIs('filament.admin.pages.dashboard')">
+                        {{ __('Admin Panel') }}
+                    </x-responsive-nav-link>
+                @endif
 
                 <!-- Account Management -->
                 <div class="block px-4 pt-2 text-xs text-gray-400">
