@@ -1,9 +1,11 @@
 <?php
 
 use App\Livewire\CreateContactUs;
+use App\Livewire\CreateFormRequest;
 use App\Livewire\DetailAnnouncement;
 use App\Livewire\Homepage;
 use App\Livewire\ListAnnouncements;
+use App\Livewire\ListFormRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +26,11 @@ Route::middleware([
     Route::get('/dashboard', function() {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::group(['prefix' => 'forms', 'as' => 'forms.'], function() {
+        Route::get('/create', CreateFormRequest::class)->name('create');
+        Route::get('/my_requests', ListFormRequest::class)->name('list');
+    });
 
     Route::group(['prefix' => 'announcements', 'as' => 'announcements.'], function() {
         Route::get('/', ListAnnouncements::class)->name('index');

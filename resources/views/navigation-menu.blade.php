@@ -20,6 +20,17 @@
                         {{ __('Leadforms') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex items-center px-1 pt-1 text-sm font-medium leading-5 border-b-2 border-transparent transition duration-150 ease-in-out focus:border-b-2 focus:outline-none focus:border-indigo-700 hover:cursor-pointer {{ request()->routeIs('forms.create') || request()->routeIs('forms.list') ? 'text-gray-900 dark:text-gray-100 border-indigo-400 dark:border-indigo-600' : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700' }}">
+                    <x-dropdown :align="'top'" :width="48" :toggle_dropdown_when_clicking_inside="false">
+                        <x-slot name="trigger">Forms</x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link wire:navigate href="{{ route('forms.create') }}">Create Request</x-dropdown-link>
+                            <x-dropdown-link wire:navigate href="{{ route('forms.list') }}">View Requests</x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
+                </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -112,6 +123,18 @@
             </x-responsive-nav-link>
         </div>
 
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link wire:navigate href="{{ route('forms.create') }}" :active="request()->routeIs('forms.create')">
+                {{ __('Create Request') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link wire:navigate href="{{ route('forms.list') }}" :active="request()->routeIs('forms.list')">
+                {{ __('View Requests') }}
+            </x-responsive-nav-link>
+        </div>
+
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
             <div class="flex items-center px-4">
@@ -140,6 +163,10 @@
                 </div>
 
                 <!-- Account Management -->
+                <div class="block px-4 pt-2 text-xs text-gray-400">
+                    {{ __('Manage Account') }}
+                </div>
+
                 <x-responsive-nav-link wire:navigate href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
