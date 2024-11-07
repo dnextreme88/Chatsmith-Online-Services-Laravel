@@ -110,7 +110,7 @@
     
             {{-- Page Content --}}
             <main>
-                <div class="{{ !request()->routeIs('home') ? 'mx-auto max-w-7xl sm:px-6 lg:px-8' : '' }}">{{ $slot }}</div>
+                <div>{{ $slot }}</div>
             </main>
         </div>
 
