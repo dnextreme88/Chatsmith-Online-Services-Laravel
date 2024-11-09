@@ -7,6 +7,7 @@ use App\Livewire\Homepage;
 use App\Livewire\ListAnnouncements;
 use App\Livewire\ListFormRequest;
 use App\Livewire\StaticPages\Careers;
+use App\Livewire\StaticPages\PrivacyPolicy;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,7 @@ Route::get('/', function() {
 Route::get('/', Homepage::class)->name('home');
 Route::get('/careers', Careers::class)->name('careers');
 Route::get('/contact_us', CreateContactUs::class)->name('contact_us');
+Route::get('/privacy_policy', PrivacyPolicy::class)->name('privacy_policy');
 
 Route::middleware([
     'auth:sanctum',
