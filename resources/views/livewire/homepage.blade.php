@@ -360,13 +360,10 @@
             </div>
 
             <div class="flex flex-col items-center order-1 gap-4 text-gray-900 md:order-last md:flex-row dark:text-gray-100">
-                {{-- TODO: TO CREATE PAGES FOR THESE --}}
                 <a class="text-gray-900 transition duration-150 dark:text-gray-100 hover:text-orange-800 dark:hover:text-orange-200 hover:scale-105" href="{{ route('careers') }}">Careers</a>
                 <a class="text-gray-900 transition duration-150 dark:text-gray-100 hover:text-orange-800 dark:hover:text-orange-200 hover:scale-105" href="{{ route('privacy_policy') }}">Privacy Policy</a>
+                <a class="text-gray-900 transition duration-150 dark:text-gray-100 hover:text-orange-800 dark:hover:text-orange-200 hover:scale-105" href="{{ route('terms_and_conditions') }}">Terms and Conditions</a>
                 <x-custom.button-contact-us />
-                {{--
-                <a class="text-gray-900 transition duration-150 dark:text-gray-100 hover:text-orange-800 dark:hover:text-orange-200 hover:scale-105" href="{{ route('terms') }}">Terms and Conditions</a>
-                --}}
             </div>
         </footer>
     @endguest
