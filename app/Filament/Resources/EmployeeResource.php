@@ -38,6 +38,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -179,12 +180,10 @@ class EmployeeResource extends Resource
                     ->options(OfficeDesignations::class),
                 SelectFilter::make('role')
                     ->options(EmployeeRoles::class),
-                SelectFilter::make('is_active')
-                    ->label('Is an active employee?')
-                    ->options([
-                        0 => 'Inactive',
-                        1 => 'Active'
-                    ])
+                Filter::make('active')
+                    ->default()
+                    ->label('Show active employees')
+                    ->query(fn (Builder $query): Builder => $query->where('is_active', 1))
             ])
             ->actions([
                 ViewAction::make(),
