@@ -88,9 +88,12 @@ class AnnouncementResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('user')
-                    ->options(User::selectRaw('users.id, CONCAT(COALESCE(`first_name`, ""), " ", COALESCE(`last_name`, "")) AS author_name')
-                        ->join('employees', 'employees.user_id', 'users.id')
-                        ->where('employees.is_staff', 1)
+                    ->options(User::selectRaw('users.id, CONCAT(COALESCE(`last_name`, ""), ", ", COALESCE(`first_name`, ""), " ", COALESCE(`maiden_name`, "")) AS author_name')
+                        ->whereHas('employee', fn ($query) =>
+                            $query->where('is_staff', 1)
+                                ->where('is_active', 1)
+                        )
+                        ->orderBy('last_name')
                         ->get()
                         ->pluck('author_name', 'id') // Using ->pluck('full_name', 'id') fails as it is an accessor function in App\Models\User
                     )

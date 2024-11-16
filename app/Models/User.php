@@ -19,6 +19,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 use illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -89,21 +90,16 @@ class User extends Authenticatable implements HasName
     }
 
     public function getFullNameAttribute(): string {
-        return $this->first_name. ' ' .$this->maiden_name. ' ' .$this->last_name;
+        return $this->last_name. ', ' .$this->first_name. ' ' .$this->maiden_name;
     }
 
-    /**
-     * Set the user's first_name, maiden_name and last_name values to uppercase.
-     *
-     * @param  string  $value
-     * @return void
-     */
+    // Setter functions
     public function setFirstNameAttribute($value) {
-        $this->attributes['first_name'] = strtoupper($value);
+        $this->attributes['first_name'] = Str::title($value);
     }
 
     public function setMaidenNameAttribute($value) {
-        $this->attributes['maiden_name'] = strtoupper($value);
+        $this->attributes['maiden_name'] = Str::title($value);
     }
 
     public function setLastNameAttribute($value) {

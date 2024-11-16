@@ -45,13 +45,14 @@ class TaskResource extends Resource
             ->schema([ // employee_id field is saved in CreateTask.php
                 Select::make('user_id')
                     ->label('Employee')
+                    ->searchable(['last_name', 'first_name', 'maiden_name'])
                     ->relationship(name: 'user', modifyQueryUsing: fn (Builder $query) =>
                         $query->whereHas('employee', fn (Builder $inner_query) =>
                             $inner_query->where('is_active', 1)
                         )
                         ->orderBy('users.last_name')
                     )
-                    ->getOptionLabelFromRecordUsing(fn (User $record) => $record->last_name. ', ' .$record->first_name. ' ' .$record->middle_name)
+                    ->getOptionLabelFromRecordUsing(fn (User $record) => $record->last_name. ', ' .$record->first_name. ' ' .$record->maiden_name)
                     ->required(),
                 DatePicker::make('task_date')
                     ->label('Date of task')
@@ -194,7 +195,7 @@ class TaskResource extends Resource
             )
             ->filters([
                 SelectFilter::make('user')
-                    ->options(User::selectRaw('id, CONCAT(COALESCE(`first_name`, ""), " ", COALESCE(`last_name`, "")) AS employee_name')
+                    ->options(User::selectRaw('id, CONCAT(COALESCE(`last_name`, ""), ", ", COALESCE(`first_name`, ""), " ", COALESCE(`maiden_name`, "")) AS employee_name')
                         ->whereHas('employee', fn ($query) => $query->where('is_active', 1))
                         ->orderBy('last_name')
                         ->get()

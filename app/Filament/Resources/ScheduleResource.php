@@ -34,13 +34,14 @@ class ScheduleResource extends Resource
             ->schema([ // employee_id field is saved in CreateSchedule.php
                 Select::make('user_id')
                     ->label('Employee')
+                    ->searchable(['last_name', 'first_name', 'maiden_name'])
                     ->relationship(name: 'user', modifyQueryUsing: fn (Builder $query) =>
                         $query->whereHas('employee', fn (Builder $inner_query) =>
                             $inner_query->where('is_active', 1)
                         )
                         ->orderBy('users.last_name')
                     )
-                    ->getOptionLabelFromRecordUsing(fn (User $record) => $record->last_name. ', ' .$record->first_name. ' ' .$record->middle_name)
+                    ->getOptionLabelFromRecordUsing(fn (User $record) => $record->last_name. ', ' .$record->first_name. ' ' .$record->maiden_name)
                     ->required(),
                 Select::make('time_of_shift')
                     ->options([

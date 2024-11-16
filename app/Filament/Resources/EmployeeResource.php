@@ -63,10 +63,10 @@ class EmployeeResource extends Resource
                         Select::make('user_id')
                             ->label('User')
                             ->required()
-                            ->options(User::selectRaw('id, CONCAT(COALESCE(`first_name`, ""), " ", COALESCE(`maiden_name`, ""), " ", COALESCE(`last_name`, "")) AS user_full_name')
+                            ->options(User::selectRaw('id, CONCAT(COALESCE(`last_name`, ""), ", ", COALESCE(`first_name`, ""), " ", COALESCE(`maiden_name`, "")) AS employee_name')
                                 ->doesntHave('employee')
                                 ->get()
-                                ->pluck('user_full_name', 'id') // Using ->pluck('full_name', 'id') fails as it is an accessor function in App\Models\User
+                                ->pluck('employee_name', 'id') // Using ->pluck('full_name', 'id') fails as it is an accessor function in App\Models\User
                             )
                             ->helperText('Only users that have registered but are not yet considered employees will show up here')
                             ->hidden(fn (string $operation): bool => $operation === 'edit'),
