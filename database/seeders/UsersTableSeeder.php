@@ -22,7 +22,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'chatsmithonline.management@gmail.com',
             'username' => 'cos_management',
             'password' => $default_password,
-            'is_staff' => 1,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);
@@ -34,7 +33,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'chatsmithonline.recruitment@gmail.com',
             'username' => 'cos_recruitment',
             'password' => $default_password,
-            'is_staff' => 1,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);
@@ -46,7 +44,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'marytorio@chatsmithonline.net',
             'username' => 'cos_may',
             'password' => $default_password,
-            'is_staff' => 1,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);
@@ -58,7 +55,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'chatsmithonline.pau@gmail.com',
             'username' => 'tesoriopauline18',
             'password' => $default_password,
-            'is_staff' => 1,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);
@@ -70,7 +66,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'chatsmithonline.nicx@gmail.com',
             'username' => 'amansecnicole17',
             'password' => $default_password,
-            'is_staff' => 1,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);
@@ -82,7 +77,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'chatsmithonline.beverly@gmail.com',
             'username' => 'balantabeverly16',
             'password' => $default_password,
-            'is_staff' => 1,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);
@@ -94,7 +88,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'chatsmithonline.archie@gmail.com',
             'username' => 'lapnawanarchie14',
             'password' => $default_password,
-            'is_staff' => 1,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);
@@ -106,7 +99,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'chatsmithonline.jeanne@gmail.com',
             'username' => 'decenakevin09',
             'password' => $default_password,
-            'is_staff' => 0,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);
@@ -118,7 +110,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'chatsmithonline.madisson@gmail.com',
             'username' => 'sanchezmarkanthony10',
             'password' => $default_password,
-            'is_staff' => 0,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);
@@ -130,7 +121,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'chatsmithonline.miles@gmail.com',
             'username' => 'lachicamila19',
             'password' => $default_password,
-            'is_staff' => 0,
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value,
         ]);

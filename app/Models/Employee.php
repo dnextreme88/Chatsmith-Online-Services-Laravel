@@ -35,6 +35,7 @@ class Employee extends Model
         'role',
         'date_hired',
         'date_resigned',
+        'is_staff',
         'is_active',
         'pag_ibig_number',
         'philhealth_number',

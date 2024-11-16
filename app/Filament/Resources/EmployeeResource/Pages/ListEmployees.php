@@ -25,10 +25,7 @@ class ListEmployees extends ListRecords
         return [
             'all' => Tab::make(),
             'staff-members' => Tab::make()
-                ->modifyQueryUsing(fn (Builder $query) => 
-                    $query->join('users', 'users.id', '=', 'employees.user_id')
-                        ->where('users.is_staff', 1)
-                ),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('is_staff', 1)),
         ];
     }
 }

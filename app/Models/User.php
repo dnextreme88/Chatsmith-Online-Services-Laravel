@@ -44,7 +44,6 @@ class User extends Authenticatable implements HasName
         'username',
         'phone_number',
         'address',
-        'is_staff',
         'profile_photo_path',
         'password'
     ];

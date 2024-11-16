@@ -35,7 +35,6 @@ class UserFactory extends Factory
             'username' => str_replace('\'', '', strtolower($last_name. $first_name). $this->faker->numberBetween(1, 99)),
             'phone_number' => fake()->numerify('+639#########'),
             'address' => fake()->address(),
-            'is_staff' => fake()->randomElement([0, 1]),
             'profile_photo_path' => null,
             'password' => static::$password ??= Hash::make('cos12345'),
             'two_factor_secret' => null,

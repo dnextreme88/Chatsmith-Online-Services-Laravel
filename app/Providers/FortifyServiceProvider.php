@@ -9,6 +9,7 @@ use App\Actions\Fortify\UpdateUserProfileInformation;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -26,8 +27,7 @@ class FortifyServiceProvider extends ServiceProvider
         {
             public function toResponse($request): RedirectResponse
             {
-                $authenticated_user = auth()->user();
-                $is_staff = $authenticated_user->is_staff == 1;
+                $is_staff = Auth::user()->employee->is_staff == 1;
                 $user_route = match($is_staff) {
                     true => 'admin',
                     false => route('dashboard')

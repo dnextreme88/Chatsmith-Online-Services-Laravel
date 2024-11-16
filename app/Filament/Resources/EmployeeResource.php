@@ -141,6 +141,18 @@ class EmployeeResource extends Resource
                 TextColumn::make('date_resigned')
                     ->dateTime('m/d/Y')
                     ->toggleable(isToggledHiddenByDefault: true),
+                IconColumn::make('is_staff')
+                    ->label('Is a staff member?')
+                    ->icon(fn (int $state): string => match ($state) {
+                        0 => 'heroicon-o-x-circle',
+                        1 => 'heroicon-o-check-circle',
+                    })
+                    ->color(fn (int $state): string => match ($state) {
+                        0 => 'danger',
+                        1 => 'success',
+                        default => 'gray'
+                    })
+                    ->toggleable(isToggledHiddenByDefault: true),
                 IconColumn::make('is_active')
                     ->label('Is an active employee?')
                     ->icon(fn (int $state): string => match ($state) {
@@ -208,7 +220,7 @@ class EmployeeResource extends Resource
                                     Group::make([
                                         TextEntry::make('designation')
                                             ->label('Office designation'),
-                                        IconEntry::make('user.is_staff')
+                                        IconEntry::make('is_staff')
                                             ->label('Is a staff member?')
                                             ->color(fn (int $state): string => match ($state) {
                                                 0 => 'danger',

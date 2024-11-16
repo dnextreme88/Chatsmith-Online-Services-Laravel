@@ -67,7 +67,7 @@
 
                             <div class="border-t border-slate-200 dark:border-slate-600"></div>
 
-                            @if (auth()->user()->is_staff)
+                            @if (auth()->user()->employee->is_staff)
                                 <x-dropdown-link href="{{ route('filament.admin.pages.dashboard') }}">
                                     {{ __('Admin Panel') }}
                                 </x-dropdown-link>
@@ -170,7 +170,7 @@
                     </x-custom.dark-mode-toggle>
                 </div>
 
-                @if (auth()->user()->is_staff)
+                @if (auth()->user()->employee->is_staff)
                     <x-responsive-nav-link wire:navigate href="{{ route('filament.admin.pages.dashboard') }}" :active="request()->routeIs('filament.admin.pages.dashboard')">
                         {{ __('Admin Panel') }}
                     </x-responsive-nav-link>
