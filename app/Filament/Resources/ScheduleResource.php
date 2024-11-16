@@ -81,19 +81,18 @@ class ScheduleResource extends Resource
                             ->format('Y-m-d')
                             ->required()
                             ->afterOrEqual('today')
+                            ->distinct()
                             ->rules([
                                 fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
-                                    $employee_schedules = Schedule::select(['date_of_shift'])->where('user_id', $get('../../user_id'))
-                                        ->get()
-                                        ->toArray();
-                                    $employee_schedules_dates = array_column($employee_schedules, 'date_of_shift');
+                                    $employee_has_schedule = Schedule::select(['user_id', 'date_of_shift'])->where('user_id', $get('../../user_id'))
+                                        ->where('date_of_shift', $value)
+                                        ->first();
 
-                                    if (in_array($value, $employee_schedules_dates)) {
+                                    if ($employee_has_schedule) {
                                         $fail('This employee already has a shift at the specified date');
                                     }
                                 }
                             ])
-                            ->distinct()
                 ])
             ])
             ->columns(1);
