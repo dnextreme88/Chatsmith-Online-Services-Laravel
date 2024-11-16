@@ -34,6 +34,7 @@ class ListTasks extends ListRecords
             'upcoming-tasks' => Tab::make()
                 ->modifyQueryUsing(fn (Builder $query) =>
                     $query->where('task_date', '>', Carbon::today())
+                        ->orderBy('task_date', 'ASC')
                         ->orderBy('time_range_id', 'ASC')
                 )
         ];
