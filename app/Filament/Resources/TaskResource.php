@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Closure;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -29,7 +30,6 @@ use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Validation\Rules\Unique;
 
 class TaskResource extends Resource
 {
@@ -53,13 +53,28 @@ class TaskResource extends Resource
                     )
                     ->getOptionLabelFromRecordUsing(fn (User $record) => $record->last_name. ', ' .$record->first_name. ' ' .$record->middle_name)
                     ->required(),
+                DatePicker::make('task_date')
+                    ->label('Date of task')
+                    ->format('Y-m-d')
+                    ->required()
+                    ->afterOrEqual('today'),
                 Select::make('time_range_id')
                     ->relationship(name: 'time_range', titleAttribute: 'time_range', modifyQueryUsing: fn (Builder $query) =>
                         $query->orderBy('id')
                     )
                     ->required()
+                    ->hidden(fn (string $operation): bool => $operation === 'create')
                     ->rules([
                         fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
+                            $employee_has_task = Task::select(['user_id', 'time_range_id'])->where('user_id', $get('user_id'))
+                                ->where('time_range_id', $value)
+                                ->where('task_date', $get('task_date'))
+                                ->first();
+
+                            if ($employee_has_task) {
+                                $fail('This employee already has a task at the specified time range and date');
+                            }
+
                             // TODO: TO TURN THIS INTO A CUSTOM MODEL FUNCTION FOR DRY PRINCIPLE
                             $time_range = TimeRange::find($value)->time_range;
                             $splitted_time_range = explode(' ', $time_range);
@@ -84,18 +99,57 @@ class TaskResource extends Resource
                 Select::make('task_name')
                     ->label('Task')
                     ->required()
+                    ->hidden(fn (string $operation): bool => $operation === 'create')
                     ->options(TaskNames::class),
-                DatePicker::make('task_date')
-                    ->label('Date of task')
-                    ->format('Y-m-d')
-                    ->required()
-                    ->afterOrEqual('today')
-                    ->unique(ignoreRecord: true, modifyRuleUsing: fn (Unique $rule, callable $get) =>
-                        $rule->where('user_id', $get('user_id'))
-                            ->where('time_range_id', $get('time_range_id'))
-                            ->where('task_date', $get('task_date'))
-                    )
-                    ->validationMessages(['unique' => 'This employee already has a task at the specified time range and date'])
+                Repeater::make('tasks')
+                    ->addActionLabel('Add more tasks')
+                    ->maxItems(10)
+                    ->hidden(fn (string $operation): bool => $operation === 'edit')
+                    ->reorderable(false)
+                    ->schema([
+                        Select::make('time_range_id')
+                            ->relationship(name: 'time_range', titleAttribute: 'time_range', modifyQueryUsing: fn (Builder $query) =>
+                                $query->orderBy('id')
+                            )
+                            ->required()
+                            ->distinct()
+                            ->rules([
+                                fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
+                                    $employee_has_task = Task::select(['user_id', 'time_range_id'])->where('user_id', $get('../../user_id'))
+                                        ->where('time_range_id', $value)
+                                        ->where('task_date', $get('../../task_date'))
+                                        ->first();
+
+                                    if ($employee_has_task) {
+                                        $fail('This employee already has a task at the specified time range and date');
+                                    }
+
+                                    // TODO: TO TURN THIS INTO A CUSTOM MODEL FUNCTION FOR DRY PRINCIPLE
+                                    $time_range = TimeRange::find($value)->time_range;
+                                    $splitted_time_range = explode(' ', $time_range);
+                                    $start_time = $splitted_time_range[0]. ':00';
+                                    $start_time_am_or_pm = $splitted_time_range[1];
+
+                                    if ($start_time == '12:00:00') {
+                                        $start_time = str_replace('12:', '00:', $start_time);
+                                    }
+
+                                    $parsed_time = Carbon::parse($get('task_date'). ' ' .$start_time);
+
+                                    if ($start_time_am_or_pm == 'PM') {
+                                        $parsed_time = $parsed_time->addHours(12);
+                                    }
+
+                                    if (Carbon::now() > $parsed_time) {
+                                        $fail('The start time of the selected time range cannot be less than the current date and time');
+                                    }
+                                }
+                            ]),
+                        Select::make('task_name')
+                            ->label('Task')
+                            ->required()
+                            ->options(TaskNames::class)
+                ])
             ])
             ->columns(1);
     }
