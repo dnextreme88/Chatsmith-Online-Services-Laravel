@@ -1,12 +1,14 @@
 <div class="w-full py-4">
-    <h1 class="text-2xl text-center font-bold tracking-wider">COS Schedules</h1>
+    <h1 class="text-2xl font-bold tracking-wider text-center">COS Schedules</h1>
 
     @if ($employees->count() > 0)
         <p class="py-6">Schedule for the work week: <span class="text-slate-800 dark:text-slate-400">{{ $start_date }} - {{ $end_date }}</span></p>
 
-        <a wire:navigate class="my-4 flex justify-end" href="{{ $create_schedule_url }}">
-            <button class="px-4 py-2 transition-all duration-300 text-white border rounded border-orange-200 bg-orange-700 hover:bg-orange-500 dark:bg-orange-500 dark:hover:bg-orange-700">Create Schedule</button>
-        </a>
+        <div class="flex justify-end my-4">
+            <a wire:navigate href="{{ $create_schedule_url }}">
+                <button class="px-4 py-2 text-white transition-all duration-300 bg-orange-700 border border-orange-200 rounded hover:bg-orange-500 dark:bg-orange-500 dark:hover:bg-orange-700">Create Schedules</button>
+            </a>
+        </div>
 
         <table class="w-full">
             <thead class="bg-slate-200 dark:bg-slate-800">
@@ -30,22 +32,22 @@
                             }
                         @endphp
 
-                        <td class="py-2 px-3">{{ $name_to_display }}</td>
+                        <td class="px-3 py-2">{{ $name_to_display }}</td>
 
                         @for ($day_adder = 0; $day_adder < 7; $day_adder++)
-                            @if ($employee->schedule->count() > 0)
+                            @if ($employee->schedules->count() > 0)
                                 @php
                                     $date = \Carbon\Carbon::parse($start_date)->addDays($day_adder)->format('Y-m-d');
 
-                                    $has_schedule_for_date = $employee->schedule->firstWhere('date_of_shift', '=', $date);
+                                    $has_schedule_for_date = $employee->schedules->firstWhere('date_of_shift', '=', $date);
                                 @endphp
 
                                 @if ($has_schedule_for_date)
-                                    <td class="transition-all duration-150 text-orange-600 hover:font-bold hover:bg-slate-200 dark:text-orange-400 dark:hover:bg-slate-800">
+                                    <td class="text-orange-600 transition-all duration-150 hover:font-bold hover:bg-slate-200 dark:text-orange-400 dark:hover:bg-slate-800">
                                         <a href="{{ \App\Filament\Resources\ScheduleResource::getUrl('edit', ['record' => $has_schedule_for_date->id]) }}">{{ $has_schedule_for_date->time_of_shift }}</a>
                                     </td>
                                 @else
-                                    <td class="text-center italic uppercase tracking-wide">REST</td>
+                                    <td class="italic tracking-wide text-center uppercase">REST</td>
                                 @endif
                             @else
                                 <td>&nbsp;</td>

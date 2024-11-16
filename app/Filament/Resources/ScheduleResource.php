@@ -6,10 +6,13 @@ use App\Filament\Resources\ScheduleResource\Pages;
 use App\Filament\Resources\ScheduleResource\RelationManagers;
 use App\Models\Schedule;
 use App\Models\User;
+use Closure;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -46,7 +49,8 @@ class ScheduleResource extends Resource
                         '7:00 PM - 6:00 AM' => '7:00 PM - 6:00 AM',
                         '9:00 PM - 8:00 AM' => '9:00 PM - 8:00 AM'
                     ])
-                    ->required(),
+                    ->required()
+                    ->hidden(fn (string $operation): bool => $operation === 'create'),
                 DatePicker::make('date_of_shift')
                     ->label('Date of shift')
                     ->format('Y-m-d')
@@ -57,6 +61,40 @@ class ScheduleResource extends Resource
                             ->where('date_of_shift', $get('date_of_shift'))
                     )
                     ->validationMessages(['unique' => 'This employee already has a shift at the specified date'])
+                    ->hidden(fn (string $operation): bool => $operation === 'create'),
+                Repeater::make('schedules')
+                    ->addActionLabel('Add more schedules')
+                    ->maxItems(5)
+                    ->hidden(fn (string $operation): bool => $operation === 'edit')
+                    ->reorderable(false)
+                    ->schema([
+                        Select::make('time_of_shift')
+                            ->options([
+                                '6:00 AM - 5:00 PM' => '6:00 AM - 5:00 PM',
+                                '8:00 AM - 7:00 PM' => '8:00 AM - 7:00 PM',
+                                '7:00 PM - 6:00 AM' => '7:00 PM - 6:00 AM',
+                                '9:00 PM - 8:00 AM' => '9:00 PM - 8:00 AM'
+                            ])
+                            ->required(),
+                        DatePicker::make('date_of_shift')
+                            ->label('Date of shift')
+                            ->format('Y-m-d')
+                            ->required()
+                            ->afterOrEqual('today')
+                            ->rules([
+                                fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
+                                    $employee_schedules = Schedule::select(['date_of_shift'])->where('user_id', $get('../../user_id'))
+                                        ->get()
+                                        ->toArray();
+                                    $employee_schedules_dates = array_column($employee_schedules, 'date_of_shift');
+
+                                    if (in_array($value, $employee_schedules_dates)) {
+                                        $fail('This employee already has a shift at the specified date');
+                                    }
+                                }
+                            ])
+                            ->distinct()
+                ])
             ])
             ->columns(1);
     }
