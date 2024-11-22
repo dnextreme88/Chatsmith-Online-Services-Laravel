@@ -135,7 +135,7 @@ class TaskResource extends Resource
                                         $start_time = str_replace('12:', '00:', $start_time);
                                     }
 
-                                    $parsed_time = Carbon::parse($get('task_date'). ' ' .$start_time);
+                                    $parsed_time = Carbon::parse($get('../../task_date'). ' ' .$start_time);
 
                                     if ($start_time_am_or_pm == 'PM') {
                                         $parsed_time = $parsed_time->addHours(12);
