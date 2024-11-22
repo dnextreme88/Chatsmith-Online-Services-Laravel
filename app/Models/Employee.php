@@ -77,4 +77,10 @@ class Employee extends Model
     {
         return $this->hasMany(TimeRecord::class);
     }
+
+    // Scope functions
+    public function scopeIsActive($query, $is_active = 1)
+    {
+        return $query->where('is_active', $is_active);
+    }
 }

@@ -37,7 +37,7 @@ class ScheduleResource extends Resource
                     ->searchable(['last_name', 'first_name', 'maiden_name'])
                     ->relationship(name: 'user', modifyQueryUsing: fn (Builder $query) =>
                         $query->whereHas('employee', fn (Builder $inner_query) =>
-                            $inner_query->where('is_active', 1)
+                            $inner_query->isActive(1)
                         )
                         ->orderBy('users.last_name')
                     )

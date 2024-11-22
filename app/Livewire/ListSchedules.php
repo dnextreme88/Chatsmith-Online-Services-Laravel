@@ -37,7 +37,7 @@ class ListSchedules extends Component
         }
 
         $this->employees = Employee::join('users', 'users.id', 'employees.user_id')
-            ->where('employees.is_active', 1)
+            ->isActive(1)
             ->orderBy('users.last_name', 'ASC')
             ->get();
         $this->schedules = Schedule::whereBetween('date_of_shift', [$this->start_date, $this->end_date])

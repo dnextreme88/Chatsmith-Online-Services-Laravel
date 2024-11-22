@@ -183,7 +183,7 @@ class EmployeeResource extends Resource
                 Filter::make('active')
                     ->default()
                     ->label('Show active employees')
-                    ->query(fn (Builder $query): Builder => $query->where('is_active', 1))
+                    ->query(fn (Builder $query): Builder => $query->isActive(1))
             ])
             ->actions([
                 ViewAction::make(),

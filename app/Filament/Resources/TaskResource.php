@@ -48,7 +48,7 @@ class TaskResource extends Resource
                     ->searchable(['last_name', 'first_name', 'maiden_name'])
                     ->relationship(name: 'user', modifyQueryUsing: fn (Builder $query) =>
                         $query->whereHas('employee', fn (Builder $inner_query) =>
-                            $inner_query->where('is_active', 1)
+                            $inner_query->isActive(1)
                         )
                         ->orderBy('users.last_name')
                     )
@@ -196,7 +196,7 @@ class TaskResource extends Resource
             ->filters([
                 SelectFilter::make('user')
                     ->options(User::selectRaw('id, CONCAT(COALESCE(`last_name`, ""), ", ", COALESCE(`first_name`, ""), " ", COALESCE(`maiden_name`, "")) AS employee_name')
-                        ->whereHas('employee', fn ($query) => $query->where('is_active', 1))
+                        ->whereHas('employee', fn ($query) => $query->isActive(1))
                         ->orderBy('last_name')
                         ->get()
                         ->pluck('employee_name', 'id') // Using ->pluck('full_name', 'id') fails as it is an accessor function in App\Models\User

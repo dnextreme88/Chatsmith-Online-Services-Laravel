@@ -91,7 +91,7 @@ class AnnouncementResource extends Resource
                     ->options(User::selectRaw('users.id, CONCAT(COALESCE(`last_name`, ""), ", ", COALESCE(`first_name`, ""), " ", COALESCE(`maiden_name`, "")) AS author_name')
                         ->whereHas('employee', fn ($query) =>
                             $query->where('is_staff', 1)
-                                ->where('is_active', 1)
+                                ->isActive(1)
                         )
                         ->orderBy('last_name')
                         ->get()
