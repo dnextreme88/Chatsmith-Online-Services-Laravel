@@ -1,7 +1,12 @@
 import './bootstrap';
 import { Observer } from 'tailwindcss-intersect';
 
-Observer.start();
+// REF: https://livewire.laravel.com/docs/navigate#dont-rely-on-domcontentloaded
+document.addEventListener('livewire:navigated', () => {
+    Observer.start();
+
+    console.log('LOG: Libs initialized');
+});
 
 window.darkModeSwitcher = function() {
     return {
