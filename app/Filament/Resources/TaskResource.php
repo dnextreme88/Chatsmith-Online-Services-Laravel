@@ -68,9 +68,7 @@ class TaskResource extends Resource
                     ->rules([
                         fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
                             $employee_has_task = Task::select(['user_id', 'time_range_id'])->where('user_id', $get('user_id'))
-                                ->where('time_range_id', $value)
-                                ->where('task_date', $get('task_date'))
-                                ->first();
+                                ->hasTaskOnTimeAndDate($value, $get('task_date'));
 
                             if ($employee_has_task) {
                                 $fail('This employee already has a task at the specified time range and date');
@@ -117,9 +115,7 @@ class TaskResource extends Resource
                             ->rules([
                                 fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
                                     $employee_has_task = Task::select(['user_id', 'time_range_id'])->where('user_id', $get('../../user_id'))
-                                        ->where('time_range_id', $value)
-                                        ->where('task_date', $get('../../task_date'))
-                                        ->first();
+                                        ->hasTaskOnTimeAndDate($value, $get('../../task_date'));
 
                                     if ($employee_has_task) {
                                         $fail('This employee already has a task at the specified time range and date');

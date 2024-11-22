@@ -35,4 +35,12 @@ class Task extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    // Scope functions
+    public function scopeHasTaskOnTimeAndDate($query, $time_range_id, $task_date)
+    {
+        return $query->where('time_range_id', $time_range_id)
+            ->where('task_date', $task_date)
+            ->exists();
+    }
 }
