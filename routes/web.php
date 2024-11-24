@@ -19,8 +19,8 @@ Route::get('/', function() {
 
 Route::get('/', Homepage::class)->name('home');
 Route::get('/careers', Careers::class)->name('careers');
-Route::get('/contact_us', CreateContactUs::class)->name('contact_us');
-Route::get('/privacy_policy', PrivacyPolicy::class)->name('privacy_policy');
+Route::get('/contact-us', CreateContactUs::class)->name('contact_us');
+Route::get('/privacy-policy', PrivacyPolicy::class)->name('privacy_policy');
 Route::get('/terms', TermsAndConditions::class)->name('terms_and_conditions');
 
 Route::middleware([
@@ -34,7 +34,7 @@ Route::middleware([
 
     Route::group(['prefix' => 'forms', 'as' => 'forms.'], function() {
         Route::get('/create', CreateFormRequest::class)->name('create');
-        Route::get('/my_requests', ListFormRequest::class)->name('list');
+        Route::get('/my-requests', ListFormRequest::class)->name('list');
     });
 
     Route::group(['prefix' => 'announcements', 'as' => 'announcements.'], function() {
