@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Announcement;
 use Illuminate\Database\Seeder;
 
-class AnnouncementsTableSeeder extends Seeder
+class AnnouncementsSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -5,13 +5,16 @@ namespace Database\Seeders;
 use App\Models\Employee;
 use Illuminate\Database\Seeder;
 
-class EmployeesTableSeeder extends Seeder
+class EmployeesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
+        Employee::factory(32)->create();
+
+        /*
         $timestamp_value = '1580378520'; // Jan 30, 2020 06:02 PM
 
         Employee::create([
@@ -123,5 +126,6 @@ class EmployeesTableSeeder extends Seeder
             'created_at' => $timestamp_value,
             'updated_at' => $timestamp_value
         ]);
+        */
     }
 }

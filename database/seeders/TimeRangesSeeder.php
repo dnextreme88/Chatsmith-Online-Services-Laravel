@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\TimeRange;
 use Illuminate\Database\Seeder;
 
-class TimeRangesTableSeeder extends Seeder
+class TimeRangesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
