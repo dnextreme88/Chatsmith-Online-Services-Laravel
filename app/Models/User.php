@@ -114,7 +114,7 @@ class User extends Authenticatable implements HasName
         }
 
         // Default profile photo URL
-        return 'https://ui-avatars.com/api/?name=' .urlencode($this->last_name). '&color=7F9CF5&background=EBF4FF';
+        return 'https://ui-avatars.com/api/?name=' .urlencode($this->last_name). '&color=EEEEEE&background=FEC378';
     }
 
     public function updateProfilePhoto(?UploadedFile $photo)

@@ -1,43 +1,43 @@
 <div>
     @guest
-        <section class="flex flex-col justify-center px-16 py-32 text-center sm:text-left h-75-vh hero-homepage">
-            <h2 class="mb-12 text-5xl tracking-widest text-gray-100 md:text-6xl font-avenir">Chatsmith Online Services</h2>
+        <section class="flex flex-col justify-center px-16 py-32 text-center h-75-vh sm:text-left lg:pl-[12rem] lg:pr-[20rem] xl:justify-start xl:py-16 xl:pl-[20rem] xl:pr-[30rem] xl:h-screen hero-homepage">
+            <h2 class="mb-12 text-5xl tracking-widest text-gray-100 md:text-6xl xl:mb-16 xl:max-w-lg font-avenir">Chatsmith Online Services</h2>
 
-            <p class="text-3xl text-gray-100 md:text-4xl tracking-snug font-poppins">Achieve your target market through our Live Chat Support Service</p>
+            <p class="text-2xl text-gray-100 tracking-snug lg:text-4xl xl:max-w-lg font-poppins">Achieve your target market through our Live Chat Support Service</p>
 
-            <p class="mt-6 text-3xl text-gray-100 md:text-4xl tracking-snug font-poppins">Your business is going places, stay <span class="italic text-orange-200">connected</span> with customers along the way.</p>
+            <p class="mt-6 text-2xl text-gray-100 tracking-snug lg:text-4xl xl:max-w-lg xl:mt-16 font-poppins">Your business is going places, stay <span class="italic text-orange-200">connected</span> with customers along the way.</p>
         </section>
 
-        <section class="grid gap-8 px-5 py-10 bg-gray-200 dark:bg-gray-800">
+        <section class="grid gap-8 px-5 bg-gray-200 py-[3.5rem] dark:bg-gray-800">
             <h2 class="mb-8 text-3xl text-center text-gray-900 md:text-4xl dark:text-gray-100 tracking-snug font-poppins">Our Partners</h2>
 
-            <div class="grid gap-8 mx-4 sm:mx-8 md:mx-16 lg:gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-                <div class="grid place-content-center">
-                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
+            <div class="grid gap-8 py-5 mx-4 sm:mx-8 md:mx-16 lg:gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+                <div class="grid transition duration-[1500ms] opacity-0 place-content-center intersect-once intersect:translate-y-6 intersect:opacity-100 delay-0">
+                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:-translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
                         <img src="{{ asset('images/logo_focal_systems.webp') }}" class="size-20" alt="Focal Systems logo" title="Focal Systems logo" />
                     </div>
                 </div>
 
-                <div class="grid place-content-center">
-                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
+                <div class="grid transition duration-[1500ms] opacity-0 place-content-center intersect-once intersect:translate-y-6 intersect:opacity-100 delay-[150ms]">
+                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:-translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
                         <img src="{{ asset('images/logo_live_chat.webp') }}" class="size-20" alt="Live Chat logo" title="Live Chat logo" />
                     </div>
                 </div>
 
-                <div class="grid place-content-center">
-                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
+                <div class="grid transition duration-[1500ms] opacity-0 place-content-center intersect-once intersect:translate-y-6 intersect:opacity-100 delay-[300ms]">
+                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:-translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
                         <img src="{{ asset('images/logo_plate_iq.webp') }}" class="size-20" alt="Plate IQ logo" title="Plate IQ logo" />
                     </div>
                 </div>
 
-                <div class="grid place-content-center">
-                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
+                <div class="grid transition duration-[1500ms] opacity-0 place-content-center intersect-once intersect:translate-y-6 intersect:opacity-100 delay-[450ms]">
+                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:-translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
                         <img src="{{ asset('images/logo_persist_iq.webp') }}" class="size-20" alt="Persist IQ logo" title="Persist IQ logo" />
                     </div>
                 </div>
 
-                <div class="grid place-content-center">
-                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
+                <div class="grid transition duration-[1500ms] opacity-0 place-content-center intersect-once intersect:translate-y-6 intersect:opacity-100 delay-[600ms]">
+                    <div class="p-5 transition duration-300 bg-gray-300 rounded-full dark:bg-gray-200 hover:-translate-y-2.5 hover:bg-gray-400 dark:hover:bg-gray-300">
                         <img src="{{ asset('images/logo_smart_alto.webp') }}" class="size-20" alt="Smart Alto logo" title="Smart Alto logo" />
                     </div>
                 </div>
@@ -171,9 +171,9 @@
         <section class="grid gap-8 px-5 py-10 bg-gray-200 dark:bg-gray-800">
             <h2 class="mb-8 text-3xl text-center text-gray-900 md:text-4xl dark:text-gray-100 tracking-snug font-poppins">Choose Your Plan</h2>
 
-            <h3 class="text-2xl text-center text-gray-900 dark:text-gray-100">We understand that every business has their own needs</h3>
+            <h3 class="text-2xl text-center text-gray-900 dark:text-gray-100 transition duration-[1800ms] -translate-x-[6rem] intersect-once intersect:translate-x-0 opacity-0 intersect:opacity-100">We understand that every business has their own needs</h3>
 
-            <div class="grid gap-8 mx-4 sm:mx-8 md:mx-16 lg:gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-8 mx-4 sm:mx-8 md:mx-16 lg:gap-12 sm:grid-cols-2 xl:grid-cols-4">
                 <x-custom.pricing-card :benefits="[
                         'Total Chats' => '250',
                         'Overage' => '$1.50',
@@ -183,6 +183,7 @@
                         'Operating Hours' => '24/7',
                         'Reports' => 'Monthly'
                     ]"
+                    class="transition duration-[1500ms] -translate-x-6 opacity-0 intersect-once intersect:translate-x-0 intersect:opacity-100"
                 >
                     <x-slot name="card_title">Bronze</x-slot>
                     <x-slot name="card_pricing">$300</x-slot>
@@ -197,6 +198,7 @@
                         'Operating Hours' => '24/7',
                         'Reports' => 'Monthly'
                     ]"
+                    class="transition duration-[1500ms] -translate-x-12 opacity-0 intersect-once intersect:translate-x-0 intersect:opacity-100"
                 >
                     <x-slot name="card_title">Silver</x-slot>
                     <x-slot name="card_pricing">$500</x-slot>
@@ -211,6 +213,7 @@
                         'Operating Hours' => '24/7',
                         'Reports' => 'Bi-Monthly'
                     ]"
+                    class="transition duration-[1500ms] -translate-x-[4.5rem] opacity-0 intersect-once intersect:translate-x-0 intersect:opacity-100"
                 >
                     <x-slot name="card_title">Gold</x-slot>
                     <x-slot name="card_pricing">$700</x-slot>
@@ -225,7 +228,7 @@
                         'Operating Hours' => '24/7',
                         'Reports' => 'Bi-Monthly'
                     ]"
-                    class="pricing-card-platinum"
+                    class="transition duration-[1500ms] -translate-x-[6rem] opacity-0 intersect-once intersect:translate-x-0 intersect:opacity-100"
                 >
                     <x-slot name="card_title">
                         <p class="flex items-center justify-center gap-2">

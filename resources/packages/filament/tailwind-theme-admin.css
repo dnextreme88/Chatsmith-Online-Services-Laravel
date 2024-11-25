@@ -203,4 +203,32 @@
             background-position: 100% 0;
         }
     }
+
+    /* REF: https://codepen.io/chalarangelo/pen/KKOpeae */
+    .privacy-policy-important {
+        &:after {
+            @apply absolute;
+            @apply w-full;
+            @apply bottom-0;
+            @apply left-0;
+            @apply h-1;
+            @apply bg-orange-400;
+            @apply dark:bg-orange-200;
+            content: '';
+            transform: scaleX(1);
+            animation: underline-from-right 1.5s 1;
+            animation-delay: 0.75s;
+        }
+    }
+
+    @keyframes underline-from-right {
+        0% {
+            transform: scaleX(0);
+            transform-origin: bottom right;
+        }
+        100% {
+            transform: scaleX(1);
+            transform-origin: bottom right;
+        }
+    }
 }

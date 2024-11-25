@@ -1,53 +1,4 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    font-size: 14px;
-    background-color: var(--main-page-bg-color);
-    color: #fff0ff;
-  }
-
-  #calendar {
-    margin: 40px auto;
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-
-  a.fc-event.fc-daygrid-event[href] {
-    color: #c90064;
-  }
-
-  a.fc-event.fc-daygrid-event[href]:visited {
-    color: #9c3dd3;
-  }
-
-  .fc .fc-daygrid-day.fc-day-other {
-    background: var(--fc-neutral-bg-color);
-  }
-
-  .fc .fc-scrollgrid-section-sticky > * {
-    background: unset;
-    position: sticky;
-    z-index: 3;
-  }
-
-  :not(td[aria-labelledby]) > .fc-daygrid-day-frame {
-    background: var(--fc-neutral-bg-color);
-  }
-
-  .fc .fc-scrollgrid-section-body {
-    background: var(--fc-page-bg-color);
-  }
-
-  .fc .fc-timegrid-slot-label, .fc .fc-timegrid-axis-frame {
-    background-color: var(--main-page-bg-color);
-  }
-
-  .fc-theme-standard th {
-    background-color: rgb(161, 161, 170);
-  }
-
-  :root {
+:root {
     --main-page-bg-color: #211e21;
     --fc-small-font-size: .85em;
     --fc-page-bg-color: rgb(113, 113, 122);
@@ -79,6 +30,121 @@ html, body {
     --fc-bg-event-color: rgb(143, 223, 130);
     --fc-bg-event-opacity: 0.3;
     --fc-highlight-color: rgba(188, 232, 241, 0.3);
-    --fc-today-bg-color: #c9006425;
+    --fc-today-bg-color: #FEC378;
     --fc-now-indicator-color: red;
-  }
+}
+
+#calendar {
+    margin: 40px auto;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+a.fc-event.fc-daygrid-event[href] {
+    color: #c90064;
+}
+
+a.fc-event.fc-daygrid-event[href]:visited {
+    color: #9c3dd3;
+}
+
+:not(td[aria-labelledby]) > .fc-daygrid-day-frame {
+    background: var(--fc-neutral-bg-color);
+}
+
+.fc .fc-scrollgrid-section-body {
+    background: var(--fc-page-bg-color);
+}
+
+.fc .fc-timegrid-slot-label, .fc .fc-timegrid-axis-frame {
+    background-color: var(--main-page-bg-color);
+}
+
+.fc-daygrid {
+    & .fc-col-header {
+        & .fc-col-header-cell {
+            background-color: white;
+        }
+    }
+
+    & .fc-daygrid-body {
+        & .fc-day-other {
+            background-color: #CCC;
+            color: black;
+            opacity: 0.75;
+        }
+
+        & .fc-daygrid-day:not(.fc-day-other, .fc-day-today) {
+            background-color: #EEE;
+        }
+    }
+}
+
+.fc-toolbar-chunk {
+    & .fc-today-button, & .fc-prev-button, & .fc-next-button {
+        background-color: white;
+        color: #3f3f46;
+        transition-property: background-color;
+        transition-duration: 150ms;
+        border-color: transparent !important;
+    }
+
+    & .fc-today-button:disabled, & .fc-prev-button:disabled, & .fc-next-button:disabled {
+        background-color: #71717A;
+    }
+
+    & .fc-today-button:hover:not(.fc-today-button:disabled), & .fc-prev-button:hover:not(.fc-prev-button:disabled), & .fc-next-button:hover:not(.fc-next-button:disabled) {
+        background-color: #FEC378;
+    }
+
+    & .fc-today-button:active:not(.fc-today-button:disabled), & .fc-prev-button:active:not(.fc-prev-button:disabled), & .fc-next-button:active:not(.fc-next-button:disabled) {
+        background-color: rgb(251 146 60);
+    }
+}
+
+/* DARK MODE */
+html.dark {
+    & .fc-daygrid {
+        & .fc-col-header {
+            & .fc-col-header-cell {
+                background-color: black;
+                color: white;
+            }
+        }
+
+        & .fc-daygrid-body {
+            & .fc-day-other {
+                background-color: #3F3F46;
+                color: white;
+            }
+
+            & .fc-daygrid-day:not(.fc-day-other, .fc-day-today) {
+                background-color: #71717A;
+            }
+        }
+    }
+
+    & .fc-toolbar-chunk {
+        & .fc-toolbar-title {
+            color: #D4D4D8;
+        }
+
+        & .fc-today-button, & .fc-prev-button, & .fc-next-button {
+            background-color: #27272a;
+            color: #d4d4d8;
+            border-color: #71717A !important;
+        }
+
+        & .fc-today-button:disabled, & .fc-prev-button:disabled, & .fc-next-button:disabled {
+            background-color: #71717A;
+        }
+
+        & .fc-today-button:hover:not(.fc-today-button:disabled), & .fc-prev-button:hover:not(.fc-prev-button:disabled), & .fc-next-button:hover:not(.fc-next-button:disabled) {
+            background-color: rgb(64, 64, 69);
+        }
+
+        & .fc-today-button:active:not(.fc-today-button:disabled), & .fc-prev-button:active:not(.fc-prev-button:disabled), & .fc-next-button:active:not(.fc-next-button:disabled) {
+            background-color: #374151;
+        }
+    }
+}

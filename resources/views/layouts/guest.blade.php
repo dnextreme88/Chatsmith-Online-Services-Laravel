@@ -32,14 +32,15 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+            {{-- We need to add this to achieve a "sticky" element when scrolling down. --}}
+            {{-- Unlike position: fixed, the <header> element will only stick when the user scrolls down to where the element starts --}}
+            <div class="bg-gray-200 dark:bg-gray-800 h-9">&nbsp;</div>
+
             {{-- Navigation menu --}}
-            <header x-data="{ onTopOfPage: true, scrollYPosition: 0, open: false }" class="bg-gray-200 dark:bg-gray-800">
-                <nav x-on:scroll.window="scrollYPosition = window.pageYOffset; onTopOfPage = scrollYPosition < 60 ? true : false;"
-                    x-bind:class="{'relative': onTopOfPage, 'fixed scale-105 w-full': !onTopOfPage}"
-                    class="transition-transform bg-gray-200 border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700 duration-[450ms] z-[1]"
-                >
+            <header x-data="{ open: false }" class="bg-gray-200 dark:bg-gray-800 top-0 sticky z-[1]">
+                <nav class="bg-gray-200 dark:bg-gray-800">
                     {{-- View for desktop screens --}}
-                    <div x-bind:class="{'px-4 py-6 sm:px-6 lg:px-8': onTopOfPage, 'px-16 py-8': !onTopOfPage}">
+                    <div class="p-4 sm:px-6 lg:px-8">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center shrink-0">
                                 <x-application-mark link="{{ route('home') }}" class="h-18" />
@@ -80,7 +81,7 @@
                     </div>
     
                     {{-- Responsive Navigation Menu --}}
-                    <div x-bind:class="{'flex flex-col space-y-2 space-x-1 mb-5': open, 'hidden sm:hidden': !open, 'pl-10': scrollYPosition > 60}" class="hidden sm:hidden">
+                    <div x-bind:class="{'flex flex-col space-y-2 space-x-1 mb-5': open, 'hidden sm:hidden': !open}" class="hidden sm:hidden">
                         <x-custom.dark-mode-toggle class="sm:hidden">
                             <x-slot name="left_side">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 fill-yellow-300 dark:fill-transparent dark:text-yellow-400">

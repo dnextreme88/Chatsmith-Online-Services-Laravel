@@ -6,6 +6,7 @@ use App\Models\TimeRecord;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ListTimeRecords extends Component

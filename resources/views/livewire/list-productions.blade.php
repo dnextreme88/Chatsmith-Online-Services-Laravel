@@ -4,7 +4,7 @@
     <ul class="inline-flex my-6 text-lg bg-gray-200 rounded-tl-xl rounded-tr-xl dark:bg-gray-600">
         <li
             x-on:click="selectedTableType = 'daily'"
-            x-bind:class="{ 'font-bold text-gray-200 dark:text-gray-800 bg-gray-700 dark:bg-gray-400': selectedTableType == 'daily', 'hover:text-gray-200 dark:hover:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400': selectedTableType == 'weekly' }"
+            x-bind:class="{ 'font-bold text-gray-200 dark:text-gray-800 bg-gray-700 dark:bg-gray-300': selectedTableType == 'daily', 'hover:text-gray-200 dark:hover:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-300': selectedTableType == 'weekly' }"
             wire:click="change_table_type('daily')"
             class="px-4 py-2 text-center transition-all duration-200 rounded-tl-xl hover:cursor-pointer"
         >
@@ -12,9 +12,9 @@
         </li>
         <li
             x-on:click="selectedTableType = 'weekly'"
-            x-bind:class="{ 'font-bold text-gray-200 dark:text-gray-800 bg-gray-700 dark:bg-gray-400': selectedTableType == 'weekly', 'hover:text-gray-200 dark:hover:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-400': selectedTableType == 'daily' }"
+            x-bind:class="{ 'font-bold text-gray-200 dark:text-gray-800 bg-gray-700 dark:bg-gray-300': selectedTableType == 'weekly', 'hover:text-gray-200 dark:hover:text-gray-800 hover:bg-gray-700 dark:hover:bg-gray-300': selectedTableType == 'daily' }"
             wire:click="change_table_type('weekly')"
-            class="px-4 py-2 text-center transition-all duration-200 border-l-2 rounded-tr-xl hover:cursor-pointer border-l-gray-600 dark:border-l-gray-300"
+            class="px-4 py-2 text-center transition-all duration-200 border-l-2 rounded-tr-xl hover:cursor-pointer border-l-gray-600 dark:border-l-gray-400"
         >
             Weekly
         </li>

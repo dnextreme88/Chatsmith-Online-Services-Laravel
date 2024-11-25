@@ -17,12 +17,12 @@
                 }
             }
         }"
-        class="px-4 py-12"
+        class="py-12"
     >
         <div
             x-show="showLeadformChoices"
             x-transition:enter.duration.500ms
-            class="grid grid-cols-1 space-y-6 max-w-7xl lg:space-y-0 lg:grid-cols-3 lg:place-items-center lg:h-75-vh"
+            class="grid grid-cols-1 mx-auto space-y-6 max-w-7xl lg:space-y-0 lg:grid-cols-3 lg:place-items-center lg:h-75-vh sm:px-6 lg:px-8"
         >
             <div class="grid gap-3 p-3 transition-all duration-300 bg-gray-300 border-gray-300 place-items-center rounded-xl dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-400 dark:hover:bg-gray-700">
                 <img src="{{ asset('images/logo_smart_alto.webp') }}" class="h-52 w-52" alt="Smart Alto logo" title="Smart Alto logo" />
@@ -45,7 +45,7 @@
             x-bind:class="{ 'grid grid-cols-1': !showLeadformChoices, 'hidden': showLeadformChoices }"
             x-transition:enter.duration.500ms
             x-transition:leave.duration.250ms
-            class="hidden space-y-4 max-w-7xl sm:px-6 lg:px-8"
+            class="hidden mx-auto space-y-4 max-w-7xl sm:px-6 lg:px-8"
         >
             <p x-on:click="showLeadform(null)" class="text-orange-800 dark:text-orange-200 hover:underline hover:cursor-pointer">Back to Leadform Choices</p>
 

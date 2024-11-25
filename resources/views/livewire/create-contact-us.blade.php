@@ -1,5 +1,5 @@
-<div class="py-10 mx-auto max-w-7xl sm:px-6 lg:px-8">
-    <div class="px-8 py-16">
+<div class="pb-[3em] mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="px-8 py-24">
         <img src="{{ asset('images/bg_contact_us.webp') }}" class="mx-auto" alt="Contact Us background" title="Contact Us background" />
     </div>
 

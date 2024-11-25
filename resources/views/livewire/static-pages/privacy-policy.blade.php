@@ -1,7 +1,7 @@
 <div>
     <div class="py-[6em] flex flex-col gap-5">
         <h2 class="text-gray-800 dark:text-gray-200 text-center font-poppins text-xl font-bold">Privacy Policy</h2>
-        <h2 class="text-gray-800 dark:text-gray-200 text-center font-avenir text-5xl">Your privacy is <span class="underline text-orange-400 dark:text-orange-200">important</span> to us.</h2>
+        <h2 class="text-5xl text-center text-gray-800 dark:text-gray-200 font-avenir">Your privacy is <span class="relative inline-block text-orange-400 dark:text-orange-200 privacy-policy-important">important</span> to us.</h2>
     </div>
 
     <div class="flex flex-col gap-9 px-12 pb-[3em]">
