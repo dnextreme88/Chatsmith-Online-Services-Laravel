@@ -394,13 +394,13 @@ class UserFactory extends Factory
             'Villaruz'
         ];
 
-        $first_name = strtolower(trim(fake()->randomElement($first_names)));
+        $first_name = fake()->randomElement($first_names);
         $maiden_name = fake()->randomElement($maiden_names);
         $last_name = fake()->randomElement($last_names);
 
         $has_user = User::where('first_name', $first_name)->first();
         do {
-            $first_name = strtolower(trim(fake()->randomElement($first_names)));
+            $first_name = fake()->randomElement($first_names);
             $has_user = User::where('first_name', $first_name)->first();
         } while ($has_user);
 
@@ -408,8 +408,8 @@ class UserFactory extends Factory
             'first_name' => $first_name,
             'maiden_name' => $maiden_name,
             'last_name' => $last_name,
-            'email' => 'chatsmithonline.' .str_replace(' ', '', $first_name). '@example.com',
-            'username' => str_replace('\'', '', strtolower($last_name. $first_name). $this->faker->numberBetween(1, 99)),
+            'email' => 'chatsmithonline.' .str_replace(' ', '', strtolower(trim($first_name))). '@example.com',
+            'username' => str_replace(['\'', ' '], '', strtolower(trim($last_name. $first_name))). $this->faker->numberBetween(1, 99),
             'phone_number' => fake()->numerify('+639#########'),
             'address' => fake()->address(),
             'profile_photo_path' => null,
