@@ -19,5 +19,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(AnnouncementsSeeder::class);
         $this->call(TimeRangesSeeder::class);
+        $this->call(ProductionChatSeeder::class);
+        $this->call(ProductionFocalSeeder::class);
+        $this->call(ProductionPlateSeeder::class);
     }
 }
