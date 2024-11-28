@@ -171,7 +171,7 @@
         <section class="grid gap-8 px-5 py-10 bg-gray-200 dark:bg-gray-800">
             <h2 class="mb-8 text-3xl text-center text-gray-900 md:text-4xl dark:text-gray-100 tracking-snug font-poppins">Choose Your Plan</h2>
 
-            <h3 class="text-2xl text-center text-gray-900 dark:text-gray-100 transition duration-[1800ms] -translate-x-[6rem] intersect-once intersect:translate-x-0 opacity-0 intersect:opacity-100">We understand that every business has their own needs</h3>
+            <h3 class="text-2xl text-center text-gray-900 dark:text-gray-100 transition-transform duration-[1800ms] -translate-x-[6rem] intersect-once intersect:translate-x-0 opacity-0 intersect:opacity-100">We understand that every business has their own needs</h3>
 
             <div class="grid gap-8 mx-4 sm:mx-8 md:mx-16 lg:gap-12 sm:grid-cols-2 xl:grid-cols-4">
                 <x-custom.pricing-card :benefits="[
