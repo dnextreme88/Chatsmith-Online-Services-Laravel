@@ -1,14 +1,75 @@
 <div>
     @guest
-        <section class="flex flex-col justify-center px-16 py-32 text-center h-75-vh sm:text-left lg:pl-[12rem] lg:pr-[20rem] xl:justify-start xl:py-16 xl:pl-[20rem] xl:pr-[30rem] xl:h-screen hero-homepage">
-            <h2 class="mb-12 text-5xl tracking-widest text-gray-100 md:text-6xl xl:mb-16 xl:max-w-lg font-avenir">Chatsmith Online Services</h2>
-
-            <p class="text-2xl text-gray-100 tracking-snug lg:text-4xl xl:max-w-lg font-poppins">Achieve your target market through our Live Chat Support Service</p>
-
-            <p class="mt-6 text-2xl text-gray-100 tracking-snug lg:text-4xl xl:max-w-lg xl:mt-16 font-poppins">Your business is going places, stay <span class="italic text-orange-200">connected</span> with customers along the way.</p>
+        <section class="px-6 bg-gray-200 pt-36 pb-80 dark:bg-gray-800 sm:py-32 lg:px-8">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-5xl font-semibold tracking-tight text-gray-800 dark:text-gray-200 sm:text-7xl">Making Virtual Personal</h2>
+                <p class="mt-8 text-lg font-medium text-gray-500 text-pretty dark:text-gray-400 sm:text-xl/8">Chatsmith Online Services provides digital solutions to improve your business with our live chat services. Reel in customers and maximize profit while spending less.</p>
+            </div>
         </section>
 
-        <section class="grid gap-8 px-5 bg-gray-200 py-[3.5rem] dark:bg-gray-800">
+        <section class="grid gap-8 px-5 bg-gray-200 pb-36 pt-80 dark:bg-gray-800">
+            <div class="grid gap-8 mb-24 space-y-48">
+                <div class="mx-2 sm:mx-6 md:mx-8">
+                    <div class="relative">
+                        <div class="grid mx-auto max-w-7xl lg:grid-cols-2">
+                            <div class="order-2 px-6 pt-16 pb-4 md:pb-32 md:pt-20 lg:order-2 lg:px-8 lg:pt-32">
+                                <div class="max-w-2xl mx-auto lg:max-w-full lg:mx-0">
+                                    <p class="mt-2 text-4xl font-semibold tracking-tighter text-gray-800 dark:text-gray-200 text-pretty sm:text-5xl">Achieve your target market through our Live Chat Support Service</p>
+
+                                    <p class="mt-6 text-2xl text-gray-600 dark:text-gray-400">
+                                        Your business is going places, stay
+                                        <span class="italic text-orange-600 dark:text-orange-200">connected</span>
+                                        with customers along the way.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <img
+                                src="{{ asset('/images/bg-intro-1-1024.webp') }}"
+                                srcset="
+                                    {{ asset('/images/bg-intro-1-640.webp') }} 640w,
+                                    {{ asset('/images/bg-intro-1-768.webp') }} 768w,
+                                    {{ asset('/images/bg-intro-1-1024.webp') }} 1024w
+                                "
+                                sizes="100vw"
+                                class="order-1 object-cover h-56 w-full lg:h-full transition duration-[1800ms] -translate-x-[6rem] opacity-0 intersect-once intersect-half intersect:translate-x-0 intersect:opacity-100"
+                                loading="lazy"
+                                alt="Split image 1"
+                                title="Split image 1"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mx-2 sm:mx-6 md:mx-8">
+                    <div class="relative">
+                        <div class="grid mx-auto max-w-7xl lg:grid-cols-2">
+                            <div class="order-2 px-6 pt-16 pb-4 md:pb-32 md:pt-20 lg:order-1 lg:px-8 lg:pt-32">
+                                <div class="max-w-2xl mx-auto lg:max-w-full lg:mx-0">
+                                    <p class="mt-2 text-4xl font-semibold tracking-tighter text-gray-800 dark:text-gray-200 text-pretty sm:text-5xl">Provide efficient digital marketing services for your business</p>
+
+                                    <p class="mt-6 text-2xl text-gray-600 dark:text-gray-400">Whether you are a small business with 5 employees or a large business with 30 employees, our chat services are built to scale with your business.</p>
+                                </div>
+                            </div>
+
+                            <img
+                                src="{{ asset('/images/bg-intro-2-1024.webp') }}"
+                                srcset="
+                                    {{ asset('/images/bg-intro-2-640.webp') }} 640w,
+                                    {{ asset('/images/bg-intro-2-768.webp') }} 768w,
+                                    {{ asset('/images/bg-intro-2-1024.webp') }} 1024w
+                                "
+                                sizes="100vw"
+                                class="order-1 object-cover h-56 w-full lg:h-full lg:order-2 transition duration-[1800ms] translate-x-[6rem] opacity-0 intersect-once intersect-half intersect:translate-x-0 intersect:opacity-100" src="https://livedemo00.template-help.com/wt_prod-23210/images/slide-1-1920x753.jpg"
+                                loading="lazy"
+                                alt="Split image 2"
+                                title="Split image 2"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <h2 class="mb-8 text-3xl text-center text-gray-900 md:text-4xl dark:text-gray-100 tracking-snug font-poppins">Our Partners</h2>
 
             <div class="grid gap-8 py-5 mx-4 sm:mx-8 md:mx-16 lg:gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
