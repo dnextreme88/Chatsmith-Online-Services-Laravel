@@ -171,7 +171,7 @@
         <section class="grid gap-8 px-5 py-10 bg-gray-200 dark:bg-gray-800">
             <h2 class="mb-8 text-3xl text-center text-gray-900 md:text-4xl dark:text-gray-100 tracking-snug font-poppins">Choose Your Plan</h2>
 
-            <h3 class="text-2xl text-center text-gray-900 dark:text-gray-100 transition-transform duration-[1800ms] -translate-x-[6rem] intersect-once intersect:translate-x-0 opacity-0 intersect:opacity-100">We understand that every business has their own needs</h3>
+            <h3 class="text-2xl text-center text-gray-900 dark:text-gray-100 transition duration-[1800ms] -translate-x-[6rem] intersect-once intersect:translate-x-0 opacity-0 intersect:opacity-100">We understand that every business has their own needs</h3>
 
             <div class="grid gap-8 mx-4 sm:mx-8 md:mx-16 lg:gap-12 sm:grid-cols-2 xl:grid-cols-4">
                 <x-custom.pricing-card :benefits="[
@@ -253,13 +253,13 @@
             <div class="grid gap-8 mx-4 sm:mx-8 md:mx-16 lg:gap-12 md:grid-cols-2 xl:grid-cols-3">
                 <x-custom.rounded-card>
                     <x-slot name="card_title">
-                        <img src="{{ asset('images/testimonials_avatar_1.webp') }}" class="rounded-full size-12 lg:size-16" alt="Testimonials 1 avatar" title="Testimonials 2 avatar" />
+                        <img src="{{ asset('images/testimonials_avatar_1.webp') }}" class="rounded-full size-12 md:size-16" alt="Testimonials 1 avatar" title="Testimonials 2 avatar" />
                     </x-slot>
 
                     <x-slot name="card_inline_title">
-                        <div>
-                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100">Beverly Pig-ang B.</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Mother</div>
+                        <div class="md:min-w-32 md:max-w-full">
+                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100 md:truncate">Beverly Pig-ang B.</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 md:truncate">Mother</div>
                             <x-custom.svg-star :repeat="5" />
                         </div>
                     </x-slot>
@@ -269,13 +269,13 @@
 
                 <x-custom.rounded-card>
                     <x-slot name="card_title">
-                        <img src="{{ asset('images/testimonials_avatar_2.webp') }}" class="rounded-full size-12 lg:size-16" alt="Testimonials 2 avatar" title="Testimonials 2 avatar" />
+                        <img src="{{ asset('images/testimonials_avatar_2.webp') }}" class="rounded-full size-12 md:size-16" alt="Testimonials 2 avatar" title="Testimonials 2 avatar" />
                     </x-slot>
 
                     <x-slot name="card_inline_title">
-                        <div>
-                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100">Letecia Impian G.</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Cook</div>
+                        <div class="md:min-w-32 md:max-w-full">
+                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100 md:truncate">Letecia Impian G.</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 md:truncate">Cook</div>
                             <x-custom.svg-star :repeat="5" />
                         </div>
                     </x-slot>
@@ -285,13 +285,13 @@
 
                 <x-custom.rounded-card>
                     <x-slot name="card_title">
-                        <img src="{{ asset('images/testimonials_avatar_3.webp') }}" class="rounded-full size-12 lg:size-16" alt="Testimonials 3 avatar" title="Testimonials 3 avatar" />
+                        <img src="{{ asset('images/testimonials_avatar_3.webp') }}" class="rounded-full size-12 md:size-16" alt="Testimonials 3 avatar" title="Testimonials 3 avatar" />
                     </x-slot>
 
                     <x-slot name="card_inline_title">
-                        <div>
-                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100">Archie Tinapngan L.</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">IT Specialist</div>
+                        <div class="md:min-w-32 md:max-w-full">
+                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100 md:truncate">Archie Tinapngan L.</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 md:truncate">IT Specialist</div>
                             <x-custom.svg-star :repeat="5" />
                         </div>
                     </x-slot>
@@ -301,13 +301,13 @@
 
                 <x-custom.rounded-card>
                     <x-slot name="card_title">
-                        <img src="{{ asset('images/testimonials_avatar_4.webp') }}" class="rounded-full size-12 lg:size-16" alt="Testimonials 4 avatar" title="Testimonials 4 avatar" />
+                        <img src="{{ asset('images/testimonials_avatar_4.webp') }}" class="rounded-full size-12 md:size-16" alt="Testimonials 4 avatar" title="Testimonials 4 avatar" />
                     </x-slot>
 
                     <x-slot name="card_inline_title">
-                        <div>
-                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100">Love Lyn Carbonell L.</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Chat Support Representative</div>
+                        <div class="md:min-w-32 md:max-w-full">
+                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100 md:truncate">Love Lyn Carbonell L.</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 md:truncate">Chat Support Representative</div>
                             <x-custom.svg-star :repeat="5" />
                         </div>
                     </x-slot>
@@ -317,13 +317,13 @@
 
                 <x-custom.rounded-card>
                     <x-slot name="card_title">
-                        <img src="{{ asset('images/testimonials_avatar_5.webp') }}" class="rounded-full size-12 lg:size-16" alt="Testimonials 5 avatar" title="Testimonials 5 avatar" />
+                        <img src="{{ asset('images/testimonials_avatar_5.webp') }}" class="rounded-full size-12 md:size-16" alt="Testimonials 5 avatar" title="Testimonials 5 avatar" />
                     </x-slot>
 
                     <x-slot name="card_inline_title">
-                        <div>
-                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100">Paolo Brylle Orallo L.</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Father</div>
+                        <div class="md:min-w-32 md:max-w-full">
+                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100 md:truncate">Paolo Brylle Orallo L.</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 md:truncate">Father</div>
                             <x-custom.svg-star :repeat="4" />
                         </div>
                     </x-slot>
@@ -333,13 +333,13 @@
 
                 <x-custom.rounded-card>
                     <x-slot name="card_title">
-                        <img src="{{ asset('images/testimonials_avatar_6.webp') }}" class="rounded-full size-16" alt="Testimonials 6 avatar" title="Testimonials 6 avatar" />
+                        <img src="{{ asset('images/testimonials_avatar_6.webp') }}" class="rounded-full size-12 md:size-16" alt="Testimonials 6 avatar" title="Testimonials 6 avatar" />
                     </x-slot>
 
                     <x-slot name="card_inline_title">
-                        <div>
-                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100">Jeoffrei Kitong S.</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Bartender</div>
+                        <div class="md:min-w-32 md:max-w-full">
+                            <div class="text-lg tracking-widest text-gray-900 dark:text-gray-100 md:truncate">Jeoffrei Kitong S.</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 md:truncate">Bartender</div>
                             <x-custom.svg-star :repeat="4" />
                         </div>
                     </x-slot>

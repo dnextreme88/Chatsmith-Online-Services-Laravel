@@ -5,7 +5,7 @@
         @endif
 
         @if (isset($card_title))
-            <h3 class="text-lg font-semibold tracking-tight text-gray-800 dark:text-gray-200">{{ $card_title }}</h3>
+            <h3 class="text-lg font-semibold tracking-tight text-gray-800 dark:text-gray-200 md:min-w-16">{{ $card_title }}</h3>
         @endif
 
         @if (isset($card_inline_title))
@@ -14,6 +14,6 @@
     </header>
 
     @if (isset($card_description))
-        <p class="mt-5 text-gray-600 dark:text-gray-400">{{ $card_description }}</p>
+        <p class="mt-5 text-justify text-gray-600 dark:text-gray-400 md:text-left">{{ $card_description }}</p>
     @endif
 </div>
