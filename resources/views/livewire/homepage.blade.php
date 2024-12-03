@@ -3,7 +3,7 @@
         <section class="px-6 bg-gray-200 pt-36 pb-80 dark:bg-gray-800 sm:py-32 lg:px-8">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="text-5xl font-semibold tracking-tight text-gray-800 dark:text-gray-200 sm:text-7xl">Making Virtual Personal</h2>
-                <p class="mt-8 text-lg font-medium text-gray-500 text-pretty dark:text-gray-400 sm:text-xl/8">Chatsmith Online Services provides digital solutions to improve your business with our live chat services. Reel in customers and maximize profit while spending less.</p>
+                <p class="mt-8 text-lg font-medium text-gray-600 text-pretty dark:text-gray-400 sm:text-xl/8">Chatsmith Online Services provides digital solutions to improve your business with our live chat services. Reel in customers and maximize profit while spending less.</p>
             </div>
         </section>
 
