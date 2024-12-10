@@ -2,10 +2,12 @@
 
 namespace App\Livewire;
 
+use App\Enums\TimeOfShifts;
 use App\Models\TimeRecord;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -15,12 +17,6 @@ class ListTimeRecords extends Component
     public $clock_out_modal = false;
 
     public $time_of_shift;
-    public $time_of_shifts = [
-        '6:00 AM - 5:00 PM',
-        '8:00 AM - 7:00 PM',
-        '7:00 PM - 6:00 AM',
-        '9:00 PM - 8:00 AM'
-    ];
 
     public function create_time_record() // Clock in
     {
@@ -28,6 +24,7 @@ class ListTimeRecords extends Component
 
         $this->validate(['time_of_shift' => [
             'required',
+            Rule::enum(TimeOfShifts::class),
             function (string $attribute, mixed $value, Closure $fail) {
                 $employee_has_current_timein = TimeRecord::where('user_id', Auth::user()->id)
                     ->whereColumn('timestamp_in', 'timestamp_out')

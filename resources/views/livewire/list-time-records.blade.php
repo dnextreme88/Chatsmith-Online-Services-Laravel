@@ -50,8 +50,8 @@
 
                     <x-select wire:model="time_of_shift">
                         <option value="">Select a shift</option>
-                        @foreach ($time_of_shifts as $time_of_shift)
-                            <option value="{{ $time_of_shift }}">{{ $time_of_shift }}</option>
+                        @foreach (\App\Enums\TimeOfShifts::cases() as $time_of_shift)
+                            <option value="{{ $time_of_shift->value }}">{{ $time_of_shift->value }}</option>
                         @endforeach
                     </x-select>
 

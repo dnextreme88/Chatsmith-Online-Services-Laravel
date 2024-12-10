@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\TimeOfShifts;
 use App\Filament\Resources\ScheduleResource\Pages;
 use App\Filament\Resources\ScheduleResource\RelationManagers;
 use App\Models\Schedule;
@@ -44,12 +45,7 @@ class ScheduleResource extends Resource
                     ->getOptionLabelFromRecordUsing(fn (User $record) => $record->last_name. ', ' .$record->first_name. ' ' .$record->maiden_name)
                     ->required(),
                 Select::make('time_of_shift')
-                    ->options([
-                        '6:00 AM - 5:00 PM' => '6:00 AM - 5:00 PM',
-                        '8:00 AM - 7:00 PM' => '8:00 AM - 7:00 PM',
-                        '7:00 PM - 6:00 AM' => '7:00 PM - 6:00 AM',
-                        '9:00 PM - 8:00 AM' => '9:00 PM - 8:00 AM'
-                    ])
+                    ->options(TimeOfShifts::class)
                     ->required()
                     ->hidden(fn (string $operation): bool => $operation === 'create'),
                 DatePicker::make('date_of_shift')
@@ -70,12 +66,7 @@ class ScheduleResource extends Resource
                     ->reorderable(false)
                     ->schema([
                         Select::make('time_of_shift')
-                            ->options([
-                                '6:00 AM - 5:00 PM' => '6:00 AM - 5:00 PM',
-                                '8:00 AM - 7:00 PM' => '8:00 AM - 7:00 PM',
-                                '7:00 PM - 6:00 AM' => '7:00 PM - 6:00 AM',
-                                '9:00 PM - 8:00 AM' => '9:00 PM - 8:00 AM'
-                            ])
+                            ->options(TimeOfShifts::class)
                             ->required(),
                         DatePicker::make('date_of_shift')
                             ->label('Date of shift')
