@@ -182,28 +182,28 @@
     /* REF: https://codepen.io/chalarangelo/pen/KKOpeae */
     .privacy-policy-important {
         &:after {
-            @apply absolute;
-            @apply w-full;
+            @apply block;
             @apply bottom-0;
             @apply left-0;
-            @apply h-1;
+            @apply h-[3px];
+            @apply w-0;
             @apply bg-orange-400;
             @apply dark:bg-orange-200;
             content: '';
-            transform: scaleX(1);
-            animation: underline-from-right 1.5s 1;
+            animation: underline-from-right 1.5s;
             animation-delay: 0.75s;
+            -webkit-animation-name: underline-from-right; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+            -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
         }
     }
 
     @keyframes underline-from-right {
-        0% {
-            transform: scaleX(0);
-            transform-origin: bottom right;
+        from {
+            @apply w-0;
         }
-        100% {
-            transform: scaleX(1);
-            transform-origin: bottom right;
+        to {
+            @apply w-full;
         }
     }
 }
