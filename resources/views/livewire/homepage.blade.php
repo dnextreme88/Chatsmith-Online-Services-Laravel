@@ -458,6 +458,18 @@
 
     @auth
         {{-- TODO: ADD COMPONENTS THAT EMPLOYEES SEE WHEN THEY GO TO THE HOMEPAGE --}}
-        <p class="text-gray-900 dark:text-gray-100">Authenticated users see this</p>
+        <div class="py-12">
+            <div class="grid grid-cols-1 mx-auto space-x-4 max-w-7xl sm:px-6 lg:px-8">
+                <div class="p-4 bg-gray-300 dark:bg-gray-800 rounded-xl">
+                    <livewire:LatestTimeRecords />
+                </div>
+
+                {{--
+                <div class="p-4 bg-gray-300 dark:bg-gray-800 rounded-xl">
+                    <livewire:LatestAnnouncements />
+                </div>
+                --}}
+            </div>
+        </div>
     @endauth
 </div>
