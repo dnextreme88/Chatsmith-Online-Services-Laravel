@@ -414,16 +414,14 @@
     @auth
         {{-- TODO: ADD COMPONENTS THAT EMPLOYEES SEE WHEN THEY GO TO THE HOMEPAGE --}}
         <div class="py-12">
-            <div class="grid grid-cols-1 mx-auto space-x-4 max-w-7xl sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 mx-auto space-y-4 max-w-7xl sm:px-6 lg:px-8 lg:grid-cols-2 lg:space-y-0 lg:space-x-4">
                 <div class="p-4 bg-gray-300 dark:bg-gray-800 rounded-xl">
                     <livewire:LatestTimeRecords />
                 </div>
 
-                {{--
                 <div class="p-4 bg-gray-300 dark:bg-gray-800 rounded-xl">
                     <livewire:LatestAnnouncements />
                 </div>
-                --}}
             </div>
         </div>
     @endauth
